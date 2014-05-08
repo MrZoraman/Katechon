@@ -92,11 +92,57 @@ public class MappedConfig implements IConfig
 	}
 	
 	//FLOATS
+	@Override
+	public void setFloat(String key, float value)
+	{
+		floats.put(key, value);
+	}
+	
+	@Override
+	public Float getFloat(String key)
+	{
+		return floats.get(key);
+	}
+
 	//DOUBLES
+	@Override
+	public void setDouble(String key, double value)
+	{
+		doubles.put(key, value);
+	}
+	
+	@Override
+	public Double getDouble(String key)
+	{
+		return doubles.get(key);
+	}
 	
 	//BOOLEANS
+	@Override
+	public void setBoolean(String key, boolean value)
+	{
+		booleans.put(key, value);
+	}
+	
+	@Override
+	public Boolean getBoolean(String key)
+	{
+		return booleans.get(key);
+	}
 	
 	//CHARACTERS
+	@Override
+	public void setCharacter(String key, char value)
+	{
+		characters.put(key, value);
+	}
+	
+	@Override
+	public Character getCharacter(String key)
+	{
+		return characters.get(key);
+	}
+	
 	//STRINGS
 	@Override
 	public void setString(String key, String value)
