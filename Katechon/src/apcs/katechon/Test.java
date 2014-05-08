@@ -13,6 +13,10 @@ public class Test
 			System.out.println("Because I Can");
 		}
 		
+<<<<<<< HEAD
 		System.out.println("abba jeezles");
+=======
+		//COMMENTS ARE AMAZING!!!!
+>>>>>>> refs/remotes/origin/master
 	}
 }
