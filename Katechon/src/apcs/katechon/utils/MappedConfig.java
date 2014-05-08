@@ -155,4 +155,57 @@ public class MappedConfig implements IConfig
 	{
 		return strings.get(key);
 	}
+	
+	
+	
+	
+	
+	//For general setting
+	/**
+	 * Used for general setting when the type of the object is not known.
+	 */
+	public void set(String key, Object obj)
+	{
+		if (obj instanceof Byte)
+		{
+			setByte(key, (Byte)(obj));
+		}
+		else if (obj instanceof Short)
+		{
+			setShort(key, (Short)(obj));
+		}
+		else if (obj instanceof Integer)
+		{
+			setInt(key, (Integer)(obj));
+		}
+		else if (obj instanceof Long)
+		{
+			setLong(key, (Long)(obj));
+		}
+		else if (obj instanceof Float)
+		{
+			setFloat(key, (Float)(obj));
+		}
+		else if (obj instanceof Double)
+		{
+			setDouble(key, (Double)(obj));
+		}
+		else if (obj instanceof Boolean)
+		{
+			setBoolean(key, (Boolean)(obj));
+		}
+		else if (obj instanceof Character)
+		{
+			setCharacter(key, (Character)(obj));
+		}
+		else if (obj instanceof String)
+		{
+			setString(key, (String)(obj));
+		}
+		else
+		{
+			//May want this to throw an exception
+			System.out.println("Incorrect type used");
+		}
+	}
 }
