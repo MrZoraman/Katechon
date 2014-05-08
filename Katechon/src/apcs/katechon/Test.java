@@ -12,5 +12,7 @@ public class Test
 		{
 			System.out.println("Because I Can");
 		}
+		
+		//COMMENTS ARE AMAZING!!!!
 	}
 }
