@@ -12,5 +12,7 @@ public class Test
 		{
 			System.out.println("Because I Can");
 		}
+		
+		System.out.println("abba jeezles");
 	}
 }
