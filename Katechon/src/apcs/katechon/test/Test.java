@@ -1,6 +1,7 @@
 package apcs.katechon.test;
 
 import apcs.katechon.KatechonBase;
+import apcs.katechon.KatechonEngine;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 
@@ -18,6 +19,9 @@ public class Test extends KatechonBase
 	public static void main(String[] args)
 	{
 		IConfig config = new MappedConfig();
+		
+		//see this line of clode looks pretty clean to me
+		new KatechonEngine(Test.class, config).start();
 	}
 
 	@Override
