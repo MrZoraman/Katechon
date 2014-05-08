@@ -8,5 +8,8 @@ package apcs.katechon;
 //TODO: maybe a little better documentation here ^
 public abstract class KatechonBase
 {
-
+	public KatechonBase()
+	{
+		
+	}
 }
