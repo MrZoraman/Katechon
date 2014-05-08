@@ -20,6 +20,8 @@ public interface IConfig
 	public void setCharacter	(String key, char value);
 	public void setString		(String key, String value);
 	
+	public void setObject		(String key, Object value);
+	
 	//Wrapper classes are returned, because it is a possibility that null values are returned if a key does not exist
 	public Byte getByte				(String key);
 	public Short getShort			(String key);
@@ -34,8 +36,8 @@ public interface IConfig
 	public Character getCharacter	(String key);
 	public String getString			(String key);
 	
+	public Object getObject			(String key);
 	
-
-	//For general setting
-	public void set(String key, Object obj);
+//	//For general setting
+//	public void set(String key, Object obj);
 }

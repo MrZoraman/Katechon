@@ -23,6 +23,8 @@ public class MappedConfig implements IConfig
 	private final Map<String, Character> characters;
 	private final Map<String, String> strings;
 	
+	private final Map<String, Object> objects;
+	
 	public MappedConfig()
 	{
 		bytes 		= new HashMap<String, Byte>();
@@ -37,6 +39,8 @@ public class MappedConfig implements IConfig
 		
 		characters 	= new HashMap<String, Character>();
 		strings 	= new HashMap<String, String>();
+		
+		objects		= new HashMap<String, Object>();
 	}
 	
 	//BYTES
@@ -156,56 +160,67 @@ public class MappedConfig implements IConfig
 		return strings.get(key);
 	}
 	
-	
-	
-	
-	
-	//For general setting
-	/**
-	 * Used for general setting when the type of the object is not known.
-	 */
-	public void set(String key, Object obj)
+	//OBJECTS
+	@Override
+	public void setObject(String key, Object value)
 	{
-		if (obj instanceof Byte)
-		{
-			setByte(key, (Byte)(obj));
-		}
-		else if (obj instanceof Short)
-		{
-			setShort(key, (Short)(obj));
-		}
-		else if (obj instanceof Integer)
-		{
-			setInt(key, (Integer)(obj));
-		}
-		else if (obj instanceof Long)
-		{
-			setLong(key, (Long)(obj));
-		}
-		else if (obj instanceof Float)
-		{
-			setFloat(key, (Float)(obj));
-		}
-		else if (obj instanceof Double)
-		{
-			setDouble(key, (Double)(obj));
-		}
-		else if (obj instanceof Boolean)
-		{
-			setBoolean(key, (Boolean)(obj));
-		}
-		else if (obj instanceof Character)
-		{
-			setCharacter(key, (Character)(obj));
-		}
-		else if (obj instanceof String)
-		{
-			setString(key, (String)(obj));
-		}
-		else
-		{
-			//May want this to throw an exception
-			System.out.println("Incorrect type used");
-		}
+		objects.put(key, value);
 	}
+
+	@Override
+	public Object getObject(String key)
+	{
+		return objects.get(key);
+	}
+	
+	
+	
+//	//For general setting
+//	/**
+//	 * Used for general setting when the type of the object is not known.
+//	 */
+//	public void set(String key, Object obj)
+//	{
+//		if (obj instanceof Byte)
+//		{
+//			setByte(key, (Byte)(obj));
+//		}
+//		else if (obj instanceof Short)
+//		{
+//			setShort(key, (Short)(obj));
+//		}
+//		else if (obj instanceof Integer)
+//		{
+//			setInt(key, (Integer)(obj));
+//		}
+//		else if (obj instanceof Long)
+//		{
+//			setLong(key, (Long)(obj));
+//		}
+//		else if (obj instanceof Float)
+//		{
+//			setFloat(key, (Float)(obj));
+//		}
+//		else if (obj instanceof Double)
+//		{
+//			setDouble(key, (Double)(obj));
+//		}
+//		else if (obj instanceof Boolean)
+//		{
+//			setBoolean(key, (Boolean)(obj));
+//		}
+//		else if (obj instanceof Character)
+//		{
+//			setCharacter(key, (Character)(obj));
+//		}
+//		else if (obj instanceof String)
+//		{
+//			setString(key, (String)(obj));
+//		}
+//		else
+//		{
+//			//May want this to throw an exception
+//			System.out.println("Incorrect type used");
+//		}
+//	}
 }

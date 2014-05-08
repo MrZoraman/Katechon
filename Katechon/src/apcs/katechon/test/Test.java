@@ -18,13 +18,6 @@ public class Test extends KatechonBase
 	public static void main(String[] args)
 	{
 		IConfig config = new MappedConfig();
-		config.set(5);
-		config.set("abba jeezles");
-		config.set(true);
-		config.set(4.2);
-		config.set(4.2f);
-		Integer i = new Integer(5);
-		config.set(i);
 	}
 
 	@Override
