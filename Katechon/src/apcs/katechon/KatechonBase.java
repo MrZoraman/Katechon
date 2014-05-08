@@ -12,4 +12,10 @@ public abstract class KatechonBase
 	{
 		
 	}
+	
+	/**
+	 * This method will run x amount of times per second, as specified somewhere...
+	 */
+	//TODO: better documentation
+	public abstract void onGameTick();
 }
