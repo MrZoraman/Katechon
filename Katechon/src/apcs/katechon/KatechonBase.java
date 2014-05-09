@@ -26,6 +26,9 @@ public abstract class KatechonBase
 	//void initGraphics(GraphicsREnderer gr)
 	//{...}
 	
+	/**
+	 * This will initialize the input handling for the game. This should be the only place this is done.
+	 */
 	void initInput()
 	{
 		//Maybe use reflection to instantiate and not have a singleton? Would "ensure" no outside instantiation.

@@ -12,6 +12,10 @@ public class Mouse
 		
 	}
 	
+	/**
+	 * Adds a new listener to the mouse
+	 * @param listener A listener of type MouseListener
+	 */
 	public void addListener(MouseListener listener)
 	{
 		mouseListeners.add(listener);

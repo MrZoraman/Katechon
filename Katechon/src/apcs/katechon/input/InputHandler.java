@@ -4,6 +4,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.List;
 
+/**
+ * All control of and information from keyboard and mouse
+ * @author Floating-Imp
+ */
 public class InputHandler
 {
 	private static Keyboard keyboard;
@@ -15,20 +19,21 @@ public class InputHandler
 	
 	private InputHandler()
 	{
-		
+		this.keyboard = new Keyboard();
+		this.mouse = new Mouse();
 	}
 	
+	/**
+	 * Get the instance of the InputHandler
+	 * @return The instance of the InputHandler
+	 */
 	public synchronized static InputHandler getInstance()
 	{
-		if (handler == null)
+		if (handler != null)
 		{
-			handler = new InputHandler();
+			throw new IllegalStateException();
 		}
+		handler = new InputHandler();
 		return handler;
-	}
-	
-	public void addListener(MouseListener listener)
-	{
-		this.mouseListeners.add(listener);
 	}
 }
