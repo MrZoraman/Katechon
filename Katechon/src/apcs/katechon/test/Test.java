@@ -20,7 +20,7 @@ public class Test extends KatechonBase
 	{
 		IConfig config = new MappedConfig();
 		
-		//see this line of clode looks pretty clean to me
+		//see this line of code looks pretty clean to me
 		new KatechonEngine(Test.class, config).start();
 	}
 

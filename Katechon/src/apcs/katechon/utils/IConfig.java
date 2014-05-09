@@ -1,5 +1,6 @@
 package apcs.katechon.utils;
 
+
 /**
  * This represents something that will store and retrieve data.
  * @author Matt
