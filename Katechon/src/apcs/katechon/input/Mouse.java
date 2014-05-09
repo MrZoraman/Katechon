@@ -1,18 +1,19 @@
 package apcs.katechon.input;
 
 import java.awt.event.MouseListener;
+import java.util.List;
 
 public class Mouse
 {
-	private InputHandler handler;
+	private List<MouseListener> mouseListeners;
 	
 	public Mouse()
 	{
-		this.handler = InputHandler.getInstance();
+		
 	}
 	
 	public void addListener(MouseListener listener)
 	{
-		handler.addListener(listener);
+		mouseListeners.add(listener);
 	}
 }

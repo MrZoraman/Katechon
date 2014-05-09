@@ -1,18 +1,19 @@
 package apcs.katechon.input;
 
 import java.awt.event.KeyListener;
+import java.util.List;
 
 public class Keyboard
-{
-	private InputHandler handler;
+{	
+	private List<KeyListener> keyListeners;
 	
 	public Keyboard()
 	{
-		this.handler = InputHandler.getInstance();
+		
 	}
 	
 	public void addListener(KeyListener listener)
 	{
-		handler.addListener(listener);
+		keyListeners.add(listener);
 	}
 }

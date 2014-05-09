@@ -6,10 +6,9 @@ import java.util.List;
 
 public class InputHandler
 {
-	private static KeyListener keyListener;
-	private static MouseListener mouseListener;
+	private static Keyboard keyboard;
+	private static Mouse mouse;
 	
-	List<KeyListener> keyListeners;
 	List<MouseListener> mouseListeners;
 	
 	private static InputHandler handler;
@@ -26,11 +25,6 @@ public class InputHandler
 			handler = new InputHandler();
 		}
 		return handler;
-	}
-	
-	public void addListener(KeyListener listener)
-	{
-		this.keyListeners.add(listener);
 	}
 	
 	public void addListener(MouseListener listener)
