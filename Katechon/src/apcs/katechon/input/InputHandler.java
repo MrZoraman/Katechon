@@ -12,9 +12,20 @@ public class InputHandler
 	List<KeyListener> keyListeners;
 	List<MouseListener> mouseListeners;
 	
-	public InputHandler()
+	private static InputHandler handler;
+	
+	private InputHandler()
 	{
 		
+	}
+	
+	public static InputHandler getInstance()
+	{
+		if (handler == null)
+		{
+			handler = new InputHandler();
+		}
+		return handler;
 	}
 	
 	public void addListener(KeyListener listener)
