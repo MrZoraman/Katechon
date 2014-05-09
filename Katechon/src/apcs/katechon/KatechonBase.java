@@ -18,4 +18,7 @@ public abstract class KatechonBase
 	 */
 	//TODO: better documentation
 	public abstract void onGameTick();
+	
+	//void initGraphics(GraphicsREnderer gr)
+	//{...}
 }

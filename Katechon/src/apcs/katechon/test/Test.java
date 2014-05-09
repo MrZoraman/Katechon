@@ -27,6 +27,5 @@ public class Test extends KatechonBase
 	@Override
 	public void onGameTick() {
 		// TODO Auto-generated method stub
-		
 	}
 }

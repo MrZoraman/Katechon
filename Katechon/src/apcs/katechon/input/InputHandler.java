@@ -19,7 +19,7 @@ public class InputHandler
 		
 	}
 	
-	public static InputHandler getInstance()
+	public synchronized static InputHandler getInstance()
 	{
 		if (handler == null)
 		{

@@ -9,6 +9,13 @@ import apcs.katechon.utils.IConfig;
  */
 public class KatechonEngine
 {
+	private static KatechonEngine instance = null;
+	
+	public static KatechonEngine getInstance()
+	{
+		return instance;
+	}
+	
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
 	{
 		KatechonBase kBaseInstance = null;
@@ -31,6 +38,11 @@ public class KatechonEngine
 		this.kBase = kBaseInstance;
 		
 		//Use the config to set properties for the game engine state
+		
+		if(instance != null)
+			throw new IllegalStateException("Cannot create more than one engine!");
+		
+		instance = this;
 	}
 	
 	private final KatechonBase kBase;
