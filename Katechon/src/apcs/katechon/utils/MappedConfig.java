@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Stores configuration options with hashmaps. This config cannot be saved to the file system (yet).
+ * Stores configuration options with hashmaps. This config cannot be saved to the file system. This config does not write default values to the config either.
  * @author Matt
  *
  */
