@@ -91,8 +91,14 @@ public class KatechonEngine
 		kBase.start();
 	}
 	
+	/**
+	 * Ends the game and closes the window after onGameEnd is called.
+	 */
 	public void end()
 	{
+		//TODO: Add any post logic for the engine here.
+		
 		kBase.onGameEnd();
+		System.exit(0);
 	}
 }

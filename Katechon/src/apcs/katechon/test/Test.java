@@ -52,7 +52,7 @@ public class Test extends KatechonBase
 			public void onKeyPressed(Keys key)
 			{
 				System.out.println("Exiting.");
-				
+				KatechonEngine.getInstance().end();				
 			}
 			
 		
@@ -76,6 +76,6 @@ public class Test extends KatechonBase
 	@Override
 	public void onGameEnd()
 	{
-		
+		System.out.println("Exited through game logic.");
 	}
 }

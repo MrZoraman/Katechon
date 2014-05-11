@@ -3,6 +3,8 @@ package apcs.katechon;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -32,7 +34,42 @@ public class SwingWindow
 		//Set the title
 		frame.setTitle(title);
 		//TODO: If any post-game logic needs to be executed, we'll have to change this
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		//Is this the best place for this?
+		frame.addWindowListener(new WindowListener(){
+
+			@Override
+			public void windowActivated(WindowEvent arg0){
+			}
+
+			@Override
+			public void windowClosed(WindowEvent arg0){
+			}
+
+			@Override
+			public void windowClosing(WindowEvent arg0){			
+				KatechonEngine.getInstance().end();
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent arg0){
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent arg0){
+			}
+
+			@Override
+			public void windowIconified(WindowEvent arg0){
+			}
+
+			@Override
+			public void windowOpened(WindowEvent arg0){
+			}
+			
+		});
+		
 		//Put the window in the middle of the screen
 		frame.setLocationRelativeTo(null);
 		//Not resizeable! Let's avoid that headache...
@@ -81,12 +118,5 @@ public class SwingWindow
 	void addMouseListener(final MouseListener mouseListener)
 	{
 		frame.addMouseListener(mouseListener);
-	}
-	
-	
-	//Will need a window listener to handle to manual closing by the user.
-	public void close()
-	{
-		//Close the window
 	}
 }
