@@ -9,7 +9,7 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class SwingWindow 
+public class SwingWindow
 {
 	/**
 	 * This is the window itself. It holds components like JPanels, which do the actual work. 
@@ -33,7 +33,8 @@ public class SwingWindow
 		frame.setSize(width, height);
 		//Set the title
 		frame.setTitle(title);
-		//TODO: If any post-game logic needs to be executed, we'll have to change this
+		
+		//Allows the game to handle the closing of the frame
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		//Is this the best place for this?
