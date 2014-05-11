@@ -14,7 +14,7 @@ public class Mouse implements MouseListener
 {
 	private static Mouse instance;
 	
-	public Mouse getInstance()
+	public static synchronized Mouse getInstance()
 	{
 		if(instance == null)
 			instance = new Mouse();

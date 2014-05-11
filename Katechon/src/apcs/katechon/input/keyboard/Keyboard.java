@@ -5,7 +5,17 @@ import java.awt.event.KeyListener;
 import java.util.List;
 
 public class Keyboard implements KeyListener
-{	
+{
+	private static Keyboard instance;
+	
+	public static synchronized Keyboard getInstance()
+	{
+		if (instance == null)
+			instance = new Keyboard();
+		
+		return instance;
+	}
+	
 	private List<KeyListener> keyListeners;
 	
 	public Keyboard()
