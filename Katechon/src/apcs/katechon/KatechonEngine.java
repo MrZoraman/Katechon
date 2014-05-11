@@ -1,6 +1,7 @@
 package apcs.katechon;
 
-import apcs.katechon.rendering.SwingWindow;
+import apcs.katechon.input.keyboard.Keyboard;
+import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.utils.IConfig;
 
 /**
@@ -22,26 +23,26 @@ public class KatechonEngine
 		return instance;
 	}
 	
-	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
+	public KatechonEngine(final IConfig config)
 	{
-		KatechonBase kBaseInstance = null;
-		
-		try
-		{
-			//We are going to use reflection! Why? Because it's nicer on the eyes in the main() method (imo).
-			kBaseInstance = kBaseClass.newInstance();
-		}
-		catch (Exception e)
-		{
-			//Nothing more to do here...
-			System.err.println("Failed to instantiate game!");
-			System.exit(1);
-		}
+//		KatechonBase kBaseInstance = null;
+//		
+//		try
+//		{
+//			//We are going to use reflection! Why? Because it's nicer on the eyes in the main() method (imo).
+//			kBaseInstance = kBaseClass.newInstance();
+//		}
+//		catch (Exception e)
+//		{
+//			//Nothing more to do here...
+//			System.err.println("Failed to instantiate game!");
+//			System.exit(1);
+//		}
 		
 		//We instantiate an instance the constructor and then set two references to equal each other down here 
 		//so java will shut up about errors that are stupid. It could be circumented by removing the 'final'
 		//modifier, but I want kBase to be final.
-		this.kBase = kBaseInstance;
+//		this.kBase = kBaseInstance;
 		
 		//Window
 		//-----------------------------------------------------------------------------
@@ -51,6 +52,12 @@ public class KatechonEngine
 		String title = config.getString("title", DEFAULT_TITLE);
 		
 		window = new SwingWindow(width, height, title);
+		//-----------------------------------------------------------------------------
+		
+		//Inputs
+		//-----------------------------------------------------------------------------
+		window.addKeyListener(Keyboard.getInstance());
+		window.addMouseListener(Mouse.getInstance());
 		//-----------------------------------------------------------------------------
 		
 		
@@ -64,7 +71,6 @@ public class KatechonEngine
 		//-----------------------------------------------------------------------------
 	}
 	
-	private final KatechonBase kBase;
 	private final SwingWindow window;
 	
 	/**

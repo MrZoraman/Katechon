@@ -1,7 +1,8 @@
-package apcs.katechon.rendering;
+package apcs.katechon;
 
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -59,7 +60,7 @@ public class SwingWindow
 	/**
 	 * Makes the window visible.
 	 */
-	public void show()
+	void show()
 	{
 		frame.setVisible(true);
 	}
@@ -68,8 +69,13 @@ public class SwingWindow
 	 * Adds a keyListener
 	 * @param keyListener The keylistener to add
 	 */
-	public void addKeyListener(final KeyListener keyListener)
+	void addKeyListener(final KeyListener keyListener)
 	{
 		frame.addKeyListener(keyListener);
+	}
+	
+	void addMouseListener(final MouseListener mouseListener)
+	{
+		frame.addMouseListener(mouseListener);
 	}
 }

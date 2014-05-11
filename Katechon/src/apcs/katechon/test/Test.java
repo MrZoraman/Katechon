@@ -22,7 +22,7 @@ public class Test extends KatechonBase
 		config.setString("title", "abba jeezles");
 		
 		//see this line of code looks pretty clean to me
-		new KatechonEngine(Test.class, config).start();
+		new KatechonEngine(config).start();
 	}
 
 	@Override
