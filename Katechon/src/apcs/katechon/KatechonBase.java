@@ -21,6 +21,11 @@ public abstract class KatechonBase
 	//TODO: better documentation
 	public abstract void onGameTick();
 	
+	/**
+	 * Initializtion code goes here! This method is called by the engine once everything has been constructed and the engine itself has been started.
+	 */
+	public abstract void init();
+	
 	//I'll talk to you about this on Monday
 //	/**
 //	 * This will initialize the input handling for the game. This should be the only place this is done.

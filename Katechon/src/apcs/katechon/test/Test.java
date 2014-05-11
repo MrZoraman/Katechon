@@ -22,11 +22,17 @@ public class Test extends KatechonBase
 		config.setString("title", "abba jeezles");
 		
 		//see this line of code looks pretty clean to me
-		new KatechonEngine(config).start();
+		new KatechonEngine(Test.class, config).start();
 	}
 
 	@Override
 	public void onGameTick() {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
 	}
 }
