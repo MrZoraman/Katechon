@@ -66,14 +66,18 @@ public class SwingWindow
 	}
 	
 	/**
-	 * Adds a keyListener
-	 * @param keyListener The keylistener to add
+	 * Adds a KeyListener
+	 * @param keyListener The KeyListener to add
 	 */
 	void addKeyListener(final KeyListener keyListener)
 	{
 		frame.addKeyListener(keyListener);
 	}
 	
+	/**
+	 * Adds a MouseListener
+	 * @param mouseListener The MouseListener to add
+	 */
 	void addMouseListener(final MouseListener mouseListener)
 	{
 		frame.addMouseListener(mouseListener);

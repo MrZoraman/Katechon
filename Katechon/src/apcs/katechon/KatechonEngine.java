@@ -41,8 +41,8 @@ public class KatechonEngine
 			System.exit(1);
 		}
 		
-		//We instantiate an instance the constructor and then set two references to equal each other down here 
-		//so java will shut up about errors that are stupid. It could be circumented by removing the 'final'
+		//We instantiate an instance in the constructor and then set two references to equal each other down here 
+		//so java will shut up about errors that are stupid. It could be circumvented by removing the 'final'
 		//modifier, but I want kBase to be final.
 		this.kBase = kBaseInstance;
 		
@@ -86,5 +86,8 @@ public class KatechonEngine
 		
 		//do stuff and run the game loop
 		window.show();
+		
+		//Maybe have this?
+		kBase.start();
 	}
 }

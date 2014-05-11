@@ -26,6 +26,13 @@ public abstract class KatechonBase
 	 */
 	public abstract void init();
 	
+	
+	//Just a thought
+	/**
+	 * Starts the game
+	 */
+	public abstract void start();
+	
 	//I'll talk to you about this on Monday
 //	/**
 //	 * This will initialize the input handling for the game. This should be the only place this is done.
