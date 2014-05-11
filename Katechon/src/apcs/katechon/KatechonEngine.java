@@ -11,7 +11,7 @@ public class KatechonEngine
 {
 	private static KatechonEngine instance = null;
 	
-	public static KatechonEngine getInstance()
+	public static synchronized KatechonEngine getInstance()
 	{
 		return instance;
 	}
