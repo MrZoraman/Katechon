@@ -1,6 +1,7 @@
 package apcs.katechon.rendering;
 
 import java.awt.Graphics;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,12 +9,13 @@ import javax.swing.JPanel;
 public class SwingWindow 
 {
 	/**
-	 * This is the window itself. It holds components like JPanels, which do the actual work.
+	 * This is the window itself. It holds components like JPanels, which do the actual work. 
+	 * 		This is the closest we get to the operating system as this is the class that handles all of the input events.
 	 */
 	private final JFrame frame;
 	
 	/**
-	 * This is the single panel that will go in the frame. This does all the work, such as drawing things on the screen and handleing events.
+	 * This is the single panel that will go in the frame. This will do the drawing.
 	 */
 	private final KatechonJPanel panel;
 	
@@ -55,10 +57,19 @@ public class SwingWindow
 	}
 	
 	/**
-	 * Makes the window show up.
+	 * Makes the window visible.
 	 */
 	public void show()
 	{
 		frame.setVisible(true);
+	}
+	
+	/**
+	 * Adds a keyListener
+	 * @param keyListener The keylistener to add
+	 */
+	public void addKeyListener(final KeyListener keyListener)
+	{
+		frame.addKeyListener(keyListener);
 	}
 }

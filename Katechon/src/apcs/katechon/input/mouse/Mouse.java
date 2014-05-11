@@ -1,4 +1,4 @@
-package apcs.katechon.input;
+package apcs.katechon.input.mouse;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

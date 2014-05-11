@@ -1,7 +1,5 @@
 package apcs.katechon;
 
-import apcs.katechon.input.InputHandler;
-
 /**
  * The game will extend this class. It will then be plugged into some sort of game engine singleton that will then do what needs to be done to do what we want to be done.
  * @author Matt
@@ -10,7 +8,7 @@ import apcs.katechon.input.InputHandler;
 //TODO: maybe a little better documentation here ^
 public abstract class KatechonBase
 {
-	private InputHandler handler;
+//	private InputHandler handler;
 	
 	public KatechonBase()
 	{
@@ -23,15 +21,13 @@ public abstract class KatechonBase
 	//TODO: better documentation
 	public abstract void onGameTick();
 	
-	//void initGraphics(GraphicsREnderer gr)
-	//{...}
-	
-	/**
-	 * This will initialize the input handling for the game. This should be the only place this is done.
-	 */
-	void initInput()
-	{
-		//Maybe use reflection to instantiate and not have a singleton? Would "ensure" no outside instantiation.
-		this.handler = InputHandler.getInstance();
-	}
+	//I'll talk to you about this on Monday
+//	/**
+//	 * This will initialize the input handling for the game. This should be the only place this is done.
+//	 */
+//	void initInput()
+//	{
+//		//Maybe use reflection to instantiate and not have a singleton? Would "ensure" no outside instantiation.
+//		this.handler = InputHandler.getInstance();
+//	}
 }

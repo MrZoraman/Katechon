@@ -1,4 +1,4 @@
-package apcs.katechon.input;
+package apcs.katechon.input.mouse;
 
 /**
  * An event handler for mouse clicks (left or right click)
