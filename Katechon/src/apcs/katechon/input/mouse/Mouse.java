@@ -12,6 +12,12 @@ import java.util.Set;
  */
 public class Mouse implements MouseListener
 {
+	//TODO: The mouse listener isn't very responsive. 
+	//If you click too fast it'll stop receiving the inputs.
+	//You then need to wait a little while for it to start working again.
+	//Then again, I don't think will be a too mouse-intensive game, so it may not matter much.
+	//For gui inputs it should be fine, but idk...
+	
 	private static Mouse instance;
 	
 	public static synchronized Mouse getInstance()

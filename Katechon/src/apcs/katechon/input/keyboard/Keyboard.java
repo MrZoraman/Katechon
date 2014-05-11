@@ -14,6 +14,8 @@ import java.util.Set;
  */
 public class Keyboard implements KeyListener
 {
+	//TODO: A global listener container so that it listens on all key presses?
+	
 	private static Keyboard instance;
 	
 	public static synchronized Keyboard getInstance()

@@ -2,6 +2,11 @@ package apcs.katechon.test;
 
 import apcs.katechon.KatechonBase;
 import apcs.katechon.KatechonEngine;
+import apcs.katechon.input.keyboard.KeyPressedListener;
+import apcs.katechon.input.keyboard.Keyboard;
+import apcs.katechon.input.keyboard.Keys;
+import apcs.katechon.input.mouse.Mouse;
+import apcs.katechon.input.mouse.MouseClickedListener;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 
@@ -31,8 +36,21 @@ public class Test extends KatechonBase
 	}
 
 	@Override
-	public void init() {
-		// TODO Auto-generated method stub
+	public void init() 
+	{
+		Keyboard.getInstance().addListener(Keys.A, new KeyPressedListener() {
+			@Override
+			public void onKeyPressed(Keys key)
+			{
+				System.out.println("Key pressed!: " + key);
+			}
+		});
 		
+		Mouse.getInstance().addListener(new MouseClickedListener() {
+			@Override
+			public void onClick(int x, int y) {
+				System.out.println("Mouse clicked!: " + x + ", " + y);
+			}
+		});
 	}
 }
