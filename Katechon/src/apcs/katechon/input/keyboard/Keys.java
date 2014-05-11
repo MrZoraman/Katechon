@@ -10,7 +10,8 @@ import java.util.Map;
  * </p>
  * 
  * <p>
- * Currently supports A-Z, 0-9, escape, space, shift, control and alt
+ * Currently supports A-Z, 0-9, arrow keys, escape, space, shift, control, alt, 
+ * 					  windows button and most other symbols supported by KeyEvent
  * </p>
  * @author Matt
  *
@@ -74,6 +75,40 @@ public enum Keys
 	ALT		(KeyEvent.VK_ALT),
 	TAB		(KeyEvent.VK_TAB),
 	ENTER	(KeyEvent.VK_ENTER),
+	
+	HOME	(KeyEvent.VK_HOME),
+	PG_UP	(KeyEvent.VK_PAGE_UP),
+	PG_DOWN (KeyEvent.VK_PAGE_DOWN),
+	END		(KeyEvent.VK_END),
+	
+	BACK_SLASH	(KeyEvent.VK_BACK_SLASH),
+	SLASH	(KeyEvent.VK_SLASH),
+	RIGHT_BRACKET	(KeyEvent.VK_BRACERIGHT),
+	LEFT_BRACKET	(KeyEvent.VK_BRACELEFT),
+	COLON	(KeyEvent.VK_COLON),
+	SEMI_COLON	(KeyEvent.VK_SEMICOLON),
+	PERIOD	(KeyEvent.VK_PERIOD),
+	COMMA	(KeyEvent.VK_COMMA),
+	
+	EXCLAIMATION_MARK	(KeyEvent.VK_EXCLAMATION_MARK),
+	AT			(KeyEvent.VK_AT),
+	NUMBER_SIGN	(KeyEvent.VK_NUMBER_SIGN),
+	DOLLAR		(KeyEvent.VK_DOLLAR),
+	AMPERSAND	(KeyEvent.VK_AMPERSAND),
+	ASTERISK	(KeyEvent.VK_ASTERISK),
+	RIGHT_PARENTHESIS	(KeyEvent.VK_RIGHT_PARENTHESIS),
+	LEFT_PARENTHESIS	(KeyEvent.VK_LEFT_PARENTHESIS),
+	MINUS		(KeyEvent.VK_MINUS),
+	UNDERSCORE	(KeyEvent.VK_UNDERSCORE),
+	PLUS		(KeyEvent.VK_PLUS),
+	EQUALS		(KeyEvent.VK_EQUALS),
+	
+	LEFT_ARROW	(KeyEvent.VK_LEFT),
+	RIGHT_ARROW (KeyEvent.VK_RIGHT),
+	UP_ARROW	(KeyEvent.VK_UP),
+	DOWN_ARROW	(KeyEvent.VK_DOWN),
+	
+	WINDOWS		(KeyEvent.VK_WINDOWS),
 	
 	UNDEFINED (KeyEvent.VK_UNDEFINED);
 
