@@ -19,6 +19,7 @@ public class Test extends KatechonBase
 	public static void main(String[] args)
 	{
 		IConfig config = new MappedConfig();
+		config.setString("title", "abba jeezles");
 		
 		//see this line of code looks pretty clean to me
 		new KatechonEngine(Test.class, config).start();

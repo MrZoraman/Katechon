@@ -1,5 +1,6 @@
 package apcs.katechon;
 
+import apcs.katechon.rendering.SwingWindow;
 import apcs.katechon.utils.IConfig;
 
 /**
@@ -10,6 +11,11 @@ import apcs.katechon.utils.IConfig;
 public class KatechonEngine
 {
 	private static KatechonEngine instance = null;
+	
+	//Avoid magic numbers!
+	private static final int DEFAULT_WIDTH = 1280;
+	private static final int DEFAULT_HEIGHT = 780;
+	private static final String DEFAULT_TITLE = "Katechon Game";
 	
 	public static synchronized KatechonEngine getInstance()
 	{
@@ -37,15 +43,29 @@ public class KatechonEngine
 		//modifier, but I want kBase to be final.
 		this.kBase = kBaseInstance;
 		
+		//Window
+		//-----------------------------------------------------------------------------
 		//Use the config to set properties for the game engine state
+		int width = config.getInt("width", DEFAULT_WIDTH);
+		int height = config.getInt("height", DEFAULT_HEIGHT);
+		String title = config.getString("title", DEFAULT_TITLE);
 		
+		window = new SwingWindow(width, height, title);
+		//-----------------------------------------------------------------------------
+		
+		
+		
+		//This is a singleton class!
+		//-----------------------------------------------------------------------------
 		if(instance != null)
 			throw new IllegalStateException("Cannot create more than one engine!");
 		
 		instance = this;
+		//-----------------------------------------------------------------------------
 	}
 	
 	private final KatechonBase kBase;
+	private final SwingWindow window;
 	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
@@ -53,5 +73,6 @@ public class KatechonEngine
 	public void start()
 	{
 		//do stuff and run the game loop
+		window.show();
 	}
 }
