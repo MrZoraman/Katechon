@@ -2,8 +2,16 @@ package apcs.katechon.input.keyboard;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
+/**
+ * This class represents the computer keyboard, ready to be plugged into the swing framework.
+ * @author Sean
+ *
+ */
 public class Keyboard implements KeyListener
 {
 	private static Keyboard instance;
@@ -16,24 +24,39 @@ public class Keyboard implements KeyListener
 		return instance;
 	}
 	
-	private List<KeyListener> keyListeners;
+	private Map<Keys, Set<KeyPressedListener>> keyListeners;
 	
+	/**
+	 * Constructor
+	 */
 	public Keyboard()
 	{
-		
+		keyListeners = new HashMap<Keys, Set<KeyPressedListener>>();
 	}
 	
 	/**
 	 * Adds a new listener to the keyboard
 	 * @param listener A listener of type KeyListener
 	 */
-	public void addListener(KeyListener listener)
+	public void addListener(Keys key, KeyPressedListener listener)
 	{
-		keyListeners.add(listener);
+		if(keyListeners.containsKey(key) == false)
+			keyListeners.put(key, new HashSet<KeyPressedListener>());
+		
+		keyListeners.get(key).add(listener);
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		Keys key = Keys.getKey(e.getKeyCode());
+		
+		if(keyListeners.containsKey(key))
+		{
+			for(KeyPressedListener listener : keyListeners.get(key))
+			{
+				listener.onKeyPressed(key);
+			}
+		}
 	}
 
 	@Override
