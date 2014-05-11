@@ -17,11 +17,11 @@ public interface IConfig
 	public void setString		(String key, String value);
 	
 	//Wrapper classes are returned, because it is a possibility that null values are returned if a key does not exist
-	public Integer getInt			(String key);
+	public int getInt			(String key, int defaultValue);
 	
-	public Double getDouble			(String key);
+	public double getDouble			(String key, double defaultValue);
 	
-	public Boolean getBoolean		(String key);
+	public boolean getBoolean		(String key, boolean defaultValue);
 	
-	public String getString			(String key);
+	public String getString			(String key, String defaultValue);
 }

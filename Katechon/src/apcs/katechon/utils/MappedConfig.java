@@ -37,9 +37,9 @@ public class MappedConfig implements IConfig
 	}
 	
 	@Override
-	public Integer getInt(String key)
+	public int getInt(String key, int defaultValue)
 	{
-		return ints.get(key);
+		return ints.containsKey(key) ? ints.get(key) : defaultValue;
 	}
 
 	//DOUBLES
@@ -50,9 +50,9 @@ public class MappedConfig implements IConfig
 	}
 	
 	@Override
-	public Double getDouble(String key)
+	public double getDouble(String key, double defaultValue)
 	{
-		return doubles.get(key);
+		return doubles.containsKey(key) ? doubles.get(key) : defaultValue;
 	}
 	
 	//BOOLEANS
@@ -63,9 +63,9 @@ public class MappedConfig implements IConfig
 	}
 	
 	@Override
-	public Boolean getBoolean(String key)
+	public boolean getBoolean(String key, boolean defaultValue)
 	{
-		return booleans.get(key);
+		return booleans.containsKey(key) ? booleans.get(key) : defaultValue;
 	}
 	
 	//STRINGS
@@ -76,8 +76,8 @@ public class MappedConfig implements IConfig
 	}
 
 	@Override
-	public String getString(String key)
+	public String getString(String key, String defaultValue)
 	{
-		return strings.get(key);
+		return strings.containsKey(key) ? strings.get(key) : defaultValue;
 	}
 }
