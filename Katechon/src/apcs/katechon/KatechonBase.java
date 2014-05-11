@@ -22,7 +22,7 @@ public abstract class KatechonBase
 	public abstract void onGameTick();
 	
 	/**
-	 * Initializtion code goes here! This method is called by the engine once everything has been constructed and the engine itself has been started.
+	 * Initialization code goes here! This method is called by the engine once everything has been constructed and the engine itself has been started.
 	 */
 	public abstract void init();
 	

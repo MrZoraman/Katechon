@@ -11,7 +11,7 @@ import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 
 /**
- * This is a test class for general Katechon testsing
+ * This is a test class for general Katechon testing
  * @author Matt
  *
  */
@@ -52,5 +52,12 @@ public class Test extends KatechonBase
 				System.out.println("Mouse clicked!: " + x + ", " + y);
 			}
 		});
+	}
+
+	@Override
+	public void start()
+	{
+		//Would begin actual game logic here.
+		
 	}
 }
