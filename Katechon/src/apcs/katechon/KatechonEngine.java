@@ -90,4 +90,9 @@ public class KatechonEngine
 		//Maybe have this?
 		kBase.start();
 	}
+	
+	public void end()
+	{
+		kBase.onGameEnd();
+	}
 }

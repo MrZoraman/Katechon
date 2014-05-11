@@ -46,6 +46,18 @@ public class Test extends KatechonBase
 			}
 		});
 		
+		Keyboard.getInstance().addListener(Keys.ESCAPE, new KeyPressedListener() {
+
+			@Override
+			public void onKeyPressed(Keys key)
+			{
+				System.out.println("Exiting.");
+				
+			}
+			
+		
+		});
+		
 		Mouse.getInstance().addListener(new MouseClickedListener() {
 			@Override
 			public void onClick(int x, int y) {
@@ -58,6 +70,12 @@ public class Test extends KatechonBase
 	public void start()
 	{
 		//Would begin actual game logic here.
+		
+	}
+
+	@Override
+	public void onGameEnd()
+	{
 		
 	}
 }

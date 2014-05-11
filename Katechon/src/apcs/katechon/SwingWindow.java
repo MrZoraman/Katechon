@@ -82,4 +82,11 @@ public class SwingWindow
 	{
 		frame.addMouseListener(mouseListener);
 	}
+	
+	
+	//Will need a window listener to handle to manual closing by the user.
+	public void close()
+	{
+		//Close the window
+	}
 }

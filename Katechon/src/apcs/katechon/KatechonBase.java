@@ -33,6 +33,11 @@ public abstract class KatechonBase
 	 */
 	public abstract void start();
 	
+	/**
+	 * Runs when the game has been closed through the window.
+	 */
+	public abstract void onGameEnd();
+	
 	//I'll talk to you about this on Monday
 //	/**
 //	 * This will initialize the input handling for the game. This should be the only place this is done.
