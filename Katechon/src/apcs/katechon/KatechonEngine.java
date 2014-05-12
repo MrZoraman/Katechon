@@ -88,6 +88,7 @@ public class KatechonEngine
 		window.show();
 		
 		//Maybe have this?
+		//TODO: what is the difference between init() and start()?
 		kBase.start();
 	}
 	

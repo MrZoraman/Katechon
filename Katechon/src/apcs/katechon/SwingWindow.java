@@ -3,9 +3,6 @@ package apcs.katechon;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -37,39 +34,8 @@ public class SwingWindow
 		//Allows the game to handle the closing of the frame
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
-		//Is this the best place for this?
-		frame.addWindowListener(new WindowListener(){
-
-			@Override
-			public void windowActivated(WindowEvent arg0){
-			}
-
-			@Override
-			public void windowClosed(WindowEvent arg0){
-			}
-
-			@Override
-			public void windowClosing(WindowEvent arg0){			
-				KatechonEngine.getInstance().end();
-			}
-
-			@Override
-			public void windowDeactivated(WindowEvent arg0){
-			}
-
-			@Override
-			public void windowDeiconified(WindowEvent arg0){
-			}
-
-			@Override
-			public void windowIconified(WindowEvent arg0){
-			}
-
-			@Override
-			public void windowOpened(WindowEvent arg0){
-			}
-			
-		});
+		//Game logic regarding the window events implemented
+		frame.addWindowListener(new KatechonWindowListener());
 		
 		//Put the window in the middle of the screen
 		frame.setLocationRelativeTo(null);
