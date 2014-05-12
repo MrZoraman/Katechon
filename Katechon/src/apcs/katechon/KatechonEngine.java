@@ -2,6 +2,8 @@ package apcs.katechon;
 
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
+import apcs.katechon.logging.Log;
+import apcs.katechon.logging.PrintlnLogger;
 import apcs.katechon.utils.IConfig;
 
 /**
@@ -27,6 +29,9 @@ public class KatechonEngine
 	
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
 	{
+		//The first thing we do is init the logger
+		Log.init(new PrintlnLogger());
+		
 		KatechonBase kBaseInstance = null;
 		
 		try
