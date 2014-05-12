@@ -40,7 +40,8 @@ public class Test extends KatechonBase
 	@Override
 	public void init() 
 	{
-		Log.init(new FileLogger("Testing!!!"));
+		Log.init(new FileLogger("Testing\\Testing.log"));
+		Log.setDebugging(true);
 		Keyboard.getInstance().addListener(Keys.A, new KeyPressedListener() {
 			@Override
 			public void onKeyPressed(Keys key)

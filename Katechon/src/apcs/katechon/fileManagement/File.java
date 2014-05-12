@@ -2,18 +2,15 @@ package apcs.katechon.fileManagement;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.PosixFilePermissions;
 import java.util.List;
 
 public class File
 {
 	private Path path;
+	private Path dir;
 	private Charset cs;
 	
 	/**
@@ -22,11 +19,19 @@ public class File
 	 */
 	public File(String fileName) //throws FileAlreadyExistsException, IOException, UnsupportedOperationException, SecurityException
 	{
-		this.path = Paths.get(FileSystems.getDefault().toString(), fileName);
-				
+		this.path = Paths.get(System.getProperty("user.dir"), fileName);
+		this.dir = path.subpath(path.getNameCount() - 2, path.getNameCount() - 1);
+		
+		
+		this.cs = Charset.defaultCharset();
 		try
 		{
-			path = Files.createFile(path, PosixFilePermissions.asFileAttribute(Files.getPosixFilePermissions(path, LinkOption.values())));
+			if (Files.notExists(dir))
+			{
+				Files.createDirectories(dir);
+			}
+			if (Files.notExists(path))
+				path = Files.createFile(path);
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -59,7 +64,8 @@ public class File
 	{
 		try
 		{
-			path = Files.write(path, lines, cs, StandardOpenOption.values());
+			lines.addAll(this.readLines());
+			path = Files.write(path, lines, cs);
 		} catch (IOException e)
 		{
 			e.printStackTrace();
