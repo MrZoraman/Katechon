@@ -7,6 +7,7 @@ import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
+import apcs.katechon.logging.Log;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 
@@ -42,7 +43,7 @@ public class Test extends KatechonBase
 			@Override
 			public void onKeyPressed(Keys key)
 			{
-				System.out.println("Key pressed!: " + key);
+				Log.debug("Key pressed!: " + key);
 			}
 		});
 		
@@ -51,7 +52,7 @@ public class Test extends KatechonBase
 			@Override
 			public void onKeyPressed(Keys key)
 			{
-				System.out.println("Exiting.");
+				Log.info("Exiting.");
 				KatechonEngine.getInstance().end();				
 			}
 			
@@ -61,7 +62,8 @@ public class Test extends KatechonBase
 		Mouse.getInstance().addListener(new MouseClickedListener() {
 			@Override
 			public void onClick(int x, int y) {
-				System.out.println("Mouse clicked!: " + x + ", " + y);
+//				System.out.println("Mouse clicked!: " + x + ", " + y);
+				Log.debug("Mouse clicked!: " + x + ", " + y);
 			}
 		});
 	}
@@ -76,6 +78,6 @@ public class Test extends KatechonBase
 	@Override
 	public void onGameEnd()
 	{
-		System.out.println("Exited through game logic.");
+		Log.debug("Exited through game logic.");
 	}
 }

@@ -31,6 +31,7 @@ public class KatechonEngine
 	{
 		//The first thing we do is init the logger
 		Log.init(new PrintlnLogger());
+		Log.setDebugging(true);
 		
 		KatechonBase kBaseInstance = null;
 		
@@ -42,7 +43,7 @@ public class KatechonEngine
 		catch (Exception e)
 		{
 			//Nothing more to do here...
-			System.err.println("Failed to instantiate game!");
+			Log.fatal("Failed to instantiate game!");
 			System.exit(1);
 		}
 		
