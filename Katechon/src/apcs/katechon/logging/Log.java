@@ -22,36 +22,64 @@ public class Log
 		_logger = new PrintlnLogger();
 	}
 	
+	/**
+	 * Initializes a non-default logger.
+	 * @param logger An implementation of ILogger.
+	 */
 	public static void init(ILogger logger)
 	{
 		_logger = logger;
 	}
 
+	/**
+	 * Logs a general info message
+	 * @param message The message to log
+	 */
 	public static void info(String message)
 	{
 		_logger.info(message);
 	}
 
+	/**
+	 * Logs an error message. Something isn't quite right, but the engine can continue to operate.
+	 * @param message The message to log
+	 */
 	public static void error(String message)
 	{
 		_logger.error(message);
 	}
 
+	/**
+	 * Logs a fatal error message. The error is so bad that the engine can no longer continue to operate.
+	 * @param message The message to log
+	 */
 	public static void fatal(String message)
 	{
 		_logger.fatal(message);
 	}
 
+	/**
+	 * Logs an exception
+	 * @param ex The exception to log
+	 */
 	public static void exception(Exception ex)
 	{
 		_logger.exception(ex);
 	}
 
+	/**
+	 * Sets the state of debugging
+	 * @param debugging True if debugging, false if not debugging
+	 */
 	public static void setDebugging(boolean debugging)
 	{
 		_logger.setDebugging(debugging);
 	}
 
+	/**
+	 * Logs a debug message. If the logger is debugging, a debug message will be logged. Otherwise, the message is ignored
+	 * @param message
+	 */
 	public static void debug(String message)
 	{
 		_logger.debug(message);

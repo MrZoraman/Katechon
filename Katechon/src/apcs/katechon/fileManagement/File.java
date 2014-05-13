@@ -14,12 +14,12 @@ public class File
 	private Charset cs;
 	
 	/**
-	 * Creates a new file in the current working directory.
-	 * @param fileName The name of the file.
+	 * Creates a new file, and any required directories, in the current working directory.
+	 * @param filePath The path to the file, including the file name. (Not including the path to the current working directory)
 	 */
-	public File(String fileName) //throws FileAlreadyExistsException, IOException, UnsupportedOperationException, SecurityException
+	public File(String filePath)
 	{
-		this.path = Paths.get(System.getProperty("user.dir"), fileName);
+		this.path = Paths.get(System.getProperty("user.dir"), filePath);
 		this.dir = path.subpath(path.getNameCount() - 2, path.getNameCount() - 1);
 		
 		

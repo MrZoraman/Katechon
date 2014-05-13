@@ -3,11 +3,20 @@ package apcs.katechon.logging;
 import apcs.katechon.fileManagement.File;
 import java.util.ArrayList;
 
+/**
+ * A logger that will save the log to a file.
+ * @author Sean
+ *
+ */
 public class FileLogger implements ILogger
 {
 	private boolean debugging;
 	private File logFile;
 	
+	/**
+	 * Create a new FileLogger
+	 * @param fileName The file name including any parent directories. Not including the absolute path of the current working directory.
+	 */
 	public FileLogger(String fileName)
 	{
 		logFile = new File(fileName);
