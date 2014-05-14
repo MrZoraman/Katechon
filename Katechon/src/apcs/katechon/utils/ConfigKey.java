@@ -8,7 +8,9 @@ package apcs.katechon.utils;
 public enum ConfigKey
 {
 	TITLE	("title"),
-	FPS		("fps");
+	FPS		("fps"),
+	WIDTH	("width"),
+	HEIGHT	("height");
 	
 	
 	private ConfigKey(String str)

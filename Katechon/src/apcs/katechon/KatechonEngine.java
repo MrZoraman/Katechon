@@ -8,6 +8,7 @@ import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
 import apcs.katechon.logging.PrintlnLogger;
 import apcs.katechon.periodic.PeriodicTicker;
+import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 
 /**
@@ -67,9 +68,9 @@ public class KatechonEngine
 		//Window
 		//-----------------------------------------------------------------------------
 		//Use the config to set properties for the game engine state
-		int width = config.getInt("width", DEFAULT_WIDTH);
-		int height = config.getInt("height", DEFAULT_HEIGHT);
-		String title = config.getString("title", DEFAULT_TITLE);
+		int width = config.getInt(ConfigKey.WIDTH, DEFAULT_WIDTH);
+		int height = config.getInt(ConfigKey.HEIGHT, DEFAULT_HEIGHT);
+		String title = config.getString(ConfigKey.TITLE, DEFAULT_TITLE);
 		
 		window = new SwingWindow(width, height, title, periodicTicker);
 		//-----------------------------------------------------------------------------
