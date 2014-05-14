@@ -11,6 +11,7 @@ import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.Log;
+import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 
@@ -28,7 +29,7 @@ public class Test extends KatechonBase
 	public static void main(String[] args)
 	{
 		IConfig config = new MappedConfig();
-		config.setString("title", "abba jeezles");
+		config.setString(ConfigKey.TITLE, "abba jeezles");
 		
 		//see this line of code looks pretty clean to me
 		new KatechonEngine(Test.class, config).start();

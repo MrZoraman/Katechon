@@ -31,53 +31,53 @@ public class MappedConfig implements IConfig
 	
 	//INTS
 	@Override
-	public void setInt(String key, int value)
+	public void setInt(ConfigKey key, int value)
 	{
-		ints.put(key, value);
+		ints.put(key.toString(), value);
 	}
 	
 	@Override
-	public int getInt(String key, int defaultValue)
+	public int getInt(ConfigKey key, int defaultValue)
 	{
-		return ints.containsKey(key) ? ints.get(key) : defaultValue;
+		return ints.containsKey(key.toString()) ? ints.get(key.toString()) : defaultValue;
 	}
 
 	//DOUBLES
 	@Override
-	public void setDouble(String key, double value)
+	public void setDouble(ConfigKey key, double value)
 	{
-		doubles.put(key, value);
+		doubles.put(key.toString(), value);
 	}
 	
 	@Override
-	public double getDouble(String key, double defaultValue)
+	public double getDouble(ConfigKey key, double defaultValue)
 	{
-		return doubles.containsKey(key) ? doubles.get(key) : defaultValue;
+		return doubles.containsKey(key.toString()) ? doubles.get(key.toString()) : defaultValue;
 	}
 	
 	//BOOLEANS
 	@Override
-	public void setBoolean(String key, boolean value)
+	public void setBoolean(ConfigKey key, boolean value)
 	{
-		booleans.put(key, value);
+		booleans.put(key.toString(), value);
 	}
 	
 	@Override
-	public boolean getBoolean(String key, boolean defaultValue)
+	public boolean getBoolean(ConfigKey key, boolean defaultValue)
 	{
-		return booleans.containsKey(key) ? booleans.get(key) : defaultValue;
+		return booleans.containsKey(key.toString()) ? booleans.get(key.toString()) : defaultValue;
 	}
 	
 	//STRINGS
 	@Override
-	public void setString(String key, String value)
+	public void setString(ConfigKey key, String value)
 	{
-		strings.put(key, value);
+		strings.put(key.toString(), value);
 	}
 
 	@Override
-	public String getString(String key, String defaultValue)
+	public String getString(ConfigKey key, String defaultValue)
 	{
-		return strings.containsKey(key) ? strings.get(key) : defaultValue;
+		return strings.containsKey(key.toString()) ? strings.get(key.toString()) : defaultValue;
 	}
 }
