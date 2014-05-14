@@ -2,7 +2,6 @@ package apcs.katechon;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -13,8 +12,11 @@ import javax.swing.Timer;
 
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.Display;
-import apcs.katechon.rendering.TestDrawable;
 
+/**
+ * The link between the Java Swing framework and the engine
+ * @author Matt
+ */
 public class SwingWindow
 {
 	/**
@@ -32,6 +34,14 @@ public class SwingWindow
 	
 	private Display display;
 	
+	/**
+	 * Creates a new SwingWindow.
+	 * @param width The width of this window
+	 * @param height The height of this window
+	 * @param title The title of the window (This cannot be changed)
+	 * @param amountOfLayers The number of layers this window will support
+	 * @param ticker The {@link java.awt.event.ActionListener ActionListener} that will manage the ticking of the game.
+	 */
 	public SwingWindow(int width, int height, final String title, int amountOfLayers, final ActionListener ticker)
 	{
 		frame = new JFrame();
@@ -59,7 +69,7 @@ public class SwingWindow
 
 		frame.setBackground(Color.BLACK);
 		
-		display = new Display();
+		display = new Display(frame.getGraphics());
 		for(int ii = 0; ii < amountOfLayers; ii++)
 		{
 			display.addLayer();
@@ -94,7 +104,7 @@ public class SwingWindow
 			super.paint(graphics);
 			//Yes, because super.paint is going to paint the background (a massive black box that covers everything)
 			Log.debug("Painted.");
-			display.drawLayers(graphics);
+			display.drawLayers();
 		}
 	}
 	
@@ -125,11 +135,19 @@ public class SwingWindow
 		frame.addMouseListener(mouseListener);
 	}
 	
+	/**
+	 * Gets the {@link apcs.katechon.rendering.Display Display} used by this window
+	 * @return The {@link apcs.katechon.rendering.Display Display} used by this window
+	 */
 	public Display getDisplay()
 	{
 		return display;
 	}
 	
+	/**
+	 * Changes the {@link apcs.katechon.rendering.Display Display} used by this window
+	 * @param display The {@link apcs.katechon.rendering.Display Display} to change this window to
+	 */
 	public void setDisplay(Display display)
 	{
 		this.display = display;

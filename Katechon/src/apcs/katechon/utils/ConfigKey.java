@@ -21,6 +21,9 @@ public enum ConfigKey
 
 	private final String name;
 	
+	/**
+	 * Gets the String equivalent of the enum value.
+	 */
 	public String toString()
 	{
 		return this.name;

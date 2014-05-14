@@ -23,6 +23,10 @@ public class KatechonEngine
 	private static final String DEFAULT_TITLE = "Katechon Game";
 	private static final int DEFAULT_AMOUNT_OF_LAYERS = 5;
 	
+	/**
+	 * Get the instance of the {@link apcs.katechon.KatechonEngine KatechonEngine}
+	 * @return An instance of {@link apcs.katechon.KatechonEngine KatechonEngine}
+	 */
 	public static synchronized KatechonEngine getInstance()
 	{
 		return instance;
@@ -30,6 +34,11 @@ public class KatechonEngine
 	
 	private final KatechonBase kBase;
 	
+	/**
+	 * Create the KatechonEngine. Only one of these can be instantiated.
+	 * @param kBaseClass The class of the game that extends {@link apcs.katechon.KatechonBase KatechonBase}
+	 * @param config The {@link apcs.katechon.utils.IConfig IConfig} to be used for this game.
+	 */
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
 	{
 		//The first thing we do is init the logger
@@ -104,10 +113,6 @@ public class KatechonEngine
 		
 		//do stuff and run the game loop
 		window.show();
-		
-		//Maybe have this?
-		//TODO: what is the difference between init() and start()?
-		kBase.start();
 	}
 	
 	/**

@@ -9,6 +9,9 @@ public class PrintlnLogger implements ILogger
 {
 	private boolean debugging;
 	
+	/**
+	 * Creates a new PrintlnLogger
+	 */
 	public PrintlnLogger()
 	{
 		debugging = false;

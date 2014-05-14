@@ -1,7 +1,6 @@
 package apcs.katechon.test;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.io.File;
 
 import apcs.katechon.KatechonBase;
@@ -14,7 +13,6 @@ import apcs.katechon.input.mouse.MouseClickedListener;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
-import apcs.katechon.rendering.TestDrawable;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -41,6 +39,7 @@ public class Test extends KatechonBase
 
 	@Override
 	public void onGameTick() {
+		Log.debug("Tick!");
 	}
 
 	@Override
@@ -98,13 +97,6 @@ public class Test extends KatechonBase
 //			public void changePosition(int x, int y) {
 //			}
 //		});
-	}
-
-	@Override
-	public void start()
-	{
-		//Would begin actual game logic here.
-		
 	}
 
 	@Override

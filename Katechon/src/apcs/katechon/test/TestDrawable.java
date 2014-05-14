@@ -1,10 +1,12 @@
-package apcs.katechon.rendering;
+package apcs.katechon.test;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
 import apcs.katechon.logging.Log;
+import apcs.katechon.rendering.IDrawable;
+import apcs.katechon.rendering.Layer;
 
 public class TestDrawable implements IDrawable
 {

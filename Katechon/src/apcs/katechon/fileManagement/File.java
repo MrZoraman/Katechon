@@ -8,6 +8,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A way to store information as text in a file.
+ * @author Sean
+ *
+ */
 public class File
 {
 	private Path path;

@@ -18,6 +18,10 @@ public class Keyboard implements KeyListener
 	
 	private static Keyboard instance;
 	
+	/**
+	 * Get the instance of the Keyboard.
+	 * @return The Keyboard instance
+	 */
 	public static synchronized Keyboard getInstance()
 	{
 		if (instance == null)
@@ -31,7 +35,7 @@ public class Keyboard implements KeyListener
 	/**
 	 * Constructor
 	 */
-	public Keyboard()
+	private Keyboard()
 	{
 		keyListeners = new HashMap<Keys, Set<KeyPressedListener>>();
 	}

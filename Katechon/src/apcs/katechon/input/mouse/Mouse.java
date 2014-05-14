@@ -24,6 +24,10 @@ public class Mouse implements MouseListener
 	
 	private static Mouse instance;
 	
+	/**
+	 * Gets the instance of the Mouse.
+	 * @return The instance of the Mouse.
+	 */
 	public static synchronized Mouse getInstance()
 	{
 		if(instance == null)
