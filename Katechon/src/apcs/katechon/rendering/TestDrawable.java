@@ -1,23 +1,32 @@
 package apcs.katechon.rendering;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
-public class Drawable implements IDrawable
+import apcs.katechon.logging.Log;
+
+public class TestDrawable implements IDrawable
 {
 	protected int x, y, width, height;
 	protected Layer layer;
+	protected Color color;
 	
-	public Drawable(int x, int y, int width, int height, int layer)
+	public TestDrawable(int x, int y, int width, int height, Color color)
 	{
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.color = color;
 	}
 	
 	public void draw(Graphics g)
 	{
+		Log.debug("Drawing");
+		g.setColor(this.color);
+		g.drawRect(10, 10, 10, 10);
 		g.draw3DRect(10, 10, 10, 10, true);
+		g.setColor(Color.BLACK);
 	}
 
 	@Override

@@ -1,10 +1,15 @@
 package apcs.katechon;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import apcs.katechon.rendering.Display;
+import apcs.katechon.rendering.TestDrawable;
 
 public class SwingWindow
 {
@@ -18,6 +23,8 @@ public class SwingWindow
 	 * This is the single panel that will go in the frame. This will do the drawing.
 	 */
 	private final KatechonJPanel panel;
+	
+	private Display display;
 	
 	public SwingWindow(int width, int height, final String title)
 	{
@@ -41,6 +48,14 @@ public class SwingWindow
 		frame.setLocationRelativeTo(null);
 		//Not resizeable! Let's avoid that headache...
 		frame.setResizable(false);
+		
+		display = new Display();
+		//Testing code
+		for (int i = 0; i < 5; i++)
+		{
+			display.addLayer();
+			display.getLayer(i).addDrawable(new TestDrawable(100, 100, 10, 10, Color.GREEN));
+		}
 	}
 	
 	/**
@@ -57,6 +72,7 @@ public class SwingWindow
 		@Override
 		public void paint(Graphics graphics)
 		{
+			display.drawLayers(graphics);
 			super.paint(graphics);
 		}
 	}
