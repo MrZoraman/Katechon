@@ -1,9 +1,11 @@
 package apcs.katechon.periodic;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PeriodicTicker
+public class PeriodicTicker implements ActionListener
 {
 	public PeriodicTicker()
 	{
@@ -17,7 +19,8 @@ public class PeriodicTicker
 		periodicItems.add(item);
 	}
 	
-	public void tick()
+	@Override
+	public void actionPerformed(ActionEvent e)
 	{
 		for(IPeriodic item : periodicItems)
 		{

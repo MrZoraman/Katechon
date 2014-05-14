@@ -1,9 +1,13 @@
 package apcs.katechon;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
 import apcs.katechon.logging.PrintlnLogger;
+import apcs.katechon.periodic.PeriodicTicker;
 import apcs.katechon.utils.IConfig;
 
 /**
@@ -52,6 +56,14 @@ public class KatechonEngine
 		//modifier, but I want kBase to be final.
 		this.kBase = kBaseInstance;
 		
+		//PeriodicTicker
+		//-----------------------------------------------------------------------------
+		PeriodicTicker periodicTicker = new PeriodicTicker();
+		//-----------------------------------------------------------------------------
+		
+		
+		
+		
 		//Window
 		//-----------------------------------------------------------------------------
 		//Use the config to set properties for the game engine state
@@ -59,7 +71,7 @@ public class KatechonEngine
 		int height = config.getInt("height", DEFAULT_HEIGHT);
 		String title = config.getString("title", DEFAULT_TITLE);
 		
-		window = new SwingWindow(width, height, title);
+		window = new SwingWindow(width, height, title, periodicTicker);
 		//-----------------------------------------------------------------------------
 		
 		
@@ -107,10 +119,5 @@ public class KatechonEngine
 		
 		kBase.onGameEnd();
 		System.exit(0);
-	}
-	
-	public SwingWindow visuals()
-	{
-		return this.window;
 	}
 }
