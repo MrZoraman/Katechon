@@ -34,14 +34,16 @@ public class Test extends KatechonBase
 
 	@Override
 	public void onGameTick() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void init() 
 	{
+		//Tested the FileLogger, seems to function properly.
 		Log.init(new FileLogger("Testing\\Testing.log"));
 		Log.setDebugging(true);
+		
 		Keyboard.getInstance().addListener(Keys.A, new KeyPressedListener() {
 			@Override
 			public void onKeyPressed(Keys key)
