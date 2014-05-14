@@ -2,11 +2,14 @@ package apcs.katechon;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.Display;
@@ -25,9 +28,11 @@ public class SwingWindow
 	 */
 	private final KatechonJPanel panel;
 	
+	private final Timer timer;
+	
 	private Display display;
 	
-	public SwingWindow(int width, int height, final String title)
+	public SwingWindow(int width, int height, final String title, ActionListener ticker)
 	{
 		frame = new JFrame();
 		panel = new KatechonJPanel();
@@ -61,6 +66,9 @@ public class SwingWindow
 			display.addLayer();
 			display.getLayer(i).addDrawable(new TestDrawable(100, 100, 10, 10, Color.GREEN));
 		}
+		
+		//TODO: tune the delay
+		timer = new Timer(100, ticker);
 	}
 	
 	/**
@@ -92,6 +100,7 @@ public class SwingWindow
 	void show()
 	{
 		frame.setVisible(true);
+		timer.start();
 	}
 	
 	/**
