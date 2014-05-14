@@ -13,12 +13,12 @@ public class Layer
 		drawables = new HashSet<IDrawable>();
 	}
 	
-	public void addDrawable(TestDrawable drawable)
+	public void addDrawable(IDrawable drawable)
 	{
 		this.drawables.add(drawable);
 	}
 	
-	public void removeDrawable(TestDrawable drawable)
+	public void removeDrawable(IDrawable drawable)
 	{
 		this.drawables.remove(drawable);
 	}
