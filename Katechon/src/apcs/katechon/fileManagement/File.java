@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class File
@@ -62,9 +63,11 @@ public class File
 	 */
 	public void writeLines(List<String> lines)
 	{
+		ArrayList<String> temp = new ArrayList<String>();
 		try
 		{
-			lines.addAll(this.readLines());
+			temp.addAll(this.readLines());
+			temp.addAll(lines);
 			path = Files.write(path, lines, cs);
 		} catch (IOException e)
 		{

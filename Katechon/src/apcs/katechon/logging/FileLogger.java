@@ -1,7 +1,10 @@
 package apcs.katechon.logging;
 
 import apcs.katechon.fileManagement.File;
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * A logger that will save the log to a file.
@@ -28,7 +31,9 @@ public class FileLogger implements ILogger
 	{
 		System.out.println("[INFO] " + message);
 		ArrayList<String> lines = new ArrayList<String>();
-		lines.add("[INFO] " + message);
+		
+		Date date= new Date();
+		lines.add(new Timestamp(date.getTime()) + ": [INFO] " + message);
 		
 		logFile.writeLines(lines);
 	}
@@ -38,7 +43,9 @@ public class FileLogger implements ILogger
 	{
 		System.out.println("[ERROR] " + message);
 		ArrayList<String> lines = new ArrayList<String>();
-		lines.add("[ERROR] " + message);
+		
+		Date date= new Date();
+		lines.add(new Timestamp(date.getTime()) + ": [ERROR] " + message);
 		
 		logFile.writeLines(lines);
 	}
@@ -48,7 +55,8 @@ public class FileLogger implements ILogger
 	{
 		System.out.println("[FATAL] " + message);
 		ArrayList<String> lines = new ArrayList<String>();
-		lines.add("[FATAL] " + message);
+		Date date= new Date();
+		lines.add(new Timestamp(date.getTime()) + ": [FATAL] " + message);
 		
 		logFile.writeLines(lines);
 	}
@@ -58,7 +66,9 @@ public class FileLogger implements ILogger
 	{
 		ex.printStackTrace();
 		ArrayList<String> lines = new ArrayList<String>();
-		lines.add("[FATAL] " + ex.getMessage());
+		
+		Date date= new Date();
+		lines.add(new Timestamp(date.getTime()) + ": [FATAL] " + ex.getMessage());
 		
 		logFile.writeLines(lines);
 	}
@@ -77,7 +87,9 @@ public class FileLogger implements ILogger
 		{
 			System.out.println("[DEBUG] " + message);
 			ArrayList<String> lines = new ArrayList<String>();
-			lines.add("[DEBUG] " + message);
+
+			Date date= new Date();
+			lines.add(new Timestamp(date.getTime()) + ": [DEBUG] " + message);
 			
 			logFile.writeLines(lines);
 		}
