@@ -1,5 +1,7 @@
 package apcs.katechon.test;
 
+import java.io.File;
+
 import apcs.katechon.KatechonBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.input.keyboard.KeyPressedListener;
@@ -34,14 +36,16 @@ public class Test extends KatechonBase
 
 	@Override
 	public void onGameTick() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void init() 
 	{
-		Log.init(new FileLogger("Testing\\Testing.log"));
+		//Tested the FileLogger, seems to function properly.
+		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
 		Log.setDebugging(true);
+		
 		Keyboard.getInstance().addListener(Keys.A, new KeyPressedListener() {
 			@Override
 			public void onKeyPressed(Keys key)
