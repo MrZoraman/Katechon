@@ -2,12 +2,14 @@ package apcs.katechon;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.Display;
 import apcs.katechon.rendering.TestDrawable;
 
@@ -72,8 +74,14 @@ public class SwingWindow
 		@Override
 		public void paint(Graphics graphics)
 		{
-			display.drawLayers(graphics);
+			//super.paint() must come before any other changes to graphics as it seems to override all manual drawing.
+			this.setBackground(Color.BLACK);
 			super.paint(graphics);
+			Log.debug("Painted.");
+			
+			display.drawLayers(graphics);
+			graphics.setColor(Color.RED);
+			graphics.fillRect(200, 200, 10, 10);
 		}
 	}
 	
