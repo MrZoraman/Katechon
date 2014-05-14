@@ -108,4 +108,9 @@ public class KatechonEngine
 		kBase.onGameEnd();
 		System.exit(0);
 	}
+	
+	public SwingWindow visuals()
+	{
+		return this.window;
+	}
 }

@@ -9,6 +9,4 @@ public interface IDrawable
 	public void changeSize(int width, int height);
 	
 	public void changePosition(int x, int y);
-	
-	public void update();
 }

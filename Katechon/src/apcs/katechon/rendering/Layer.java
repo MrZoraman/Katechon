@@ -31,14 +31,6 @@ public class Layer
 		}
 	}
 	
-	public void updateAll()
-	{
-		for (IDrawable d : drawables)
-		{
-			d.update();
-		}
-	}
-	
 	
 	public Set<IDrawable> getDrawables()
 	{

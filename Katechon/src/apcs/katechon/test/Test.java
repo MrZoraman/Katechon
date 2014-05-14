@@ -11,6 +11,7 @@ import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.Log;
+import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 
@@ -36,7 +37,6 @@ public class Test extends KatechonBase
 
 	@Override
 	public void onGameTick() {
-		
 	}
 
 	@Override

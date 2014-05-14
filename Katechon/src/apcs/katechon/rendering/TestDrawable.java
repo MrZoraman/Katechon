@@ -44,10 +44,4 @@ public class TestDrawable implements IDrawable
 		this.x = x;
 		this.y = y;
 	}
-
-	@Override
-	public void update()
-	{
-		
-	}
 }

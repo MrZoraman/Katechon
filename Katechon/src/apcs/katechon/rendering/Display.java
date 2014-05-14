@@ -39,14 +39,6 @@ public class Display
 		}
 	}
 	
-	public void updateLayers()
-	{
-		for (int i = 0; i < layers.size(); i++)
-		{
-			layers.get(i).updateAll();
-		}
-	}
-	
 	public Layer getLayer(int num)
 	{
 		return this.layers.get(num);

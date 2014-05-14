@@ -2,7 +2,6 @@ package apcs.katechon;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
@@ -111,5 +110,15 @@ public class SwingWindow
 	void addMouseListener(final MouseListener mouseListener)
 	{
 		frame.addMouseListener(mouseListener);
+	}
+	
+	public Display getDisplay()
+	{
+		return display;
+	}
+	
+	public void setDisplay(Display display)
+	{
+		this.display = display;
 	}
 }
