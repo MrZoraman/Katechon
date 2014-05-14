@@ -68,7 +68,7 @@ public class File
 		{
 			temp.addAll(this.readLines());
 			temp.addAll(lines);
-			path = Files.write(path, lines, cs);
+			path = Files.write(path, temp, cs);
 		} catch (IOException e)
 		{
 			e.printStackTrace();
