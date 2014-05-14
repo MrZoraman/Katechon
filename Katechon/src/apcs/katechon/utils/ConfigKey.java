@@ -7,10 +7,11 @@ package apcs.katechon.utils;
  */
 public enum ConfigKey
 {
-	TITLE	("title"),
-	FPS		("fps"),
-	WIDTH	("width"),
-	HEIGHT	("height");
+	TITLE				("title"),
+	FPS					("fps"),
+	WIDTH				("width"),
+	HEIGHT				("height"),
+	AMOUNT_OF_LAYERS	("amountOfLayers");
 	
 	
 	private ConfigKey(String str)

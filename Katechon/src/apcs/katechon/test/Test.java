@@ -1,5 +1,7 @@
 package apcs.katechon.test;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.File;
 
 import apcs.katechon.KatechonBase;
@@ -11,6 +13,8 @@ import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.Log;
+import apcs.katechon.rendering.IDrawable;
+import apcs.katechon.rendering.TestDrawable;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -73,6 +77,27 @@ public class Test extends KatechonBase
 				Log.debug("Mouse clicked!: " + x + ", " + y);
 			}
 		});
+		
+		for(int ii = 0; ii < 5; ii++)
+		{
+			IDrawable drawable = new TestDrawable(100, 100, 10, 10, Color.GREEN);
+			KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(ii).addDrawable(drawable);
+		}
+		
+//		KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(0).addDrawable(new IDrawable() {
+//			@Override
+//			public void draw(Graphics g) {
+//				
+//			}
+//
+//			@Override
+//			public void changeSize(int width, int height) {
+//			}
+//
+//			@Override
+//			public void changePosition(int x, int y) {
+//			}
+//		});
 	}
 
 	@Override

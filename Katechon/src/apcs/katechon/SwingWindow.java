@@ -32,7 +32,7 @@ public class SwingWindow
 	
 	private Display display;
 	
-	public SwingWindow(int width, int height, final String title, ActionListener ticker)
+	public SwingWindow(int width, int height, final String title, int amountOfLayers, final ActionListener ticker)
 	{
 		frame = new JFrame();
 		panel = new KatechonJPanel();
@@ -60,12 +60,17 @@ public class SwingWindow
 		frame.setBackground(Color.BLACK);
 		
 		display = new Display();
-		//Testing code
-		for (int i = 0; i < 5; i++)
+		for(int ii = 0; ii < amountOfLayers; ii++)
 		{
 			display.addLayer();
-			display.getLayer(i).addDrawable(new TestDrawable(100, 100, 10, 10, Color.GREEN));
 		}
+		
+//		//Testing code
+//		for (int i = 0; i < 5; i++)
+//		{
+//			display.addLayer();
+//			display.getLayer(i).addDrawable(new TestDrawable(100, 100, 10, 10, Color.GREEN));
+//		}
 		
 		//TODO: tune the delay
 		timer = new Timer(100, ticker);
@@ -87,10 +92,9 @@ public class SwingWindow
 		{
 			//super.paint() must come before any other changes to graphics as it seems to override all manual drawing.
 			super.paint(graphics);
+			//Yes, because super.paint is going to paint the background (a massive black box that covers everything)
 			Log.debug("Painted.");
 			display.drawLayers(graphics);
-			graphics.setColor(Color.RED);
-			graphics.fillRect(200, 200, 10, 10);
 		}
 	}
 	

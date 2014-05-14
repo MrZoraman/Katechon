@@ -1,8 +1,5 @@
 package apcs.katechon;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
@@ -24,6 +21,7 @@ public class KatechonEngine
 	private static final int DEFAULT_WIDTH = 1280;
 	private static final int DEFAULT_HEIGHT = 780;
 	private static final String DEFAULT_TITLE = "Katechon Game";
+	private static final int DEFAULT_AMOUNT_OF_LAYERS = 5;
 	
 	public static synchronized KatechonEngine getInstance()
 	{
@@ -71,8 +69,9 @@ public class KatechonEngine
 		int width = config.getInt(ConfigKey.WIDTH, DEFAULT_WIDTH);
 		int height = config.getInt(ConfigKey.HEIGHT, DEFAULT_HEIGHT);
 		String title = config.getString(ConfigKey.TITLE, DEFAULT_TITLE);
+		int amountOfLayers = config.getInt(ConfigKey.AMOUNT_OF_LAYERS, DEFAULT_AMOUNT_OF_LAYERS);
 		
-		window = new SwingWindow(width, height, title, periodicTicker);
+		window = new SwingWindow(width, height, title, amountOfLayers, periodicTicker);
 		//-----------------------------------------------------------------------------
 		
 		
@@ -120,5 +119,14 @@ public class KatechonEngine
 		
 		kBase.onGameEnd();
 		System.exit(0);
+	}
+	
+	/**
+	 * Gets the current swing (os level) window
+	 * @return The Swing Window (final object!)
+	 */
+	public SwingWindow getSwingWindow()
+	{
+		return window;
 	}
 }
