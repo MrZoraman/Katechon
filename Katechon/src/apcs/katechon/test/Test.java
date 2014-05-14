@@ -1,5 +1,7 @@
 package apcs.katechon.test;
 
+import java.io.File;
+
 import apcs.katechon.KatechonBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.input.keyboard.KeyPressedListener;
@@ -41,7 +43,7 @@ public class Test extends KatechonBase
 	public void init() 
 	{
 		//Tested the FileLogger, seems to function properly.
-		Log.init(new FileLogger("Testing\\Testing.log"));
+		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
 		Log.setDebugging(true);
 		
 		Keyboard.getInstance().addListener(Keys.A, new KeyPressedListener() {

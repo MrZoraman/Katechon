@@ -51,6 +51,10 @@ public class SwingWindow
 		//Not resizeable! Let's avoid that headache...
 		frame.setResizable(false);
 		
+		//Set background color
+
+		frame.setBackground(Color.BLACK);
+		
 		display = new Display();
 		//Testing code
 		for (int i = 0; i < 5; i++)
@@ -75,10 +79,8 @@ public class SwingWindow
 		public void paint(Graphics graphics)
 		{
 			//super.paint() must come before any other changes to graphics as it seems to override all manual drawing.
-			this.setBackground(Color.BLACK);
 			super.paint(graphics);
 			Log.debug("Painted.");
-			
 			display.drawLayers(graphics);
 			graphics.setColor(Color.RED);
 			graphics.fillRect(200, 200, 10, 10);
