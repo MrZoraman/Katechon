@@ -46,4 +46,10 @@ public class TestDrawable implements IDrawable
 		this.x = x;
 		this.y = y;
 	}
+
+	@Override
+	public void onTick()
+	{
+		this.changePosition(this.x + 1, this.y + 1);
+	}
 }

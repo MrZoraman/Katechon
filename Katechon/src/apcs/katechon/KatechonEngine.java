@@ -4,6 +4,7 @@ import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
 import apcs.katechon.logging.PrintlnLogger;
+import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.periodic.PeriodicTicker;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
@@ -66,7 +67,7 @@ public class KatechonEngine
 		
 		//PeriodicTicker
 		//-----------------------------------------------------------------------------
-		PeriodicTicker periodicTicker = new PeriodicTicker();
+			periodicTicker = new PeriodicTicker();
 		//-----------------------------------------------------------------------------
 		
 		
@@ -104,6 +105,8 @@ public class KatechonEngine
 	
 	private final SwingWindow window;
 	
+	private final PeriodicTicker periodicTicker;
+	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
 	 */
@@ -133,5 +136,10 @@ public class KatechonEngine
 	public SwingWindow getSwingWindow()
 	{
 		return window;
+	}
+	
+	public void addPeriodic(IPeriodic periodic)
+	{
+		this.periodicTicker.addItem(periodic);
 	}
 }

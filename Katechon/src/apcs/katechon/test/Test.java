@@ -84,6 +84,9 @@ public class Test extends KatechonBase
 			KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(ii).addDrawable(drawable);
 		}
 		
+		KatechonEngine.getInstance().addPeriodic(new TestPeriodic());
+		KatechonEngine.getInstance().addPeriodic(new TestDrawable(100, 100, 10, 10, Color.GREEN));
+		
 //		KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(0).addDrawable(new IDrawable() {
 //			@Override
 //			public void draw(Graphics g) {
