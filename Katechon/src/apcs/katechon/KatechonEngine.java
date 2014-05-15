@@ -1,5 +1,7 @@
 package apcs.katechon;
 
+import javax.swing.Timer;
+
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
@@ -12,7 +14,6 @@ import apcs.katechon.utils.IConfig;
 /**
  * This is the class that runs the entire operation. You give it an instance of {@link apcs.katechon.KatechonBase KatechonBase} and it does it's magic
  * @author Matt
- *
  */
 public class KatechonEngine
 {
@@ -68,6 +69,9 @@ public class KatechonEngine
 		//PeriodicTicker
 		//-----------------------------------------------------------------------------
 			periodicTicker = new PeriodicTicker();
+			
+			//TODO: Tune this timer as well
+			gameTimer = new Timer(50, periodicTicker);
 		//-----------------------------------------------------------------------------
 		
 		
@@ -81,7 +85,7 @@ public class KatechonEngine
 		String title = config.getString(ConfigKey.TITLE, DEFAULT_TITLE);
 		int amountOfLayers = config.getInt(ConfigKey.AMOUNT_OF_LAYERS, DEFAULT_AMOUNT_OF_LAYERS);
 		
-		window = new SwingWindow(width, height, title, amountOfLayers, periodicTicker);
+		window = new SwingWindow(width, height, title, amountOfLayers);
 		//-----------------------------------------------------------------------------
 		
 		
@@ -107,12 +111,17 @@ public class KatechonEngine
 	
 	private final PeriodicTicker periodicTicker;
 	
+	private final Timer gameTimer;
+	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
 	 */
 	public void start()
 	{
 		kBase.init();
+		
+		//Starts the background processes.
+		gameTimer.start();
 		
 		//do stuff and run the game loop
 		window.show();

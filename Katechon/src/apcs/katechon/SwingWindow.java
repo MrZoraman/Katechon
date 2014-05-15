@@ -2,6 +2,7 @@ package apcs.katechon;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -42,7 +43,7 @@ public class SwingWindow
 	 * @param amountOfLayers The number of layers this window will support
 	 * @param ticker The {@link java.awt.event.ActionListener ActionListener} that will manage the ticking of the game.
 	 */
-	public SwingWindow(int width, int height, final String title, int amountOfLayers, final ActionListener ticker)
+	public SwingWindow(int width, int height, final String title, int amountOfLayers)
 	{
 		frame = new JFrame();
 		panel = new KatechonJPanel();
@@ -83,7 +84,17 @@ public class SwingWindow
 //		}
 		
 		//TODO: tune the delay
-		timer = new Timer(100, ticker);
+		//This makes it more of a drawing timer than anything else.
+		timer = new Timer(25, new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				panel.paint(frame.getGraphics());
+			}
+			
+		});
+		//timer = new Timer(100, ticker);
 	}
 	
 	/**
@@ -104,7 +115,7 @@ public class SwingWindow
 			super.paint(graphics);
 			//Yes, because super.paint is going to paint the background (a massive black box that covers everything)
 			Log.debug("Painted.");
-			display.drawLayers(frame.getGraphics());
+			display.drawLayers(graphics);
 		}
 	}
 	

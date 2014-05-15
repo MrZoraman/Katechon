@@ -2,7 +2,6 @@ package apcs.katechon.test;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Random;
 
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
@@ -13,7 +12,6 @@ public class TestDrawable implements IDrawable
 	protected int x, y, width, height;
 	protected Layer layer;
 	protected Color color;
-	private Random rand;
 	
 	public TestDrawable(int x, int y, int width, int height, Color color)
 	{
@@ -22,14 +20,13 @@ public class TestDrawable implements IDrawable
 		this.width = width;
 		this.height = height;
 		this.color = color;
-		rand = new Random();
 	}
 	
 	public void draw(Graphics g)
 	{
 		Log.debug("Color: " + this.color);
 		g.setColor(this.color);
-		g.fill3DRect(rand.nextInt(1000), rand.nextInt(1000), rand.nextInt(100), rand.nextInt(100), true);
+		g.fill3DRect(x, y, width, height, true);
 		g.setColor(Color.BLACK);
 	}
 

@@ -2,6 +2,7 @@ package apcs.katechon.test;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.Random;
 
 import apcs.katechon.KatechonBase;
 import apcs.katechon.KatechonEngine;
@@ -80,12 +81,16 @@ public class Test extends KatechonBase
 		for(int ii = 0; ii < 5; ii++)
 		{
 			IDrawable drawable;
-			drawable = new TestDrawable(100, 100, 10, 10, Color.GREEN);
+			
+			Random r = new Random();
+			
+			drawable = new TestDrawable(r.nextInt(1000), r.nextInt(1000), r.nextInt(100), r.nextInt(100), Color.GREEN);
 			KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(ii).addDrawable(drawable);
+			KatechonEngine.getInstance().addPeriodic(drawable);
 		}
 		
 		KatechonEngine.getInstance().addPeriodic(new TestPeriodic());
-		KatechonEngine.getInstance().addPeriodic(new TestDrawable(100, 100, 10, 10, Color.GREEN));
+
 		
 //		KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(0).addDrawable(new IDrawable() {
 //			@Override
