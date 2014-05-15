@@ -69,7 +69,7 @@ public class SwingWindow
 
 		frame.setBackground(Color.BLACK);
 		
-		display = new Display(frame.getGraphics());
+		display = new Display();
 		for(int ii = 0; ii < amountOfLayers; ii++)
 		{
 			display.addLayer();
@@ -104,7 +104,7 @@ public class SwingWindow
 			super.paint(graphics);
 			//Yes, because super.paint is going to paint the background (a massive black box that covers everything)
 			Log.debug("Painted.");
-			display.drawLayers();
+			display.drawLayers(frame.getGraphics());
 		}
 	}
 	

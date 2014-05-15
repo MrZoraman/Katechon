@@ -79,7 +79,8 @@ public class Test extends KatechonBase
 		
 		for(int ii = 0; ii < 5; ii++)
 		{
-			IDrawable drawable = new TestDrawable(100, 100, 10, 10, Color.GREEN);
+			IDrawable drawable;
+			drawable = new TestDrawable(100, 100, 10, 10, Color.GREEN);
 			KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(ii).addDrawable(drawable);
 		}
 		

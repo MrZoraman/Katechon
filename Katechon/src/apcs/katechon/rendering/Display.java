@@ -12,13 +12,10 @@ public class Display
 {
 	private List<Layer> layers;
 	
-	private Graphics g;
-	
 	/**
 	 * Creates a new Display.
-	 * @param graphics The graphics that this Display will use for all drawing.
 	 */
-	public Display(Graphics graphics)
+	public Display()
 	{
 		this.layers = new ArrayList<Layer>();
 	}
@@ -52,12 +49,13 @@ public class Display
 	
 	/**
 	 * Draws all of the layers in this Display
+	 * @param The Graphics to be used by this display
 	 */
-	public void drawLayers()
+	public void drawLayers(Graphics g)
 	{
 		for (int i = 0; i < layers.size(); i++)
 		{
-			layers.get(i).drawAll(this.g);
+			layers.get(i).drawAll(g);
 		}
 	}
 	

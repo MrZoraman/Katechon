@@ -27,7 +27,7 @@ public class TestDrawable implements IDrawable
 	
 	public void draw(Graphics g)
 	{
-		Log.debug("Drawing");
+		Log.debug("Color: " + this.color);
 		g.setColor(this.color);
 		g.fill3DRect(rand.nextInt(1000), rand.nextInt(1000), rand.nextInt(100), rand.nextInt(100), true);
 		g.setColor(Color.BLACK);
