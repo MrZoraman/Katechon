@@ -66,10 +66,6 @@ public class SwingWindow
 		//Not resizeable! Let's avoid that headache...
 		frame.setResizable(false);
 		
-		//Set background color
-
-		panel.setBackground(Color.BLACK);
-		
 		display = new Display();
 		for(int ii = 0; ii < amountOfLayers; ii++)
 		{
@@ -128,6 +124,9 @@ public class SwingWindow
 		timer.start();
 	}
 	
+	/**
+	 * Removes the window when the exit button is pressed so that it doesn't wait for the file saving to finish.
+	 */
 	void end()
 	{
 		this.frame.dispose();
@@ -167,5 +166,14 @@ public class SwingWindow
 	public void setDisplay(Display display)
 	{
 		this.display = display;
+	}
+	
+	/**
+	 * Changes the background color of the window.
+	 * @param color The color to change the background to
+	 */
+	public void setBackgroundColor(Color color)
+	{
+		this.panel.setBackground(color);
 	}
 }

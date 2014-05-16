@@ -50,6 +50,9 @@ public class Test extends KatechonBase
 		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
 		Log.setDebugging(true);
 		
+		//Change the background color.
+		KatechonEngine.getInstance().getSwingWindow().setBackgroundColor(Color.BLACK);
+		
 		Keyboard.getInstance().addListener(Keys.A, new KeyPressedListener() {
 			@Override
 			public void onKeyPressed(Keys key)
@@ -80,13 +83,37 @@ public class Test extends KatechonBase
 		
 		for(int ii = 0; ii < 5; ii++)
 		{
-			IDrawable drawable;
-			
-			Random r = new Random();
-			
-			drawable = new TestDrawable(r.nextInt(1000), r.nextInt(1000), r.nextInt(100), r.nextInt(100), Color.GREEN);
-			KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(ii).addDrawable(drawable);
-			KatechonEngine.getInstance().addPeriodic(drawable);
+			for (int jj = 0; jj < 5; jj++)
+			{
+				IDrawable drawable;
+				
+				Random r = new Random();
+				
+				//Really crude color changing thing.
+				Color color = Color.GRAY;
+				switch (ii){
+					case 0:
+						color = Color.GREEN;
+						break;
+					case 1:
+						color = Color.RED;
+						break;
+					case 2:
+						color = Color.CYAN;
+						break;
+					case 3:
+						color = Color.YELLOW;
+						break;
+					case 4:
+						color = Color.MAGENTA;
+						break;
+				}
+				
+				drawable = new TestDrawable(r.nextInt(1000), r.nextInt(1000), r.nextInt(100), r.nextInt(100), color);
+				//drawable = new TestDrawable(0, 0, r.nextInt(100), r.nextInt(100), color);
+				KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(ii).addDrawable(drawable);
+				KatechonEngine.getInstance().addPeriodic(drawable);
+			}
 		}
 		
 		KatechonEngine.getInstance().addPeriodic(new TestPeriodic());
