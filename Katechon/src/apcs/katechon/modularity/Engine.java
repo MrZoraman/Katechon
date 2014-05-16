@@ -13,7 +13,7 @@ package apcs.katechon.modularity;
  */
 public abstract class Engine
 {
-	public abstract Class<? extends Engine> getInstance();
+	public abstract Engine getInstance();
 	
 	public abstract void init();
 	

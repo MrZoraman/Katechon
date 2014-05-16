@@ -112,7 +112,7 @@ public class KatechonEngine
 	}
 	
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config, Engine... engines)
-	{
+	{		
 		this.engines = engines;
 		
 		for (Engine engine : this.engines)

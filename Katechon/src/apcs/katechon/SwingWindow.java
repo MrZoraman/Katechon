@@ -66,6 +66,8 @@ public class SwingWindow
 		//Not resizeable! Let's avoid that headache...
 		frame.setResizable(false);
 		
+		panel.setDoubleBuffered(true);
+		
 		display = new Display();
 		for(int ii = 0; ii < amountOfLayers; ii++)
 		{
@@ -81,7 +83,7 @@ public class SwingWindow
 		
 		//TODO: tune the delay
 		//This makes it more of a drawing timer than anything else.
-		timer = new Timer(20, new ActionListener(){
+		timer = new Timer(50, new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -175,5 +177,15 @@ public class SwingWindow
 	public void setBackgroundColor(Color color)
 	{
 		this.panel.setBackground(color);
+	}
+	
+	public int getWidth()
+	{
+		return this.panel.getWidth();
+	}
+	
+	public int getHeight()
+	{
+		return this.panel.getHeight();
 	}
 }
