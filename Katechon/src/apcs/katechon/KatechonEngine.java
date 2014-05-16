@@ -133,6 +133,7 @@ public class KatechonEngine
 	public void end()
 	{
 		//TODO: Add any post logic for the engine here.
+		Log.onEnd();
 		
 		kBase.onGameEnd();
 		System.exit(0);

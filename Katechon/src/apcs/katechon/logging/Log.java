@@ -84,4 +84,12 @@ public class Log
 	{
 		_logger.debug(message);
 	}
+	
+	public static void onEnd()
+	{
+		if (_logger instanceof FileLogger)
+		{
+			((FileLogger) _logger).writeToFile();
+		}
+	}
 }

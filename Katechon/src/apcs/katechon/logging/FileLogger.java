@@ -16,6 +16,8 @@ public class FileLogger implements ILogger
 	private boolean debugging;
 	private File logFile;
 	
+	private ArrayList<String> lines;
+	
 	/**
 	 * Create a new FileLogger
 	 * @param fileName The file name including any parent directories. Not including the absolute path of the current working directory.
@@ -23,6 +25,7 @@ public class FileLogger implements ILogger
 	public FileLogger(String fileName)
 	{
 		logFile = new File(fileName);
+		lines = new ArrayList<String>();
 		debugging = false;
 	}
 
@@ -30,47 +33,40 @@ public class FileLogger implements ILogger
 	public void info(String message)
 	{
 		System.out.println("[INFO] " + message);
-		ArrayList<String> lines = new ArrayList<String>();
 		
 		Date date= new Date();
 		lines.add(new Timestamp(date.getTime()) + ": [INFO] " + message);
 		
-		logFile.writeLines(lines);
 	}
 
 	@Override
 	public void error(String message)
 	{
 		System.out.println("[ERROR] " + message);
-		ArrayList<String> lines = new ArrayList<String>();
 		
 		Date date= new Date();
 		lines.add(new Timestamp(date.getTime()) + ": [ERROR] " + message);
 		
-		logFile.writeLines(lines);
 	}
 
 	@Override
 	public void fatal(String message)
 	{
 		System.out.println("[FATAL] " + message);
-		ArrayList<String> lines = new ArrayList<String>();
+
 		Date date= new Date();
 		lines.add(new Timestamp(date.getTime()) + ": [FATAL] " + message);
 		
-		logFile.writeLines(lines);
 	}
 
 	@Override
 	public void exception(Exception ex)
 	{
 		ex.printStackTrace();
-		ArrayList<String> lines = new ArrayList<String>();
 		
 		Date date= new Date();
 		lines.add(new Timestamp(date.getTime()) + ": [FATAL] " + ex.getMessage());
 		
-		logFile.writeLines(lines);
 	}
 
 	@Override
@@ -86,14 +82,17 @@ public class FileLogger implements ILogger
 		if (debugging)
 		{
 			System.out.println("[DEBUG] " + message);
-			ArrayList<String> lines = new ArrayList<String>();
 
 			Date date= new Date();
 			lines.add(new Timestamp(date.getTime()) + ": [DEBUG] " + message);
 			
-			logFile.writeLines(lines);
 		}
 		
+	}
+	
+	public void writeToFile()
+	{
+		this.logFile.writeLines(lines);
 	}
 	
 }

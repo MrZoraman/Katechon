@@ -47,7 +47,7 @@ public class Test extends KatechonBase
 	public void init() 
 	{
 		//Tested the FileLogger, seems to function properly.
-		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
+		//Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
 		Log.setDebugging(true);
 		
 		Keyboard.getInstance().addListener(Keys.A, new KeyPressedListener() {

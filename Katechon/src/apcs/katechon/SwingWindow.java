@@ -68,7 +68,7 @@ public class SwingWindow
 		
 		//Set background color
 
-		frame.setBackground(Color.BLACK);
+		panel.setBackground(Color.BLACK);
 		
 		display = new Display();
 		for(int ii = 0; ii < amountOfLayers; ii++)
@@ -85,7 +85,7 @@ public class SwingWindow
 		
 		//TODO: tune the delay
 		//This makes it more of a drawing timer than anything else.
-		timer = new Timer(25, new ActionListener(){
+		timer = new Timer(1, new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e)
