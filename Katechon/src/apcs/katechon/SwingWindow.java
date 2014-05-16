@@ -85,7 +85,7 @@ public class SwingWindow
 		
 		//TODO: tune the delay
 		//This makes it more of a drawing timer than anything else.
-		timer = new Timer(1, new ActionListener(){
+		timer = new Timer(20, new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -126,6 +126,11 @@ public class SwingWindow
 	{
 		frame.setVisible(true);
 		timer.start();
+	}
+	
+	void end()
+	{
+		this.frame.dispose();
 	}
 	
 	/**

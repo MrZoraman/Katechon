@@ -6,6 +6,7 @@ import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
 import apcs.katechon.logging.PrintlnLogger;
+import apcs.katechon.modularity.Engine;
 import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.periodic.PeriodicTicker;
 import apcs.katechon.utils.ConfigKey;
@@ -40,9 +41,86 @@ public class KatechonEngine
 	 * Create the KatechonEngine. Only one of these can be instantiated.
 	 * @param kBaseClass The class of the game that extends {@link apcs.katechon.KatechonBase KatechonBase}
 	 * @param config The {@link apcs.katechon.utils.IConfig IConfig} to be used for this game.
-	 */
+	 */	
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
 	{
+		//Makes an empty Engine array so there is no risk of a null pointer exception
+		this.engines = new Engine[0];
+		
+		//The first thing we do is init the logger
+		Log.init(new PrintlnLogger());
+		Log.setDebugging(true);
+		
+		KatechonBase kBaseInstance = null;
+		
+		try
+		{
+			//We are going to use reflection! Why? Because it's nicer on the eyes in the main() method (imo).
+			kBaseInstance = kBaseClass.newInstance();
+		}
+		catch (Exception e)
+		{
+			//Nothing more to do here...
+			Log.fatal("Failed to instantiate game!");
+			System.exit(1);
+		}
+		
+		//We instantiate an instance in the constructor and then set two references to equal each other down here 
+		//so java will shut up about errors that are stupid. It could be circumvented by removing the 'final'
+		//modifier, but I want kBase to be final.
+		this.kBase = kBaseInstance;
+		
+		//PeriodicTicker
+		//-----------------------------------------------------------------------------
+			periodicTicker = new PeriodicTicker();
+			
+			//TODO: Tune this timer as well
+			gameTimer = new Timer(20, periodicTicker);
+		//-----------------------------------------------------------------------------
+		
+		
+		
+		
+		//Window
+		//-----------------------------------------------------------------------------
+		//Use the config to set properties for the game engine state
+		int width = config.getInt(ConfigKey.WIDTH, DEFAULT_WIDTH);
+		int height = config.getInt(ConfigKey.HEIGHT, DEFAULT_HEIGHT);
+		String title = config.getString(ConfigKey.TITLE, DEFAULT_TITLE);
+		int amountOfLayers = config.getInt(ConfigKey.AMOUNT_OF_LAYERS, DEFAULT_AMOUNT_OF_LAYERS);
+		
+		window = new SwingWindow(width, height, title, amountOfLayers);
+		//-----------------------------------------------------------------------------
+		
+		
+		
+		//Inputs
+		//-----------------------------------------------------------------------------
+		window.addKeyListener(Keyboard.getInstance());
+		window.addMouseListener(Mouse.getInstance());
+		//-----------------------------------------------------------------------------
+		
+		
+		
+		//This is a singleton class!
+		//-----------------------------------------------------------------------------
+		if(instance != null)
+			throw new IllegalStateException("Cannot create more than one engine!");
+		
+		instance = this;
+		//-----------------------------------------------------------------------------
+	}
+	
+	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config, Engine... engines)
+	{
+		this.engines = engines;
+		
+		for (Engine engine : this.engines)
+		{
+			engine.init();
+		}
+		//Because it doesn't want to let me use the other constructor...
+		
 		//The first thing we do is init the logger
 		Log.init(new PrintlnLogger());
 		Log.setDebugging(true);
@@ -104,14 +182,16 @@ public class KatechonEngine
 			throw new IllegalStateException("Cannot create more than one engine!");
 		
 		instance = this;
-		//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------	
 	}
-	
+
 	private final SwingWindow window;
 	
 	private final PeriodicTicker periodicTicker;
 	
 	private final Timer gameTimer;
+	
+	private Engine[] engines;
 	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
@@ -133,9 +213,15 @@ public class KatechonEngine
 	public void end()
 	{
 		//TODO: Add any post logic for the engine here.
-		Log.onEnd();
+		
+		for (Engine engine : engines)
+		{
+			engine.onGameEnd();
+		}
 		
 		kBase.onGameEnd();
+		window.end();
+		Log.onEnd();
 		System.exit(0);
 	}
 	
@@ -148,6 +234,10 @@ public class KatechonEngine
 		return window;
 	}
 	
+	/**
+	 * Adds an {@link apcs.katechon.periodic.IPeriodic IPeriodic} to the engine's list.
+	 * @param periodic The {@link apcs.katechon.periodic.IPeriodic IPeriodic} to add.
+	 */
 	public void addPeriodic(IPeriodic periodic)
 	{
 		this.periodicTicker.addItem(periodic);
