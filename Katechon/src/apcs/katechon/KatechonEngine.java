@@ -5,7 +5,6 @@ import javax.swing.Timer;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
-import apcs.katechon.logging.PrintlnLogger;
 import apcs.katechon.modularity.Engine;
 import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.periodic.PeriodicTicker;
@@ -44,13 +43,6 @@ public class KatechonEngine
 	 */	
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
 	{
-		//Makes an empty Engine array so there is no risk of a null pointer exception
-		this.engines = new Engine[0];
-		
-		//The first thing we do is init the logger
-		Log.init(new PrintlnLogger());
-		Log.setDebugging(true);
-		
 		KatechonBase kBaseInstance = null;
 		
 		try
@@ -112,18 +104,8 @@ public class KatechonEngine
 	}
 	
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config, Engine... engines)
-	{		
-		this.engines = engines;
-		
-		for (Engine engine : this.engines)
-		{
-			engine.init();
-		}
+	{
 		//Because it doesn't want to let me use the other constructor...
-		
-		//The first thing we do is init the logger
-		Log.init(new PrintlnLogger());
-		Log.setDebugging(true);
 		
 		KatechonBase kBaseInstance = null;
 		
@@ -191,8 +173,6 @@ public class KatechonEngine
 	
 	private final Timer gameTimer;
 	
-	private Engine[] engines;
-	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
 	 */
@@ -212,13 +192,6 @@ public class KatechonEngine
 	 */
 	public void end()
 	{
-		//TODO: Add any post logic for the engine here.
-		
-		for (Engine engine : engines)
-		{
-			engine.onGameEnd();
-		}
-		
 		kBase.onGameEnd();
 		window.end();
 		Log.onEnd();

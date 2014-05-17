@@ -11,7 +11,6 @@ import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
-import apcs.katechon.test.Test;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;

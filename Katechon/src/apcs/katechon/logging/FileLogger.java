@@ -87,7 +87,6 @@ public class FileLogger implements ILogger
 			lines.add(new Timestamp(date.getTime()) + ": [DEBUG] " + message);
 			
 		}
-		
 	}
 	
 	@Override
