@@ -121,7 +121,6 @@ public class ShoppingMaul extends KatechonBase
 			}
 		});
 		
-		mainEngine.getSwingWindow().getDisplay().addLayer();
 		mainEngine.getSwingWindow().getDisplay().getLayer(0).addDrawable(new SnowLeopard(4));
 	}
 

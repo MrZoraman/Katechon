@@ -6,24 +6,29 @@ import java.util.ArrayList;
 
 /**
  * A single stage of the game. (e.g. Splash screen, Menu, Main game)
- * @author sn300035
+ * @author Sean
  */
 public class Display
 {
-	private List<Layer> layers;
+	private final List<Layer> layers;
 	
 	/**
 	 * Creates a new Display.
 	 */
-	public Display()
+	public Display(int amountOfLayers)
 	{
 		this.layers = new ArrayList<Layer>();
+		
+		for(int ii = 0; ii < amountOfLayers; ii++)
+		{
+			this.addLayer();
+		}
 	}
 	
 	/**
 	 * Adds a {@link apcs.katechon.rendering.Layer Layer} to this display.
 	 */
-	public void addLayer()
+	private void addLayer()
 	{
 		this.layers.add(new Layer());
 	}

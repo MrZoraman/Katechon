@@ -68,11 +68,7 @@ public class SwingWindow
 		
 		panel.setDoubleBuffered(true);
 		
-		display = new Display();
-		for(int ii = 0; ii < amountOfLayers; ii++)
-		{
-			display.addLayer();
-		}
+		display = new Display(amountOfLayers);
 		
 //		//Testing code
 //		for (int i = 0; i < 5; i++)
