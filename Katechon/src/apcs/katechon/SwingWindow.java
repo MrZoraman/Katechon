@@ -88,7 +88,7 @@ public class SwingWindow
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				panel.paint(frame.getGraphics());
+				panel.repaint();
 			}
 			
 		});
