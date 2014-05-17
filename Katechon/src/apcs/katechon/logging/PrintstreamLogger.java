@@ -1,38 +1,43 @@
 package apcs.katechon.logging;
 
+import java.io.PrintStream;
+
 /**
  * Logs info to the java console using System.out.println and System.err.println. Log file is not saved.
  * @author Matt
  *
  */
-public class PrintlnLogger implements ILogger
+public class PrintstreamLogger implements ILogger
 {
 	private boolean debugging;
 	
 	/**
 	 * Creates a new PrintlnLogger
 	 */
-	public PrintlnLogger()
+	public PrintstreamLogger(PrintStream stream)
 	{
 		debugging = false;
+		this.out = stream;
 	}
+	
+	private final PrintStream out;
 	
 	@Override
 	public void info(String message)
 	{
-		System.out.println("[INFO] " + message);
+		out.println("[INFO] " + message);
 	}
 
 	@Override
 	public void error(String message)
 	{
-		System.out.println("[ERROR] " + message);
+		out.println("[ERROR] " + message);
 	}
 
 	@Override
 	public void fatal(String message)
 	{
-		System.out.println("[FATAL] " + message);
+		out.println("[FATAL] " + message);
 	}
 
 	@Override
@@ -53,7 +58,7 @@ public class PrintlnLogger implements ILogger
 	{
 		if(debugging)
 		{
-			System.out.println("[DEBUG] " + message);
+			out.println("[DEBUG] " + message);
 		}
 	}
 }

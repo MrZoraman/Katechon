@@ -19,7 +19,7 @@ public class Log
 	static
 	{
 		//default logger. Gets overwritten with the init() method.
-		_logger = new PrintlnLogger();
+		_logger = new PrintstreamLogger(System.out);
 	}
 	
 	/**
