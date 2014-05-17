@@ -42,4 +42,9 @@ public interface ILogger
 	 * @param message
 	 */
 	public void debug(String message);
+	
+	/**
+	 * Save the log to disk if needed. Otherwise this can be left empty.
+	 */
+	public void saveLog();
 }

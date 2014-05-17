@@ -61,4 +61,7 @@ public class PrintstreamLogger implements ILogger
 			out.println("[DEBUG] " + message);
 		}
 	}
+	
+	@Override
+	public void saveLog() {}
 }

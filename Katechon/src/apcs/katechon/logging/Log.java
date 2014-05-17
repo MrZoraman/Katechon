@@ -87,9 +87,6 @@ public class Log
 	
 	public static void onEnd()
 	{
-		if (_logger instanceof FileLogger)
-		{
-			((FileLogger) _logger).writeToFile();
-		}
+		_logger.saveLog();
 	}
 }

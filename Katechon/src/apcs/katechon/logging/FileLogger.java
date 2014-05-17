@@ -90,9 +90,9 @@ public class FileLogger implements ILogger
 		
 	}
 	
-	public void writeToFile()
+	@Override
+	public void saveLog()
 	{
 		this.logFile.writeLines(lines);
 	}
-	
 }
