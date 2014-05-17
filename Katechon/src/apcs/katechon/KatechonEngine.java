@@ -75,10 +75,10 @@ public class KatechonEngine
 		//Window
 		//-----------------------------------------------------------------------------
 		//Use the config to set properties for the game engine state
-		int width = config.getInt(ConfigKey.WIDTH, DEFAULT_WIDTH);
-		int height = config.getInt(ConfigKey.HEIGHT, DEFAULT_HEIGHT);
-		String title = config.getString(ConfigKey.TITLE, DEFAULT_TITLE);
-		int amountOfLayers = config.getInt(ConfigKey.AMOUNT_OF_LAYERS, DEFAULT_AMOUNT_OF_LAYERS);
+		int width = config.getInt			(ConfigKey.WIDTH, 				DEFAULT_WIDTH);
+		int height = config.getInt			(ConfigKey.HEIGHT, 				DEFAULT_HEIGHT);
+		String title = config.getString		(ConfigKey.TITLE, 				DEFAULT_TITLE);
+		int amountOfLayers = config.getInt	(ConfigKey.AMOUNT_OF_LAYERS, 	DEFAULT_AMOUNT_OF_LAYERS);
 		
 		window = new SwingWindow(width, height, title, amountOfLayers);
 		//-----------------------------------------------------------------------------
