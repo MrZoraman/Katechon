@@ -33,12 +33,6 @@ public class ShoppingMaul extends KatechonBase
 	}
 
 	@Override
-	public void onGameTick()
-	{
-		
-	}
-
-	@Override
 	public void init()
 	{
 //		Log.init(new FileLogger("Logs" + File.separator + "Log.log"));

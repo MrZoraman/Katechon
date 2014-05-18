@@ -38,11 +38,6 @@ public class Test extends KatechonBase
 	}
 
 	@Override
-	public void onGameTick() {
-		Log.debug("Tick!");
-	}
-
-	@Override
 	public void init() 
 	{
 		//Tested the FileLogger, seems to function properly.

@@ -19,12 +19,6 @@ public abstract class KatechonBase
 	}
 	
 	/**
-	 * This method will run x amount of times per second, as specified in the config.
-	 */
-	//TODO: better documentation
-	public abstract void onGameTick();
-	
-	/**
 	 * Initialization code goes here! This method is called by the engine once everything has been constructed and the engine itself has been started.
 	 */
 	public abstract void init();
