@@ -1,6 +1,7 @@
 package apcs.katechon.test;
 
 import java.awt.Color;
+import java.io.File;
 import java.util.Random;
 
 import apcs.katechon.KatechonBase;
@@ -10,6 +11,8 @@ import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
+import apcs.katechon.logging.FileLogger;
+import apcs.katechon.logging.ILogger;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
@@ -34,6 +37,13 @@ public class Test extends KatechonBase
 		
 		//see this line of code looks pretty clean to me
 		new KatechonEngine(Test.class, config).start();
+	}
+	
+	@Override
+	public ILogger initLogger() throws Exception
+	{
+		Log.setDebugging(true);
+		return new FileLogger("Testing" + File.separator + "Testing.log");
 	}
 
 	@Override
