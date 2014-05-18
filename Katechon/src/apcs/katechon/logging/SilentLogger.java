@@ -6,31 +6,12 @@ package apcs.katechon.logging;
  *
  */
 public class SilentLogger implements ILogger {
-	@Override
-	public void info(String message) {
-	}
-
-	@Override
-	public void error(String message) {
-	}
-
-	@Override
-	public void fatal(String message) {
-	}
-
-	@Override
-	public void exception(Exception ex) {
-	}
-
-	@Override
-	public void setDebugging(boolean debugging) {
-	}
-
-	@Override
-	public void debug(String message) {
-	}
 
 	@Override
 	public void saveLog() {
+	}
+
+	@Override
+	public void log(String message) {
 	}
 }

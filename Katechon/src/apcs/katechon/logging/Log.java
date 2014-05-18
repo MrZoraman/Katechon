@@ -1,7 +1,11 @@
 package apcs.katechon.logging;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 /**
- * Static log class. This contains all static methods for easy and clean access throughout the code. The init method must be called before it is used (otherwise the default PrintlnLogger will be used)!
+ * Static log class. This contains all static methods for easy and clean access throughout the code.
+ * The init method must be called before it is used (otherwise the default PrintlnLogger will be used)!
  * @author Matt
  *
  */
@@ -15,11 +19,13 @@ public class Log
 	}
 	
 	private static ILogger _logger;
+	private static boolean debugging;
 	
 	static
 	{
 		//default logger. Gets overwritten with the init() method.
 		_logger = new PrintstreamLogger(System.out);
+		debugging = false;
 	}
 	
 	/**
@@ -37,7 +43,7 @@ public class Log
 	 */
 	public static void info(String message)
 	{
-		_logger.info(message);
+		_logger.log("[INFO] " + getTimeStamp() + "\t"  + message);
 	}
 
 	/**
@@ -46,7 +52,7 @@ public class Log
 	 */
 	public static void error(String message)
 	{
-		_logger.error(message);
+		_logger.log("[ERROR] " +getTimeStamp() + "\t" + message);
 	}
 
 	/**
@@ -55,7 +61,7 @@ public class Log
 	 */
 	public static void fatal(String message)
 	{
-		_logger.fatal(message);
+		_logger.log("[FATAL] " +getTimeStamp() + "\t"  + message);
 	}
 
 	/**
@@ -64,7 +70,8 @@ public class Log
 	 */
 	public static void exception(Exception ex)
 	{
-		_logger.exception(ex);
+		//TODO: exceptions
+		//_logger.exception(ex);
 	}
 
 	/**
@@ -73,7 +80,7 @@ public class Log
 	 */
 	public static void setDebugging(boolean debugging)
 	{
-		_logger.setDebugging(debugging);
+		Log.debugging = debugging;
 	}
 
 	/**
@@ -82,11 +89,28 @@ public class Log
 	 */
 	public static void debug(String message)
 	{
-		_logger.debug(message);
+		if(debugging)
+		{
+			_logger.log("[DEBUG] " +getTimeStamp() + "\t"  + message);
+		}
 	}
 	
+	/**
+	 * When the logger is finished. Calls the saveLog() method.
+	 */
 	public static void onEnd()
 	{
 		_logger.saveLog();
+	}
+	
+	/**
+	 * Gets the timestamp
+	 * @return The current timestamp. This is appended to the beginning of every log message.
+	 */
+	private static String getTimeStamp()
+	{
+		Date date = new Date();
+		Timestamp stamp = new Timestamp(date.getTime());
+		return stamp.toString();
 	}
 }

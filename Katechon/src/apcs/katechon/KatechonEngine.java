@@ -5,6 +5,7 @@ import javax.swing.Timer;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
+import apcs.katechon.logging.PrintstreamLogger;
 import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.periodic.PeriodicTicker;
 import apcs.katechon.utils.ConfigKey;
@@ -48,6 +49,7 @@ public class KatechonEngine
 		{
 			//We are going to use reflection! Why? Because it's nicer on the eyes in the main() method (imo).
 			kBaseInstance = kBaseClass.newInstance();
+			Log.info("Constructed base game class " + kBaseClass.getName());
 		}
 		catch (Exception e)
 		{
@@ -60,6 +62,19 @@ public class KatechonEngine
 		//so java will shut up about errors that are stupid. It could be circumvented by removing the 'final'
 		//modifier, but I want kBase to be final.
 		this.kBase = kBaseInstance;
+
+		//Logger
+		//-----------------------------------------------------------------------------
+		try {
+			Log.init(kBase.initLogger());
+		} catch (Exception e) {
+			System.err.println("Failed to instantiate logger!");
+			e.printStackTrace();
+			//Because the logger defaults to a prinstream logger, there is nothing we need to do here (hopefully...).
+		}
+		//-----------------------------------------------------------------------------
+		
+		
 		
 		//PeriodicTicker
 		//-----------------------------------------------------------------------------

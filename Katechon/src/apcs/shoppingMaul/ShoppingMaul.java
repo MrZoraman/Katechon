@@ -8,7 +8,6 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.input.keyboard.KeyPressedListener;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
-import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
@@ -42,7 +41,7 @@ public class ShoppingMaul extends KatechonBase
 	@Override
 	public void init()
 	{
-		Log.init(new FileLogger("Logs" + File.separator + "Log.log"));
+//		Log.init(new FileLogger("Logs" + File.separator + "Log.log"));
 		Log.setDebugging(true);
 		
 		mainEngine = KatechonEngine.getInstance();

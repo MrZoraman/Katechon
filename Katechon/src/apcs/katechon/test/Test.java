@@ -11,7 +11,6 @@ import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
-import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
@@ -47,7 +46,7 @@ public class Test extends KatechonBase
 	public void init() 
 	{
 		//Tested the FileLogger, seems to function properly.
-		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
+//		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
 		Log.setDebugging(true);
 		
 		//Change the background color.

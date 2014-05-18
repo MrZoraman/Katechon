@@ -37,8 +37,9 @@ public abstract class KatechonBase
 	/**
 	 * Initializes the logger
 	 * @return The logger to use.
+	 * @throws Exception If the logger fails to be instantiated.
 	 */
-	public ILogger initLogger()
+	public ILogger initLogger() throws Exception
 	{
 		//Default logger
 		return new PrintstreamLogger(System.out);
