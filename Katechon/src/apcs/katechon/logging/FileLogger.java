@@ -54,5 +54,6 @@ public class FileLogger implements ILogger
 	public void log(String message)
 	{
 		writer.println(message);
+		writer.flush();
 	}
 }
