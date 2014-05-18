@@ -5,7 +5,6 @@ import javax.swing.Timer;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
-import apcs.katechon.logging.PrintstreamLogger;
 import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.periodic.PeriodicTicker;
 import apcs.katechon.utils.ConfigKey;

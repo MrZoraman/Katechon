@@ -1,8 +1,6 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
-import java.io.File;
-
 import apcs.katechon.KatechonBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.input.keyboard.KeyPressedListener;

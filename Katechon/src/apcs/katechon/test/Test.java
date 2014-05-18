@@ -1,7 +1,6 @@
 package apcs.katechon.test;
 
 import java.awt.Color;
-import java.io.File;
 import java.util.Random;
 
 import apcs.katechon.KatechonBase;
