@@ -43,7 +43,7 @@ public class Test extends KatechonBase
 	public ILogger initLogger() throws Exception
 	{
 		Log.setDebugging(true);
-		return new FileLogger("Testing" + File.separator + "Testing.log");
+		return new FileLogger("Testing" + File.separator + "Testing.log", true);
 	}
 
 	@Override

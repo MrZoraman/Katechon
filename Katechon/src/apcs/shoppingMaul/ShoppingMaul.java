@@ -38,7 +38,7 @@ public class ShoppingMaul extends KatechonBase
 	public ILogger initLogger() throws Exception
 	{
 		Log.setDebugging(true);
-		return new FileLogger("Logs" + File.separator + "Log.log");
+		return new FileLogger("Logs" + File.separator + "Log.log", true);
 	}
 
 	@Override
