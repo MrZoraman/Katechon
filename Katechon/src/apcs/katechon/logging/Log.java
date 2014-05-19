@@ -1,6 +1,6 @@
 package apcs.katechon.logging;
 
-import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -43,7 +43,7 @@ public class Log
 	 */
 	public static void info(String message)
 	{
-		_logger.log("[INFO] " + getTimeStamp() + "\t"  + message);
+		_logger.log(getTimeStamp() + " [INFO] " + "\t"  + message);
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class Log
 	 */
 	public static void error(String message)
 	{
-		_logger.log("[ERROR] " +getTimeStamp() + "\t" + message);
+		_logger.log(getTimeStamp() + " [ERROR] " + "\t" + message);
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class Log
 	 */
 	public static void fatal(String message)
 	{
-		_logger.log("[FATAL] " +getTimeStamp() + "\t"  + message);
+		_logger.log(getTimeStamp() + " [FATAL] " + "\t"  + message);
 	}
 
 	/**
@@ -70,8 +70,11 @@ public class Log
 	 */
 	public static void exception(Exception ex)
 	{
-		//TODO: exceptions
-		//_logger.exception(ex);
+		_logger.log(getTimeStamp() + " [EXCEPTION] " + ex.getClass().getCanonicalName() + ": " + ex.getLocalizedMessage());
+		for(StackTraceElement element : ex.getStackTrace())
+		{
+			_logger.log(getTimeStamp() + " [EXCEPTION] \t" + element.toString());
+		}
 	}
 
 	/**
@@ -91,7 +94,7 @@ public class Log
 	{
 		if(debugging)
 		{
-			_logger.log("[DEBUG] " +getTimeStamp() + "\t"  + message);
+			_logger.log(getTimeStamp() + " [DEBUG] " + "\t"  + message);
 		}
 	}
 	
@@ -110,7 +113,7 @@ public class Log
 	private static String getTimeStamp()
 	{
 		Date date = new Date();
-		Timestamp stamp = new Timestamp(date.getTime());
-		return stamp.toString();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
+		return sdf.format(date);
 	}
 }
