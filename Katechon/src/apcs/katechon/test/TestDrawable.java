@@ -7,6 +7,7 @@ import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.Layer;
 
+//TODO: beware all ye who enter
 public class TestDrawable implements IDrawable
 {
 	protected int x, y, width, height;
@@ -30,23 +31,51 @@ public class TestDrawable implements IDrawable
 		g.setColor(Color.BLACK);
 	}
 
-	@Override
-	public void changeSize(int width, int height)
-	{
-		this.width = width;
-		this.height = height;
-	}
-
-	@Override
-	public void changePosition(int x, int y)
-	{
-		this.x = x;
-		this.y = y;
-	}
+//	@Override
+//	public void changeSize(int width, int height)
+//	{
+//		this.width = width;
+//		this.height = height;
+//	}
+//
+//	@Override
+//	public void changePosition(int x, int y)
+//	{
+//		this.x = x;
+//		this.y = y;
+//	}
 
 	@Override
 	public void onTick()
 	{
-		this.changePosition(this.x + 1, this.y + 1);
+//		this.changePosition(this.x + 1, this.y + 1);
+	}
+
+	@Override
+	public int getX()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getY()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getWidth()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getHeight()
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

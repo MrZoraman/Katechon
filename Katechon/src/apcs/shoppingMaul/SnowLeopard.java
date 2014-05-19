@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import apcs.katechon.KatechonEngine;
+import apcs.katechon.input.keyboard.Keyboard;
+import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.rendering.IDrawable;
 
 public class SnowLeopard implements IDrawable
@@ -15,49 +17,78 @@ public class SnowLeopard implements IDrawable
 	private int x;
 	private int y;
 	
-	public SnowLeopard(int size)
+	private final int speed;
+	
+	public SnowLeopard(int size, int speed)
 	{
 		this.color = Color.DARK_GRAY;
 		this.size = size;
 		x = KatechonEngine.getInstance().getSwingWindow().getWidth() / 2;
 		y = KatechonEngine.getInstance().getSwingWindow().getHeight() / 2;
+		
+		this.speed = speed;
 	}
 	
 	@Override
 	public void onTick()
 	{
+		if (Keyboard.getInstance().isKeyPressed(Keys.W))
+		{
+			y -= speed;
+		}
 		
+		if (Keyboard.getInstance().isKeyPressed(Keys.S))
+		{
+			y += speed;
+		}
+		
+		if (Keyboard.getInstance().isKeyPressed(Keys.A))
+		{
+			x -= speed;
+		}
+		
+		if (Keyboard.getInstance().isKeyPressed(Keys.D))
+		{
+			x += speed;
+		}
 	}
 
 	@Override
 	public void draw(Graphics g)
 	{
 		g.setColor(color);
-		g.fillRect(x, y,/*Default width*/20 * size, /*Default Height*/20 * size);
+		g.fillRect(x, y,/*Default width*/size, /*Default Height*/size);
 		g.setColor(Color.WHITE);
 	}
 
-	@Override
-	public void changeSize(int width, int height)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void changePosition(int x, int y)
-	{
-		this.x = x;
-		this.y = y;
-	}
+//	@Override
+//	public void changePosition(int x, int y)
+//	{
+//		this.x = x;
+//		this.y = y;
+//	}
 	
+	@Override
 	public int getX()
 	{
 		return this.x;
 	}
 	
+	@Override
 	public int getY()
 	{
 		return this.y;
+	}
+
+	@Override
+	public int getWidth()
+	{
+		return size;
+	}
+
+	@Override
+	public int getHeight()
+	{
+		return size;
 	}
 }
