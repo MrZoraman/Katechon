@@ -72,4 +72,10 @@ public class Keyboard implements KeyListener
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
+	
+	public boolean isKeyPressed(Keys key)
+	{
+		//TODO: this
+		return false;
+	}
 }
