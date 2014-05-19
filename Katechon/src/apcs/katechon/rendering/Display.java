@@ -33,15 +33,15 @@ public class Display
 		this.layers.add(new Layer());
 	}
 	
-	/**
-	 * Removes a {@link apcs.katechon.rendering.Layer Layer} from this display
-	 * @param num The {@link apcs.katechon.rendering.Layer Layer} level to remove. (This is zero based)
-	 */
-	public void removeLayer(int num)
-	{
-		//Zero based
-		this.layers.remove(num);
-	}
+//	/**
+//	 * Removes a {@link apcs.katechon.rendering.Layer Layer} from this display
+//	 * @param num The {@link apcs.katechon.rendering.Layer Layer} level to remove. (This is zero based)
+//	 */
+//	public void removeLayer(int num)
+//	{
+//		//Zero based
+//		this.layers.remove(num);
+//	}
 	
 	/**
 	 * Gets the number of {@link apcs.katechon.rendering.Layer Layers} in this Display
@@ -71,6 +71,9 @@ public class Display
 	 */
 	public Layer getLayer(int num)
 	{
+		if(numLayers() > num || num < 0)
+			throw new IndexOutOfBoundsException("There is no level " + num + " layer!");
+		
 		return this.layers.get(num);
 	}
 }
