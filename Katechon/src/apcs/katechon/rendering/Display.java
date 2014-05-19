@@ -71,8 +71,8 @@ public class Display
 	 */
 	public Layer getLayer(int num)
 	{
-		if(numLayers() > num || num < 0)
-			throw new IndexOutOfBoundsException("There is no level " + num + " layer!");
+//		if(numLayers() > num || num < 0)
+//			throw new IndexOutOfBoundsException("There is no level " + num + " layer!");
 		
 		return this.layers.get(num);
 	}
