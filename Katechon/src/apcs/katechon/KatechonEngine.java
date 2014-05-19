@@ -91,7 +91,7 @@ public class KatechonEngine
 			periodicTicker = new PeriodicTicker();
 			
 			//TODO: Tune this timer as well
-			gameTimer = new Timer(20, periodicTicker);
+			periodicTimer = new Timer(20, periodicTicker);
 		//-----------------------------------------------------------------------------
 		
 		
@@ -131,7 +131,7 @@ public class KatechonEngine
 	
 	private final PeriodicTicker periodicTicker;
 	
-	private final Timer gameTimer;
+	private final Timer periodicTimer;
 	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
@@ -141,7 +141,7 @@ public class KatechonEngine
 		kBase.init();
 		
 		//Starts the background processes.
-		gameTimer.start();
+		periodicTimer.start();
 		
 		//do stuff and run the game loop
 		window.show();

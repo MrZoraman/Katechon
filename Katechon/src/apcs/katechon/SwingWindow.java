@@ -31,7 +31,7 @@ public class SwingWindow
 	 */
 	private final KatechonJPanel panel;
 	
-	private final Timer timer;
+	private final Timer drawingTimer;
 	
 	private Display display;
 	
@@ -70,16 +70,9 @@ public class SwingWindow
 		
 		display = new Display(amountOfLayers);
 		
-//		//Testing code
-//		for (int i = 0; i < 5; i++)
-//		{
-//			display.addLayer();
-//			display.getLayer(i).addDrawable(new TestDrawable(100, 100, 10, 10, Color.GREEN));
-//		}
-		
 		//TODO: tune the delay
 		//This makes it more of a drawing timer than anything else.
-		timer = new Timer(50, new ActionListener(){
+		drawingTimer = new Timer(50, new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -88,7 +81,6 @@ public class SwingWindow
 			}
 			
 		});
-		//timer = new Timer(100, ticker);
 	}
 	
 	/**
@@ -119,7 +111,7 @@ public class SwingWindow
 	void show()
 	{
 		frame.setVisible(true);
-		timer.start();
+		drawingTimer.start();
 	}
 	
 	/**
@@ -175,11 +167,17 @@ public class SwingWindow
 		this.panel.setBackground(color);
 	}
 	
+	/**
+	 * @return The width of the panel
+	 */
 	public int getWidth()
 	{
 		return this.panel.getWidth();
 	}
 	
+	/**
+	 * @return The height of the panel
+	 */
 	public int getHeight()
 	{
 		return this.panel.getHeight();

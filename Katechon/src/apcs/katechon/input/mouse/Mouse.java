@@ -12,16 +12,6 @@ import java.util.Set;
  */
 public class Mouse implements MouseListener
 {
-	//TODO: The mouse listener isn't very responsive. 
-	//If you click too fast it'll stop receiving the inputs.
-		/*
-		 * Tested this, it seems to be that the mouseClicked event is only if you don't move the mouse. 
-		 * If the mouse is drug at all then the event does not fire. Can be solved by using another event.
-		 */
-	//You then need to wait a little while for it to start working again.
-	//Then again, I don't think will be a too mouse-intensive game, so it may not matter much.
-	//For gui inputs it should be fine, but idk...
-	
 	private static Mouse instance;
 	
 	/**
