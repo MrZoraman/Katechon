@@ -15,7 +15,6 @@ import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
-import apcs.shoppingMaul.drawables.SnowLeopard;
 
 public class ShoppingMaul extends KatechonBase
 {

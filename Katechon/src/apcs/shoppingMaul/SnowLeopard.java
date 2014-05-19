@@ -1,4 +1,4 @@
-package apcs.shoppingMaul.drawables;
+package apcs.shoppingMaul;
 
 import java.awt.Color;
 import java.awt.Graphics;
