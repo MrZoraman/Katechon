@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.Display;
 
 /**
