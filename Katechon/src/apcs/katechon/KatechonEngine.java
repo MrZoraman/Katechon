@@ -171,9 +171,10 @@ public class KatechonEngine
 	 * Adds an {@link apcs.katechon.periodic.IPeriodic IPeriodic} to the engine's list.
 	 * @param periodic The {@link apcs.katechon.periodic.IPeriodic IPeriodic} to add.
 	 */
-	public void addPeriodic(IPeriodic periodic)
+	public KatechonEngine addPeriodic(IPeriodic periodic)
 	{
 		this.periodicTicker.addItem(periodic);
+		return getInstance();
 	}
 	
 	/**
@@ -181,8 +182,9 @@ public class KatechonEngine
 	 * @param drawable The drawable to draw
 	 * @param layer The layer to put the drawable on
 	 */
-	public void addDrawable(IDrawable drawable, int layer)
+	public KatechonEngine addDrawable(IDrawable drawable, int layer)
 	{
 		this.window.getDisplay().getLayer(layer).addDrawable(drawable);
+		return getInstance();
 	}
 }
