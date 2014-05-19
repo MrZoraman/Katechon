@@ -7,6 +7,7 @@ import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
 import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.periodic.PeriodicTicker;
+import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -173,5 +174,15 @@ public class KatechonEngine
 	public void addPeriodic(IPeriodic periodic)
 	{
 		this.periodicTicker.addItem(periodic);
+	}
+	
+	/**
+	 * Adds a drawable to the engine's drawable list
+	 * @param drawable The drawable to draw
+	 * @param layer The layer to put the drawable on
+	 */
+	public void addDrawable(IDrawable drawable, int layer)
+	{
+		this.window.getDisplay().getLayer(layer).addDrawable(drawable);
 	}
 }
