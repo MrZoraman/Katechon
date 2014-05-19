@@ -42,6 +42,12 @@ public class ShoppingMaul extends KatechonBase
 		mainEngine = KatechonEngine.getInstance();
 		
 		mainEngine.getSwingWindow().setBackgroundColor(Color.WHITE);
+		
+		SnowLeopard snowLeopard = new SnowLeopard(40, 3);
+		
+		mainEngine
+			.addDrawable(snowLeopard, 0)
+			.addPeriodic(snowLeopard);
 	}
 
 	@Override

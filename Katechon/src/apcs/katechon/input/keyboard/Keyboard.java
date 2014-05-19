@@ -14,8 +14,6 @@ import java.util.Set;
  */
 public class Keyboard implements KeyListener
 {
-	//TODO: A global listener container so that it listens on all key presses?
-	
 	private static Keyboard instance;
 	
 	/**
@@ -30,7 +28,9 @@ public class Keyboard implements KeyListener
 		return instance;
 	}
 	
-	private Map<Keys, Set<KeyPressedListener>> keyListeners;
+	private final Map<Keys, Set<KeyPressedListener>> keyListeners;
+	
+	private final Map<Keys, Boolean> keyStates;
 	
 	/**
 	 * Constructor
@@ -38,6 +38,7 @@ public class Keyboard implements KeyListener
 	private Keyboard()
 	{
 		keyListeners = new HashMap<Keys, Set<KeyPressedListener>>();
+		keyStates = new HashMap<Keys, Boolean>();
 	}
 	
 	/**
@@ -56,6 +57,8 @@ public class Keyboard implements KeyListener
 	public void keyPressed(KeyEvent e) {
 		Keys key = Keys.getKey(e.getKeyCode());
 		
+		keyStates.put(key, true);
+		
 		if(keyListeners.containsKey(key))
 		{
 			for(KeyPressedListener listener : keyListeners.get(key))
@@ -67,6 +70,9 @@ public class Keyboard implements KeyListener
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		Keys key = Keys.getKey(e.getKeyCode());
+		
+		keyStates.put(key, false);
 	}
 
 	@Override
@@ -75,7 +81,11 @@ public class Keyboard implements KeyListener
 	
 	public boolean isKeyPressed(Keys key)
 	{
-		//TODO: this
-		return false;
+		if(keyStates.containsKey(key) == false)
+		{
+			keyStates.put(key, false);
+		}
+		
+		return keyStates.get(key);
 	}
 }
