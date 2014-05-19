@@ -9,6 +9,7 @@ import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.periodic.PeriodicTicker;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
+import apcs.katechon.utils.MappedConfig;
 
 /**
  * This is the class that runs the entire operation. You give it an instance of {@link apcs.katechon.KatechonBase KatechonBase} and it does it's magic
@@ -34,6 +35,15 @@ public class KatechonEngine
 	}
 	
 	private final KatechonBase kBase;
+	
+	/**
+	 * Constructs the engine with all default settings
+	 * @param kBaseClass The class of the game that extends {@link apcs.katechon.KatechonBase KatechonBase}
+	 */
+	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass)
+	{
+		this(kBaseClass, new MappedConfig());
+	}
 	
 	/**
 	 * Create the KatechonEngine. Only one of these can be instantiated.
