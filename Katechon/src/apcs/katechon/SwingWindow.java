@@ -100,7 +100,7 @@ public class SwingWindow
 			//super.paint() must come before any other changes to graphics as it seems to override all manual drawing.
 			super.paint(graphics);
 			//Yes, because super.paint is going to paint the background (a massive black box that covers everything)
-			Log.debug("Painted.");
+//			Log.debug("Painted.");
 			display.drawLayers(graphics);
 		}
 	}
