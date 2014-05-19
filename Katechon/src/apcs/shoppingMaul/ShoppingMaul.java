@@ -53,12 +53,16 @@ public class ShoppingMaul extends KatechonBase
 			@Override
 			public void onKeyPressed(Keys key)
 			{
+				// for each layer...
 				for (int ii = 0; ii < config.getInt(ConfigKey.AMOUNT_OF_LAYERS, 5); ii++)
 				{
+					// for each drawable in that layer..
 					for (IDrawable sl : mainEngine.getSwingWindow().getDisplay().getLayer(ii).getDrawables())
 					{
+						// if it's a snowleapard...
 						if (sl instanceof SnowLeopard)
 						{
+							//make it do shit
 							sl.changePosition(((SnowLeopard) sl).getX(), ((SnowLeopard) sl).getY() - 3);
 						}
 					}
