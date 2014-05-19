@@ -4,11 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import apcs.katechon.logging.Log;
+import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.Layer;
 
 //TODO: beware all ye who enter
-public class TestDrawable implements IDrawable
+public class TestDrawable implements IDrawable, IPeriodic
 {
 	protected int x, y, width, height;
 	protected Layer layer;

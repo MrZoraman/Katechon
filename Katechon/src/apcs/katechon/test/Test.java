@@ -115,7 +115,7 @@ public class Test extends KatechonBase
 				drawable = new TestDrawable(r.nextInt(1000), r.nextInt(1000), r.nextInt(100), r.nextInt(100), color);
 				//drawable = new TestDrawable(0, 0, r.nextInt(100), r.nextInt(100), color);
 				KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(ii).addDrawable(drawable);
-				KatechonEngine.getInstance().addPeriodic(drawable);
+//				KatechonEngine.getInstance().addPeriodic(drawable);
 			}
 		}
 		

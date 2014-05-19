@@ -6,9 +6,10 @@ import java.awt.Graphics;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
+import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.rendering.IDrawable;
 
-public class SnowLeopard implements IDrawable
+public class SnowLeopard implements IDrawable, IPeriodic
 {
 	private final int size;
 	

@@ -5,13 +5,9 @@ import java.io.File;
 
 import apcs.katechon.KatechonBase;
 import apcs.katechon.KatechonEngine;
-import apcs.katechon.input.keyboard.KeyPressedListener;
-import apcs.katechon.input.keyboard.Keyboard;
-import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.ILogger;
 import apcs.katechon.logging.Log;
-import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
