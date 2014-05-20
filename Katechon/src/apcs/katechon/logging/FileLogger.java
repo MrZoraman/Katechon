@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 
 /**
  * Prints the log to a file.
@@ -23,6 +24,9 @@ public class FileLogger implements ILogger
 		File logFile = new File(fileName);
 		if(!logFile.exists())
 		{
+			//Creates any directories needed
+			Files.createDirectories(logFile.getAbsoluteFile().toPath().getParent());
+			
 			logFile.createNewFile();
 		}
 		
@@ -42,7 +46,7 @@ public class FileLogger implements ILogger
 	@Override
 	public void saveLog()
 	{
-		System.out.println("saving log...");
+		Log.info("Saving log...");
 		try {
 			writer.close();
 			bufferedWriter.close();
