@@ -1,4 +1,4 @@
-package apcs.katechon.physics;
+package apcs.katechon.engine.physics;
 
 /**
  * This should be implemented for all objects that can be acted upon by the physics engine
