@@ -33,7 +33,10 @@ public abstract class EngineModuleBase<I>
 	 */
 	public final void removeItem(final I item)
 	{
-		items.remove(item);
+		if(items.contains(item))
+		{
+			items.remove(item);
+		}
 	}
 	
 	/**
