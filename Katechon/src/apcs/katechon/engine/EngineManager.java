@@ -3,6 +3,8 @@ package apcs.katechon.engine;
 import java.util.HashSet;
 import java.util.Set;
 
+import apcs.katechon.periodic.IPeriodic;
+
 /**
  * <p>If you touch this class I will give you a small, really cute puppy. 
  * I will then proceed to let you grow an emotional attachment to said puppy before I kill it while you're cradling it in your arms.</p>
@@ -11,7 +13,7 @@ import java.util.Set;
  * @author Matt
  *
  */
-public class EngineManager
+public class EngineManager implements IPeriodic
 {
 	private static EngineManager instance = null;
 	
@@ -68,13 +70,9 @@ public class EngineManager
 		
 		return null;
 	}
-	
-	/**
-	 * This will have all of the engines do the stuff that needs to be done 
-	 * 		as decreed by those who require that the stuff that needs to be 
-	 * 		done should be done by those who need to do what needs to be done.
-	 */
-	public void doWork()
+
+	@Override
+	public void onTick()
 	{
 		for(EngineModuleBase<?> engine : engines)
 		{

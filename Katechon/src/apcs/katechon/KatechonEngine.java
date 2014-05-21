@@ -2,6 +2,7 @@ package apcs.katechon;
 
 import javax.swing.Timer;
 
+import apcs.katechon.engine.EngineManager;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
@@ -88,12 +89,17 @@ public class KatechonEngine
 		
 		//PeriodicTicker
 		//-----------------------------------------------------------------------------
-			periodicTicker = new PeriodicTicker();
-			
-			//TODO: Tune this timer as well
-			periodicTimer = new Timer(20, periodicTicker);
+		periodicTicker = new PeriodicTicker();
+		
+		//TODO: Tune this timer as well
+		periodicTimer = new Timer(20, periodicTicker);
 		//-----------------------------------------------------------------------------
 		
+		
+		//Engines
+		//-----------------------------------------------------------------------------
+		periodicTicker.addItem(EngineManager.getInstance());
+		//-----------------------------------------------------------------------------
 		
 		
 		
@@ -144,8 +150,7 @@ public class KatechonEngine
 		periodicTimer.start();
 		
 		//do stuff and run the game loop
-		//TODO: If shit ain't poppin' up LOOK HERE
-//		window.show();
+		window.show();
 	}
 	
 	/**

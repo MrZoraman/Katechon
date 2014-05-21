@@ -55,25 +55,6 @@ public class Test extends KatechonBase
 	@Override
 	public void init() 
 	{
-		SimpleCollisionEngine sce = new SimpleCollisionEngine();
-		SimplePhysicsEngine spe = new SimplePhysicsEngine();
-		
-		EngineManager em = new EngineManager();
-		
-		em.addEngine(sce);
-		em.addEngine(spe);
-		
-		//stuff happens over time
-		
-		//pretend different scope
-		
-		EngineModuleBase<ICollidable> datEngine = em.getEngine(ICollidable.class);
-		em.getEngine(IPhysicsObject.class).addItem(new SimplePhysicsObject());
-		
-		datEngine.addItem(new SimpleCollidable());
-		
-		em.doWork();
-		
 		Log.info("woah!");
 		
 		
