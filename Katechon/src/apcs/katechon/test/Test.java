@@ -30,6 +30,7 @@ import apcs.katechon.utils.MappedConfig;
  * @author Matt
  *
  */
+@SuppressWarnings("unused")
 public class Test extends KatechonBase
 {
 	/**

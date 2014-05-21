@@ -12,6 +12,7 @@ import apcs.katechon.logging.Log;
  */
 public class SimpleCollisionEngine extends CollisionEngineBase
 {
+	
 	@Override
 	public Map<ICollidable, CollisionType> getCollisions(ICollidable collidable)
 	{
@@ -23,5 +24,6 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	protected void process(Set<ICollidable> items)
 	{
 		Log.debug("simple collision engine processing " + items.size() + " items.");
+		
 	}
 }
