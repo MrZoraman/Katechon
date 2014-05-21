@@ -144,7 +144,8 @@ public class KatechonEngine
 		periodicTimer.start();
 		
 		//do stuff and run the game loop
-		window.show();
+		//TODO: If shit ain't poppin' up LOOK HERE
+//		window.show();
 	}
 	
 	/**

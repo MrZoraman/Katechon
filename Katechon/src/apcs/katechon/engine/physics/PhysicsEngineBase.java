@@ -9,5 +9,10 @@ import apcs.katechon.engine.EngineModuleBase;
  */
 public abstract class PhysicsEngineBase extends EngineModuleBase<IPhysicsObject>
 {
+	public PhysicsEngineBase()
+	{
+		super(IPhysicsObject.class);
+	}
+	
 	// physics engine specific methods go here
 }

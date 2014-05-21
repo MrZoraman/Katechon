@@ -11,6 +11,11 @@ import apcs.katechon.engine.EngineModuleBase;
  */
 public abstract class CollisionEngineBase extends EngineModuleBase<ICollidable>
 {
+	public CollisionEngineBase()
+	{
+		super(ICollidable.class);
+	}
+	
 	/**
 	 * Returns a set of colliding objects given a collidable object
 	 * @param collidable The object to test if things are colliding with it or not

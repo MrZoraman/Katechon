@@ -13,9 +13,17 @@ public abstract class EngineModuleBase<I>
 {
 	private final Set<I> items;
 	
-	public EngineModuleBase()
+	private final Class<I> type;
+	
+	public EngineModuleBase(Class<I> type)
 	{
-		items = new HashSet<I>();
+		this.items = new HashSet<I>();
+		this.type = type;
+	}
+	
+	public Class<I> getEngineType()
+	{
+		return this.type;
 	}
 	
 	/**
