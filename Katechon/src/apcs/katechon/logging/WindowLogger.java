@@ -6,6 +6,11 @@ import java.awt.Graphics;
 
 import apcs.katechon.rendering.IDrawable;
 
+/**
+ * This is a type of logger that logs things on the game window itself
+ * @author Matt
+ *
+ */
 public class WindowLogger implements ILogger, IDrawable
 {
 	public WindowLogger(int linesShown)
@@ -51,6 +56,10 @@ public class WindowLogger implements ILogger, IDrawable
 		}
 	}
 	
+	/**
+	 * Puts a message to the top of the log
+	 * @param message The message to put on top
+	 */
 	private void appendToTop(String message)
 	{
 		for(int ii = messages.length - 1; ii > 0; ii--)

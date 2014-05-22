@@ -5,14 +5,24 @@ import java.util.Set;
 
 import apcs.katechon.engine.EngineModuleBase;
 
+/**
+ * This is the scheduler. It is used to schedule tasks to be done in the future.
+ * @author Matt
+ *
+ */
 public class SchedulerEngine extends EngineModuleBase<SchedulerTask>
 {
-	public SchedulerEngine(Class<SchedulerTask> type) {
-		super(type);
+	/**
+	 * Constructor
+	 */
+	public SchedulerEngine()
+	{
+		super(SchedulerTask.class);
 	}
 
 	@Override
-	protected void process(Set<SchedulerTask> items) {
+	protected void process(Set<SchedulerTask> items)
+	{
 		Iterator<SchedulerTask> it = items.iterator();
 		
 		while(it.hasNext())

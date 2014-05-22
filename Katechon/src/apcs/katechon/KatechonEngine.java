@@ -126,7 +126,7 @@ public class KatechonEngine
 	
 	private void initScheduler()
 	{
-		scheduler = new SchedulerEngine(SchedulerTask.class);
+		scheduler = new SchedulerEngine();
 		EngineManager.getInstance().addEngine(scheduler);
 	}
 	
