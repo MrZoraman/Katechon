@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import apcs.katechon.logging.Log;
+
 /**
  * A way to store information as text in a file.
  * @author Sean
@@ -40,7 +42,7 @@ public class File
 				path = Files.createFile(path);
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Log.exception(e);
 		}
 	}
 	
@@ -56,7 +58,7 @@ public class File
 			lines = Files.readAllLines(path, cs);
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Log.exception(e);
 		}
 		
 		return lines;
@@ -76,7 +78,7 @@ public class File
 			path = Files.write(path, temp, cs);
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Log.exception(e);
 		}
 	}
 }
