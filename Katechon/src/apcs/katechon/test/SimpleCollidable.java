@@ -57,29 +57,29 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 		g.setColor(Color.WHITE);
 	}
 
-	@Override
-	public int getX()
-	{
-		return this.x;
-	}
-
-	@Override
-	public int getY()
-	{
-		return this.y;
-	}
-
-	@Override
-	public int getWidth()
-	{
-		return this.width;
-	}
-
-	@Override
-	public int getHeight()
-	{
-		return this.height;
-	}
+//	@Override
+//	public int getX()
+//	{
+//		return this.x;
+//	}
+//
+//	@Override
+//	public int getY()
+//	{
+//		return this.y;
+//	}
+//
+//	@Override
+//	public int getWidth()
+//	{
+//		return this.width;
+//	}
+//
+//	@Override
+//	public int getHeight()
+//	{
+//		return this.height;
+//	}
 
 	@Override
 	public void onTick()

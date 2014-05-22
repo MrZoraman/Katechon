@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
+import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 
 public class AnimatedSprite<I> implements IDrawable
@@ -36,19 +37,32 @@ public class AnimatedSprite<I> implements IDrawable
 		}
 	}
 	
+	public void setSequence(I key)
+	{
+		if(animationSequences.containsKey(key))
+		{
+			currentSequence = animationSequences.get(key);
+		}
+		else
+		{
+			Log.error("Failed to find an animation sequence at key '" + key + "'.");
+		}
+	}
+	
 	@Override
 	public void draw(Graphics g) 
 	{
-		g.drawImage(currentSequence.getCurrentFrame(), x, y, null);
+		if(currentSequence != null)
+		{
+			g.drawImage(currentSequence.getCurrentFrame(), x, y, null);
+		}
 	}
 
-	@Override
 	public int getX()
 	{
 		return x;
 	}
 
-	@Override
 	public int getY()
 	{
 		return y;
@@ -62,17 +76,5 @@ public class AnimatedSprite<I> implements IDrawable
 	public void setY(int y)
 	{
 		this.y = y;
-	}
-
-	@Override
-	public int getWidth()
-	{
-		return currentSequence.getCurrentFrame().getWidth();
-	}
-
-	@Override
-	public int getHeight()
-	{
-		return currentSequence.getCurrentFrame().getHeight();
 	}
 }

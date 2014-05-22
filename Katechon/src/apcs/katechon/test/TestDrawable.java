@@ -52,27 +52,27 @@ public class TestDrawable implements IDrawable, IPeriodic
 //		this.changePosition(this.x + 1, this.y + 1);
 	}
 
-	@Override
-	public int getX()
-	{
-		return 0;
-	}
-
-	@Override
-	public int getY()
-	{
-		return 0;
-	}
-
-	@Override
-	public int getWidth()
-	{
-		return 0;
-	}
-
-	@Override
-	public int getHeight()
-	{
-		return 0;
-	}
+//	@Override
+//	public int getX()
+//	{
+//		return 0;
+//	}
+//
+//	@Override
+//	public int getY()
+//	{
+//		return 0;
+//	}
+//
+//	@Override
+//	public int getWidth()
+//	{
+//		return 0;
+//	}
+//
+//	@Override
+//	public int getHeight()
+//	{
+//		return 0;
+//	}
 }
