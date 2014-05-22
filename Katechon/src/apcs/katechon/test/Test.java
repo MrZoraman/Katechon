@@ -9,9 +9,13 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
+import apcs.katechon.input.mouse.Mouse;
+import apcs.katechon.input.mouse.MouseClickedListener;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.ILogger;
 import apcs.katechon.logging.Log;
+import apcs.katechon.logging.WindowLogger;
+import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
@@ -38,16 +42,36 @@ public class Test extends KatechonBase
 		new KatechonEngine(Test.class, config).start();
 	}
 	
+	private IDrawable drawnLogger;
+	
 	@Override
 	public ILogger initLogger() throws Exception
 	{
 		Log.setDebugging(true);
-		return new FileLogger("Testing" + File.separator + "Testing.log", true);
+//		return new FileLogger("Testing" + File.separator + "Testing.log", true);
+		WindowLogger windowLogger = new WindowLogger(15);
+		
+		this.drawnLogger = windowLogger;
+		
+		
+		return windowLogger;
 	}
 
 	@Override
 	public void init() 
 	{		
+		KatechonEngine.getInstance().addDrawable(drawnLogger, 0);
+		Log.info("hello there!");
+		Log.info("abba jeezles");
+		
+		
+		Mouse.getInstance().addListener(new MouseClickedListener() {
+			@Override
+			public void onClick(int x, int y) {
+				Log.info("Mouse clicked!: " + x + ", " + y);
+			}
+		});
+		
 //		KatechonEngine.getInstance().getSwingWindow().setBackgroundColor(Color.WHITE);
 //		
 //		SimpleCollisionEngine sce = new SimpleCollisionEngine();
@@ -66,8 +90,6 @@ public class Test extends KatechonBase
 //		
 //		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
 //		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);
-		
-		//stuff
 	}
 
 	@Override
