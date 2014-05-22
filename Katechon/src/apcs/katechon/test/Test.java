@@ -66,6 +66,8 @@ public class Test extends KatechonBase
 //		
 //		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
 //		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);
+		
+		//stuff
 	}
 
 	@Override
