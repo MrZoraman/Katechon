@@ -22,6 +22,6 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	@Override
 	protected void process(Set<ICollidable> items)
 	{
-		Log.debug("simple collision engine processing " + items.size() + " items.");
+		
 	}
 }
