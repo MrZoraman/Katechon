@@ -8,6 +8,13 @@ import java.util.Map;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 
+/**
+ * Represents a drawable that is animated. It holds various animation sequences that can be switched to during runtime 
+ * 		(ex, a stationary animation sequence and a running animation sequence, etc)
+ * @author Zora
+ *
+ * @param <I> The type of index to be used to specify animation sequences
+ */
 public class AnimatedSprite<I> implements IDrawable
 {
 	private int x;
@@ -17,6 +24,11 @@ public class AnimatedSprite<I> implements IDrawable
 	
 	private AnimatedSequence<BufferedImage> currentSequence;
 	
+	/**
+	 * Constructor. This class does nothing until sequences are added with {@link #addSequence(Object, AnimatedSequence) addSequence()}.
+	 * @param x The x coordinate
+	 * @param y The y coordinate
+	 */
 	public AnimatedSprite(int x, int y)
 	{
 		this.x = x;
@@ -27,6 +39,11 @@ public class AnimatedSprite<I> implements IDrawable
 		this.currentSequence = null;
 	}
 	
+	/**
+	 * Adds an animation sequence at a given key. The current animation sequence for this sprite will be set to the first sequence added (the first time this method is called).
+	 * @param key The key to be able to reference this animation sequence in the future.
+	 * @param sequence The sequence to add.
+	 */
 	public void addSequence(I key, AnimatedSequence<BufferedImage> sequence)
 	{
 		animationSequences.put(key, sequence);
@@ -37,6 +54,10 @@ public class AnimatedSprite<I> implements IDrawable
 		}
 	}
 	
+	/**
+	 * Changes the current sequence that will be animated and drawn to the screen
+	 * @param key The key that points to an animated sequence. If no sequence is found at a given key, the sequence will not change.
+	 */
 	public void setSequence(I key)
 	{
 		if(animationSequences.containsKey(key))
@@ -58,21 +79,35 @@ public class AnimatedSprite<I> implements IDrawable
 		}
 	}
 
+	/**
+	 * @return The x coordinate
+	 */
 	public int getX()
 	{
 		return x;
 	}
 
+	/**
+	 * @return The y coordinate
+	 */
 	public int getY()
 	{
 		return y;
 	}
 	
+	/**
+	 * Sets the x coordinate
+	 * @param x The x coordinate
+	 */
 	public void setX(int x)
 	{
 		this.x = x;
 	}
 	
+	/**
+	 * Sets the y coordinate
+	 * @param y The y coordinate
+	 */
 	public void setY(int y)
 	{
 		this.y = y;
