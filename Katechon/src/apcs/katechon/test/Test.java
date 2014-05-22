@@ -12,6 +12,7 @@ import apcs.katechon.engine.collisions.SimpleCollisionEngine;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.ILogger;
 import apcs.katechon.logging.Log;
+import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -46,25 +47,45 @@ public class Test extends KatechonBase
 
 	@Override
 	public void init() 
-	{		
-		KatechonEngine.getInstance().getSwingWindow().setBackgroundColor(Color.WHITE);
+	{
+		String[] sequence = {
+				"I",
+				"don't",
+				"eat",
+				"solid",
+				"foods",
+				"because",
+				"abba",
+				"jeezles",
+				"loathes",
+				"me"
+		};
 		
-		SimpleCollisionEngine sce = new SimpleCollisionEngine();
-		EngineManager.getInstance().addEngine(sce);
+		AnimatedSequence<String> animation = new AnimatedSequence<String>(sequence, 0);
 		
-		Random r = new Random();
+		for(int ii = 0; ii < 25; ii++)
+		{
+			Log.debug("[" + ii + "] " + animation.getCurrentFrame());
+		}
 		
-		SimpleCollidable sc1 = new SimpleCollidable(r.nextInt(1000), r.nextInt(1000), 50, 50, 10, true);
-		SimpleCollidable sc2 = new SimpleCollidable(r.nextInt(1000), r.nextInt(1000), 50, 50, 10, false);
-		
-		KatechonEngine.getInstance().addDrawable(sc1, 0);
-		KatechonEngine.getInstance().addDrawable(sc2, 0);
-
-		KatechonEngine.getInstance().addPeriodic(sc1);
-		KatechonEngine.getInstance().addPeriodic(sc2);
-		
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);
+//		KatechonEngine.getInstance().getSwingWindow().setBackgroundColor(Color.WHITE);
+//		
+//		SimpleCollisionEngine sce = new SimpleCollisionEngine();
+//		EngineManager.getInstance().addEngine(sce);
+//		
+//		Random r = new Random();
+//		
+//		SimpleCollidable sc1 = new SimpleCollidable(r.nextInt(1000), r.nextInt(1000), 50, 50, 10, true);
+//		SimpleCollidable sc2 = new SimpleCollidable(r.nextInt(1000), r.nextInt(1000), 50, 50, 10, false);
+//		
+//		KatechonEngine.getInstance().addDrawable(sc1, 0);
+//		KatechonEngine.getInstance().addDrawable(sc2, 0);
+//
+//		KatechonEngine.getInstance().addPeriodic(sc1);
+//		KatechonEngine.getInstance().addPeriodic(sc2);
+//		
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);
 		
 		
 		

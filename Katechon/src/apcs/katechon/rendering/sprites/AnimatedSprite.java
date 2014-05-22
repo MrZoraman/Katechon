@@ -2,43 +2,44 @@ package apcs.katechon.rendering.sprites;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 
 import apcs.katechon.rendering.IDrawable;
 
-public class AnimatedSprite implements IDrawable
+public class AnimatedSprite<I> implements IDrawable
 {
-	public AnimatedSprite(final BufferedImage[] frames, int ticksPerFrameUpdate, int x, int y)
-	{
-		this.frames = frames;
-		this.ticksPerFrameUpdate = ticksPerFrameUpdate;
-		
-		this.currentFrameIndex = 0;
-		this.ticksSinceLastFrameupdate = 0;
-		
-		this.x = x;
-		this.y = y;
-	}
-	
-	private final BufferedImage[] frames;
-	private final int ticksPerFrameUpdate;
-	
-	private int currentFrameIndex = 0;
-	private int ticksSinceLastFrameupdate;
-	
 	private int x;
 	private int y;
+	
+	private final Map<I, AnimatedSequence<BufferedImage>> animationSequences;
+	
+	private AnimatedSequence<BufferedImage> currentSequence;
+	
+	public AnimatedSprite(int x, int y)
+	{
+		this.x = x;
+		this.y = y;
+		
+		this.animationSequences = new HashMap<I, AnimatedSequence<BufferedImage>>();
+		
+		this.currentSequence = null;
+	}
+	
+	public void addSequence(I key, AnimatedSequence<BufferedImage> sequence)
+	{
+		animationSequences.put(key, sequence);
+		
+		if(currentSequence == null)
+		{
+			currentSequence = sequence;
+		}
+	}
 	
 	@Override
 	public void draw(Graphics g) 
 	{
-		if(ticksPerFrameUpdate >= ticksPerFrameUpdate)
-		{
-			//TODO: know when to reset to 0
-//			if(currentFrameIndex < frames.length - 1)
-//			{
-//				
-//			}
-		}
+		g.drawImage(currentSequence.getCurrentFrame(), x, y, null);
 	}
 
 	@Override
@@ -52,16 +53,26 @@ public class AnimatedSprite implements IDrawable
 	{
 		return y;
 	}
+	
+	public void setX(int x)
+	{
+		this.x = x;
+	}
+	
+	public void setY(int y)
+	{
+		this.y = y;
+	}
 
 	@Override
 	public int getWidth()
 	{
-		return frames[currentFrameIndex].getWidth();
+		return currentSequence.getCurrentFrame().getWidth();
 	}
 
 	@Override
 	public int getHeight()
 	{
-		return frames[currentFrameIndex].getHeight();
+		return currentSequence.getCurrentFrame().getHeight();
 	}
 }
