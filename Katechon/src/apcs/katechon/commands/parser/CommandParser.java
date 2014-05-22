@@ -17,7 +17,7 @@ public class CommandParser
 	 * @param cmdString The command to parse
 	 * @return An array of arrays of valid arguments
 	 */
-	public static String[][] splitCmdString(String cmdString)
+	static String[][] splitCmdString(String cmdString)
 	{
 		String[] cmdStringParts = safeSplit(cmdString);
 		
@@ -47,7 +47,7 @@ public class CommandParser
 	 * @param toVerify The arguments being verified against the known args
 	 * @return The amount of args that matched in a row, or -1 if it is not a match
 	 */
-	public static int getMatchingArgs(String[] known, String[] toVerify)
+	static int getMatchingArgs(String[] known, String[] toVerify)
 	{
 		int matchingArgs = 0;
 		for(int ii = 0; ii < known.length; ii++)
