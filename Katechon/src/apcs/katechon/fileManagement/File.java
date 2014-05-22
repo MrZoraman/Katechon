@@ -64,7 +64,7 @@ public class File
 	
 	/**
 	 * Writes all lines to this file.
-	 * @param lines A List<String> to write to this file
+	 * @param lines A List(String) to write to this file
 	 */
 	public void writeLines(List<String> lines)
 	{
