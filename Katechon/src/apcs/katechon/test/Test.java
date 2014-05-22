@@ -47,27 +47,7 @@ public class Test extends KatechonBase
 
 	@Override
 	public void init() 
-	{
-		String[] sequence = {
-				"I",
-				"don't",
-				"eat",
-				"solid",
-				"foods",
-				"because",
-				"abba",
-				"jeezles",
-				"loathes",
-				"me"
-		};
-		
-		AnimatedSequence<String> animation = new AnimatedSequence<String>(sequence, 0);
-		
-		for(int ii = 0; ii < 25; ii++)
-		{
-			Log.debug("[" + ii + "] " + animation.getCurrentFrame());
-		}
-		
+	{		
 //		KatechonEngine.getInstance().getSwingWindow().setBackgroundColor(Color.WHITE);
 //		
 //		SimpleCollisionEngine sce = new SimpleCollisionEngine();
@@ -86,96 +66,6 @@ public class Test extends KatechonBase
 //		
 //		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
 //		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);
-		
-		
-		
-//		//Tested the FileLogger, seems to function properly.
-////		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
-//		Log.setDebugging(true);
-//		
-//		//Change the background color.
-//		KatechonEngine.getInstance().getSwingWindow().setBackgroundColor(Color.BLACK);
-//		
-//		Keyboard.getInstance().addListener(Keys.A, new KeyPressedListener() {
-//			@Override
-//			public void onKeyPressed(Keys key)
-//			{
-//				Log.debug("Key pressed!: " + key);
-//			}
-//		});
-//		
-//		Keyboard.getInstance().addListener(Keys.ESCAPE, new KeyPressedListener() {
-//
-//			@Override
-//			public void onKeyPressed(Keys key)
-//			{
-//				Log.info("Exiting.");
-//				KatechonEngine.getInstance().end();				
-//			}
-//			
-//		
-//		});
-//		
-//		Mouse.getInstance().addListener(new MouseClickedListener() {
-//			@Override
-//			public void onClick(int x, int y) {
-////				System.out.println("Mouse clicked!: " + x + ", " + y);
-//				Log.debug("Mouse clicked!: " + x + ", " + y);
-//			}
-//		});
-//		
-//		for(int ii = 0; ii < 5; ii++)
-//		{
-//			for (int jj = 0; jj < 5; jj++)
-//			{
-//				IDrawable drawable;
-//				
-//				Random r = new Random();
-//				
-//				//Really crude color changing thing.
-//				Color color = Color.GRAY;
-//				switch (ii){
-//					case 0:
-//						color = Color.GREEN;
-//						break;
-//					case 1:
-//						color = Color.RED;
-//						break;
-//					case 2:
-//						color = Color.CYAN;
-//						break;
-//					case 3:
-//						color = Color.YELLOW;
-//						break;
-//					case 4:
-//						color = Color.MAGENTA;
-//						break;
-//				}
-//				
-//				drawable = new TestDrawable(r.nextInt(1000), r.nextInt(1000), r.nextInt(100), r.nextInt(100), color);
-//				//drawable = new TestDrawable(0, 0, r.nextInt(100), r.nextInt(100), color);
-//				KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(ii).addDrawable(drawable);
-////				KatechonEngine.getInstance().addPeriodic(drawable);
-//			}
-//		}
-//		
-//		KatechonEngine.getInstance().addPeriodic(new TestPeriodic());
-//
-//		
-////		KatechonEngine.getInstance().getSwingWindow().getDisplay().getLayer(0).addDrawable(new IDrawable() {
-////			@Override
-////			public void draw(Graphics g) {
-////				
-////			}
-////
-////			@Override
-////			public void changeSize(int width, int height) {
-////			}
-////
-////			@Override
-////			public void changePosition(int x, int y) {
-////			}
-////		});
 	}
 
 	@Override
