@@ -9,6 +9,7 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
+import apcs.katechon.engine.scheduler.SchedulerTask;
 import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
@@ -44,26 +45,29 @@ public class Test extends KatechonBase
 		new KatechonEngine(Test.class, config).start();
 	}
 	
-	private ToggleableWindowLogger twl;
-	
 	@Override
 	public ILogger initLogger() throws Exception
 	{
 		Log.setDebugging(true);
 //		return new FileLogger("Testing" + File.separator + "Testing.log", true);
 //		WindowLogger windowLogger = new WindowLogger(15);
-		ToggleableWindowLogger twl = new ToggleableWindowLogger(15);
-		this.twl = twl;
+		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15);
 		
+		KatechonEngine.getInstance().scheduleTask(new SchedulerTask() {
+			@Override
+			public boolean doTask() {
+				KatechonEngine.getInstance().addDrawable(twl, 0);
+				twl.initHideKey(Keys.TILDE);
+				return true;
+			}
+		});
 		
 		return twl;
 	}
 
 	@Override
 	public void init() 
-	{		
-		KatechonEngine.getInstance().addDrawable(twl, 0);
-		twl.initHideKey(Keys.TILDE);
+	{
 		Log.info("hello there!");
 		Log.info("abba jeezles");
 		
@@ -72,6 +76,15 @@ public class Test extends KatechonBase
 			@Override
 			public void onClick(int x, int y) {
 				Log.info("Mouse clicked!: " + x + ", " + y);
+			}
+		});
+		
+		KatechonEngine.getInstance().scheduleTask(new SchedulerTask() {
+			@Override
+			public boolean doTask()
+			{
+				Log.info("task done!");
+				return true;
 			}
 		});
 		

@@ -126,7 +126,8 @@ public class KatechonEngine
 	
 	private void initScheduler()
 	{
-		EngineManager.getInstance().addEngine(new SchedulerEngine(SchedulerTask.class));
+		scheduler = new SchedulerEngine(SchedulerTask.class);
+		EngineManager.getInstance().addEngine(scheduler);
 	}
 	
 	private SwingWindow initWindow(IConfig config)
@@ -159,6 +160,8 @@ public class KatechonEngine
 	private final PeriodicTicker periodicTicker;
 	
 	private final Timer periodicTimer;
+	
+	private SchedulerEngine scheduler;
 	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
@@ -213,5 +216,10 @@ public class KatechonEngine
 	{
 		this.window.getDisplay().getLayer(layer).addDrawable(drawable);
 		return getInstance();
+	}
+	
+	public void scheduleTask(SchedulerTask task)
+	{
+		scheduler.addItem(task);
 	}
 }
