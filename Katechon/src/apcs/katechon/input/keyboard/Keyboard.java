@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import apcs.katechon.logging.Log;
+
 /**
  * This class represents the computer keyboard, ready to be plugged into the swing framework.
  * @author Sean

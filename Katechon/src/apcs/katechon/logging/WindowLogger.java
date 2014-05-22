@@ -35,13 +35,17 @@ public class WindowLogger implements ILogger, IDrawable
 		int x = 10;
 		int y = 25;
 		
+		g.setColor(new Color(169, 169, 169, 200));
+		g.fillRect(5, 5, 800, 375);
+
+		g.setFont(new Font("Book Antiqua", Font.PLAIN, 20));
+		g.setColor(new Color(51, 102, 153));
+		
 		for(int ii = 0; ii < messages.length; ii++)
 		{
 			if(messages[ii].equals("")) continue;
 			
 //			System.out.println("printing " + messages[ii]);
-			g.setFont(new Font("Book Antiqua", Font.PLAIN, 20));
-			g.setColor(Color.GREEN);
 			g.drawString(messages[ii], x, y);
 			y += LINE_SPACING;
 		}

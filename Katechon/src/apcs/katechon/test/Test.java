@@ -9,11 +9,13 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
+import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.ILogger;
 import apcs.katechon.logging.Log;
+import apcs.katechon.logging.ToggleableWindowLogger;
 import apcs.katechon.logging.WindowLogger;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
@@ -42,25 +44,26 @@ public class Test extends KatechonBase
 		new KatechonEngine(Test.class, config).start();
 	}
 	
-	private IDrawable drawnLogger;
+	private ToggleableWindowLogger twl;
 	
 	@Override
 	public ILogger initLogger() throws Exception
 	{
 		Log.setDebugging(true);
 //		return new FileLogger("Testing" + File.separator + "Testing.log", true);
-		WindowLogger windowLogger = new WindowLogger(15);
+//		WindowLogger windowLogger = new WindowLogger(15);
+		ToggleableWindowLogger twl = new ToggleableWindowLogger(15);
+		this.twl = twl;
 		
-		this.drawnLogger = windowLogger;
 		
-		
-		return windowLogger;
+		return twl;
 	}
 
 	@Override
 	public void init() 
 	{		
-		KatechonEngine.getInstance().addDrawable(drawnLogger, 0);
+		KatechonEngine.getInstance().addDrawable(twl, 0);
+		twl.initHideKey(Keys.TILDE);
 		Log.info("hello there!");
 		Log.info("abba jeezles");
 		
