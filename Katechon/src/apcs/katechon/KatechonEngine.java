@@ -3,6 +3,8 @@ package apcs.katechon;
 import javax.swing.Timer;
 
 import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.scheduler.SchedulerEngine;
+import apcs.katechon.engine.scheduler.SchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
@@ -54,21 +56,22 @@ public class KatechonEngine
 	 */	
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
 	{
+		//In order from most important to least important.
+		initSingletonInstance();
+
+		this.periodicTicker = initPeriodicTicker();
+		this.periodicTimer = initPeriodicTimer();
+
+		initEngineManager();
+		initScheduler();
+		
 		this.kBase = initGameInstance(kBaseClass);
 		
-		this.periodicTicker = initPeriodicTicker();
-		
-		this.periodicTimer = initPeriodicTimer();
-		
 		initLogger();
-		
-		initEngineManager();
 		
 		this.window = initWindow(config);
 		
 		initInputs();
-		
-		initSingletonInstance();
 	}
 	
 	private KatechonBase initGameInstance(Class<? extends KatechonBase> kBaseClass)
@@ -119,6 +122,11 @@ public class KatechonEngine
 	private void initEngineManager()
 	{
 		periodicTicker.addItem(EngineManager.getInstance());
+	}
+	
+	private void initScheduler()
+	{
+		EngineManager.getInstance().addEngine(new SchedulerEngine(SchedulerTask.class));
 	}
 	
 	private SwingWindow initWindow(IConfig config)
