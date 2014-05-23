@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.Random;
 
-import apcs.katechon.KatechonBase;
+import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
@@ -32,7 +32,7 @@ import apcs.katechon.utils.MappedConfig;
  *
  */
 @SuppressWarnings("unused")
-public class Test extends KatechonBase
+public class Test extends KatechonGameBase
 {
 	/**
 	 * Entry point

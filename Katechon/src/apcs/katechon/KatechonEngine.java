@@ -16,7 +16,7 @@ import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 
 /**
- * This is the class that runs the entire operation. You give it an instance of {@link apcs.katechon.KatechonBase KatechonBase} and it does it's magic
+ * This is the class that runs the entire operation. You give it an instance of {@link apcs.katechon.KatechonGameBase KatechonBase} and it does it's magic
  * @author Matt
  */
 public class KatechonEngine
@@ -38,23 +38,23 @@ public class KatechonEngine
 		return instance;
 	}
 	
-	private final KatechonBase kBase;
+	private final KatechonGameBase kBase;
 	
 	/**
 	 * Constructs the engine with all default settings
-	 * @param kBaseClass The class of the game that extends {@link apcs.katechon.KatechonBase KatechonBase}
+	 * @param kBaseClass The class of the game that extends {@link apcs.katechon.KatechonGameBase KatechonBase}
 	 */
-	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass)
+	public KatechonEngine(final Class<? extends KatechonGameBase> kBaseClass)
 	{
 		this(kBaseClass, new MappedConfig());
 	}
 	
 	/**
 	 * Create the KatechonEngine. Only one of these can be instantiated.
-	 * @param kBaseClass The class of the game that extends {@link apcs.katechon.KatechonBase KatechonBase}
+	 * @param kBaseClass The class of the game that extends {@link apcs.katechon.KatechonGameBase KatechonBase}
 	 * @param config The {@link apcs.katechon.utils.IConfig IConfig} to be used for this game.
 	 */	
-	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
+	public KatechonEngine(final Class<? extends KatechonGameBase> kBaseClass, final IConfig config)
 	{
 		//In order from most important to least important.
 		initSingletonInstance();
@@ -74,9 +74,9 @@ public class KatechonEngine
 		initInputs();
 	}
 	
-	private KatechonBase initGameInstance(Class<? extends KatechonBase> kBaseClass)
+	private KatechonGameBase initGameInstance(Class<? extends KatechonGameBase> kBaseClass)
 	{
-		KatechonBase kBaseInstance = null;
+		KatechonGameBase kBaseInstance = null;
 		
 		try
 		{
@@ -104,7 +104,6 @@ public class KatechonEngine
 	
 	private Timer initPeriodicTimer()
 	{
-		//TODO: Tune this timer as well
 		return new Timer(20, periodicTicker);
 	}
 	
