@@ -13,6 +13,9 @@ import static apcs.katechon.engine.collisions.CollisionType.*;
  */
 public class SimpleCollisionEngine extends CollisionEngineBase
 {
+	/*Not sure about this as the map will limit each collidable to having only one collision type at a time
+	* allowing the chance of a collision to fail.
+	*/
 	private Map<ICollidable, CollisionType> collisions;
 	
 	public SimpleCollisionEngine()
@@ -23,8 +26,15 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	@Override
 	public Map<ICollidable, CollisionType> getCollisions(ICollidable collidable)
 	{
-		
-		return null;
+		Map<ICollidable, CollisionType> temp = new HashMap<ICollidable, CollisionType>();
+		for(ICollidable ic : collisions.keySet())
+		{
+			if (ic.equals(collidable))
+			{
+				temp.put(ic, collisions.get(ic));
+			}
+		}
+		return temp;
 	}
 
 	@Override
@@ -40,25 +50,31 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 					//TODO: The above method should replace this.
 					CollisionType type = getCollisionType(item, item2);
 					item.onCollision(type);
+					collisions.put(item, type);
 					if (type == BOTTOM)
 					{
 						item2.onCollision(TOP);
+						collisions.put(item2, TOP);
 					}
 					else if (type == TOP)
 					{
 						item2.onCollision(BOTTOM);
+						collisions.put(item2, BOTTOM);
 					}
 					else if (type == RIGHT)
 					{
 						item2.onCollision(LEFT);
+						collisions.put(item2, LEFT);
 					}
 					else if (type == LEFT)
 					{
 						item2.onCollision(RIGHT);
+						collisions.put(item2, RIGHT);
 					}
 					else
 					{
 						item2.onCollision(NONE);
+						collisions.put(item2, NONE);
 					}
 					
 					collisions.put(item, type);
