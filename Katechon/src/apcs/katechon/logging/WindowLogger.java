@@ -38,10 +38,10 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
 		karatPositionX = 7;
 		
-//		Keyboard.getInstance().addListener(Keys.ALL, this);
-		
 		inputString = new StringBuilder();
 		outputString = null;
+		
+		Keyboard.getInstance().addKeyPressedListener(Keys.ALL, this);
 	}
 	
 	private static final int LINE_SPACING = 25;
@@ -145,15 +145,11 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		}
 		else
 		{
-			char typedKey = (char) key.getKey();
-			if(Character.isLetterOrDigit(typedKey))
-			{
-				karatPositionX += 25;
-				
-				inputString.append(typedKey);
-				
-				showKarat.reset();
-			}
+			karatPositionX += 25;
+			
+			inputString.append(keyTyped);
+			
+			showKarat.reset();
 		}
 	}
 }

@@ -37,31 +37,46 @@ public class ToggleableWindowLogger extends WindowLogger {
 		
 		this.toggleKey = key;
 		
-		Keyboard.getInstance().addKeyPressedListener(key, new KeyPressedListener() {
-			@Override
-			public void onKeyPressed(Keys pressedKey, char keyTyped) {
-				if(pressedKey.equals(key))
-				{
-					hidden = !hidden;
-					
-					if(!hidden)
-					{
-						Keyboard.getInstance().setExclusiveKeyListener(listener);
-					}
-					else
-					{
-						Keyboard.getInstance().setExclusiveKeyListener(null);
-					}
-				}
-			}
-		});
+//		Keyboard.getInstance().addKeyPressedListener(key, new KeyPressedListener() {
+//			@Override
+//			public void onKeyPressed(Keys pressedKey, char keyTyped) {
+//				System.out.println("key pressed!: " + pressedKey);
+//				if(pressedKey.equals(key))
+//				{
+//					hidden = !hidden;
+//					
+//					if(!hidden)
+//					{
+//						Keyboard.getInstance().setExclusiveKeyListener(listener);
+//					}
+//					else
+//					{
+//						Keyboard.getInstance().setExclusiveKeyListener(null);
+//					}
+//				}
+//			}
+//		});
 	}
 	
 	@Override
-	public void onKeyPressed(Keys key, char keyTyped)
+	public void onKeyPressed(Keys pressedKey, char keyTyped)
 	{
-		System.out.println("key pressed: " + key);
-		if(key.equals(toggleKey))
+		System.out.println("key pressed found!");
+		if(pressedKey.equals(toggleKey))
+		{
+			hidden = !hidden;
+//			
+			if(!hidden)
+			{
+				Keyboard.getInstance().setExclusiveKeyListener(this);
+			}
+			else
+			{
+				Keyboard.getInstance().setExclusiveKeyListener(null);
+			}
+		}
+		
+		if(pressedKey.equals(toggleKey))
 		{
 			hidden = !hidden;
 			
@@ -76,7 +91,7 @@ public class ToggleableWindowLogger extends WindowLogger {
 		}
 		else
 		{
-			super.onKeyPressed(key, keyTyped);
+			super.onKeyPressed(pressedKey, keyTyped);
 		}
 	}
 	

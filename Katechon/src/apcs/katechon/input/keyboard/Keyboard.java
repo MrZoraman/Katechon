@@ -30,7 +30,7 @@ public class Keyboard implements KeyListener
 	
 	private final Map<Keys, Set<KeyPressedListener>> keyListeners;
 	
-	private final Set<KeyPressedListener> allKeyListeners;
+//	private final Set<KeyPressedListener> allKeyListeners;
 	
 	private final Map<Keys, Boolean> keyStates;
 	
@@ -43,7 +43,7 @@ public class Keyboard implements KeyListener
 	{
 		keyListeners = new HashMap<Keys, Set<KeyPressedListener>>();
 		
-		allKeyListeners = new HashSet<KeyPressedListener>();
+//		allKeyListeners = new HashSet<KeyPressedListener>();
 		
 		keyStates = new HashMap<Keys, Boolean>();
 		
@@ -62,10 +62,10 @@ public class Keyboard implements KeyListener
 		keyListeners.get(key).add(listener);
 	}
 	
-	public void addAllKeyPressedListener(KeyPressedListener listener)
-	{
-		allKeyListeners.add(listener);
-	}
+//	public void addAllKeyPressedListener(KeyPressedListener listener)
+//	{
+//		allKeyListeners.add(listener);
+//	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -73,18 +73,33 @@ public class Keyboard implements KeyListener
 		
 		keyStates.put(key, true);
 		
-		if(exclusiveKeyListener != null)
+		if(keyListeners.containsKey(key))
 		{
-			exclusiveKeyListener.onKeyPressed(key, e.getKeyChar());
-		}
-		else
-		{
-			if(keyListeners.containsKey(key))
+			if(exclusiveKeyListener != null)
+			{
+				exclusiveKeyListener.onKeyPressed(key, e.getKeyChar());
+			}
+			else
 			{
 				for(KeyPressedListener listener : keyListeners.get(key))
 				{
 					listener.onKeyPressed(key, e.getKeyChar());
 				}
+			}
+		}
+		
+		if(keyListeners.containsKey(Keys.ALL))
+		{
+			if(exclusiveKeyListener == null)
+			{
+				for(KeyPressedListener listener : keyListeners.get(Keys.ALL))
+				{
+					listener.onKeyPressed(key, e.getKeyChar());
+				}
+			}
+			else
+			{
+				exclusiveKeyListener.onKeyPressed(key, e.getKeyChar());
 			}
 		}
 	}
@@ -107,17 +122,17 @@ public class Keyboard implements KeyListener
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		if(exclusiveKeyListener != null)
-		{
-			exclusiveKeyListener.onKeyPressed(Keys.UNDEFINED, e.getKeyChar());
-		}
-		else
-		{
-			for(KeyPressedListener listener : allKeyListeners)
-			{
-				listener.onKeyPressed(Keys.UNDEFINED, e.getKeyChar());
-			}
-		}
+//		if(exclusiveKeyListener != null)
+//		{
+//			exclusiveKeyListener.onKeyPressed(Keys.UNDEFINED, e.getKeyChar());
+//		}
+//		else
+//		{
+//			for(KeyPressedListener listener : allKeyListeners)
+//			{
+//				listener.onKeyPressed(Keys.UNDEFINED, e.getKeyChar());
+//			}
+//		}
 	}
 	
 	/**
