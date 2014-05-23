@@ -38,7 +38,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
 		karatPositionX = 7;
 		
-		Keyboard.getInstance().addListener(Keys.ALL, this);
+//		Keyboard.getInstance().addListener(Keys.ALL, this);
 		
 		inputString = new StringBuilder();
 		outputString = null;
@@ -127,7 +127,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	}
 
 	@Override
-	public void onKeyPressed(Keys key) {
+	public void onKeyPressed(Keys key, char keyTyped) {
 		if(key.equals(Keys.ENTER))
 		{
 			karatPositionX = 7;

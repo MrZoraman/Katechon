@@ -29,6 +29,7 @@ public class Keyboard implements KeyListener
 	}
 	
 	private final Map<Keys, Set<KeyPressedListener>> keyListeners;
+	
 	private final Set<KeyPressedListener> allKeyListeners;
 	
 	private final Map<Keys, Boolean> keyStates;
@@ -41,7 +42,9 @@ public class Keyboard implements KeyListener
 	private Keyboard()
 	{
 		keyListeners = new HashMap<Keys, Set<KeyPressedListener>>();
+		
 		allKeyListeners = new HashSet<KeyPressedListener>();
+		
 		keyStates = new HashMap<Keys, Boolean>();
 		
 		exclusiveKeyListener = null;
@@ -51,12 +54,17 @@ public class Keyboard implements KeyListener
 	 * Adds a new listener to the keyboard
 	 * @param listener A listener of type KeyListener
 	 */
-	public void addListener(Keys key, KeyPressedListener listener)
-	{
+	public void addKeyPressedListener(Keys key, KeyPressedListener listener)
+	{	
 		if(keyListeners.containsKey(key) == false)
 			keyListeners.put(key, new HashSet<KeyPressedListener>());
 		
 		keyListeners.get(key).add(listener);
+	}
+	
+	public void addAllKeyPressedListener(KeyPressedListener listener)
+	{
+		allKeyListeners.add(listener);
 	}
 
 	@Override
@@ -64,6 +72,21 @@ public class Keyboard implements KeyListener
 		Keys key = Keys.getKey(e.getKeyCode());
 		
 		keyStates.put(key, true);
+		
+		if(exclusiveKeyListener != null)
+		{
+			exclusiveKeyListener.onKeyPressed(key, e.getKeyChar());
+		}
+		else
+		{
+			if(keyListeners.containsKey(key))
+			{
+				for(KeyPressedListener listener : keyListeners.get(key))
+				{
+					listener.onKeyPressed(key, e.getKeyChar());
+				}
+			}
+		}
 	}
 	
 	/**
@@ -84,25 +107,15 @@ public class Keyboard implements KeyListener
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		Keys key = Keys.getKey(e.getKeyCode());
-		
 		if(exclusiveKeyListener != null)
 		{
-			exclusiveKeyListener.onKeyPressed(key);
+			exclusiveKeyListener.onKeyPressed(Keys.UNDEFINED, e.getKeyChar());
 		}
 		else
 		{
 			for(KeyPressedListener listener : allKeyListeners)
 			{
-				listener.onKeyPressed(key);
-			}
-			
-			if(keyListeners.containsKey(key))
-			{
-				for(KeyPressedListener listener : keyListeners.get(key))
-				{
-					listener.onKeyPressed(key);
-				}
+				listener.onKeyPressed(Keys.UNDEFINED, e.getKeyChar());
 			}
 		}
 	}

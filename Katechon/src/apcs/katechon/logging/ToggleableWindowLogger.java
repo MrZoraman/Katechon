@@ -37,9 +37,9 @@ public class ToggleableWindowLogger extends WindowLogger {
 		
 		this.toggleKey = key;
 		
-		Keyboard.getInstance().addListener(key, new KeyPressedListener() {
+		Keyboard.getInstance().addKeyPressedListener(key, new KeyPressedListener() {
 			@Override
-			public void onKeyPressed(Keys pressedKey) {
+			public void onKeyPressed(Keys pressedKey, char keyTyped) {
 				if(pressedKey.equals(key))
 				{
 					hidden = !hidden;
@@ -58,9 +58,9 @@ public class ToggleableWindowLogger extends WindowLogger {
 	}
 	
 	@Override
-	public void onKeyPressed(Keys key)
+	public void onKeyPressed(Keys key, char keyTyped)
 	{
-		System.out.println("key pressed");
+		System.out.println("key pressed: " + key);
 		if(key.equals(toggleKey))
 		{
 			hidden = !hidden;
@@ -76,7 +76,7 @@ public class ToggleableWindowLogger extends WindowLogger {
 		}
 		else
 		{
-			super.onKeyPressed(key);
+			super.onKeyPressed(key, keyTyped);
 		}
 	}
 	

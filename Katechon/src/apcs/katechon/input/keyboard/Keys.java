@@ -115,7 +115,6 @@ public enum Keys
 	
 	BACKSPACE	(KeyEvent.VK_BACK_SPACE),
 	
-	ALL(-1),//Not a key, but represents all keys
 	UNDEFINED (KeyEvent.VK_UNDEFINED);
 
 	//we keep a map because maps are extremely fast
