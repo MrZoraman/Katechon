@@ -53,7 +53,9 @@ public class Keyboard implements KeyListener
 	public void addKeyPressedListener(Keys key, KeyPressedListener listener)
 	{	
 		if(keyListeners.containsKey(key) == false)
+		{
 			keyListeners.put(key, new HashSet<KeyPressedListener>());
+		}
 		
 		keyListeners.get(key).add(listener);
 	}
@@ -67,6 +69,7 @@ public class Keyboard implements KeyListener
 		
 		if(keyListeners.containsKey(key))
 		{
+			System.out.println(e.getKeyChar());
 			if(exclusiveKeyListener != null)
 			{
 				exclusiveKeyListener.onKeyPressed(key, e.getKeyChar());
