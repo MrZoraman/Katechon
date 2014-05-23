@@ -52,7 +52,7 @@ public class Test extends KatechonBase
 	{
 //		Log.setDebugging(true);
 //		return new FileLogger("Testing" + File.separator + "Testing.log", true);
-		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 50, 50);
+		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
 		KatechonEngine.getInstance().scheduleTask(new SchedulerTask() {
 			@Override
 			public boolean doTask()

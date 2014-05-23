@@ -38,8 +38,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	private static final int KARAT_WIDTH = 3;
 	private static final int KARAT_HEIGHT = 25;
 	
-	private static final int CONSOLE_TEXT_OFFSET_X = 10;
-	private static final int CONSOLE_TEXT_OFFSET_Y = 25;
+	private static final int CONSOLE_TEXT_OFFSET_X = 5;
+	private static final int CONSOLE_TEXT_OFFSET_Y = 20;
 	
 	/**
 	 * Constructor
@@ -105,7 +105,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		//Draw all of the log messages
 		g.setColor(CONSOLE_FONT_COLOR);
 		
-		g.drawString(inputString.toString(), CONSOLE_TEXT_OFFSET_X, CONSOLE_TEXT_OFFSET_Y);
+		g.drawString(inputString.toString(), x + CONSOLE_TEXT_OFFSET_X, y + CONSOLE_TEXT_OFFSET_Y);
 		
 		for(int ii = 0; ii < messages.length; ii++)
 		{
@@ -114,7 +114,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 				continue;
 			}
 			
-			g.drawString(messages[ii], CONSOLE_TEXT_OFFSET_X, CONSOLE_TEXT_OFFSET_Y + (LINE_SPACING * (ii + 1)));
+			g.drawString(messages[ii], x + CONSOLE_TEXT_OFFSET_X, y + CONSOLE_TEXT_OFFSET_Y + (LINE_SPACING * (ii + 1)));
 		}
 	}
 	
