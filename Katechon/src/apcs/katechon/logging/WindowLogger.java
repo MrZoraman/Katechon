@@ -105,11 +105,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		//Draw all of the log messages
 		g.setColor(CONSOLE_FONT_COLOR);
 		
-//		int x = 10;
-//		int y = 25;
-		
 		g.drawString(inputString.toString(), CONSOLE_TEXT_OFFSET_X, CONSOLE_TEXT_OFFSET_Y);
-//		y += LINE_SPACING;
 		
 		for(int ii = 0; ii < messages.length; ii++)
 		{
@@ -118,9 +114,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 				continue;
 			}
 			
-//			System.out.println("printing " + messages[ii]);
-			g.drawString(messages[ii], CONSOLE_TEXT_OFFSET_X, CONSOLE_TEXT_OFFSET_Y * (LINE_SPACING * (ii + 1)));
-//			y += LINE_SPACING;
+			g.drawString(messages[ii], CONSOLE_TEXT_OFFSET_X, CONSOLE_TEXT_OFFSET_Y + (LINE_SPACING * (ii + 1)));
 		}
 	}
 	
