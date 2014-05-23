@@ -60,6 +60,7 @@ public class ToggleableWindowLogger extends WindowLogger {
 	@Override
 	public void onKeyPressed(Keys key)
 	{
+		System.out.println("key pressed");
 		if(key.equals(toggleKey))
 		{
 			hidden = !hidden;

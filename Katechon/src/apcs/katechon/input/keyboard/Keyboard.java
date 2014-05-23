@@ -64,26 +64,6 @@ public class Keyboard implements KeyListener
 		Keys key = Keys.getKey(e.getKeyCode());
 		
 		keyStates.put(key, true);
-		
-		if(exclusiveKeyListener != null)
-		{
-			exclusiveKeyListener.onKeyPressed(key);
-		}
-		else
-		{
-			for(KeyPressedListener listener : allKeyListeners)
-			{
-				listener.onKeyPressed(key);
-			}
-			
-			if(keyListeners.containsKey(key))
-			{
-				for(KeyPressedListener listener : keyListeners.get(key))
-				{
-					listener.onKeyPressed(key);
-				}
-			}
-		}
 	}
 	
 	/**
@@ -104,6 +84,27 @@ public class Keyboard implements KeyListener
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+		Keys key = Keys.getKey(e.getKeyCode());
+		
+		if(exclusiveKeyListener != null)
+		{
+			exclusiveKeyListener.onKeyPressed(key);
+		}
+		else
+		{
+			for(KeyPressedListener listener : allKeyListeners)
+			{
+				listener.onKeyPressed(key);
+			}
+			
+			if(keyListeners.containsKey(key))
+			{
+				for(KeyPressedListener listener : keyListeners.get(key))
+				{
+					listener.onKeyPressed(key);
+				}
+			}
+		}
 	}
 	
 	/**
