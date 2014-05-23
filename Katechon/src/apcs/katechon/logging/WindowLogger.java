@@ -74,7 +74,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		if(showKarat.getCurrentFrame())
 		{
 			g.setColor(Color.GREEN);
-			g.fillRect(karatPositionX, 7, karatPositionX + 13, 26);
+			//x, y, width, height
+			g.fillRect(karatPositionX, 7, 20, 26);
 		}
 
 		//Draw all of the log messages
@@ -120,6 +121,13 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 
 	@Override
 	public void onKeyPressed(Keys key) {
-		Log.info("key pressed!: " + key);
+		if(key.equals(Keys.ENTER))
+		{
+			karatPositionX = 7;
+		}
+		else
+		{
+			karatPositionX += 25;
+		}
 	}
 }
