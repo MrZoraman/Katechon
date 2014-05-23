@@ -17,29 +17,31 @@ import apcs.katechon.rendering.sprites.AnimatedSequence;
  */
 public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 {
-	private static final int LINE_SPACING = 25;
-	
+	//CONSOLE OVERLAY
 	private static final Color CONSOLE_OVERLAY_COLOR = new Color(169, 169, 169, 200);
-	private static final int CONSOLE_OVERLAY_WIDTH = 800;
-	private static final int CONSOLE_OVERLAY_HEIGHT = 400;
-	
+	private static final int   CONSOLE_OVERLAY_WIDTH = 800;
+	private static final int   CONSOLE_OVERLAY_HEIGHT = 400;
 	private static final Color INPUT_OVERLAY_COLOR = new Color(127, 127, 127, 200);
-	private static final int INPUT_OVERLAY_HEIGHT = 29;
-
+	private static final int   INPUT_OVERLAY_HEIGHT = 29;
+	
+	//FONT
 	private static final String CONSOLE_FONT_NAME = "Lucida Console";
-	private static final int CONSOLE_FONT_STYLE = Font.PLAIN;
-	private static final int CONSOLE_FONT_SIZE = 20;
-	private static final Font CONSOLE_FONT = new Font(CONSOLE_FONT_NAME, CONSOLE_FONT_STYLE, CONSOLE_FONT_SIZE);
-	private static final Color CONSOLE_FONT_COLOR = new Color(51, 102, 153);
+	private static final int    CONSOLE_FONT_STYLE = Font.PLAIN;
+	private static final int    CONSOLE_FONT_SIZE = 20;
+	private static final Font   CONSOLE_FONT = new Font(CONSOLE_FONT_NAME, CONSOLE_FONT_STYLE, CONSOLE_FONT_SIZE);
+	private static final Color  CONSOLE_FONT_COLOR = new Color(51, 102, 153);
 	
+	//KARAT
 	private static final Color KARAT_COLOR = Color.GREEN;
-	private static final int KARAT_OFFSET_X = 4;
-	private static final int KARAT_OFFSET_Y = 2;
-	private static final int KARAT_WIDTH = 3;
-	private static final int KARAT_HEIGHT = 25;
+	private static final int   KARAT_OFFSET_X = 4;
+	private static final int   KARAT_OFFSET_Y = 2;
+	private static final int   KARAT_WIDTH = 3;
+	private static final int   KARAT_HEIGHT = 25;
 	
+	//TEXT OUTPUT CONSTANTS
 	private static final int CONSOLE_TEXT_OFFSET_X = 5;
 	private static final int CONSOLE_TEXT_OFFSET_Y = 20;
+	private static final int LINE_SPACING = 25;
 	
 	/**
 	 * Constructor
@@ -48,12 +50,6 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	public WindowLogger(int linesShown, int x, int y)
 	{
 		this.messages = new String[linesShown];
-		
-//		for(int ii = 0; ii < linesShown; ii++)
-//		{
-//			//TODO: is this necessary?
-//			messages[ii] = "";
-//		}
 		
 		this.showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
 		
@@ -69,8 +65,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	private final AnimatedSequence<Boolean> showKarat;
 	private final StringBuilder inputString;
 
-	private final int x;//=5
-	private final int y;//=5
+	private final int x;
+	private final int y;
 	
 	private String outputString = null;
 	
@@ -131,17 +127,6 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	}
 
 	@Override
-	public void saveLog()
-	{
-	}
-
-	@Override
-	public String readLine()
-	{
-		return outputString;
-	}
-
-	@Override
 	public void onKeyPressed(Keys key, char keyTyped)
 	{
 		if(key.equals(Keys.ENTER))
@@ -166,5 +151,16 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 				showKarat.reset();
 			}
 		}
+	}
+	
+	@Override
+	public String readLine()
+	{
+		return outputString;
+	}
+	
+	@Override
+	public void saveLog()
+	{
 	}
 }
