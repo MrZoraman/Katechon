@@ -33,8 +33,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	private static final Color CONSOLE_FONT_COLOR = new Color(51, 102, 153);
 	
 	private static final Color KARAT_COLOR = Color.GREEN;
-	private static final int KARAT_OFFSET_X = 9;
-	private static final int KARAT_OFFSET_Y = 7;
+	private static final int KARAT_OFFSET_X = 4;
+	private static final int KARAT_OFFSET_Y = 2;
 	private static final int KARAT_WIDTH = 3;
 	private static final int KARAT_HEIGHT = 25;
 	
@@ -99,7 +99,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		{
 			g.setColor(KARAT_COLOR);
 			int xOffset = g.getFontMetrics().charsWidth(inputString.toString().toCharArray(), 0, inputString.length());
-			g.fillRect(KARAT_OFFSET_X + xOffset, KARAT_OFFSET_Y, KARAT_WIDTH, KARAT_HEIGHT);
+			g.fillRect(x + KARAT_OFFSET_X + xOffset, y + KARAT_OFFSET_Y, KARAT_WIDTH, KARAT_HEIGHT);
 		}
 
 		//Draw all of the log messages
