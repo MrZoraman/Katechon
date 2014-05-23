@@ -43,7 +43,7 @@ public class WindowLogger implements ILogger, IDrawable
 		g.setColor(new Color(169, 169, 169, 200));
 		g.fillRect(5, 5, 800, 375);
 
-		g.setFont(new Font("Book Antiqua", Font.PLAIN, 20));
+		g.setFont(new Font("Lucida Console", Font.PLAIN, 15));
 		g.setColor(new Color(51, 102, 153));
 		
 		for(int ii = 0; ii < messages.length; ii++)

@@ -10,6 +10,8 @@ import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
 import apcs.katechon.engine.scheduler.SchedulerTask;
+import apcs.katechon.input.keyboard.KeyPressedListener;
+import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
@@ -48,13 +50,24 @@ public class Test extends KatechonBase
 	@Override
 	public ILogger initLogger() throws Exception
 	{
-		Log.setDebugging(true);
-		return new FileLogger("Testing" + File.separator + "Testing.log", true);
+//		Log.setDebugging(true);
+//		return new FileLogger("Testing" + File.separator + "Testing.log", true);
+		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15);
+		KatechonEngine.getInstance().scheduleTask(new SchedulerTask() {
+			@Override
+			public boolean doTask()
+			{
+				twl.initHideKey(Keys.TILDE);
+				KatechonEngine.getInstance().addDrawable(twl, 0);
+				return true;
+			}
+		});
+		return twl;
 	}
 
 	@Override
 	public void init() 
-	{		
+	{
 		KatechonEngine.getInstance().getSwingWindow().setBackgroundColor(Color.WHITE);
 		
 		SimpleCollisionEngine sce = new SimpleCollisionEngine();
@@ -74,6 +87,14 @@ public class Test extends KatechonBase
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(new Border());
+		
+		Mouse.getInstance().addListener(new MouseClickedListener() {
+			@Override
+			public void onClick(int x, int y)
+			{
+				Log.info("Mouse clicked!: " + x + ", " + y);
+			}
+		});
 		
 		
 		
