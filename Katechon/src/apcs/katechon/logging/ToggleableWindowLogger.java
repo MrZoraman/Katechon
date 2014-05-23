@@ -2,7 +2,6 @@ package apcs.katechon.logging;
 
 import java.awt.Graphics;
 
-import apcs.katechon.input.keyboard.KeyPressedListener;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
 
@@ -33,49 +32,12 @@ public class ToggleableWindowLogger extends WindowLogger {
 	 */
 	public void initHideKey(final Keys key)
 	{
-		final KeyPressedListener listener = this;
-		
 		this.toggleKey = key;
-		
-//		Keyboard.getInstance().addKeyPressedListener(key, new KeyPressedListener() {
-//			@Override
-//			public void onKeyPressed(Keys pressedKey, char keyTyped) {
-//				System.out.println("key pressed!: " + pressedKey);
-//				if(pressedKey.equals(key))
-//				{
-//					hidden = !hidden;
-//					
-//					if(!hidden)
-//					{
-//						Keyboard.getInstance().setExclusiveKeyListener(listener);
-//					}
-//					else
-//					{
-//						Keyboard.getInstance().setExclusiveKeyListener(null);
-//					}
-//				}
-//			}
-//		});
 	}
 	
 	@Override
 	public void onKeyPressed(Keys pressedKey, char keyTyped)
 	{
-		System.out.println("key pressed found!");
-		if(pressedKey.equals(toggleKey))
-		{
-			hidden = !hidden;
-//			
-			if(!hidden)
-			{
-				Keyboard.getInstance().setExclusiveKeyListener(this);
-			}
-			else
-			{
-				Keyboard.getInstance().setExclusiveKeyListener(null);
-			}
-		}
-		
 		if(pressedKey.equals(toggleKey))
 		{
 			hidden = !hidden;
@@ -91,7 +53,10 @@ public class ToggleableWindowLogger extends WindowLogger {
 		}
 		else
 		{
-			super.onKeyPressed(pressedKey, keyTyped);
+			if(!hidden)
+			{
+				super.onKeyPressed(pressedKey, keyTyped);
+			}
 		}
 	}
 	
