@@ -34,6 +34,15 @@ public class ToggleableWindowLogger extends WindowLogger {
 				if(pressedKey.equals(key))
 				{
 					hidden = !hidden;
+					
+					if(!hidden)
+					{
+						Keyboard.getInstance().setExclusiveKeyListener(this);
+					}
+					else
+					{
+						Keyboard.getInstance().setExclusiveKeyListener(null);
+					}
 				}
 			}
 		});
