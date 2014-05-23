@@ -127,7 +127,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	}
 
 	@Override
-	public void onKeyPressed(Keys key, char keyTyped) {
+	public void onKeyPressed(Keys key, char keyTyped)
+	{
 		if(key.equals(Keys.ENTER))
 		{
 			outputString = inputString.toString();

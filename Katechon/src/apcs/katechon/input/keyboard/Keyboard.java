@@ -30,8 +30,6 @@ public class Keyboard implements KeyListener
 	
 	private final Map<Keys, Set<KeyPressedListener>> keyListeners;
 	
-//	private final Set<KeyPressedListener> allKeyListeners;
-	
 	private final Map<Keys, Boolean> keyStates;
 	
 	private KeyPressedListener exclusiveKeyListener;
@@ -42,8 +40,6 @@ public class Keyboard implements KeyListener
 	private Keyboard()
 	{
 		keyListeners = new HashMap<Keys, Set<KeyPressedListener>>();
-		
-//		allKeyListeners = new HashSet<KeyPressedListener>();
 		
 		keyStates = new HashMap<Keys, Boolean>();
 		
@@ -62,13 +58,9 @@ public class Keyboard implements KeyListener
 		keyListeners.get(key).add(listener);
 	}
 	
-//	public void addAllKeyPressedListener(KeyPressedListener listener)
-//	{
-//		allKeyListeners.add(listener);
-//	}
-
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e)
+	{
 		Keys key = Keys.getKey(e.getKeyCode());
 		
 		keyStates.put(key, true);
@@ -114,25 +106,16 @@ public class Keyboard implements KeyListener
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e)
+	{
 		Keys key = Keys.getKey(e.getKeyCode());
 		
 		keyStates.put(key, false);
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-//		if(exclusiveKeyListener != null)
-//		{
-//			exclusiveKeyListener.onKeyPressed(Keys.UNDEFINED, e.getKeyChar());
-//		}
-//		else
-//		{
-//			for(KeyPressedListener listener : allKeyListeners)
-//			{
-//				listener.onKeyPressed(Keys.UNDEFINED, e.getKeyChar());
-//			}
-//		}
+	public void keyTyped(KeyEvent e)
+	{
 	}
 	
 	/**
