@@ -14,6 +14,10 @@ import apcs.katechon.input.keyboard.Keys;
  */
 public class ToggleableWindowLogger extends WindowLogger {
 
+	/**
+	 * Constructor
+	 * @param linesShown The amount of lines to show in the console
+	 */
 	public ToggleableWindowLogger(int linesShown) {
 		super(linesShown);
 		
@@ -21,6 +25,7 @@ public class ToggleableWindowLogger extends WindowLogger {
 	}
 	
 	private boolean hidden;
+	private Keys toggleKey;
 	
 	/**
 	 * Sets the key that this logger will listen on to toggle the visibility of the console
@@ -28,6 +33,10 @@ public class ToggleableWindowLogger extends WindowLogger {
 	 */
 	public void initHideKey(final Keys key)
 	{
+		final KeyPressedListener listener = this;
+		
+		this.toggleKey = key;
+		
 		Keyboard.getInstance().addListener(key, new KeyPressedListener() {
 			@Override
 			public void onKeyPressed(Keys pressedKey) {
@@ -37,7 +46,7 @@ public class ToggleableWindowLogger extends WindowLogger {
 					
 					if(!hidden)
 					{
-						Keyboard.getInstance().setExclusiveKeyListener(this);
+						Keyboard.getInstance().setExclusiveKeyListener(listener);
 					}
 					else
 					{
@@ -46,6 +55,28 @@ public class ToggleableWindowLogger extends WindowLogger {
 				}
 			}
 		});
+	}
+	
+	@Override
+	public void onKeyPressed(Keys key)
+	{
+		if(key.equals(toggleKey))
+		{
+			hidden = !hidden;
+			
+			if(!hidden)
+			{
+				Keyboard.getInstance().setExclusiveKeyListener(this);
+			}
+			else
+			{
+				Keyboard.getInstance().setExclusiveKeyListener(null);
+			}
+		}
+		else
+		{
+			super.onKeyPressed(key);
+		}
 	}
 	
 	@Override

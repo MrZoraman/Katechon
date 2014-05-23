@@ -27,6 +27,7 @@ public enum Keys
 	G		(KeyEvent.VK_G),
 	H		(KeyEvent.VK_H),
 	I		(KeyEvent.VK_I),
+	K		(KeyEvent.VK_K),
 	J		(KeyEvent.VK_J),
 	L		(KeyEvent.VK_L),
 	M		(KeyEvent.VK_M),
@@ -112,6 +113,7 @@ public enum Keys
 	
 	WINDOWS		(KeyEvent.VK_WINDOWS),
 	
+	ALL(-1),//Not a key, but represents all keys
 	UNDEFINED (KeyEvent.VK_UNDEFINED);
 
 	//we keep a map because maps are extremely fast

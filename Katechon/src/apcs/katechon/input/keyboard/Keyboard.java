@@ -29,6 +29,7 @@ public class Keyboard implements KeyListener
 	}
 	
 	private final Map<Keys, Set<KeyPressedListener>> keyListeners;
+	private final Set<KeyPressedListener> allKeyListeners;
 	
 	private final Map<Keys, Boolean> keyStates;
 	
@@ -40,6 +41,7 @@ public class Keyboard implements KeyListener
 	private Keyboard()
 	{
 		keyListeners = new HashMap<Keys, Set<KeyPressedListener>>();
+		allKeyListeners = new HashSet<KeyPressedListener>();
 		keyStates = new HashMap<Keys, Boolean>();
 		
 		exclusiveKeyListener = null;
@@ -69,6 +71,11 @@ public class Keyboard implements KeyListener
 		}
 		else
 		{
+			for(KeyPressedListener listener : allKeyListeners)
+			{
+				listener.onKeyPressed(key);
+			}
+			
 			if(keyListeners.containsKey(key))
 			{
 				for(KeyPressedListener listener : keyListeners.get(key))

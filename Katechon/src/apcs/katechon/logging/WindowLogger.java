@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import apcs.katechon.input.keyboard.KeyPressedListener;
+import apcs.katechon.input.keyboard.Keyboard;
+import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 
@@ -12,8 +15,14 @@ import apcs.katechon.rendering.sprites.AnimatedSequence;
  * @author Matt
  *
  */
-public class WindowLogger implements ILogger, IDrawable
+public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 {
+	//TODO: fix the magic number issues
+	
+	/**
+	 * Constructor
+	 * @param linesShown The amount of lines to show in the console
+	 */
 	public WindowLogger(int linesShown)
 	{
 		messages = new String[linesShown];
@@ -28,6 +37,8 @@ public class WindowLogger implements ILogger, IDrawable
 		
 		showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
 		karatPositionX = 7;
+		
+		Keyboard.getInstance().addListener(Keys.ALL, this);
 	}
 	
 	private static final int LINE_SPACING = 25;
@@ -105,5 +116,10 @@ public class WindowLogger implements ILogger, IDrawable
 	public String readLine()
 	{
 		return inputString;
+	}
+
+	@Override
+	public void onKeyPressed(Keys key) {
+		Log.info("key pressed!: " + key);
 	}
 }
