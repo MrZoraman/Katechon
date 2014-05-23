@@ -28,7 +28,9 @@ public class AnimatedSequence<T>
 		
 		//This is set to -1 because when the updateFrameIndex() is called, it increments the index and then reads the index from the array.
 		//Therefore, When getCurrentFrame() is called for the first time, currentFrameIndex will be set to 0 and all will be good.
-		this.currentFrameIndex = -1;
+		
+		//The above comment is a lie.
+		this.currentFrameIndex = 0;
 		this.ticksSinceLastFrameUpdate = 0;
 	}
 	
