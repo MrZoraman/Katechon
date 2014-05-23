@@ -3,6 +3,9 @@ package apcs.katechon.test;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import apcs.katechon.KatechonEngine;
+import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.collisions.CollisionType;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
@@ -14,6 +17,7 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 {
 	private int x, y, width, height, speed;
 	private boolean control;
+	private CollisionType lastCollision;
 	
 	public SimpleCollidable(int x, int y, int width, int height, int speed, boolean control)
 	{
@@ -86,29 +90,37 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 	{
 		if (this.control)
 		{
-			if (Keyboard.getInstance().isKeyPressed(Keys.W))
+			if (Keyboard.getInstance().isKeyPressed(Keys.W) && lastCollision != CollisionType.TOP)
 			{
 				y -= speed;
-				Log.debug("W key pressed");
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.S))
+			if (Keyboard.getInstance().isKeyPressed(Keys.S) && lastCollision != CollisionType.BOTTOM)
 			{
 				y += speed;
-				Log.debug("S key pressed");
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.A))
+			if (Keyboard.getInstance().isKeyPressed(Keys.A) && lastCollision != CollisionType.LEFT)
 			{
 				x -= speed;
-				Log.debug("A key pressed");
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.D))
+			if (Keyboard.getInstance().isKeyPressed(Keys.D) && lastCollision != CollisionType.RIGHT)
 			{
 				x += speed;
-				Log.debug("D key pressed");
 			}
 		}
+	}
+	
+	@Override
+	public void onCollision(CollisionType type)
+	{
+		this.lastCollision = type;
+	}
+
+	@Override
+	public int getSpeed()
+	{
+		return this.speed;
 	}
 }

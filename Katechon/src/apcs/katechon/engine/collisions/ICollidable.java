@@ -26,4 +26,15 @@ public interface ICollidable
 	 * @return The right most boundary of an object
 	 */
 	public int getRightFace();
+	
+	/**
+	 * @return The speed of the collidable.
+	 */
+	public int getSpeed();
+	
+	/**
+	 * What the collidable should do when a collision occurs.
+	 * @param The type of collision that has occurred.
+	 */
+	public void onCollision(CollisionType type);
 }
