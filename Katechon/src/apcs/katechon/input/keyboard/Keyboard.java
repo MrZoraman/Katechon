@@ -32,6 +32,8 @@ public class Keyboard implements KeyListener
 	
 	private final Map<Keys, Boolean> keyStates;
 	
+	private KeyPressedListener exclusiveKeyListener;
+	
 	/**
 	 * Constructor
 	 */
@@ -39,6 +41,8 @@ public class Keyboard implements KeyListener
 	{
 		keyListeners = new HashMap<Keys, Set<KeyPressedListener>>();
 		keyStates = new HashMap<Keys, Boolean>();
+		
+		exclusiveKeyListener = null;
 	}
 	
 	/**
@@ -59,13 +63,29 @@ public class Keyboard implements KeyListener
 		
 		keyStates.put(key, true);
 		
-		if(keyListeners.containsKey(key))
+		if(exclusiveKeyListener != null)
 		{
-			for(KeyPressedListener listener : keyListeners.get(key))
+			exclusiveKeyListener.onKeyPressed(key);
+		}
+		else
+		{
+			if(keyListeners.containsKey(key))
 			{
-				listener.onKeyPressed(key);
+				for(KeyPressedListener listener : keyListeners.get(key))
+				{
+					listener.onKeyPressed(key);
+				}
 			}
 		}
+	}
+	
+	/**
+	 * Sets an exclusive key listener. When an exclusive key listener is set, no other key events will be fired, and isKeyPressed() will return false every time.
+	 * @param listener The listener to exclusively listen on
+	 */
+	public void setExclusiveKeyListener(KeyPressedListener listener)
+	{
+		exclusiveKeyListener = listener;
 	}
 
 	@Override
@@ -79,13 +99,25 @@ public class Keyboard implements KeyListener
 	public void keyTyped(KeyEvent e) {
 	}
 	
+	/**
+	 * Checks if a key is pressed or not
+	 * @param key The key to check
+	 * @return True if the key is pressed, False if otherwise
+	 */
 	public boolean isKeyPressed(Keys key)
 	{
-		if(keyStates.containsKey(key) == false)
+		if(exclusiveKeyListener == null)
 		{
-			keyStates.put(key, false);
+			if(keyStates.containsKey(key) == false)
+			{
+				keyStates.put(key, false);
+			}
+			
+			return keyStates.get(key);
 		}
-		
-		return keyStates.get(key);
+		else
+		{
+			return false;
+		}
 	}
 }
