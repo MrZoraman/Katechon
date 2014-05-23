@@ -69,27 +69,27 @@ public class SnowLeopard implements IDrawable, IPeriodic
 //		this.y = y;
 //	}
 	
-	@Override
-	public int getX()
-	{
-		return this.x;
-	}
-	
-	@Override
-	public int getY()
-	{
-		return this.y;
-	}
-
-	@Override
-	public int getWidth()
-	{
-		return size;
-	}
-
-	@Override
-	public int getHeight()
-	{
-		return size;
-	}
+//	@Override
+//	public int getX()
+//	{
+//		return this.x;
+//	}
+//	
+//	@Override
+//	public int getY()
+//	{
+//		return this.y;
+//	}
+//
+//	@Override
+//	public int getWidth()
+//	{
+//		return size;
+//	}
+//
+//	@Override
+//	public int getHeight()
+//	{
+//		return size;
+//	}
 }

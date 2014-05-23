@@ -3,6 +3,8 @@ package apcs.katechon;
 import javax.swing.Timer;
 
 import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.scheduler.SchedulerEngine;
+import apcs.katechon.engine.scheduler.SchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
@@ -54,6 +56,26 @@ public class KatechonEngine
 	 */	
 	public KatechonEngine(final Class<? extends KatechonBase> kBaseClass, final IConfig config)
 	{
+		//In order from most important to least important.
+		initSingletonInstance();
+
+		this.periodicTicker = initPeriodicTicker();
+		this.periodicTimer = initPeriodicTimer();
+
+		initEngineManager();
+		initScheduler();
+		
+		this.kBase = initGameInstance(kBaseClass);
+		
+		initLogger();
+		
+		this.window = initWindow(config);
+		
+		initInputs();
+	}
+	
+	private KatechonBase initGameInstance(Class<? extends KatechonBase> kBaseClass)
+	{
 		KatechonBase kBaseInstance = null;
 		
 		try
@@ -72,10 +94,22 @@ public class KatechonEngine
 		//We instantiate an instance in the constructor and then set two references to equal each other down here 
 		//so java will shut up about errors that are stupid. It could be circumvented by removing the 'final'
 		//modifier, but I want kBase to be final.
-		this.kBase = kBaseInstance;
-
-		//Logger
-		//-----------------------------------------------------------------------------
+		return kBaseInstance;
+	}
+	
+	private PeriodicTicker initPeriodicTicker()
+	{
+		return new PeriodicTicker();
+	}
+	
+	private Timer initPeriodicTimer()
+	{
+		//TODO: Tune this timer as well
+		return new Timer(20, periodicTicker);
+	}
+	
+	private void initLogger()
+	{
 		try {
 			Log.init(kBase.initLogger());
 		} catch (Exception e) {
@@ -83,61 +117,51 @@ public class KatechonEngine
 			e.printStackTrace();
 			//Because the logger defaults to a prinstream logger, there is nothing we need to do here (hopefully...).
 		}
-		//-----------------------------------------------------------------------------
-		
-		
-		
-		//PeriodicTicker
-		//-----------------------------------------------------------------------------
-		periodicTicker = new PeriodicTicker();
-		
-		//TODO: Tune this timer as well
-		periodicTimer = new Timer(20, periodicTicker);
-		//-----------------------------------------------------------------------------
-		
-		
-		//Engines
-		//-----------------------------------------------------------------------------
+	}
+	
+	private void initEngineManager()
+	{
 		periodicTicker.addItem(EngineManager.getInstance());
-		//-----------------------------------------------------------------------------
-		
-		
-		
-		//Window
-		//-----------------------------------------------------------------------------
-		//Use the config to set properties for the game engine state
+	}
+	
+	private void initScheduler()
+	{
+		scheduler = new SchedulerEngine();
+		EngineManager.getInstance().addEngine(scheduler);
+	}
+	
+	private SwingWindow initWindow(IConfig config)
+	{
 		int width = config.getInt			(ConfigKey.WIDTH, 				DEFAULT_WIDTH);
 		int height = config.getInt			(ConfigKey.HEIGHT, 				DEFAULT_HEIGHT);
 		String title = config.getString		(ConfigKey.TITLE, 				DEFAULT_TITLE);
 		int amountOfLayers = config.getInt	(ConfigKey.AMOUNT_OF_LAYERS, 	DEFAULT_AMOUNT_OF_LAYERS);
 		
-		window = new SwingWindow(width, height, title, amountOfLayers);
-		//-----------------------------------------------------------------------------
-		
-		
-		
-		//Inputs
-		//-----------------------------------------------------------------------------
+		return new SwingWindow(width, height, title, amountOfLayers);
+	}
+	
+	private void initInputs()
+	{
 		window.addKeyListener(Keyboard.getInstance());
 		window.addMouseListener(Mouse.getInstance());
-		//-----------------------------------------------------------------------------
-		
-		
-		
-		//This is a singleton class!
-		//-----------------------------------------------------------------------------
+	}
+	
+	private void initSingletonInstance()
+	{
 		if(instance != null)
 			throw new IllegalStateException("Cannot create more than one engine!");
 		
 		instance = this;
-		//-----------------------------------------------------------------------------
 	}
+	
 	
 	private final SwingWindow window;
 	
 	private final PeriodicTicker periodicTicker;
 	
 	private final Timer periodicTimer;
+	
+	private SchedulerEngine scheduler;
 	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
@@ -192,5 +216,10 @@ public class KatechonEngine
 	{
 		this.window.getDisplay().getLayer(layer).addDrawable(drawable);
 		return getInstance();
+	}
+	
+	public void scheduleTask(SchedulerTask task)
+	{
+		scheduler.addItem(task);
 	}
 }

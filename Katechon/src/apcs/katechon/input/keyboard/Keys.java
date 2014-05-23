@@ -103,6 +103,8 @@ public enum Keys
 	PLUS		(KeyEvent.VK_PLUS),
 	EQUALS		(KeyEvent.VK_EQUALS),
 	
+	TILDE		(192),//Tilde is 192
+	
 	LEFT_ARROW	(KeyEvent.VK_LEFT),
 	RIGHT_ARROW (KeyEvent.VK_RIGHT),
 	UP_ARROW	(KeyEvent.VK_UP),

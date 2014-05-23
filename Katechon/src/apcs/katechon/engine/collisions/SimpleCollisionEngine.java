@@ -73,7 +73,6 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             && item1.getTopFace() < item2.getBottomFace()
             /*&& item1.getDirection() < 90 || item1.getDirection() > 270*/)
         {
-			Log.debug("--------------------------------- right collision");
             return CollisionType.RIGHT;
         }
         else if ((item1.getLeftFace() == item2.getRightFace() ||
@@ -84,7 +83,6 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             && item1.getTopFace() < item2.getBottomFace()
             /*&& item1.getDirection() < 270 && item1.getDirection() > 90*/)
         {
-        	Log.debug("--------------------------------- left collision");
             return CollisionType.LEFT;
         }
         else if ((item1.getTopFace() == item2.getBottomFace() ||
@@ -95,7 +93,6 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             && item1.getLeftFace() < item2.getRightFace()
             /*&& item1.getDirection() < 180*/)
         {
-        	Log.debug("--------------------------------- top collision");
             return CollisionType.TOP;
         }
         else if ((item1.getBottomFace() == item2.getTopFace() ||
@@ -106,7 +103,6 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             && item1.getLeftFace() < item2.getRightFace()
             /*&& item1.getDirection() > 180*/)
         {
-        	Log.debug("--------------------------------- bottom collision");
             return CollisionType.BOTTOM;
         }
         else
