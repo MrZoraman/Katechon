@@ -113,6 +113,8 @@ public enum Keys
 	
 	WINDOWS		(KeyEvent.VK_WINDOWS),
 	
+	BACKSPACE	(KeyEvent.VK_BACK_SPACE),
+	
 	ALL(-1),//Not a key, but represents all keys
 	UNDEFINED (KeyEvent.VK_UNDEFINED);
 
