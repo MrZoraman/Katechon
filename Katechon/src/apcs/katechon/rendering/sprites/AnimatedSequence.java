@@ -67,4 +67,12 @@ public class AnimatedSequence<T>
 			ticksSinceLastFrameUpdate++;
 		}
 	}
+	
+	/**
+	 * Resets the current frame to the initial frame (sets index to 0)
+	 */
+	public void reset()
+	{
+		currentFrameIndex = 0;
+	}
 }
