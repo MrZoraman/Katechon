@@ -3,13 +3,10 @@ package apcs.katechon.test;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import apcs.katechon.KatechonEngine;
-import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.CollisionType;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
-import apcs.katechon.logging.Log;
 import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.rendering.IDrawable;
 
@@ -27,6 +24,7 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 		this.x = x;
 		this.y = y;
 		this.control = control;
+		this.lastCollision = CollisionType.NONE;
 	}
 
 	@Override

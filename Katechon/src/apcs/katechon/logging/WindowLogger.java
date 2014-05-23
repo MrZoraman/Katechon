@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import apcs.katechon.rendering.IDrawable;
+import apcs.katechon.rendering.sprites.AnimatedSequence;
 
 /**
  * This is a type of logger that logs things on the game window itself
@@ -22,11 +23,21 @@ public class WindowLogger implements ILogger, IDrawable
 			//TODO: is this necessary?
 			messages[ii] = "";
 		}
+		
+		inputString = null;
+		
+		showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
+		karatPositionX = 7;
 	}
 	
 	private static final int LINE_SPACING = 25;
 	
 	private final String[] messages;
+	
+	private String inputString;
+	
+	private AnimatedSequence<Boolean> showKarat;
+	private int karatPositionX;
 	
 	@Override
 	public void log(String message)
@@ -37,14 +48,29 @@ public class WindowLogger implements ILogger, IDrawable
 	@Override
 	public void draw(Graphics g)
 	{
-		int x = 10;
-		int y = 25;
-		
+		//The console overaly
 		g.setColor(new Color(169, 169, 169, 200));
-		g.fillRect(5, 5, 800, 375);
+		g.fillRect(5, 5, 800, 400);
+		
+		//The input bocks
+		g.setColor(new Color(175, 175, 175, 255));
+		g.fillRect(5, 5, 800, 30);
 
+		//Set the font
 		g.setFont(new Font("Lucida Console", Font.PLAIN, 15));
+		
+		//Draw the karat
+		if(showKarat.getCurrentFrame())
+		{
+			g.setColor(Color.GREEN);
+			g.fillRect(karatPositionX, 7, karatPositionX + 13, 26);
+		}
+
+		//Draw all of the log messages
 		g.setColor(new Color(51, 102, 153));
+		
+		int x = 10;
+		int y = 50;
 		
 		for(int ii = 0; ii < messages.length; ii++)
 		{
@@ -78,6 +104,6 @@ public class WindowLogger implements ILogger, IDrawable
 	@Override
 	public String readLine()
 	{
-		return null;
+		return inputString;
 	}
 }

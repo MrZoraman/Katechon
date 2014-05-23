@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import apcs.katechon.logging.Log;
+import static apcs.katechon.engine.collisions.CollisionType.*;
 
 /**
  * A simple implementation of the collision engine. Should serve our needs nicely.
@@ -40,21 +40,25 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 					//TODO: The above method should replace this.
 					CollisionType type = getCollisionType(item, item2);
 					item.onCollision(type);
-					if (type == CollisionType.BOTTOM)
+					if (type == BOTTOM)
 					{
-						item2.onCollision(CollisionType.TOP);
+						item2.onCollision(TOP);
 					}
-					else if (type == CollisionType.TOP)
+					else if (type == TOP)
 					{
-						item2.onCollision(CollisionType.BOTTOM);
+						item2.onCollision(BOTTOM);
 					}
-					else if (type == CollisionType.RIGHT)
+					else if (type == RIGHT)
 					{
-						item2.onCollision(CollisionType.LEFT);
+						item2.onCollision(LEFT);
+					}
+					else if (type == LEFT)
+					{
+						item2.onCollision(RIGHT);
 					}
 					else
 					{
-						item2.onCollision(CollisionType.RIGHT);
+						item2.onCollision(NONE);
 					}
 					
 					collisions.put(item, type);
@@ -73,7 +77,7 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             && item1.getTopFace() < item2.getBottomFace()
             /*&& item1.getDirection() < 90 || item1.getDirection() > 270*/)
         {
-            return CollisionType.RIGHT;
+            return RIGHT;
         }
         else if ((item1.getLeftFace() == item2.getRightFace() ||
         		(item1.getLeftFace() < (item2.getRightFace() + item1.getSpeed()) &&
@@ -83,7 +87,7 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             && item1.getTopFace() < item2.getBottomFace()
             /*&& item1.getDirection() < 270 && item1.getDirection() > 90*/)
         {
-            return CollisionType.LEFT;
+            return LEFT;
         }
         else if ((item1.getTopFace() == item2.getBottomFace() ||
         		(item1.getTopFace() < (item2.getBottomFace() + item1.getSpeed()) &&
@@ -93,7 +97,7 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             && item1.getLeftFace() < item2.getRightFace()
             /*&& item1.getDirection() < 180*/)
         {
-            return CollisionType.TOP;
+            return TOP;
         }
         else if ((item1.getBottomFace() == item2.getTopFace() ||
         		(item1.getBottomFace() < (item2.getTopFace() + item1.getSpeed()) &&
@@ -103,11 +107,11 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             && item1.getLeftFace() < item2.getRightFace()
             /*&& item1.getDirection() > 180*/)
         {
-            return CollisionType.BOTTOM;
+            return BOTTOM;
         }
         else
         {
-            return CollisionType.NONE;
+            return NONE;
         }
 	}
 }
