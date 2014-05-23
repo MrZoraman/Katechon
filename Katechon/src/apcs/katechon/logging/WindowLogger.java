@@ -74,4 +74,10 @@ public class WindowLogger implements ILogger, IDrawable
 	public void saveLog()
 	{
 	}
+
+	@Override
+	public String readLine()
+	{
+		return null;
+	}
 }

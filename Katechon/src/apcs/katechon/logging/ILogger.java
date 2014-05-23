@@ -17,4 +17,10 @@ public interface ILogger
 	 * Save the log to disk if needed. Otherwise this can be left empty.
 	 */
 	public void saveLog();
+	
+	/**
+	 * Gets a line input into the console
+	 * @return The line read. Or null if there was no input.
+	 */
+	public String readLine();
 }

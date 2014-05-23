@@ -14,4 +14,10 @@ public class SilentLogger implements ILogger {
 	@Override
 	public void log(String message) {
 	}
+
+	@Override
+	public String readLine()
+	{
+		return null;
+	}
 }

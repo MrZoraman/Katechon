@@ -68,4 +68,10 @@ public class FileLogger implements ILogger
 		writer.println(message);
 		writer.flush();
 	}
+
+	@Override
+	public String readLine()
+	{
+		return null;
+	}
 }

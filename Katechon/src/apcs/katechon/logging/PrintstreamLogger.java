@@ -26,4 +26,10 @@ public class PrintstreamLogger implements ILogger
 	public void log(String message) {
 		out.println(message);
 	}
+
+	@Override
+	public String readLine()
+	{
+		return null;
+	}
 }
