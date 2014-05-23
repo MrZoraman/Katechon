@@ -49,11 +49,11 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	{
 		this.messages = new String[linesShown];
 		
-		for(int ii = 0; ii < linesShown; ii++)
-		{
-			//TODO: is this necessary?
-			messages[ii] = "";
-		}
+//		for(int ii = 0; ii < linesShown; ii++)
+//		{
+//			//TODO: is this necessary?
+//			messages[ii] = "";
+//		}
 		
 		this.showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
 		
@@ -109,12 +109,10 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		
 		for(int ii = 0; ii < messages.length; ii++)
 		{
-			if(messages[ii].equals(""))
+			if(messages[ii] != null)
 			{
-				continue;
+				g.drawString(messages[ii], x + CONSOLE_TEXT_OFFSET_X, y + CONSOLE_TEXT_OFFSET_Y + (LINE_SPACING * (ii + 1)));
 			}
-			
-			g.drawString(messages[ii], x + CONSOLE_TEXT_OFFSET_X, y + CONSOLE_TEXT_OFFSET_Y + (LINE_SPACING * (ii + 1)));
 		}
 	}
 	
