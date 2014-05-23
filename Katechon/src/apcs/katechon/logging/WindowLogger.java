@@ -36,7 +36,6 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		inputString = null;
 		
 		showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
-		karatPositionX = 7;
 		
 		inputString = new StringBuilder();
 		outputString = null;
@@ -50,7 +49,6 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	
 	private AnimatedSequence<Boolean> showKarat;
 	private String outputString;
-	private int karatPositionX;
 	
 	private StringBuilder inputString;
 	
@@ -72,14 +70,16 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		g.fillRect(5, 5, 800, 30);
 
 		//Set the font
-		g.setFont(new Font("Lucida Console", Font.PLAIN, 15));
+		g.setFont(new Font("Lucida Console", Font.PLAIN, 20));
 		
 		//Draw the karat
 		if(showKarat.getCurrentFrame())
 		{
 			g.setColor(Color.GREEN);
 			//x, y, width, height
-			g.fillRect(karatPositionX, 7, 20, 26);
+//			g.fillRect(karatPositionX, 7, 20, 26);
+			int xOffset = g.getFontMetrics().charsWidth(inputString.toString().toCharArray(), 0, inputString.length());
+			g.fillRect(9 + xOffset, 7, 3, 26);
 		}
 
 		//Draw all of the log messages
@@ -130,7 +130,6 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	public void onKeyPressed(Keys key, char keyTyped) {
 		if(key.equals(Keys.ENTER))
 		{
-			karatPositionX = 7;
 			outputString = inputString.toString();
 			appendToTop("> " + outputString);
 			inputString.setLength(0);
@@ -139,14 +138,11 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		{
 			if(inputString.length() > 0)
 			{
-				karatPositionX -= 25;
 				inputString.setLength(inputString.length() - 1);
 			}
 		}
 		else
 		{
-			karatPositionX += 25;
-			
 			inputString.append(keyTyped);
 			
 			showKarat.reset();
