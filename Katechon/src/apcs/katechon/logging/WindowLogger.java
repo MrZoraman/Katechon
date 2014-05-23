@@ -66,8 +66,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		g.fillRect(5, 5, 800, 400);
 		
 		//The input bocks
-		g.setColor(new Color(175, 175, 175, 255));
-		g.fillRect(5, 5, 800, 30);
+		g.setColor(new Color(127, 127, 127, 200));
+		g.fillRect(5, 5, 800, 29);
 
 		//Set the font
 		g.setFont(new Font("Lucida Console", Font.PLAIN, 20));
@@ -79,7 +79,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 			//x, y, width, height
 //			g.fillRect(karatPositionX, 7, 20, 26);
 			int xOffset = g.getFontMetrics().charsWidth(inputString.toString().toCharArray(), 0, inputString.length());
-			g.fillRect(9 + xOffset, 7, 3, 26);
+			g.fillRect(9 + xOffset, 7, 3, 25);
 		}
 
 		//Draw all of the log messages
@@ -144,9 +144,12 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		}
 		else
 		{
-			inputString.append(keyTyped);
-			
-			showKarat.reset();
+			if(Character.isDefined(keyTyped))
+			{
+				inputString.append(keyTyped);
+				
+				showKarat.reset();
+			}
 		}
 	}
 }

@@ -58,7 +58,7 @@ public class Test extends KatechonBase
 			public boolean doTask()
 			{
 				twl.initHideKey(Keys.TILDE);
-				KatechonEngine.getInstance().addDrawable(twl, 0);
+				KatechonEngine.getInstance().addDrawable(twl, 1);
 				return true;
 			}
 		});

@@ -69,7 +69,6 @@ public class Keyboard implements KeyListener
 		
 		if(keyListeners.containsKey(key))
 		{
-			System.out.println(e.getKeyChar());
 			if(exclusiveKeyListener != null)
 			{
 				exclusiveKeyListener.onKeyPressed(key, e.getKeyChar());
