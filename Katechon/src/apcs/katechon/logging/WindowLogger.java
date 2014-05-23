@@ -38,8 +38,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	private static final int KARAT_WIDTH = 3;
 	private static final int KARAT_HEIGHT = 25;
 	
-	private static final int CONSOLE_TEXT_OFFSET_X = 5;
-	private static final int CONSOLE_TEXT_OFFSET_Y = 20;
+	private static final int CONSOLE_TEXT_OFFSET_X = 10;
+	private static final int CONSOLE_TEXT_OFFSET_Y = 25;
 	
 	/**
 	 * Constructor
