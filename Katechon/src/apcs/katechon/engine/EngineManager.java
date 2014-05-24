@@ -59,7 +59,7 @@ public class EngineManager implements IPeriodic
 	 * @return An engine if it can, or <b>null</b> if it cannot find one you
 	 */
 	@SuppressWarnings("unchecked")
-	public <T> EngineModuleBase<T> getEngine(Class<T> clazz)
+	public <T extends IEngineItem> EngineModuleBase<T> getEngine(Class<T> clazz)
 	{
 		for(EngineModuleBase<?> engine : engines)
 		{

@@ -1,6 +1,7 @@
 package apcs.katechon.engine;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Set;
  *
  * @param <I> The type of object this engine will deal with
  */
-public abstract class EngineModuleBase<I>
+public abstract class EngineModuleBase<I extends IEngineItem>
 {
 	private final Set<I> items;
 	
@@ -53,6 +54,17 @@ public abstract class EngineModuleBase<I>
 	public final void doWork()
 	{
 		process(items);
+		
+		Iterator<I> it = items.iterator();
+		
+		while(it.hasNext())
+		{
+			I item = it.next();
+			if(item.isFinished())
+			{
+				it.remove();
+			}
+		}
 	}
 	
 	/**

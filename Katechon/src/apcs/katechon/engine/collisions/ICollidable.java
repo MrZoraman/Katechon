@@ -2,12 +2,14 @@ package apcs.katechon.engine.collisions;
 
 import java.util.Set;
 
+import apcs.katechon.engine.IEngineItem;
+
 /**
  * Represents something that can collide
  * @author Matt
  *
  */
-public interface ICollidable
+public interface ICollidable extends IEngineItem
 {
 	/**
 	 * @return The upper most boundary of an object
