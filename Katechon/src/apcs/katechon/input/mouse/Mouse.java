@@ -1,5 +1,7 @@
 package apcs.katechon.input.mouse;
 
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashSet;
@@ -51,6 +53,11 @@ public class Mouse implements MouseListener
 		{
 			listener.onClick(event.getX(), event.getY());
 		}
+	}
+	
+	public Point getPosition()
+	{
+		return MouseInfo.getPointerInfo().getLocation();
 	}
 
 	//We probably don't need to use these
