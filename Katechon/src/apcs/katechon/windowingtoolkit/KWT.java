@@ -32,7 +32,7 @@ public class KWT extends Layer implements ISchedulerTask
 	@Override
 	public void doTask()
 	{
-		for(int ii = windows.size(); ii >= 0; ii--)
+		for(int ii = windows.size() - 1; ii >= 0; ii--)
 		{
 			if(windows.get(ii).isFinished())
 			{
