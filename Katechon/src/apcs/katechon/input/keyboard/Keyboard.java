@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -71,14 +72,11 @@ public class Keyboard implements KeyListener
 		{
 			if(exclusiveKeyListener != null)
 			{
-				exclusiveKeyListener.onKeyPressed(key, e.getKeyChar());
+				fireExclusiveKeyListener(key, e.getKeyChar());
 			}
 			else
 			{
-				for(KeyPressedListener listener : keyListeners.get(key))
-				{
-					listener.onKeyPressed(key, e.getKeyChar());
-				}
+				fireKeyEvents(key, key, e.getKeyChar());
 			}
 		}
 		
@@ -86,14 +84,36 @@ public class Keyboard implements KeyListener
 		{
 			if(exclusiveKeyListener == null)
 			{
-				for(KeyPressedListener listener : keyListeners.get(Keys.ALL))
-				{
-					listener.onKeyPressed(key, e.getKeyChar());
-				}
+				fireKeyEvents(Keys.ALL, key, e.getKeyChar());
 			}
 			else
 			{
-				exclusiveKeyListener.onKeyPressed(key, e.getKeyChar());
+				fireExclusiveKeyListener(key, e.getKeyChar());
+			}
+		}
+	}
+	
+	//TODO: documentation
+	private void fireExclusiveKeyListener(Keys key, char keyChar)
+	{
+		exclusiveKeyListener.onKeyPressed(key, keyChar);
+		if(exclusiveKeyListener.isFinished())
+		{
+			exclusiveKeyListener = null;
+		}
+	}
+	
+	//TODO: documentation
+	private void fireKeyEvents(Keys key, Keys keyPressed, char keyChar)
+	{
+		Iterator<KeyPressedListener> it = keyListeners.get(key).iterator();
+		while(it.hasNext())
+		{
+			KeyPressedListener listener = it.next();
+			listener.onKeyPressed(keyPressed, keyChar);
+			if(listener.isFinished())
+			{
+				it.remove();
 			}
 		}
 	}
