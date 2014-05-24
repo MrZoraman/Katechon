@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
+//TODO: documentation
 public class Window implements IDisplayable
 {
 	private static final int BORDER_WIDTH = 6;
