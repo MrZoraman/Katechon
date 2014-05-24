@@ -13,6 +13,7 @@ import apcs.katechon.periodic.IPeriodic;
  * @author Matt
  *
  */
+//TODO: ENGINES MIGHT BE THE LAST THING HOLDING ONTO A REFERENCE TO AN OBJECT, THUS KEEPING IT IN MEMORY (AKA FAT MEMORY LEAK)
 public class EngineManager implements IPeriodic
 {
 	private static EngineManager instance = null;

@@ -9,6 +9,7 @@ import java.util.Set;
  * Holds IPeriodic items and controls their ticking.
  * @author Matt
  */
+//TODO: add this to the engine family
 public class PeriodicTicker implements ActionListener
 {
 	/**

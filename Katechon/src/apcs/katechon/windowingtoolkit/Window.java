@@ -2,6 +2,8 @@ package apcs.katechon.windowingtoolkit;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.HashSet;
+import java.util.Set;
 
 import apcs.katechon.rendering.IDrawable;
 
@@ -15,6 +17,8 @@ public class Window implements IDrawable
 		this.x = x;
 		this.y = y;
 		
+		this.buttons = new HashSet<Button>();
+		
 		this.width = width;
 		this.height = height;
 		
@@ -24,6 +28,8 @@ public class Window implements IDrawable
 
 	private final int width;
 	private final int height;
+	
+	private final Set<Button> buttons;
 	
 	private int x;
 	private int y;
