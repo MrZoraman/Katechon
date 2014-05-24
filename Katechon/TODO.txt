@@ -1,0 +1,9 @@
+This is a list of the major todo items
+
+1. Fix the MAJOR memory leak
+2. Make the periodic utility an engine
+3. Make the renderer an engine?
+4. Make the console a window
+5. Lots o' documentation!
+6. Command binding system
+7. Multiple log system
