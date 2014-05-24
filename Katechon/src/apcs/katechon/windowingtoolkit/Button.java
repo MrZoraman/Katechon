@@ -11,6 +11,10 @@ import apcs.katechon.rendering.IDrawable;
 
 public abstract class Button implements MouseClickedListener, IPeriodic, IDrawable
 {
+	//TODO: explain these constants
+	private static final int X_OFFSET = -3;
+	private static final int Y_OFFSET = -26;
+	
 	public Button(int x, int y, int width, int height)
 	{
 		this.x = x;
@@ -61,6 +65,7 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 	public void onTick()
 	{
 		Point mouseLocRelativeToWindow = getPointRelativeToWindow(Mouse.getInstance().getPosition());
+		System.out.println(mouseLocRelativeToWindow);
 		
 		if(isMouseOnButton(mouseLocRelativeToWindow))
 		{
@@ -91,7 +96,7 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 	
 	private Point getPointRelativeToWindow(int x, int y)
 	{
-		return new Point(x - window.getX(), y - window.getY());
+		return new Point(x - window.getX() + X_OFFSET, y - window.getY() + Y_OFFSET);
 	}
 	
 	//panel x and y!
