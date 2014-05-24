@@ -3,30 +3,18 @@ package apcs.katechon.windowingtoolkit;
 //TODO: make it actually do stuff
 public class CloseButton extends Button
 {
-	public CloseButton(int x, int y, int width, int height)
+	public CloseButton(Window window, int x, int y, int width, int height)
 	{
 		super(x, y, width, height);
+		
+		this.window = window;
 	}
+	
+	private final Window window;
 	
 	@Override
 	public void onClick()
 	{
-		System.out.println("destroying!");
+		window.onClose();
 	}
-
-	@Override
-	public boolean isFinished() {
-		//TODO: this
-		return false;
-	}
-	
-//	@Override
-//	public void draw(Graphics g)
-//	{
-//		super.draw(g);
-//		
-//		g.setColor(Color.WHITE);
-//		
-//		g.drawString("X", getX() + getWindow().getX(), getY() + getWindow().getY());
-//	}
 }

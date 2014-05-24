@@ -25,7 +25,7 @@ public class Window implements IDisplayable
 		this.backgroundColor = new Color(53, 53, 53);
 		this.borderColor = new Color(51, 102, 153);
 		
-		this.addButton(new CloseButton(width - CLOSE_BUTTON_SIZE - BORDER_WIDTH, BORDER_WIDTH, CLOSE_BUTTON_SIZE, CLOSE_BUTTON_SIZE));
+		this.addButton(new CloseButton(this, width - CLOSE_BUTTON_SIZE - BORDER_WIDTH, BORDER_WIDTH, CLOSE_BUTTON_SIZE, CLOSE_BUTTON_SIZE));
 		
 		this.visible = false;
 		this.finished = false;
@@ -120,5 +120,15 @@ public class Window implements IDisplayable
 	public void setFinished(boolean finished)
 	{
 		this.finished = finished;
+		
+		for(IDisplayable displayable : displayables)
+		{
+			displayable.setFinished(finished);
+		}
+	}
+	
+	protected void onClose()
+	{
+		setFinished(true);
 	}
 }
