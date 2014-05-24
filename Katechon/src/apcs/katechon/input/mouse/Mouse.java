@@ -1,6 +1,5 @@
 package apcs.katechon.input.mouse;
 
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -30,6 +29,8 @@ public class Mouse implements MouseListener, MouseMotionListener
 	}
 	
 	private Set<MouseClickedListener> mouseListeners;
+	private Point currentMousePosition;
+	private boolean isPressed;
 	
 	/**
 	 * Constructor
@@ -37,6 +38,8 @@ public class Mouse implements MouseListener, MouseMotionListener
 	private Mouse()
 	{
 		mouseListeners = new HashSet<MouseClickedListener>();
+		currentMousePosition = new Point(0, 0);
+		isPressed = false;
 	}
 	
 	/**
@@ -59,7 +62,31 @@ public class Mouse implements MouseListener, MouseMotionListener
 	//TODO: documentation
 	public Point getPosition()
 	{
-		return MouseInfo.getPointerInfo().getLocation();
+		return currentMousePosition;
+	}
+	
+	//TODO: documentation
+	public boolean isPressed()
+	{
+		return isPressed;
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent event)
+	{
+		this.currentMousePosition = event.getPoint();
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent event)
+	{
+		isPressed = true;
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent event)
+	{
+		isPressed = false;
 	}
 
 	//We probably don't need to use these
@@ -71,19 +98,8 @@ public class Mouse implements MouseListener, MouseMotionListener
 	public void mouseExited(MouseEvent arg0) {
 	}
 
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-	}
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent arg0) {
 	}
 }
