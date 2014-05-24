@@ -5,7 +5,6 @@ import java.util.Set;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.collisions.CollisionType;
 import apcs.katechon.engine.collisions.ICollidable;
-import apcs.katechon.logging.Log;
 
 public class Border implements ICollidable
 {

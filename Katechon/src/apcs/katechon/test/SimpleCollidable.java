@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Set;
 
-import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.CollisionType;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.input.keyboard.Keyboard;
