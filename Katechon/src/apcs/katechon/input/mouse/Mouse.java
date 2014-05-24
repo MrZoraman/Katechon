@@ -4,6 +4,7 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import java.util.Set;
  * @author Sean
  *
  */
-public class Mouse implements MouseListener
+public class Mouse implements MouseListener, MouseMotionListener
 {
 	private static Mouse instance;
 	
@@ -55,6 +56,7 @@ public class Mouse implements MouseListener
 		}
 	}
 	
+	//TODO: documentation
 	public Point getPosition()
 	{
 		return MouseInfo.getPointerInfo().getLocation();
@@ -75,5 +77,13 @@ public class Mouse implements MouseListener
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
 	}
 }

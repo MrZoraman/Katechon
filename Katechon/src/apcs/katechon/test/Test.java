@@ -96,7 +96,15 @@ public class Test extends KatechonGameBase
 			}
 		});
 		
-		
+		EngineManager.getInstance().getEngine(SchedulerTask.class).addItem(new SchedulerTask()
+		{
+			@Override
+			public boolean doTask()
+			{
+				System.out.println(Mouse.getInstance().getPosition());
+				return false;
+			}
+		});
 		
 //		//Tested the FileLogger, seems to function properly.
 ////		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));

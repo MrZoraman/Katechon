@@ -21,7 +21,7 @@ public class Layer
 	/**
 	 * Create a new Layer.
 	 */
-	Layer()
+	protected Layer()
 	{
 		drawables = new HashSet<IDrawable>();
 	}
