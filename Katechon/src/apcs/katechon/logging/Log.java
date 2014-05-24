@@ -2,6 +2,8 @@ package apcs.katechon.logging;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Static log class. This contains all static methods for easy and clean access throughout the code.
@@ -18,23 +20,26 @@ public class Log
 	{
 	}
 	
-	private static ILogger _logger;
+	private static final Set<ILogger> loggers;
+
 	private static boolean debugging;
 	
 	static
 	{
-		//default logger. Gets overwritten with the init() method.
-		_logger = new PrintstreamLogger(System.out);
+		loggers = new HashSet<ILogger>();
+		//always prints out to the printstream
+		loggers.add(new PrintstreamLogger(System.out));
+		
 		debugging = false;
 	}
 	
 	/**
-	 * Initializes a non-default logger.
+	 * Adds a logger to the set of loggers that will handle logging
 	 * @param logger An implementation of ILogger.
 	 */
-	public static void init(ILogger logger)
+	public static void initLogger(ILogger logger)
 	{
-		_logger = logger;
+		loggers.add(logger);
 	}
 
 	/**
@@ -43,7 +48,10 @@ public class Log
 	 */
 	public static void info(String message)
 	{
-		_logger.log(getTimeStamp() + " [INFO] " + "\t"  + message);
+		for(ILogger logger : loggers)
+		{
+			logger.log(getTimeStamp() + " [INFO] " + "\t"  + message);
+		}
 	}
 
 	/**
@@ -52,7 +60,10 @@ public class Log
 	 */
 	public static void error(String message)
 	{
-		_logger.log(getTimeStamp() + " [ERROR] " + "\t" + message);
+		for(ILogger logger : loggers)
+		{
+			logger.log(getTimeStamp() + " [ERROR] " + "\t" + message);
+		}
 	}
 
 	/**
@@ -61,7 +72,10 @@ public class Log
 	 */
 	public static void fatal(String message)
 	{
-		_logger.log(getTimeStamp() + " [FATAL] " + "\t"  + message);
+		for(ILogger logger : loggers)
+		{
+			logger.log(getTimeStamp() + " [FATAL] " + "\t"  + message);
+		}
 	}
 
 	/**
@@ -70,10 +84,13 @@ public class Log
 	 */
 	public static void exception(Exception ex)
 	{
-		_logger.log(getTimeStamp() + " [EXCEPTION] " + ex.getClass().getCanonicalName() + ": " + ex.getLocalizedMessage());
-		for(StackTraceElement element : ex.getStackTrace())
+		for(ILogger logger : loggers)
 		{
-			_logger.log(getTimeStamp() + " [EXCEPTION] \t" + element.toString());
+			logger.log(getTimeStamp() + " [EXCEPTION] " + ex.getClass().getCanonicalName() + ": " + ex.getLocalizedMessage());
+			for(StackTraceElement element : ex.getStackTrace())
+			{
+				logger.log(getTimeStamp() + " [EXCEPTION] \t" + element.toString());
+			}
 		}
 	}
 
@@ -94,7 +111,10 @@ public class Log
 	{
 		if(debugging)
 		{
-			_logger.log(getTimeStamp() + " [DEBUG] " + "\t"  + message);
+			for(ILogger logger : loggers)
+			{
+				logger.log(getTimeStamp() + " [DEBUG] " + "\t"  + message);
+			}
 		}
 	}
 	
@@ -103,7 +123,10 @@ public class Log
 	 */
 	public static void onEnd()
 	{
-		_logger.saveLog();
+		for(ILogger logger : loggers)
+		{
+			logger.saveLog();
+		}
 	}
 	
 	/**
