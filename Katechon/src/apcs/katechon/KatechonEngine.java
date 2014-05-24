@@ -143,7 +143,7 @@ public class KatechonEngine
 	{
 		window.addKeyListener(Keyboard.getInstance());
 		window.addMouseListener(Mouse.getInstance());
-		window.a
+		window.addMouseMotionListener(Mouse.getInstance());
 	}
 	
 	private void initSingletonInstance()
