@@ -119,7 +119,7 @@ public class KatechonEngine
 			//this bad boy is now built right in
 			ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
 			twl.initHideKey(Keys.TILDE);
-			addDrawable(twl, 0);
+			KWT.getInstance().addWindow(twl);
 			
 		} catch (Exception e) {
 			System.err.println("Failed to instantiate logger!");

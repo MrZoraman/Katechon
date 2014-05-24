@@ -7,15 +7,15 @@ import java.awt.Graphics;
 import apcs.katechon.input.keyboard.KeyPressedListener;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
-import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
+import apcs.katechon.windowingtoolkit.Window;
 
 /**
  * This is a type of logger that logs things on the game window itself
  * @author Matt
  *
  */
-public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
+public class WindowLogger extends Window implements ILogger, KeyPressedListener
 {
 	//CONSOLE OVERLAY
 	private static final Color CONSOLE_OVERLAY_COLOR = new Color(169, 169, 169, 200);
@@ -49,6 +49,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	 */
 	public WindowLogger(int linesShown, int x, int y)
 	{
+		super(x, y, CONSOLE_OVERLAY_WIDTH, INPUT_OVERLAY_HEIGHT);
+		
 		this.messages = new String[linesShown];
 		
 		this.showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
@@ -79,6 +81,7 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	@Override
 	public void draw(Graphics g)
 	{
+		
 		//The console overaly
 		g.setColor(CONSOLE_OVERLAY_COLOR);
 		g.fillRect(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT);
@@ -110,6 +113,8 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 				g.drawString(messages[ii], x + CONSOLE_TEXT_OFFSET_X, y + CONSOLE_TEXT_OFFSET_Y + (LINE_SPACING * (ii + 1)));
 			}
 		}
+
+		super.draw(g);
 	}
 	
 	/**

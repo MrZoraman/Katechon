@@ -19,11 +19,8 @@ public class ToggleableWindowLogger extends WindowLogger {
 	 */
 	public ToggleableWindowLogger(int linesShown, int x, int y) {
 		super(linesShown, x, y);
-		
-		this.hidden = true;
 	}
 	
-	private boolean hidden;
 	private Keys toggleKey;
 	
 	/**
@@ -40,9 +37,9 @@ public class ToggleableWindowLogger extends WindowLogger {
 	{
 		if(pressedKey.equals(toggleKey))
 		{
-			hidden = !hidden;
+			this.setVisible(!this.isVisible());
 			
-			if(!hidden)
+			if(isVisible())
 			{
 				Keyboard.getInstance().setExclusiveKeyListener(this);
 			}
@@ -53,7 +50,7 @@ public class ToggleableWindowLogger extends WindowLogger {
 		}
 		else
 		{
-			if(!hidden)
+			if(isVisible())
 			{
 				super.onKeyPressed(pressedKey, keyTyped);
 			}
@@ -63,7 +60,7 @@ public class ToggleableWindowLogger extends WindowLogger {
 	@Override
 	public void draw(Graphics g)
 	{
-		if(hidden == false)
+		if(isVisible())
 		{
 			super.draw(g);
 		}
