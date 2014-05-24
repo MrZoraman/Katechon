@@ -17,7 +17,7 @@ import java.util.Set;
  */
 public class Layer
 {
-	private Set<IDrawable> drawables;
+	private final Set<IDrawable> drawables;
 	
 	/**
 	 * Create a new Layer.
