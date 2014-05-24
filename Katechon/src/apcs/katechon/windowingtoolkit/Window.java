@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
+import apcs.katechon.KatechonEngine;
+import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.rendering.IDrawable;
 
 public class Window implements IDrawable
@@ -45,6 +47,21 @@ public class Window implements IDrawable
 		
 		g.setColor(backgroundColor);
 		g.fillRect(x + BORDER_WIDTH, y + WINDOW_BAR_HEIGHT, width - (BORDER_WIDTH * 2), height - (BORDER_WIDTH + WINDOW_BAR_HEIGHT));
+		
+		for(Button button : buttons)
+		{
+			button.draw(g);
+		}
+	}
+	
+	public void addButton(Button button)
+	{
+		button.setWindow(this);
+		buttons.add(button);
+		Mouse.getInstance().addListener(button);
+		KatechonEngine.getInstance().addPeriodic(button);
+		//TODO: layer!
+		KatechonEngine.getInstance().addDrawable(button, 1);
 	}
 	
 	public void setBackgroundColor(Color color)

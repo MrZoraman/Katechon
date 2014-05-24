@@ -11,10 +11,8 @@ import apcs.katechon.rendering.IDrawable;
 
 public abstract class Button implements MouseClickedListener, IPeriodic, IDrawable
 {
-	public Button(Window window, int x, int y, int width, int height)
+	public Button(int x, int y, int width, int height)
 	{
-		this.window = window;
-		
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -32,7 +30,7 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 	private final int width;
 	private final int height;
 	
-	private final Window window;
+	private Window window;
 	
 	private Color passiveColor;
 	private Color mouseOverColor;
@@ -79,6 +77,11 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 		{
 			currentColor = passiveColor;
 		}
+	}
+	
+	void setWindow(Window window)
+	{
+		this.window = window;
 	}
 	
 	private Point getPointRelativeToWindow(Point point)
