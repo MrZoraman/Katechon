@@ -49,7 +49,7 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener
 	 */
 	public WindowLogger(int linesShown, int x, int y)
 	{
-		super(x, y, CONSOLE_OVERLAY_WIDTH, INPUT_OVERLAY_HEIGHT);
+		super(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT);
 		
 		this.messages = new String[linesShown];
 		
@@ -81,10 +81,11 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener
 	@Override
 	public void draw(Graphics g)
 	{
+		super.draw(g);
 		
-		//The console overaly
-		g.setColor(CONSOLE_OVERLAY_COLOR);
-		g.fillRect(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT);
+//		//The console overaly
+//		g.setColor(CONSOLE_OVERLAY_COLOR);
+//		g.fillRect(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT);
 		
 		//The input bocks
 		g.setColor(INPUT_OVERLAY_COLOR);
@@ -113,8 +114,6 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener
 				g.drawString(messages[ii], x + CONSOLE_TEXT_OFFSET_X, y + CONSOLE_TEXT_OFFSET_Y + (LINE_SPACING * (ii + 1)));
 			}
 		}
-
-		super.draw(g);
 	}
 	
 	/**
