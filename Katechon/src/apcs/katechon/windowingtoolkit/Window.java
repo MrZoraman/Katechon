@@ -81,6 +81,11 @@ public class Window implements IDisplayable
 		}
 	}
 	
+	public boolean isVisible()
+	{
+		return visible;
+	}
+	
 	public void setBackgroundColor(Color color)
 	{
 		this.backgroundColor = color;
