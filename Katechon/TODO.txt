@@ -6,3 +6,5 @@ This is a list of the major todo items
 5. Lots o' documentation!
 6. Command binding system
 7. Multiple log system
+8. The layer system is a mess.
+9. What is happening with the layer and drawables n' stuff with the kwt?
