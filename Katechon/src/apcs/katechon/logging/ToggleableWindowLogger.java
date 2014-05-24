@@ -37,7 +37,7 @@ public class ToggleableWindowLogger extends WindowLogger {
 	{
 		if(pressedKey.equals(toggleKey))
 		{
-			this.setVisible(!this.isVisible());
+			toggleVisibility();
 			
 			if(isVisible())
 			{
@@ -64,5 +64,16 @@ public class ToggleableWindowLogger extends WindowLogger {
 		{
 			super.draw(g);
 		}
+	}
+	
+	@Override
+	public void onClose()
+	{
+		toggleVisibility();
+	}
+	
+	private void toggleVisibility()
+	{
+		this.setVisible(!this.isVisible());
 	}
 }
