@@ -1,8 +1,5 @@
 package apcs.katechon.windowingtoolkit;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 //TODO: make it actually do stuff
 public class CloseButton extends Button
 {
@@ -17,14 +14,13 @@ public class CloseButton extends Button
 		System.out.println("destroying!");
 	}
 	
-	@Override
-	public void draw(Graphics g)
-	{
-		super.draw(g);
-		
-		g.setColor(Color.WHITE);
-		
-		System.out.println("getX(): " + getX() + " getY(): " + getY());
-		g.drawString("X", getX(), getY());
-	}
+//	@Override
+//	public void draw(Graphics g)
+//	{
+//		super.draw(g);
+//		
+//		g.setColor(Color.WHITE);
+//		
+//		g.drawString("X", getX() + getWindow().getX(), getY() + getWindow().getY());
+//	}
 }

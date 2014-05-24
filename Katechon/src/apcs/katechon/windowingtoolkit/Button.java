@@ -89,6 +89,11 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 		this.window = window;
 	}
 	
+	protected Window getWindow()
+	{
+		return window;
+	}
+	
 	private Point getPointRelativeToWindow(Point point)
 	{
 		return getPointRelativeToWindow(point.x, point.y);
