@@ -23,13 +23,6 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		mainEngine.start();
 	}
-	
-//	@Override
-//	public ILogger initLogger() throws Exception
-//	{
-//		Log.setDebugging(true);
-//		return new FileLogger("Logs" + File.separator + "Log.log", true);
-//	}
 
 	@Override
 	public void init()
