@@ -82,6 +82,11 @@ public class Test extends KatechonGameBase
 			{
 				Log.info("Mouse clicked!: " + x + ", " + y);
 			}
+
+			@Override
+			public boolean isFinished() {
+				return false;
+			}
 		});
 		
 //		Window window = new Window(40, 40, 500, 500);

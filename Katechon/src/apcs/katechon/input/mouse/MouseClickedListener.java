@@ -1,11 +1,13 @@
 package apcs.katechon.input.mouse;
 
+import apcs.katechon.engine.IEngineItem;
+
 /**
  * An event handler for mouse clicks (left or right click)
  * @author Matt
  *
  */
-public interface MouseClickedListener 
+public interface MouseClickedListener extends IEngineItem
 {
 	/**
 	 * Called when the mouse is clicked

@@ -96,10 +96,14 @@ public class Keyboard implements KeyListener
 	//TODO: documentation
 	private void fireExclusiveKeyListener(Keys key, char keyChar)
 	{
-		exclusiveKeyListener.onKeyPressed(key, keyChar);
 		if(exclusiveKeyListener.isFinished())
 		{
 			exclusiveKeyListener = null;
+		}
+		else
+		{
+			//TODO: removed next time key is pressed...
+			exclusiveKeyListener.onKeyPressed(key, keyChar);
 		}
 	}
 	
@@ -110,10 +114,14 @@ public class Keyboard implements KeyListener
 		while(it.hasNext())
 		{
 			KeyPressedListener listener = it.next();
-			listener.onKeyPressed(keyPressed, keyChar);
 			if(listener.isFinished())
 			{
 				it.remove();
+			}
+			else
+			{
+				//TODO: removed next time key is pressed...
+				listener.onKeyPressed(keyPressed, keyChar);
 			}
 		}
 	}

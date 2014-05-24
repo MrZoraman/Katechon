@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -52,7 +53,24 @@ public class Mouse implements MouseListener, MouseMotionListener
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent event) {
+	public void mouseClicked(MouseEvent event)
+	{
+		Iterator<MouseClickedListener> it = mouseListeners.iterator();
+		
+		while(it.hasNext())
+		{
+			MouseClickedListener listener = it.next();
+			if(listener.isFinished())
+			{
+				it.remove();
+			}
+			else
+			{
+				//TODO: gets removed next time the mouse is clicked...
+				listener.onClick(event.getX(), event.getY());
+			}
+		}
+		
 		for(MouseClickedListener listener : mouseListeners)
 		{
 			listener.onClick(event.getX(), event.getY());
