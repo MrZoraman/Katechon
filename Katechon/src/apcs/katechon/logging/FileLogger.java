@@ -19,7 +19,7 @@ public class FileLogger implements ILogger
 	 * @param fileName The name of the file to save the log data to. If the file doesn't exist, the FileLogger will try to create it.
 	 * @throws IOException If something goes wrong while writing to/creating the file
 	 */
-	public FileLogger(String fileName, boolean logToConsole) throws IOException
+	public FileLogger(String fileName) throws IOException
 	{
 		File logFile = new File(fileName);
 		if(!logFile.exists())
@@ -34,14 +34,12 @@ public class FileLogger implements ILogger
 		bufferedWriter = new BufferedWriter(fileWriter);
 		
 		writer = new PrintWriter(bufferedWriter);
-		this.logToConsole = logToConsole;
 	}
 	
 	private final FileWriter fileWriter;
 	private final BufferedWriter bufferedWriter;
 	
 	private final PrintWriter writer;
-	private final boolean logToConsole;
 	
 	@Override
 	public void saveLog()
@@ -60,11 +58,6 @@ public class FileLogger implements ILogger
 	@Override
 	public void log(String message)
 	{
-		if(logToConsole)
-		{
-			System.out.println(message);
-		}
-		
 		writer.println(message);
 		writer.flush();
 	}
