@@ -72,11 +72,12 @@ public class KatechonEngine
 		
 		this.window = initWindow(config);
 		
+		initInputs(window);
+		
 		initLogger("Logs" + File.separator + "Log.log");
 		
 		initKWT(scheduler, window.getDisplay());
 		
-		initInputs();
 	}
 	
 
@@ -151,7 +152,7 @@ public class KatechonEngine
 		return new SwingWindow(width, height, title, amountOfLayers);
 	}
 	
-	private void initInputs()
+	private void initInputs(SwingWindow window)
 	{
 		window.addKeyListener(Keyboard.getInstance());
 		window.addMouseListener(Mouse.getInstance());
