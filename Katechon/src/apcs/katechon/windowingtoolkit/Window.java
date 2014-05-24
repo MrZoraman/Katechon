@@ -11,8 +11,10 @@ import apcs.katechon.rendering.IDrawable;
 
 public class Window implements IDrawable
 {
-	static final int BORDER_WIDTH = 6;
-	static final int WINDOW_BAR_HEIGHT = 30;
+	private static final int BORDER_WIDTH = 6;
+	private static final int WINDOW_BAR_HEIGHT = 30;
+	
+	private static final int CLOSE_BUTTON_SIZE = WINDOW_BAR_HEIGHT - 12;
 	
 	public Window(int x, int y, int width, int height)
 	{
@@ -27,7 +29,7 @@ public class Window implements IDrawable
 		this.backgroundColor = new Color(53, 53, 53);
 		this.borderColor = new Color(51, 102, 153);
 		
-		this.addButton(new CloseButton(this));
+		this.addButton(new CloseButton(width - CLOSE_BUTTON_SIZE - BORDER_WIDTH, BORDER_WIDTH, CLOSE_BUTTON_SIZE, CLOSE_BUTTON_SIZE));
 	}
 
 	private final int width;

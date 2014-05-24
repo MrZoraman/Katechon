@@ -19,6 +19,7 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 	{
 		this.x = x;
 		this.y = y;
+		System.out.println("x: " + x + ", y: " + y);
 		this.width = width;
 		this.height = height;
 		
@@ -122,5 +123,25 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 	public void setMouseHeldColor(Color color)
 	{
 		this.mouseHeldColor = color;
+	}
+	
+	protected int getX()
+	{
+		return x;
+	}
+	
+	protected int getY()
+	{
+		return y;
+	}
+	
+	protected int getWidth()
+	{
+		return width;
+	}
+	
+	protected int getHeight()
+	{
+		return height;
 	}
 }
