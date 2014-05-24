@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.util.List;
 import java.util.ArrayList;
 
+import apcs.katechon.windowingtoolkit.KWT;
+
 /**
  * A single stage of the game. (e.g. Splash screen, Menu, Main game)
  * @author Sean
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 public class Display
 {
 	private final List<Layer> layers;
+	private final Layer kwtLayer;
 	
 	/**
 	 * Creates a new Display.
@@ -18,6 +21,7 @@ public class Display
 	public Display(int amountOfLayers)
 	{
 		this.layers = new ArrayList<Layer>();
+		kwtLayer = KWT.getInstance();
 		
 		for(int ii = 0; ii < amountOfLayers; ii++)
 		{
@@ -52,6 +56,8 @@ public class Display
 		{
 			layers.get(i).drawAll(g);
 		}
+		
+		kwtLayer.drawAll(g);
 	}
 	
 	/**
