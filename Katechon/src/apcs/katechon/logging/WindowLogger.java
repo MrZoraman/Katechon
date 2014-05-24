@@ -17,40 +17,58 @@ import apcs.katechon.rendering.sprites.AnimatedSequence;
  */
 public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 {
-	//TODO: fix the magic number issues
+	//CONSOLE OVERLAY
+	private static final Color CONSOLE_OVERLAY_COLOR = new Color(169, 169, 169, 200);
+	private static final int   CONSOLE_OVERLAY_WIDTH = 800;
+	private static final int   CONSOLE_OVERLAY_HEIGHT = 400;
+	private static final Color INPUT_OVERLAY_COLOR = new Color(127, 127, 127, 200);
+	private static final int   INPUT_OVERLAY_HEIGHT = 29;
+	
+	//FONT
+	private static final String CONSOLE_FONT_NAME = "Lucida Console";
+	private static final int    CONSOLE_FONT_STYLE = Font.PLAIN;
+	private static final int    CONSOLE_FONT_SIZE = 20;
+	private static final Font   CONSOLE_FONT = new Font(CONSOLE_FONT_NAME, CONSOLE_FONT_STYLE, CONSOLE_FONT_SIZE);
+	private static final Color  CONSOLE_FONT_COLOR = new Color(51, 102, 153);
+	
+	//KARAT
+	private static final Color KARAT_COLOR = Color.GREEN;
+	private static final int   KARAT_OFFSET_X = 4;
+	private static final int   KARAT_OFFSET_Y = 2;
+	private static final int   KARAT_WIDTH = 3;
+	private static final int   KARAT_HEIGHT = 25;
+	
+	//TEXT OUTPUT CONSTANTS
+	private static final int CONSOLE_TEXT_OFFSET_X = 5;
+	private static final int CONSOLE_TEXT_OFFSET_Y = 20;
+	private static final int LINE_SPACING = 25;
 	
 	/**
 	 * Constructor
 	 * @param linesShown The amount of lines to show in the console
 	 */
-	public WindowLogger(int linesShown)
+	public WindowLogger(int linesShown, int x, int y)
 	{
-		messages = new String[linesShown];
+		this.messages = new String[linesShown];
 		
-		for(int ii = 0; ii < linesShown; ii++)
-		{
-			//TODO: is this necessary?
-			messages[ii] = "";
-		}
+		this.showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
 		
-		inputString = null;
+		this.inputString = new StringBuilder();
 		
-		showKarat = new AnimatedSequence<Boolean>(new Boolean[]{true, false}, 5);
-		
-		inputString = new StringBuilder();
-		outputString = null;
+		this.x = x;
+		this.y = y;
 		
 		Keyboard.getInstance().addKeyPressedListener(Keys.ALL, this);
 	}
 	
-	private static final int LINE_SPACING = 25;
-	
 	private final String[] messages;
+	private final AnimatedSequence<Boolean> showKarat;
+	private final StringBuilder inputString;
+
+	private final int x;
+	private final int y;
 	
-	private AnimatedSequence<Boolean> showKarat;
-	private String outputString;
-	
-	private StringBuilder inputString;
+	private String outputString = null;
 	
 	@Override
 	public void log(String message)
@@ -62,42 +80,35 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	public void draw(Graphics g)
 	{
 		//The console overaly
-		g.setColor(new Color(169, 169, 169, 200));
-		g.fillRect(5, 5, 800, 400);
+		g.setColor(CONSOLE_OVERLAY_COLOR);
+		g.fillRect(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT);
 		
 		//The input bocks
-		g.setColor(new Color(127, 127, 127, 200));
-		g.fillRect(5, 5, 800, 29);
+		g.setColor(INPUT_OVERLAY_COLOR);
+		g.fillRect(x, y, CONSOLE_OVERLAY_WIDTH, INPUT_OVERLAY_HEIGHT);
 
 		//Set the font
-		g.setFont(new Font("Lucida Console", Font.PLAIN, 20));
+		g.setFont(CONSOLE_FONT);
 		
 		//Draw the karat
 		if(showKarat.getCurrentFrame())
 		{
-			g.setColor(Color.GREEN);
-			//x, y, width, height
-//			g.fillRect(karatPositionX, 7, 20, 26);
+			g.setColor(KARAT_COLOR);
 			int xOffset = g.getFontMetrics().charsWidth(inputString.toString().toCharArray(), 0, inputString.length());
-			g.fillRect(9 + xOffset, 7, 3, 25);
+			g.fillRect(x + KARAT_OFFSET_X + xOffset, y + KARAT_OFFSET_Y, KARAT_WIDTH, KARAT_HEIGHT);
 		}
 
 		//Draw all of the log messages
-		g.setColor(new Color(51, 102, 153));
+		g.setColor(CONSOLE_FONT_COLOR);
 		
-		int x = 10;
-		int y = 25;
-		
-		g.drawString(inputString.toString(), x, y);
-		y += LINE_SPACING;
+		g.drawString(inputString.toString(), x + CONSOLE_TEXT_OFFSET_X, y + CONSOLE_TEXT_OFFSET_Y);
 		
 		for(int ii = 0; ii < messages.length; ii++)
 		{
-			if(messages[ii].equals("")) continue;
-			
-//			System.out.println("printing " + messages[ii]);
-			g.drawString(messages[ii], x, y);
-			y += LINE_SPACING;
+			if(messages[ii] != null)
+			{
+				g.drawString(messages[ii], x + CONSOLE_TEXT_OFFSET_X, y + CONSOLE_TEXT_OFFSET_Y + (LINE_SPACING * (ii + 1)));
+			}
 		}
 	}
 	
@@ -113,17 +124,6 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 		}
 		
 		messages[0] = message;
-	}
-
-	@Override
-	public void saveLog()
-	{
-	}
-
-	@Override
-	public String readLine()
-	{
-		return outputString;
 	}
 
 	@Override
@@ -151,5 +151,16 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 				showKarat.reset();
 			}
 		}
+	}
+	
+	@Override
+	public String readLine()
+	{
+		return outputString;
+	}
+	
+	@Override
+	public void saveLog()
+	{
 	}
 }

@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.Random;
 
-import apcs.katechon.KatechonBase;
+import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
@@ -32,7 +32,7 @@ import apcs.katechon.utils.MappedConfig;
  *
  */
 @SuppressWarnings("unused")
-public class Test extends KatechonBase
+public class Test extends KatechonGameBase
 {
 	/**
 	 * Entry point
@@ -52,7 +52,7 @@ public class Test extends KatechonBase
 	{
 //		Log.setDebugging(true);
 //		return new FileLogger("Testing" + File.separator + "Testing.log", true);
-		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15);
+		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
 		KatechonEngine.getInstance().scheduleTask(new SchedulerTask() {
 			@Override
 			public boolean doTask()

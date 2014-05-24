@@ -69,7 +69,6 @@ public class SwingWindow
 		
 		display = new Display(amountOfLayers);
 		
-		//TODO: tune the delay
 		//This makes it more of a drawing timer than anything else.
 		drawingTimer = new Timer(50, new ActionListener(){
 

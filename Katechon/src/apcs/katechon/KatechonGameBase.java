@@ -4,16 +4,16 @@ import apcs.katechon.logging.ILogger;
 import apcs.katechon.logging.PrintstreamLogger;
 
 /**
- * The game will extend this class. It will then be plugged into some sort of game engine singleton that will then do what needs to be done to do what we want to be done.
+ * This is the base class for a game that will be based off of the Katechon engine. When plugging a class into the katechon engine constructor, it must extend this class.
  * @author Matt
  *
  */
-//TODO: maybe a little better documentation here ^
-public abstract class KatechonBase
+public abstract class KatechonGameBase
 {
-//	private InputHandler handler;
-	
-	public KatechonBase()
+	/**
+	 * Constructor. The default empty constructor is the one that is called by the Katechon engine when a game instance is constructed.
+	 */
+	public KatechonGameBase()
 	{
 		
 	}

@@ -17,8 +17,8 @@ public class ToggleableWindowLogger extends WindowLogger {
 	 * Constructor
 	 * @param linesShown The amount of lines to show in the console
 	 */
-	public ToggleableWindowLogger(int linesShown) {
-		super(linesShown);
+	public ToggleableWindowLogger(int linesShown, int x, int y) {
+		super(linesShown, x, y);
 		
 		this.hidden = true;
 	}

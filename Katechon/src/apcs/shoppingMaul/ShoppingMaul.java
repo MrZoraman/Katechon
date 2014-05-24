@@ -3,7 +3,7 @@ package apcs.shoppingMaul;
 import java.awt.Color;
 import java.io.File;
 
-import apcs.katechon.KatechonBase;
+import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.ILogger;
@@ -12,7 +12,7 @@ import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 
-public class ShoppingMaul extends KatechonBase
+public class ShoppingMaul extends KatechonGameBase
 {
 	public static IConfig config;
 	
