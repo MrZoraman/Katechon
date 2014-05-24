@@ -8,10 +8,12 @@ import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
+import apcs.katechon.rendering.Display;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
+import apcs.katechon.windowingtoolkit.KWT;
 
 /**
  * This is the class that runs the entire operation. You give it an instance of {@link apcs.katechon.KatechonGameBase KatechonBase} and it does it's magic
@@ -67,6 +69,8 @@ public class KatechonEngine
 		
 		this.window = initWindow(config);
 		
+		initKWT(scheduler, window.getDisplay());
+		
 		initInputs();
 	}
 	
@@ -110,6 +114,13 @@ public class KatechonEngine
 			e.printStackTrace();
 			//Because the logger defaults to a prinstream logger, there is nothing we need to do here (hopefully...).
 		}
+	}
+	
+	private void initKWT(SchedulerEngine scheduler, Display display)
+	{
+		KWT kwt = KWT.getInstance();
+		scheduler.addItem(kwt);
+		display.initKWTLayer(kwt);
 	}
 	
 	private SchedulerEngine initScheduler()

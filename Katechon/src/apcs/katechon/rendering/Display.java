@@ -13,7 +13,8 @@ import apcs.katechon.windowingtoolkit.KWT;
 public class Display
 {
 	private final List<Layer> layers;
-	private final Layer kwtLayer;
+	
+	private Layer kwtLayer;
 	
 	/**
 	 * Creates a new Display.
@@ -57,7 +58,10 @@ public class Display
 			layers.get(i).drawAll(g);
 		}
 		
-		kwtLayer.drawAll(g);
+		if(kwtLayer != null)
+		{
+			kwtLayer.drawAll(g);
+		}
 	}
 	
 	/**
@@ -68,5 +72,10 @@ public class Display
 	public Layer getLayer(int num)
 	{
 		return this.layers.get(num);
+	}
+	
+	public void initKWTLayer(KWT kwt)
+	{
+		this.kwtLayer = kwt;
 	}
 }
