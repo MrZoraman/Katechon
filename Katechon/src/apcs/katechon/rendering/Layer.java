@@ -2,6 +2,7 @@ package apcs.katechon.rendering;
 
 import java.awt.Graphics;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -50,9 +51,16 @@ public class Layer
 	 */
 	void drawAll(Graphics g)
 	{
-		for (IDrawable d : drawables)
+		Iterator<IDrawable> it = drawables.iterator();
+		
+		while(it.hasNext())
 		{
+			IDrawable d = it.next();
 			d.draw(g);
+			if(d.isFinished())
+			{
+				it.remove();
+			}
 		}
 	}
 	
