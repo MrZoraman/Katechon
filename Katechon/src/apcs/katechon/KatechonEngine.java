@@ -120,6 +120,7 @@ public class KatechonEngine
 			ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
 			twl.initHideKey(Keys.TILDE);
 			KWT.getInstance().addWindow(twl);
+			twl.setTitle("Console");
 			
 			Log.initLogger(twl);
 			

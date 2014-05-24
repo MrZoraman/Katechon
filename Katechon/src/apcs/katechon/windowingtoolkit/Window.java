@@ -1,6 +1,7 @@
 package apcs.katechon.windowingtoolkit;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +11,15 @@ public class Window implements IDisplayable
 {
 	private static final int BORDER_WIDTH = 6;
 	private static final int WINDOW_BAR_HEIGHT = 30;
+	
+	private static final int TITLE_OFFSET_X = Window.getBorderWidth() + 5;
+	private static final int TITLE_OFFSET_Y = Window.getWindowBarHeight() - 3;
+
+	private static final String TITLE_FONT_NAME = "Arial";
+	private static final int    TITLE_FONT_STYLE = Font.PLAIN;
+	private static final int    TITLE_FONT_SIZE = 20;
+	private static final Font   TITLE_FONT = new Font(TITLE_FONT_NAME, TITLE_FONT_STYLE, TITLE_FONT_SIZE);
+	private static final Color  TITLE_FONT_COLOR = new Color(151, 203, 255);
 	
 	public static int getBorderWidth()
 	{
@@ -56,6 +66,8 @@ public class Window implements IDisplayable
 	private boolean visible;
 	private boolean finished;
 	
+	private String title;
+	
 	@Override
 	public void draw(Graphics g)
 	{
@@ -70,6 +82,13 @@ public class Window implements IDisplayable
 			for(IDisplayable displayable : displayables)
 			{
 				displayable.draw(g);
+			}
+			
+			if(title != null)
+			{
+				g.setColor(TITLE_FONT_COLOR);
+				g.setFont(TITLE_FONT);
+				g.drawString(title, TITLE_OFFSET_X, TITLE_OFFSET_Y);
 			}
 		}
 	}
@@ -146,5 +165,10 @@ public class Window implements IDisplayable
 	protected void onClose()
 	{
 		setFinished(true);
+	}
+	
+	public void setTitle(String title)
+	{
+		this.title = title;
 	}
 }
