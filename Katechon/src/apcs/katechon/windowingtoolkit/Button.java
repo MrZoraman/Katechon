@@ -65,7 +65,6 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 	public void onTick()
 	{
 		Point mouseLocRelativeToWindow = getPointRelativeToWindow(Mouse.getInstance().getPosition());
-		System.out.println(mouseLocRelativeToWindow);
 		
 		if(isMouseOnButton(mouseLocRelativeToWindow))
 		{

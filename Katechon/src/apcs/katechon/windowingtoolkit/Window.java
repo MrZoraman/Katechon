@@ -11,8 +11,8 @@ import apcs.katechon.rendering.IDrawable;
 
 public class Window implements IDrawable
 {
-	private static final int BORDER_WIDTH = 6;
-	private static final int WINDOW_BAR_HEIGHT = 30;
+	static final int BORDER_WIDTH = 6;
+	static final int WINDOW_BAR_HEIGHT = 30;
 	
 	public Window(int x, int y, int width, int height)
 	{
@@ -26,6 +26,8 @@ public class Window implements IDrawable
 		
 		this.backgroundColor = new Color(53, 53, 53);
 		this.borderColor = new Color(51, 102, 153);
+		
+		this.addButton(new CloseButton(this));
 	}
 
 	private final int width;
@@ -82,5 +84,15 @@ public class Window implements IDrawable
 	public int getY()
 	{
 		return y;
+	}
+	
+	public int getWidth()
+	{
+		return width;
+	}
+	
+	public int getHeight()
+	{
+		return height;
 	}
 }
