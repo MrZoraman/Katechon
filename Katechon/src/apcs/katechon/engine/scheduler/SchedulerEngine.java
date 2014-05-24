@@ -1,6 +1,5 @@
 package apcs.katechon.engine.scheduler;
 
-import java.util.Iterator;
 import java.util.Set;
 
 import apcs.katechon.engine.EngineModuleBase;
@@ -23,18 +22,9 @@ public class SchedulerEngine extends EngineModuleBase<SchedulerTask>
 	@Override
 	protected void process(Set<SchedulerTask> items)
 	{
-		Iterator<SchedulerTask> it = items.iterator();
-		
-		while(it.hasNext())
+		for(SchedulerTask task : items)
 		{
-			SchedulerTask task = it.next();
-			
-			boolean done = task.doTask();
-			
-			if(done)
-			{
-				it.remove();
-			}
+			task.doTask();
 		}
 	}
 }

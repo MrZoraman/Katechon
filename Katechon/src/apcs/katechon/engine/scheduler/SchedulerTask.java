@@ -12,7 +12,6 @@ public interface SchedulerTask extends IEngineItem
 {
 	/**
 	 * This method will contain the work to do
-	 * @return True if the task is finished, and therefore can be removed from the scheduler, or false if the task needs to run again on the next game tick.
 	 */
-	public boolean doTask();
+	public void doTask();
 }
