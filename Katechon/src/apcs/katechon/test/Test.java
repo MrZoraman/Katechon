@@ -56,16 +56,15 @@ public class Test extends KatechonGameBase
 		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
 		KatechonEngine.getInstance().scheduleTask(new SchedulerTask() {
 			@Override
-			public boolean doTask()
+			public void doTask()
 			{
 				twl.initHideKey(Keys.TILDE);
 				KatechonEngine.getInstance().addDrawable(twl, 1);
-				return true;
 			}
 
 			@Override
 			public boolean isFinished() {
-				return false;
+				return true;
 			}
 		});
 		return twl;
