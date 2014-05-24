@@ -121,6 +121,8 @@ public class KatechonEngine
 			twl.initHideKey(Keys.TILDE);
 			KWT.getInstance().addWindow(twl);
 			
+			Log.initLogger(twl);
+			
 		} catch (Exception e) {
 			System.err.println("Failed to instantiate logger!");
 			e.printStackTrace();
