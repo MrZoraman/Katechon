@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
+import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
-import apcs.katechon.rendering.IDrawable;
 
-public abstract class Button implements MouseClickedListener, ISchedulerTask, IDrawable
+public abstract class Button implements MouseClickedListener, ISchedulerTask, IDisplayable
 {
 	//TODO: explain these constants
 	private static final int X_OFFSET = -3;
@@ -28,6 +28,14 @@ public abstract class Button implements MouseClickedListener, ISchedulerTask, ID
 		this.mouseHeldColor = new Color(255, 0, 0);
 		
 		this.currentColor = passiveColor;
+		
+		this.visible = false;
+		this.finished = false;
+		
+		Mouse.getInstance().addListener(this);
+		KatechonEngine.getInstance().scheduleTask(this);
+		//TODO: layer!
+		KatechonEngine.getInstance().addDrawable(this, 1);
 	}
 	
 	private final int x;
@@ -43,47 +51,77 @@ public abstract class Button implements MouseClickedListener, ISchedulerTask, ID
 	
 	private Color currentColor;
 	
+	private boolean visible;
+	private boolean finished;
+	
 	public abstract void onClick();
 	
 	@Override
 	public void draw(Graphics g)
 	{
-		int xRelativeToScreen = x + window.getX();
-		int yRelativeToScreen = y + window.getY();
-		
-		g.setColor(currentColor);
-		g.fillRect(xRelativeToScreen, yRelativeToScreen, width, height);
+		if(visible)
+		{
+			int xRelativeToScreen = x + window.getX();
+			int yRelativeToScreen = y + window.getY();
+			
+			g.setColor(currentColor);
+			g.fillRect(xRelativeToScreen, yRelativeToScreen, width, height);
+		}
 	}
 	
 	@Override
 	public void onClick(int x, int y)
 	{
-		if(isMouseOnButton(getPointRelativeToWindow(x, y)))
+		if(visible)
 		{
-			onClick();
+			if(isMouseOnButton(getPointRelativeToWindow(x, y)))
+			{
+				onClick();
+			}
 		}
 	}
 	
 	@Override
 	public void doTask()
 	{
-		Point mouseLocRelativeToWindow = getPointRelativeToWindow(Mouse.getInstance().getPosition());
-		
-		if(isMouseOnButton(mouseLocRelativeToWindow))
+		if(visible)
 		{
-			if(Mouse.getInstance().isPressed())
+			Point mouseLocRelativeToWindow = getPointRelativeToWindow(Mouse.getInstance().getPosition());
+			
+			if(isMouseOnButton(mouseLocRelativeToWindow))
 			{
-				currentColor = mouseHeldColor;
+				if(Mouse.getInstance().isPressed())
+				{
+					currentColor = mouseHeldColor;
+				}
+				else
+				{
+					currentColor = mouseOverColor;
+				}
 			}
 			else
 			{
-				currentColor = mouseOverColor;
+				currentColor = passiveColor;
 			}
 		}
-		else
-		{
-			currentColor = passiveColor;
-		}
+	}
+	
+	@Override
+	public void setVisible(boolean visible)
+	{
+		this.visible = visible;
+	}
+	
+	@Override
+	public boolean isFinished()
+	{
+		return finished;
+	}
+	
+	@Override
+	public void setFinished(boolean finished)
+	{
+		this.finished = finished;
 	}
 	
 	void setWindow(Window window)

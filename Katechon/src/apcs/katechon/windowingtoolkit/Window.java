@@ -5,11 +5,7 @@ import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
-import apcs.katechon.KatechonEngine;
-import apcs.katechon.input.mouse.Mouse;
-import apcs.katechon.rendering.IDrawable;
-
-public class Window implements IDrawable
+public class Window implements IDisplayable
 {
 	private static final int BORDER_WIDTH = 6;
 	private static final int WINDOW_BAR_HEIGHT = 30;
@@ -21,7 +17,7 @@ public class Window implements IDrawable
 		this.x = x;
 		this.y = y;
 		
-		this.buttons = new HashSet<Button>();
+		this.displayables = new HashSet<IDisplayable>();
 		
 		this.width = width;
 		this.height = height;
@@ -30,12 +26,15 @@ public class Window implements IDrawable
 		this.borderColor = new Color(51, 102, 153);
 		
 		this.addButton(new CloseButton(width - CLOSE_BUTTON_SIZE - BORDER_WIDTH, BORDER_WIDTH, CLOSE_BUTTON_SIZE, CLOSE_BUTTON_SIZE));
+		
+		this.visible = false;
+		this.finished = false;
 	}
 
 	private final int width;
 	private final int height;
 	
-	private final Set<Button> buttons;
+	private final Set<IDisplayable> displayables;
 	
 	private int x;
 	private int y;
@@ -43,29 +42,42 @@ public class Window implements IDrawable
 	private Color backgroundColor;
 	private Color borderColor;
 	
+	private boolean visible;
+	private boolean finished;
+	
 	@Override
 	public void draw(Graphics g)
 	{
-		g.setColor(borderColor);
-		g.fillRect(x, y, width, height);
-		
-		g.setColor(backgroundColor);
-		g.fillRect(x + BORDER_WIDTH, y + WINDOW_BAR_HEIGHT, width - (BORDER_WIDTH * 2), height - (BORDER_WIDTH + WINDOW_BAR_HEIGHT));
-		
-		for(Button button : buttons)
+		if(visible)
 		{
-			button.draw(g);
+			g.setColor(borderColor);
+			g.fillRect(x, y, width, height);
+			
+			g.setColor(backgroundColor);
+			g.fillRect(x + BORDER_WIDTH, y + WINDOW_BAR_HEIGHT, width - (BORDER_WIDTH * 2), height - (BORDER_WIDTH + WINDOW_BAR_HEIGHT));
+			
+			for(IDisplayable displayable : displayables)
+			{
+				displayable.draw(g);
+			}
 		}
 	}
 	
 	public void addButton(Button button)
 	{
 		button.setWindow(this);
-		buttons.add(button);
-		Mouse.getInstance().addListener(button);
-		KatechonEngine.getInstance().scheduleTask(button);
-		//TODO: layer!
-		KatechonEngine.getInstance().addDrawable(button, 1);
+		displayables.add(button);
+	}
+
+	@Override
+	public void setVisible(boolean visible)
+	{
+		this.visible = visible;
+		
+		for(IDisplayable displayable : displayables)
+		{
+			displayable.setVisible(visible);
+		}
 	}
 	
 	public void setBackgroundColor(Color color)
@@ -99,8 +111,14 @@ public class Window implements IDrawable
 	}
 
 	@Override
-	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isFinished()
+	{
+		return finished;
+	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		this.finished = finished;
 	}
 }
