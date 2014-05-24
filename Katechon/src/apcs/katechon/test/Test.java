@@ -25,6 +25,7 @@ import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
+import apcs.katechon.windowingtoolkit.KWT;
 import apcs.katechon.windowingtoolkit.Window;
 
 /**
@@ -106,7 +107,7 @@ public class Test extends KatechonGameBase
 		});
 		
 		Window window = new Window(40, 40, 500, 500);
-		KatechonEngine.getInstance().addDrawable(window, 0);
+		KWT.getInstance().addWindow(window);
 		
 //		//Tested the FileLogger, seems to function properly.
 ////		Log.init(new FileLogger("Testing" + File.separator + "Testing.log"));
