@@ -50,7 +50,7 @@ public class Log
 	{
 		for(ILogger logger : loggers)
 		{
-			logger.log(getTimeStamp() + " [INFO] " + "\t"  + message);
+			logger.log(getTimeStamp() + " [INFO]      " + message);
 		}
 	}
 
@@ -62,7 +62,7 @@ public class Log
 	{
 		for(ILogger logger : loggers)
 		{
-			logger.log(getTimeStamp() + " [ERROR] " + "\t" + message);
+			logger.log(getTimeStamp() + " [ERROR]     " + message);
 		}
 	}
 
@@ -74,7 +74,7 @@ public class Log
 	{
 		for(ILogger logger : loggers)
 		{
-			logger.log(getTimeStamp() + " [FATAL] " + "\t"  + message);
+			logger.log(getTimeStamp() + " [FATAL]     " + message);
 		}
 	}
 
@@ -113,7 +113,7 @@ public class Log
 		{
 			for(ILogger logger : loggers)
 			{
-				logger.log(getTimeStamp() + " [DEBUG] " + "\t"  + message);
+				logger.log(getTimeStamp() + " [DEBUG]     " + message);
 			}
 		}
 	}
