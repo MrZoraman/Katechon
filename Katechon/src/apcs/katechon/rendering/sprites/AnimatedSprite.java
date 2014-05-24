@@ -20,6 +20,8 @@ public class AnimatedSprite<I> implements IDrawable
 	private int x;
 	private int y;
 	
+	private boolean finished;
+	
 	private final Map<I, AnimatedSequence<BufferedImage>> animationSequences;
 	
 	private AnimatedSequence<BufferedImage> currentSequence;
@@ -37,6 +39,8 @@ public class AnimatedSprite<I> implements IDrawable
 		this.animationSequences = new HashMap<I, AnimatedSequence<BufferedImage>>();
 		
 		this.currentSequence = null;
+		
+		this.finished = false;
 	}
 	
 	/**
@@ -111,5 +115,20 @@ public class AnimatedSprite<I> implements IDrawable
 	public void setY(int y)
 	{
 		this.y = y;
+	}
+
+	@Override
+	public boolean isFinished()
+	{
+		return finished;
+	}
+	
+	/**
+	 * Sets if this drawable is done being drawn or not. If finished is set to true, it will be removed from the renderer.
+	 * @param finished Is this drawable done being drawn?
+	 */
+	public void setFinished(boolean finished)
+	{
+		this.finished = finished;
 	}
 }

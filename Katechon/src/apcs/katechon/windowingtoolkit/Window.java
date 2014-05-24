@@ -97,4 +97,10 @@ public class Window implements IDrawable
 	{
 		return height;
 	}
+
+	@Override
+	public boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -163,4 +163,10 @@ public class WindowLogger implements ILogger, IDrawable, KeyPressedListener
 	public void saveLog()
 	{
 	}
+
+	@Override
+	public boolean isFinished() {
+		//The logger is never finished.
+		return false;
+	}
 }
