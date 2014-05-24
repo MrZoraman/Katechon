@@ -1,6 +1,6 @@
 Katechon
 ========
 
-Game Engine / fun stuff for APCS
+This is a simple 2d game engine written entirely in java.
 
-Then we make snow leapards and french men and the likes!
+We are building it from the ground up as our final project in AP Computer Science.
