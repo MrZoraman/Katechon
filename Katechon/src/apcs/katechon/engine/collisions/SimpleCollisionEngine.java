@@ -1,6 +1,7 @@
 package apcs.katechon.engine.collisions;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,25 +17,17 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	/*Not sure about this as the map will limit each collidable to having only one collision type at a time
 	* allowing the chance of a collision to fail.
 	*/
-	private Map<ICollidable, CollisionType> collisions;
+	private Map<ICollidable, Set<CollisionType>> collisions;
 	
 	public SimpleCollisionEngine()
 	{
-		this.collisions = new HashMap<ICollidable, CollisionType>();
+		this.collisions = new HashMap<ICollidable, Set<CollisionType>>();
 	}
 	
 	@Override
-	public Map<ICollidable, CollisionType> getCollisions(ICollidable collidable)
+	public Map<ICollidable, Set<CollisionType>> getCollisions(ICollidable collidable)
 	{
-		Map<ICollidable, CollisionType> temp = new HashMap<ICollidable, CollisionType>();
-		for(ICollidable ic : collisions.keySet())
-		{
-			if (ic.equals(collidable))
-			{
-				temp.put(ic, collisions.get(ic));
-			}
-		}
-		return temp;
+		return collisions;
 	}
 
 	@Override
@@ -49,35 +42,52 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 					//For testing purposes.
 					//TODO: The above method should replace this.
 					CollisionType type = getCollisionType(item, item2);
-					item.onCollision(type);
-					collisions.put(item, type);
+					//item.onCollision(type);
+					Set<CollisionType> types = collisions.get(item);
+					if (types == null)
+					{
+						types = new HashSet<CollisionType>();
+					}
+
+					types.add(type);
+					
+					Set<CollisionType> types2 = collisions.get(item2);
+					if (types2 == null)
+					{
+						types2 = new HashSet<CollisionType>();
+					}
 					if (type == BOTTOM)
 					{
-						item2.onCollision(TOP);
-						collisions.put(item2, TOP);
+						//item2.onCollision(TOP);
+						types2.add(TOP);
 					}
 					else if (type == TOP)
 					{
-						item2.onCollision(BOTTOM);
-						collisions.put(item2, BOTTOM);
+						//item2.onCollision(BOTTOM);
+						types2.add(BOTTOM);
 					}
 					else if (type == RIGHT)
 					{
-						item2.onCollision(LEFT);
-						collisions.put(item2, LEFT);
+						//item2.onCollision(LEFT);
+						types2.add(LEFT);
 					}
 					else if (type == LEFT)
 					{
-						item2.onCollision(RIGHT);
-						collisions.put(item2, RIGHT);
+						//item2.onCollision(RIGHT);
+						types2.add(RIGHT);
 					}
 					else
 					{
-						item2.onCollision(NONE);
-						collisions.put(item2, NONE);
+						//item2.onCollision(NONE);
+						types2.clear();
+						//types2.add(NONE);
 					}
 					
-					collisions.put(item, type);
+					collisions.put(item2, types2);
+					collisions.put(item, types);
+					
+					item.onCollision(collisions.get(item));
+					item2.onCollision(collisions.get(item2));
 				}
 			}
 		}

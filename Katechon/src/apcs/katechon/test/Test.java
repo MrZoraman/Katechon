@@ -75,17 +75,21 @@ public class Test extends KatechonGameBase
 		
 		Random r = new Random();
 		
-		SimpleCollidable sc1 = new SimpleCollidable(r.nextInt(1000), r.nextInt(1000), 50, 50, 10, true);
-		SimpleCollidable sc2 = new SimpleCollidable(r.nextInt(1000), r.nextInt(1000), 50, 50, 10, false);
+		SimpleCollidable sc1 = new SimpleCollidable(r.nextInt(500), r.nextInt(500), 50, 50, 10, true);
+		SimpleCollidable sc2 = new SimpleCollidable(r.nextInt(500), r.nextInt(500), 50, 50, 10, false);
+		SimpleCollidable sc3 = new SimpleCollidable(r.nextInt(500), r.nextInt(500), 50, 50, 10, false);
 		
 		KatechonEngine.getInstance().addDrawable(sc1, 0);
 		KatechonEngine.getInstance().addDrawable(sc2, 0);
+		KatechonEngine.getInstance().addDrawable(sc3, 0);
 
 		KatechonEngine.getInstance().addPeriodic(sc1);
 		KatechonEngine.getInstance().addPeriodic(sc2);
+		KatechonEngine.getInstance().addPeriodic(sc3);
 		
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);
+		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc3);
 //		EngineManager.getInstance().getEngine(ICollidable.class).addItem(new Border());
 		
 		Mouse.getInstance().addListener(new MouseClickedListener() {

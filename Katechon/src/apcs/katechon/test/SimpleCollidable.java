@@ -2,7 +2,9 @@ package apcs.katechon.test;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Set;
 
+import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.CollisionType;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.input.keyboard.Keyboard;
@@ -14,7 +16,7 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 {
 	private int x, y, width, height, speed;
 	private boolean control;
-	private CollisionType lastCollision;
+	private Set<CollisionType> collisions;
 	
 	public SimpleCollidable(int x, int y, int width, int height, int speed, boolean control)
 	{
@@ -24,7 +26,6 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 		this.x = x;
 		this.y = y;
 		this.control = control;
-		this.lastCollision = CollisionType.NONE;
 	}
 
 	@Override
@@ -88,37 +89,40 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 	{
 		if (this.control)
 		{
-			if (Keyboard.getInstance().isKeyPressed(Keys.W) && lastCollision != CollisionType.TOP)
+			if (Keyboard.getInstance().isKeyPressed(Keys.W) && !collisions.contains(CollisionType.TOP))
 			{
 				y -= speed;
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.S) && lastCollision != CollisionType.BOTTOM)
+			if (Keyboard.getInstance().isKeyPressed(Keys.S) && !collisions.contains(CollisionType.BOTTOM))
 			{
 				y += speed;
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.A) && lastCollision != CollisionType.LEFT)
+			if (Keyboard.getInstance().isKeyPressed(Keys.A) && !collisions.contains(CollisionType.LEFT))
 			{
 				x -= speed;
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.D) && lastCollision != CollisionType.RIGHT)
+			if (Keyboard.getInstance().isKeyPressed(Keys.D) && !collisions.contains(CollisionType.RIGHT))
 			{
 				x += speed;
 			}
 		}
 	}
 	
-	@Override
-	public void onCollision(CollisionType type)
-	{
-		this.lastCollision = type;
-	}
+	
+	
 
 	@Override
 	public int getSpeed()
 	{
 		return this.speed;
+	}
+
+	@Override
+	public void onCollision(Set<CollisionType> types)
+	{
+		this.collisions = types;
 	}
 }
