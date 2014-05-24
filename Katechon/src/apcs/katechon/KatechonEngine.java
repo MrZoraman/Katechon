@@ -1,13 +1,18 @@
 package apcs.katechon;
 
+import java.io.File;
+
 import javax.swing.Timer;
 
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.scheduler.SchedulerEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
+import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.input.mouse.Mouse;
+import apcs.katechon.logging.FileLogger;
 import apcs.katechon.logging.Log;
+import apcs.katechon.logging.ToggleableWindowLogger;
 import apcs.katechon.rendering.Display;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
@@ -65,9 +70,9 @@ public class KatechonEngine
 		
 		this.kBase = initGameInstance(kBaseClass);
 		
-		initLogger();
-		
 		this.window = initWindow(config);
+		
+		initLogger("Logs" + File.separator + "Log.log");
 		
 		initKWT(scheduler, window.getDisplay());
 		
@@ -105,10 +110,16 @@ public class KatechonEngine
 		return kBaseInstance;
 	}
 	
-	private void initLogger()
+	private void initLogger(String filePath)
 	{
 		try {
-			Log.init(kBase.initLogger());
+			Log.initLogger(new FileLogger(filePath));
+			
+			//this bad boy is now built right in
+			ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
+			twl.initHideKey(Keys.TILDE);
+			addDrawable(twl, 0);
+			
 		} catch (Exception e) {
 			System.err.println("Failed to instantiate logger!");
 			e.printStackTrace();

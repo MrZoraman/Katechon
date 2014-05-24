@@ -49,27 +49,27 @@ public class Test extends KatechonGameBase
 		new KatechonEngine(Test.class, config).start();
 	}
 	
-	@Override
-	public ILogger initLogger() throws Exception
-	{
-//		Log.setDebugging(true);
-//		return new FileLogger("Testing" + File.separator + "Testing.log", true);
-		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
-		KatechonEngine.getInstance().scheduleTask(new ISchedulerTask() {
-			@Override
-			public void doTask()
-			{
-				twl.initHideKey(Keys.TILDE);
-				KatechonEngine.getInstance().addDrawable(twl, 1);
-			}
-
-			@Override
-			public boolean isFinished() {
-				return true;
-			}
-		});
-		return twl;
-	}
+//	@Override
+//	public ILogger initLogger() throws Exception
+//	{
+////		Log.setDebugging(true);
+////		return new FileLogger("Testing" + File.separator + "Testing.log", true);
+//		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
+//		KatechonEngine.getInstance().scheduleTask(new ISchedulerTask() {
+//			@Override
+//			public void doTask()
+//			{
+//				twl.initHideKey(Keys.TILDE);
+//				KatechonEngine.getInstance().addDrawable(twl, 1);
+//			}
+//
+//			@Override
+//			public boolean isFinished() {
+//				return true;
+//			}
+//		});
+//		return twl;
+//	}
 
 	@Override
 	public void init() 

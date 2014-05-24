@@ -1,13 +1,8 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
-import java.io.File;
-
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
-import apcs.katechon.logging.FileLogger;
-import apcs.katechon.logging.ILogger;
-import apcs.katechon.logging.Log;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -29,12 +24,12 @@ public class ShoppingMaul extends KatechonGameBase
 		mainEngine.start();
 	}
 	
-	@Override
-	public ILogger initLogger() throws Exception
-	{
-		Log.setDebugging(true);
-		return new FileLogger("Logs" + File.separator + "Log.log", true);
-	}
+//	@Override
+//	public ILogger initLogger() throws Exception
+//	{
+//		Log.setDebugging(true);
+//		return new FileLogger("Logs" + File.separator + "Log.log", true);
+//	}
 
 	@Override
 	public void init()
