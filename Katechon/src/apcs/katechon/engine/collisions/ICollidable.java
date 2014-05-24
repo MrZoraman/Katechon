@@ -1,5 +1,7 @@
 package apcs.katechon.engine.collisions;
 
+import java.util.Set;
+
 /**
  * Represents something that can collide
  * @author Matt
@@ -36,5 +38,5 @@ public interface ICollidable
 	 * What the collidable should do when a collision occurs.
 	 * @param The type of collision that has occurred.
 	 */
-	public void onCollision(CollisionType type);
+	public void onCollision(Set<CollisionType> types);
 }

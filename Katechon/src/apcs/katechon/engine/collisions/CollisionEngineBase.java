@@ -1,6 +1,7 @@
 package apcs.katechon.engine.collisions;
 
 import java.util.Map;
+import java.util.Set;
 
 import apcs.katechon.engine.EngineModuleBase;
 
@@ -21,5 +22,5 @@ public abstract class CollisionEngineBase extends EngineModuleBase<ICollidable>
 	 * @param collidable The object to test if things are colliding with it or not
 	 * @return A map of the objects that are colliding, and their {@link apcs.katechon.engine.collisions.CollisionType collision state}
 	 */
-	public abstract Map<ICollidable, CollisionType> getCollisions(final ICollidable collidable);
+	public abstract Map<ICollidable, Set<CollisionType>> getCollisions(final ICollidable collidable);
 }
