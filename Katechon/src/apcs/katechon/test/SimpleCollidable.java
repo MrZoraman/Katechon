@@ -6,12 +6,12 @@ import java.util.Set;
 
 import apcs.katechon.engine.collisions.CollisionType;
 import apcs.katechon.engine.collisions.ICollidable;
+import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
-import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.rendering.IDrawable;
 
-public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
+public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 {
 	private int x, y, width, height, speed;
 	private boolean control;
@@ -84,7 +84,7 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 //	}
 
 	@Override
-	public void onTick()
+	public void doTask()
 	{
 		if (this.control)
 		{

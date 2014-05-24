@@ -63,7 +63,7 @@ public class Window implements IDrawable
 		button.setWindow(this);
 		buttons.add(button);
 		Mouse.getInstance().addListener(button);
-		KatechonEngine.getInstance().addPeriodic(button);
+		KatechonEngine.getInstance().scheduleTask(button);
 		//TODO: layer!
 		KatechonEngine.getInstance().addDrawable(button, 1);
 	}

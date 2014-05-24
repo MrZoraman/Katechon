@@ -1,9 +1,9 @@
 package apcs.katechon.engine;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
-
-import apcs.katechon.periodic.IPeriodic;
 
 /**
  * <p>If you touch this class I will give you a small, really cute puppy. 
@@ -13,8 +13,7 @@ import apcs.katechon.periodic.IPeriodic;
  * @author Matt
  *
  */
-//TODO: ENGINES MIGHT BE THE LAST THING HOLDING ONTO A REFERENCE TO AN OBJECT, THUS KEEPING IT IN MEMORY (AKA FAT MEMORY LEAK)
-public class EngineManager implements IPeriodic
+public class EngineManager implements ActionListener
 {
 	private static EngineManager instance = null;
 	
@@ -73,7 +72,7 @@ public class EngineManager implements IPeriodic
 	}
 
 	@Override
-	public void onTick()
+	public void actionPerformed(ActionEvent args)
 	{
 		for(EngineModuleBase<?> engine : engines)
 		{

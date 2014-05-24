@@ -9,20 +9,20 @@ import apcs.katechon.engine.EngineModuleBase;
  * @author Matt
  *
  */
-public class SchedulerEngine extends EngineModuleBase<SchedulerTask>
+public class SchedulerEngine extends EngineModuleBase<ISchedulerTask>
 {
 	/**
 	 * Constructor
 	 */
 	public SchedulerEngine()
 	{
-		super(SchedulerTask.class);
+		super(ISchedulerTask.class);
 	}
 
 	@Override
-	protected void process(Set<SchedulerTask> items)
+	protected void process(Set<ISchedulerTask> items)
 	{
-		for(SchedulerTask task : items)
+		for(ISchedulerTask task : items)
 		{
 			task.doTask();
 		}

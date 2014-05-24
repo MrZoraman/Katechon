@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
+import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
-import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.rendering.IDrawable;
 
-public abstract class Button implements MouseClickedListener, IPeriodic, IDrawable
+public abstract class Button implements MouseClickedListener, ISchedulerTask, IDrawable
 {
 	//TODO: explain these constants
 	private static final int X_OFFSET = -3;
@@ -55,6 +55,7 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 		g.fillRect(xRelativeToScreen, yRelativeToScreen, width, height);
 	}
 	
+	@Override
 	public void onClick(int x, int y)
 	{
 		if(isMouseOnButton(getPointRelativeToWindow(x, y)))
@@ -63,7 +64,8 @@ public abstract class Button implements MouseClickedListener, IPeriodic, IDrawab
 		}
 	}
 	
-	public void onTick()
+	@Override
+	public void doTask()
 	{
 		Point mouseLocRelativeToWindow = getPointRelativeToWindow(Mouse.getInstance().getPosition());
 		

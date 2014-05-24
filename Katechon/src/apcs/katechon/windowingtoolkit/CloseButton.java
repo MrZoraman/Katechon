@@ -13,6 +13,12 @@ public class CloseButton extends Button
 	{
 		System.out.println("destroying!");
 	}
+
+	@Override
+	public boolean isFinished() {
+		//TODO: this
+		return false;
+	}
 	
 //	@Override
 //	public void draw(Graphics g)

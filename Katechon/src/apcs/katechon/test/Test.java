@@ -9,7 +9,7 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
-import apcs.katechon.engine.scheduler.SchedulerTask;
+import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.KeyPressedListener;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
@@ -54,7 +54,7 @@ public class Test extends KatechonGameBase
 //		Log.setDebugging(true);
 //		return new FileLogger("Testing" + File.separator + "Testing.log", true);
 		final ToggleableWindowLogger twl = new ToggleableWindowLogger(15, 5, 5);
-		KatechonEngine.getInstance().scheduleTask(new SchedulerTask() {
+		KatechonEngine.getInstance().scheduleTask(new ISchedulerTask() {
 			@Override
 			public void doTask()
 			{
@@ -88,9 +88,9 @@ public class Test extends KatechonGameBase
 		KatechonEngine.getInstance().addDrawable(sc2, 0);
 		KatechonEngine.getInstance().addDrawable(sc3, 0);
 
-		KatechonEngine.getInstance().addPeriodic(sc1);
-		KatechonEngine.getInstance().addPeriodic(sc2);
-		KatechonEngine.getInstance().addPeriodic(sc3);
+		KatechonEngine.getInstance().scheduleTask(sc1);
+		KatechonEngine.getInstance().scheduleTask(sc2);
+		KatechonEngine.getInstance().scheduleTask(sc3);
 		
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);

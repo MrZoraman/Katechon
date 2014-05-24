@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import apcs.katechon.KatechonEngine;
+import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
-import apcs.katechon.periodic.IPeriodic;
 import apcs.katechon.rendering.IDrawable;
 
-public class SnowLeopard implements IDrawable, IPeriodic
+public class SnowLeopard implements IDrawable, ISchedulerTask
 {
 	private final int size;
 	
@@ -31,7 +31,7 @@ public class SnowLeopard implements IDrawable, IPeriodic
 	}
 	
 	@Override
-	public void onTick()
+	public void doTask()
 	{
 		if (Keyboard.getInstance().isKeyPressed(Keys.W))
 		{
@@ -60,6 +60,12 @@ public class SnowLeopard implements IDrawable, IPeriodic
 		g.setColor(color);
 		g.fillRect(x, y,/*Default width*/size, /*Default Height*/size);
 		g.setColor(Color.WHITE);
+	}
+
+	@Override
+	public boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 //	@Override

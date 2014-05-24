@@ -1,8 +1,8 @@
 package apcs.shoppingMaul.periodics;
 
-import apcs.katechon.periodic.IPeriodic;
+import apcs.katechon.engine.scheduler.ISchedulerTask;
 
-public class ScoreCount implements IPeriodic
+public class ScoreCount implements ISchedulerTask
 {
 	public ScoreCount()
 	{
@@ -12,7 +12,7 @@ public class ScoreCount implements IPeriodic
 	private int score;
 
 	@Override
-	public void onTick()
+	public void doTask()
 	{
 		this.score--;
 	}
@@ -20,5 +20,11 @@ public class ScoreCount implements IPeriodic
 	public int getScore()
 	{
 		return score;
+	}
+
+	@Override
+	public boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

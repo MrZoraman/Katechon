@@ -45,9 +45,8 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		SnowLeopard snowLeopard = new SnowLeopard(40, 3);
 		
-		mainEngine
-			.addDrawable(snowLeopard, 0)
-			.addPeriodic(snowLeopard);
+		mainEngine.addDrawable(snowLeopard, 0);
+		mainEngine.scheduleTask(snowLeopard);
 	}
 
 	@Override

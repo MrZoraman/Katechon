@@ -4,12 +4,10 @@ import javax.swing.Timer;
 
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.scheduler.SchedulerEngine;
-import apcs.katechon.engine.scheduler.SchedulerTask;
+import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.logging.Log;
-import apcs.katechon.periodic.IPeriodic;
-import apcs.katechon.periodic.PeriodicTicker;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
@@ -59,11 +57,9 @@ public class KatechonEngine
 		//In order from most important to least important.
 		initSingletonInstance();
 
-		this.periodicTicker = initPeriodicTicker();
-		this.periodicTimer = initPeriodicTimer();
+		this.periodicTimer = new Timer(20, EngineManager.getInstance());
 
-		initEngineManager();
-		initScheduler();
+		this.scheduler = initScheduler();
 		
 		this.kBase = initGameInstance(kBaseClass);
 		
@@ -73,6 +69,14 @@ public class KatechonEngine
 		
 		initInputs();
 	}
+	
+
+	private final SwingWindow window;
+	
+	private final Timer periodicTimer;
+	
+	//Permanent engines
+	private final SchedulerEngine scheduler;
 	
 	private KatechonGameBase initGameInstance(Class<? extends KatechonGameBase> kBaseClass)
 	{
@@ -97,16 +101,6 @@ public class KatechonEngine
 		return kBaseInstance;
 	}
 	
-	private PeriodicTicker initPeriodicTicker()
-	{
-		return new PeriodicTicker();
-	}
-	
-	private Timer initPeriodicTimer()
-	{
-		return new Timer(20, periodicTicker);
-	}
-	
 	private void initLogger()
 	{
 		try {
@@ -118,15 +112,11 @@ public class KatechonEngine
 		}
 	}
 	
-	private void initEngineManager()
+	private SchedulerEngine initScheduler()
 	{
-		periodicTicker.addItem(EngineManager.getInstance());
-	}
-	
-	private void initScheduler()
-	{
-		scheduler = new SchedulerEngine();
+		SchedulerEngine scheduler = new SchedulerEngine();
 		EngineManager.getInstance().addEngine(scheduler);
+		return scheduler;
 	}
 	
 	private SwingWindow initWindow(IConfig config)
@@ -153,15 +143,6 @@ public class KatechonEngine
 		
 		instance = this;
 	}
-	
-	
-	private final SwingWindow window;
-	
-	private final PeriodicTicker periodicTicker;
-	
-	private final Timer periodicTimer;
-	
-	private SchedulerEngine scheduler;
 	
 	/**
 	 * Starts the game engine (let the magic begin). This is a blocking method.
@@ -198,16 +179,6 @@ public class KatechonEngine
 	}
 	
 	/**
-	 * Adds an {@link apcs.katechon.periodic.IPeriodic IPeriodic} to the engine's list.
-	 * @param periodic The {@link apcs.katechon.periodic.IPeriodic IPeriodic} to add.
-	 */
-	public KatechonEngine addPeriodic(IPeriodic periodic)
-	{
-		this.periodicTicker.addItem(periodic);
-		return getInstance();
-	}
-	
-	/**
 	 * Adds a drawable to the engine's drawable list
 	 * @param drawable The drawable to draw
 	 * @param layer The layer to put the drawable on
@@ -218,7 +189,7 @@ public class KatechonEngine
 		return getInstance();
 	}
 	
-	public void scheduleTask(SchedulerTask task)
+	public void scheduleTask(ISchedulerTask task)
 	{
 		scheduler.addItem(task);
 	}
