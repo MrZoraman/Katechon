@@ -45,4 +45,10 @@ public class Border implements ICollidable
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean isFinished() {
+		//lifetime is inifinite
+		return false;
+	}
 }

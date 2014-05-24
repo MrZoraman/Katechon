@@ -62,6 +62,11 @@ public class Test extends KatechonGameBase
 				KatechonEngine.getInstance().addDrawable(twl, 1);
 				return true;
 			}
+
+			@Override
+			public boolean isFinished() {
+				return false;
+			}
 		});
 		return twl;
 	}
@@ -107,6 +112,11 @@ public class Test extends KatechonGameBase
 			public boolean doTask()
 			{
 				System.out.println(Mouse.getInstance().getPosition());
+				return false;
+			}
+
+			@Override
+			public boolean isFinished() {
 				return false;
 			}
 		});

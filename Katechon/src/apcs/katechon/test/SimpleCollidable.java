@@ -124,4 +124,10 @@ public class SimpleCollidable implements ICollidable, IDrawable, IPeriodic
 	{
 		this.collisions = types;
 	}
+
+	@Override
+	public boolean isFinished() {
+		//lifetime is infinite
+		return false;
+	}
 }

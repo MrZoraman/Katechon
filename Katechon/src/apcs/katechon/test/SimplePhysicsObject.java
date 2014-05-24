@@ -17,4 +17,10 @@ public class SimplePhysicsObject implements IPhysicsObject
 		return 0;
 	}
 
+	@Override
+	public boolean isFinished() {
+		//lifetime is infinite
+		return false;
+	}
+
 }
