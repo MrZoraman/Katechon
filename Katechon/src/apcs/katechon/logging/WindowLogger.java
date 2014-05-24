@@ -18,9 +18,8 @@ import apcs.katechon.windowingtoolkit.Window;
 public class WindowLogger extends Window implements ILogger, KeyPressedListener
 {
 	//CONSOLE OVERLAY
-	private static final Color CONSOLE_OVERLAY_COLOR = new Color(169, 169, 169, 200);
 	private static final int   CONSOLE_OVERLAY_WIDTH = 800;
-	private static final int   CONSOLE_OVERLAY_HEIGHT = 400;
+	private static final int   CONSOLE_OVERLAY_HEIGHT = 400 + Window.getWindowBarHeight() + 6;
 	private static final Color INPUT_OVERLAY_COLOR = new Color(127, 127, 127, 200);
 	private static final int   INPUT_OVERLAY_HEIGHT = 29;
 	
@@ -29,19 +28,24 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener
 	private static final int    CONSOLE_FONT_STYLE = Font.PLAIN;
 	private static final int    CONSOLE_FONT_SIZE = 20;
 	private static final Font   CONSOLE_FONT = new Font(CONSOLE_FONT_NAME, CONSOLE_FONT_STYLE, CONSOLE_FONT_SIZE);
-	private static final Color  CONSOLE_FONT_COLOR = new Color(51, 102, 153);
+	private static final Color  CONSOLE_FONT_COLOR = new Color(198, 204, 213, 200);
 	
 	//KARAT
 	private static final Color KARAT_COLOR = Color.GREEN;
-	private static final int   KARAT_OFFSET_X = 4;
-	private static final int   KARAT_OFFSET_Y = 2;
+	private static final int   KARAT_OFFSET_X = 4 + Window.getBorderWidth();
+	private static final int   KARAT_OFFSET_Y = 2 + Window.getWindowBarHeight();
 	private static final int   KARAT_WIDTH = 3;
 	private static final int   KARAT_HEIGHT = 25;
 	
 	//TEXT OUTPUT CONSTANTS
-	private static final int CONSOLE_TEXT_OFFSET_X = 5;
-	private static final int CONSOLE_TEXT_OFFSET_Y = 20;
+	private static final int CONSOLE_TEXT_OFFSET_X = 5 + Window.getBorderWidth();
+	private static final int CONSOLE_TEXT_OFFSET_Y = 20 + Window.getWindowBarHeight();
 	private static final int LINE_SPACING = 25;
+	
+	//WINDOW COLORS
+	private static final Color CONSOLE_BACKGROUND_COLOR = new Color(53, 53, 53, 200);
+	private static final Color CONSOLE_BORDER_COLOR = new Color(51, 102, 153, 200);
+	
 	
 	/**
 	 * Constructor
@@ -50,6 +54,9 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener
 	public WindowLogger(int linesShown, int x, int y)
 	{
 		super(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT);
+		
+		this.setBackgroundColor(CONSOLE_BACKGROUND_COLOR);
+		this.setBorderColor(CONSOLE_BORDER_COLOR);
 		
 		this.messages = new String[linesShown];
 		
@@ -89,7 +96,7 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener
 		
 		//The input bocks
 		g.setColor(INPUT_OVERLAY_COLOR);
-		g.fillRect(x, y, CONSOLE_OVERLAY_WIDTH, INPUT_OVERLAY_HEIGHT);
+		g.fillRect(x + Window.getBorderWidth(), y + Window.getWindowBarHeight(), CONSOLE_OVERLAY_WIDTH - (Window.getBorderWidth() * 2), INPUT_OVERLAY_HEIGHT);
 
 		//Set the font
 		g.setFont(CONSOLE_FONT);

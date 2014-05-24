@@ -11,6 +11,16 @@ public class Window implements IDisplayable
 	private static final int BORDER_WIDTH = 6;
 	private static final int WINDOW_BAR_HEIGHT = 30;
 	
+	public static int getBorderWidth()
+	{
+		return BORDER_WIDTH;
+	}
+	
+	public static int getWindowBarHeight()
+	{
+		return WINDOW_BAR_HEIGHT;
+	}
+	
 	private static final int CLOSE_BUTTON_SIZE = WINDOW_BAR_HEIGHT - 12;
 	
 	public Window(int x, int y, int width, int height)
