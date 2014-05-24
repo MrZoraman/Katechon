@@ -106,21 +106,6 @@ public class Test extends KatechonGameBase
 			}
 		});
 		
-		EngineManager.getInstance().getEngine(SchedulerTask.class).addItem(new SchedulerTask()
-		{
-			@Override
-			public boolean doTask()
-			{
-				System.out.println(Mouse.getInstance().getPosition());
-				return false;
-			}
-
-			@Override
-			public boolean isFinished() {
-				return false;
-			}
-		});
-		
 		Window window = new Window(40, 40, 500, 500);
 		KatechonEngine.getInstance().addDrawable(window, 0);
 		
