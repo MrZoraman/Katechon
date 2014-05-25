@@ -15,7 +15,7 @@ import apcs.katechon.windowingtoolkit.Window;
  * @author Matt
  *
  */
-public class WindowLogger extends Window implements ILogger, KeyPressedListener
+public class WindowLogger extends Window implements ILogger, KeyPressedListener, IConsole
 {
 	//CONSOLE OVERLAY
 	private static final int   CONSOLE_OVERLAY_WIDTH = 800;
