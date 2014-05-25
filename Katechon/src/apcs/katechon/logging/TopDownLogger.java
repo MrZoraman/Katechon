@@ -1,5 +1,10 @@
 package apcs.katechon.logging;
 
+/**
+ * A logger that prints it's messages from the top down. It prints the first message, then the second message and so on
+ * @author Matt
+ *
+ */
 public abstract class TopDownLogger implements ILogger
 {
 	@Override
