@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+//TODO: documentation
 public class JarImageLoader
 {
 	private static Map<Class<?>, JarImageLoader> instances;
