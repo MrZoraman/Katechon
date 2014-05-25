@@ -1,5 +1,6 @@
 This is a list of the major todo items
 
 5. Lots o' documentation!
-6. Command binding system
 why won't the assets load from /assets/shoppingMaul?
+fix the .gitignore
+Make the log more intelligent as to what order the images need to be added to in order to show up correctly for the reader

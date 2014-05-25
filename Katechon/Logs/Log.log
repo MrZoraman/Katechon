@@ -339,3 +339,13 @@
 2014-05-25 12:53 AM [INFO]      > spawnleopard 500 500
 2014-05-25 12:53 AM [INFO]      Leopard spawned at 500, 500
 2014-05-25 12:53 AM [INFO]      Saving log...
+2014-05-25 12:54 AM [INFO]      > spawnleopard
+2014-05-25 12:54 AM [INFO]      spawnleopard [x] [y]
+2014-05-25 12:54 AM [INFO]      USAGE:
+2014-05-25 12:54 AM [INFO]      > spawnleopard 500 500
+2014-05-25 12:54 AM [INFO]      Leopard spawned at 500, 500
+2014-05-25 12:54 AM [INFO]      > spawn
+2014-05-25 12:54 AM [INFO]      command not found!!!
+2014-05-25 12:54 AM [INFO]      > spawnleopard 550 412
+2014-05-25 12:54 AM [INFO]      Leopard spawned at 550, 412
+2014-05-25 12:55 AM [INFO]      Saving log...
