@@ -171,4 +171,10 @@ public class Window implements IDisplayable
 	{
 		this.title = title;
 	}
+	
+	@Override
+	protected void finalize()
+	{
+		System.out.println("finalized!!!");
+	}
 }
