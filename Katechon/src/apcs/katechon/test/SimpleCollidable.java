@@ -13,7 +13,7 @@ import apcs.katechon.rendering.IDrawable;
 
 public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 {
-	private int x, y, width, height, speed;
+	protected int x, y, width, height, speed;
 	private boolean control;
 	private Set<CollisionType> collisions;
 	
