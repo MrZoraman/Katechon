@@ -7,7 +7,6 @@ import apcs.katechon.engine.IEngineItem;
  * @author Matt
  *
  */
-//TODO: refactor to correct name
 public interface ISchedulerTask extends IEngineItem
 {
 	/**

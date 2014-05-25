@@ -6,7 +6,11 @@ import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
-//TODO: documentation
+/**
+ * Represents a simple window with a close button.
+ * @author Matt
+ *
+ */
 public class Window implements IDisplayable
 {
 	private static final int BORDER_WIDTH = 6;
@@ -33,6 +37,13 @@ public class Window implements IDisplayable
 	
 	private static final int CLOSE_BUTTON_SIZE = WINDOW_BAR_HEIGHT - 12;
 	
+	/**
+	 * Constructor
+	 * @param x X coordinate of window
+	 * @param y Y coordinate of window
+	 * @param width Width of window
+	 * @param height height of window
+	 */
 	public Window(int x, int y, int width, int height)
 	{
 		this.x = x;
@@ -93,6 +104,10 @@ public class Window implements IDisplayable
 		}
 	}
 	
+	/**
+	 * Adds a button to the window
+	 * @param button The button to add
+	 */
 	public void addButton(Button button)
 	{
 		button.setWindow(this);
@@ -110,36 +125,60 @@ public class Window implements IDisplayable
 		}
 	}
 	
+	/**
+	 * Checks if the window is visible or not
+	 * @return True if the window is visible, false if otherwise
+	 */
 	public boolean isVisible()
 	{
 		return visible;
 	}
 	
+	/**
+	 * Sets the background color for the window
+	 * @param color The background color
+	 */
 	public void setBackgroundColor(Color color)
 	{
 		this.backgroundColor = color;
 	}
 	
+	/**
+	 * Sets the border (and top bar) color for the window
+	 * @param color The color for the border
+	 */
 	public void setBorderColor(Color color)
 	{
 		this.borderColor = color;
 	}
 	
+	/**
+	 * @return The x coordinate of the window relative to the game window display
+	 */
 	public int getX()
 	{
 		return x;
 	}
 	
+	/**
+	 * @return The y coordinate of the window relative to the game window display
+	 */
 	public int getY()
 	{
 		return y;
 	}
 	
+	/**
+	 * @return The window's width
+	 */
 	public int getWidth()
 	{
 		return width;
 	}
 	
+	/**
+	 * @return The window's height
+	 */
 	public int getHeight()
 	{
 		return height;
@@ -162,19 +201,20 @@ public class Window implements IDisplayable
 		}
 	}
 	
+	/**
+	 * Called when the close button is clicked
+	 */
 	protected void onClose()
 	{
 		setFinished(true);
 	}
 	
+	/**
+	 * Sets the title for the window
+	 * @param title The window title that will show up in the top bar
+	 */
 	public void setTitle(String title)
 	{
 		this.title = title;
-	}
-	
-	@Override
-	protected void finalize()
-	{
-		System.out.println("finalized!!!");
 	}
 }

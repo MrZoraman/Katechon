@@ -62,11 +62,11 @@ public class Mouse implements MouseListener, MouseMotionListener
 			MouseClickedListener listener = it.next();
 			if(listener.isFinished())
 			{
+				//TODO: gets removed next time the mouse is clicked...
 				it.remove();
 			}
 			else
 			{
-				//TODO: gets removed next time the mouse is clicked...
 				listener.onClick(event.getX(), event.getY());
 			}
 		}
@@ -77,13 +77,19 @@ public class Mouse implements MouseListener, MouseMotionListener
 		}
 	}
 	
-	//TODO: documentation
+	/**
+	 * Gets the position of the mouse
+	 * @return The point the mouse is at (has x and y values in it)
+	 */
 	public Point getPosition()
 	{
 		return currentMousePosition;
 	}
 	
-	//TODO: documentation
+	/**
+	 * Checks if the mouse is pressed or not
+	 * @return True if the left mouse button is being pressed, False if otherwise
+	 */
 	public boolean isPressed()
 	{
 		return isPressed;

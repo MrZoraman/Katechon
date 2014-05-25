@@ -93,21 +93,30 @@ public class Keyboard implements KeyListener
 		}
 	}
 	
-	//TODO: documentation
+	/**
+	 * Fires an event that only fires for the exclusive key listener. The listener will be set to null if it is finished (isFinished())
+	 * @param key The key to listen on
+	 * @param keyChar They key in char form
+	 */
 	private void fireExclusiveKeyListener(Keys key, char keyChar)
 	{
 		if(exclusiveKeyListener.isFinished())
 		{
+			//TODO: removed next time key is pressed...
 			exclusiveKeyListener = null;
 		}
 		else
 		{
-			//TODO: removed next time key is pressed...
 			exclusiveKeyListener.onKeyPressed(key, keyChar);
 		}
 	}
 	
-	//TODO: documentation
+	/**
+	 * Fires key events for a given event
+	 * @param key The key that the listeners are listening for (May be Keys.ALL)
+	 * @param keyPressed The key that was pressed 
+	 * @param keyChar They key that was pressed in char form
+	 */
 	private void fireKeyEvents(Keys key, Keys keyPressed, char keyChar)
 	{
 		Iterator<KeyPressedListener> it = keyListeners.get(key).iterator();

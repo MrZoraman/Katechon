@@ -139,7 +139,10 @@ public class SwingWindow
 		frame.addMouseListener(mouseListener);
 	}
 	
-	//TODO: documentation
+	/**
+	 * Adds a mouse listener
+	 * @param mouseListener The listener to add
+	 */
 	void addMouseMotionListener(final MouseMotionListener mouseListener)
 	{
 		frame.addMouseMotionListener(mouseListener);

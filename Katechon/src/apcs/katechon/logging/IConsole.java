@@ -1,6 +1,10 @@
 package apcs.katechon.logging;
 
-//TODO: documentation
+/**
+ * Represents a console. Implementations of this interface are expected to be able to read input from the user
+ * @author Matt
+ *
+ */
 public interface IConsole
 {
 	/**
