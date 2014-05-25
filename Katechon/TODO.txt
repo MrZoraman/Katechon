@@ -3,3 +3,4 @@ This is a list of the major todo items
 why won't the assets load from /assets/shoppingMaul?
 fix the .gitignore
 Make the log more intelligent as to what order the images need to be added to in order to show up correctly for the reader
+Better solution for the Jarguar object (it's a bit hackish at the moment)
