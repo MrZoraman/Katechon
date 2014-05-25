@@ -8,6 +8,7 @@ import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
+import apcs.katechon.engine.collisions.SimpleCollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.KeyPressedListener;

@@ -1,11 +1,9 @@
-package apcs.katechon.test;
+package apcs.katechon.engine.collisions;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Set;
 
-import apcs.katechon.engine.collisions.CollisionType;
-import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
@@ -58,30 +56,6 @@ public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 		g.fillRect(x, y, width, height);
 		g.setColor(Color.WHITE);
 	}
-
-//	@Override
-//	public int getX()
-//	{
-//		return this.x;
-//	}
-//
-//	@Override
-//	public int getY()
-//	{
-//		return this.y;
-//	}
-//
-//	@Override
-//	public int getWidth()
-//	{
-//		return this.width;
-//	}
-//
-//	@Override
-//	public int getHeight()
-//	{
-//		return this.height;
-//	}
 
 	@Override
 	public void doTask()
