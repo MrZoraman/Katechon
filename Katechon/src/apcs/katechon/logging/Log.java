@@ -44,6 +44,12 @@ public class Log
 		loggers.add(logger);
 	}
 	
+	/**
+	 * Begins a chain log. This is the preferred method of logging multiple messages at once because it 
+	 * 		will print the messages in an implementation dependent manner so that they stay in order among 
+	 * 		the various different implementations (some log from the top down and some log from the bottom up).
+	 * @return A ChainLogger object to handle all of your logging needs :)
+	 */
 	public static ChainLogger chainLog()
 	{
 		return new ChainLogger(loggers, debugging);
