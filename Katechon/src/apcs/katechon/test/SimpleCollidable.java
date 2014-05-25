@@ -2,6 +2,7 @@ package apcs.katechon.test;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.HashSet;
 import java.util.Set;
 
 import apcs.katechon.engine.collisions.CollisionType;
@@ -25,6 +26,8 @@ public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 		this.x = x;
 		this.y = y;
 		this.control = control;
+		
+		collisions = new HashSet<CollisionType>();
 	}
 
 	@Override
