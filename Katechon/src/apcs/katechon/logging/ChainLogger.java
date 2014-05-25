@@ -3,23 +3,30 @@ package apcs.katechon.logging;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static apcs.katechon.logging.Log.*;
 
+//TODO: documentation
 public class ChainLogger
 {
 	private final List<String> messages;
 	private final boolean debug;
+	private final Set<ILogger> loggers;
 	
-	ChainLogger(boolean debug)
+	ChainLogger(Set<ILogger> loggers, boolean debug)
 	{
+		this.loggers = loggers;
 		this.messages = new ArrayList<String>();
 		this.debug = debug;
 	}
 	
-	void log(ILogger logger)
+	public void log()
 	{
-		logger.chainLog(messages.toArray(new String[messages.size()]));
+		for(ILogger logger : loggers)
+		{
+			logger.chainLog(messages.toArray(new String[messages.size()]));
+		}
 	}
 	
 	public void info(String message)

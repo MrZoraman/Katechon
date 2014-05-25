@@ -43,6 +43,11 @@ public class Log
 	{
 		loggers.add(logger);
 	}
+	
+	public static ChainLogger chainLog()
+	{
+		return new ChainLogger(loggers, debugging);
+	}
 
 	/**
 	 * Logs a general info message
