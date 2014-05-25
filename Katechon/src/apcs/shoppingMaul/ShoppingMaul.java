@@ -11,6 +11,7 @@ import apcs.katechon.engine.collisions.SimpleCollisionEngine;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
+import apcs.shoppingMaul.commands.AddPillarCommand;
 import apcs.shoppingMaul.commands.SpawnLeopardCommand;
 import apcs.shoppingMaul.commands.SpawnLeopardPackCommand;
 
@@ -25,7 +26,7 @@ public class ShoppingMaul extends KatechonGameBase
 	public static void main(String[] args)
 	{
 		config = new MappedConfig();
-		config.setString(ConfigKey.TITLE, "abba jeezles");
+		config.setString(ConfigKey.TITLE, "Shopping Maul");
 		
 		//see this line of code looks pretty clean to me
 		mainEngine = new KatechonEngine(ShoppingMaul.class, config);
@@ -47,6 +48,12 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().addEngine(new SimpleCollisionEngine());
 		
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(snowLeopard);
+		
+		Pillar pillar1 = new Pillar(300, 350, 50, 50);
+		
+		mainEngine.addDrawable(pillar1, 1);
+		mainEngine.scheduleTask(pillar1);
+		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar1);
 	
 		
 //		mainEngine.addDrawable(snowLeopard, 0);
@@ -54,6 +61,8 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		CommandManager.getInstance().registerCommand("spawnleopard", new SpawnLeopardCommand());
 		CommandManager.getInstance().registerCommand("spawnpack", new SpawnLeopardPackCommand());
+		
+		CommandManager.getInstance().registerCommand("addpillar", new AddPillarCommand());
 	}
 
 	@Override
