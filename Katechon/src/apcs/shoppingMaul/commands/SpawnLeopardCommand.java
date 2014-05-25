@@ -18,7 +18,6 @@ public class SpawnLeopardCommand implements Command
 		{
 			int x;
 			int y;
-			int speed = 3;
 			
 			try
 			{
@@ -28,14 +27,7 @@ public class SpawnLeopardCommand implements Command
 				x = Integer.parseInt(xArg);
 				y = Integer.parseInt(yArg);
 				
-				if(args.length > 2)
-				{
-					String speedArg = args[2];
-					
-					speed = Integer.parseInt(speedArg);
-				}
-				
-				SnowLeopard leopard = new SnowLeopard(x, y, 10, 28, speed, false);
+				SnowLeopard leopard = new SnowLeopard(x, y, 10, 28, 1, false);
 				KatechonEngine.getInstance().addDrawable(leopard, 1);
 				KatechonEngine.getInstance().scheduleTask(leopard);
 				
@@ -50,7 +42,7 @@ public class SpawnLeopardCommand implements Command
 	
 	private void showUsage()
 	{
-		Log.info("spawnleopard [x] [y] (speed)");
+		Log.info("spawnleopard [x] [y]");
 		Log.info("USAGE:");
 	}
 }
