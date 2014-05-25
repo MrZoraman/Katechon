@@ -47,8 +47,11 @@ public class SnowLeopard extends SimpleCollidable
 	{
 		if (!control)
 		{
-			this.x = ShoppingMaul.getMainLeopard().x + xOffset;
-			this.y = ShoppingMaul.getMainLeopard().y + yOffset;
+			if ((Math.abs(this.x - ShoppingMaul.getMainLeopard().x) < 50) && (Math.abs(this.y - ShoppingMaul.getMainLeopard().y) < 50))
+			{
+				this.x = ShoppingMaul.getMainLeopard().x + xOffset;
+				this.y = ShoppingMaul.getMainLeopard().y + yOffset;
+			}
 		}
 		super.doTask();
 	}

@@ -5,6 +5,7 @@ import java.util.Random;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.commands.parser.Command;
 import apcs.katechon.logging.Log;
+import apcs.shoppingMaul.ShoppingMaul;
 import apcs.shoppingMaul.SnowLeopard;
 
 public class SpawnLeopardPackCommand implements Command
@@ -25,7 +26,7 @@ public class SpawnLeopardPackCommand implements Command
 			
 			for (int ii = 0; ii < packSize; ii++)
 			{
-				SnowLeopard leopard = new SnowLeopard(0, 0, 10, 28, 1, false);
+				SnowLeopard leopard = new SnowLeopard(ShoppingMaul.getMainLeopard().getRightFace(), ShoppingMaul.getMainLeopard().getTopFace(), 10, 28, 1, false);
 				KatechonEngine.getInstance().addDrawable(leopard, 1);
 				KatechonEngine.getInstance().scheduleTask(leopard);
 			}
