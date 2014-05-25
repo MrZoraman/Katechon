@@ -12,7 +12,7 @@ import java.nio.file.Files;
  * @author Sean
  *
  */
-public class FileLogger implements ILogger
+public class FileLogger extends TopDownLogger
 {
 	/**
 	 * Constructor

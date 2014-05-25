@@ -7,7 +7,7 @@ import java.io.PrintStream;
  * @author Matt
  *
  */
-public class PrintstreamLogger implements ILogger
+public class PrintstreamLogger extends TopDownLogger
 {
 	/**
 	 * Creates a new PrintlnLogger

@@ -182,4 +182,13 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener,
 		//The logger is never finished.
 		return false;
 	}
+	
+	@Override
+	public void chainLog(String[] messages)
+	{
+		for(int ii = messages.length - 1; ii >= 0; ii--)
+		{
+			this.log(messages[ii]);
+		}
+	}
 }

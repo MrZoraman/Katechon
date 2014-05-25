@@ -14,6 +14,12 @@ public interface ILogger
 	public void log(String message);
 	
 	/**
+	 * Logs an array of messages. The implementation is expected to print these messages in an order that will make sense to the user (some logs go from the top down and some go from the bottom up)
+	 * @param messages The messages to log
+	 */
+	public void chainLog(String[] messages);
+	
+	/**
 	 * Save the log to disk if needed. Otherwise this can be left empty.
 	 */
 	public void saveLog();
