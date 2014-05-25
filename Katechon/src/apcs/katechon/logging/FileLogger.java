@@ -73,7 +73,9 @@ public class FileLogger implements ILogger
 	{
 		try
 		{
-			saveLog();
+			writer.close();
+			bufferedWriter.close();
+			fileWriter.close();
 		}
 		finally
 		{
