@@ -312,3 +312,24 @@
 2014-05-25 12:40 AM [INFO]      > test
 2014-05-25 12:40 AM [INFO]      Command executed!
 2014-05-25 12:40 AM [INFO]      Saving log...
+2014-05-25 12:41 AM [INFO]      Mouse clicked!: 528, 86
+2014-05-25 12:41 AM [INFO]      Mouse clicked!: 528, 86
+2014-05-25 12:41 AM [INFO]      > test abba jeezles
+2014-05-25 12:41 AM [INFO]      Command executed! [abba, jeezles]
+2014-05-25 12:41 AM [INFO]      > test abba jeezles man
+2014-05-25 12:41 AM [INFO]      Command executed! [abba, jeezles, man]
+2014-05-25 12:41 AM [INFO]      > test abba jeezles
+2014-05-25 12:41 AM [INFO]      Command executed! [abba, jeezles]
+2014-05-25 12:41 AM [INFO]      Mouse clicked!: 791, 46
+2014-05-25 12:41 AM [INFO]      Mouse clicked!: 791, 46
+2014-05-25 12:41 AM [INFO]      Saving log...
+2014-05-25 12:50 AM [INFO]      > spawnleopard
+2014-05-25 12:50 AM [INFO]      USAGE:
+2014-05-25 12:50 AM [INFO]      spawnleopard [x] [y] (speed)
+2014-05-25 12:50 AM [INFO]      Saving log...
+2014-05-25 12:50 AM [INFO]      > spawnleopard
+2014-05-25 12:50 AM [INFO]      spawnleopard [x] [y] (speed)
+2014-05-25 12:50 AM [INFO]      USAGE:
+2014-05-25 12:50 AM [INFO]      > spawnleopard 500 500
+2014-05-25 12:50 AM [INFO]      Leopard spawned at 500, 500
+2014-05-25 12:50 AM [INFO]      Saving log...

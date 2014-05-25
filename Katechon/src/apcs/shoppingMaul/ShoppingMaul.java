@@ -4,11 +4,11 @@ import java.awt.Color;
 
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
-import apcs.katechon.engine.EngineManager;
-import apcs.katechon.engine.collisions.ICollidable;
+import apcs.katechon.commands.CommandManager;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
+import apcs.shoppingMaul.commands.SpawnLeopardCommand;
 
 public class ShoppingMaul extends KatechonGameBase
 {
@@ -43,6 +43,8 @@ public class ShoppingMaul extends KatechonGameBase
 		
 //		mainEngine.addDrawable(snowLeopard, 0);
 //		mainEngine.scheduleTask(snowLeopard);
+		
+		CommandManager.getInstance().registerCommand("spawnleopard", new SpawnLeopardCommand());
 	}
 
 	@Override
