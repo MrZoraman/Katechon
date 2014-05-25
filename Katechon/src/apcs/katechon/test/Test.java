@@ -6,6 +6,7 @@ import java.util.Random;
 
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
+import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
@@ -92,6 +93,8 @@ public class Test extends KatechonGameBase
 		Window window = new Window(40, 40, 500, 500);
 		KWT.getInstance().addWindow(window);
 		window.setVisible(true);
+		
+		CommandManager.getInstance().registerCommand("test", new TestCommand());
 	}
 
 	@Override

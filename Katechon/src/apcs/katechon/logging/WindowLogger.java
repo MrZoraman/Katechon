@@ -167,7 +167,9 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener,
 	@Override
 	public String readLine()
 	{
-		return outputString;
+		String cmd = outputString;
+		outputString = null;
+		return cmd;
 	}
 	
 	@Override
