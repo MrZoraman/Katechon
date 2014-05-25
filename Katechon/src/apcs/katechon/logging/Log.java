@@ -1,8 +1,10 @@
 package apcs.katechon.logging;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -50,7 +52,7 @@ public class Log
 	{
 		for(ILogger logger : loggers)
 		{
-			logger.log(getTimeStamp() + " [INFO]      " + message);
+			logger.log(toInfoMessage(message));
 		}
 	}
 
@@ -62,7 +64,7 @@ public class Log
 	{
 		for(ILogger logger : loggers)
 		{
-			logger.log(getTimeStamp() + " [ERROR]     " + message);
+			logger.log(toErrorMessage(message));
 		}
 	}
 
@@ -74,7 +76,7 @@ public class Log
 	{
 		for(ILogger logger : loggers)
 		{
-			logger.log(getTimeStamp() + " [FATAL]     " + message);
+			logger.log(toFatalMessage(message));
 		}
 	}
 
@@ -84,12 +86,13 @@ public class Log
 	 */
 	public static void exception(Exception ex)
 	{
+		String[] exceptionMessage = toExceptionMessage(ex);
+		
 		for(ILogger logger : loggers)
 		{
-			logger.log(getTimeStamp() + " [EXCEPTION] " + ex.getClass().getCanonicalName() + ": " + ex.getLocalizedMessage());
-			for(StackTraceElement element : ex.getStackTrace())
+			for(String messagePart : exceptionMessage)
 			{
-				logger.log(getTimeStamp() + " [EXCEPTION] \t" + element.toString());
+				logger.log(messagePart);
 			}
 		}
 	}
@@ -113,7 +116,7 @@ public class Log
 		{
 			for(ILogger logger : loggers)
 			{
-				logger.log(getTimeStamp() + " [DEBUG]     " + message);
+				logger.log(toDebugMessage(message));
 			}
 		}
 	}
@@ -127,6 +130,64 @@ public class Log
 		{
 			logger.saveLog();
 		}
+	}
+	
+	/**
+	 * Formats a message to be an info message
+	 * @param message The message to format
+	 * @return A properly formatted info message
+	 */
+	static String toInfoMessage(String message)
+	{
+		return getTimeStamp() + " [INFO]      " + message;
+	}
+	
+	/**
+	 * Formats a message to be an error message
+	 * @param message The message to format
+	 * @return A properly formatted error message
+	 */
+	static String toErrorMessage(String message)
+	{
+		return getTimeStamp() + " [ERROR]     " + message;
+	}
+	
+	/**
+	 * Formats a message to be a fatal message
+	 * @param message The message to format
+	 * @return The properly formatted message
+	 */
+	static String toFatalMessage(String message)
+	{
+		return getTimeStamp() + " [FATAL]     " + message;
+	}
+	
+	/**
+	 * Formats an exception to be an exception message
+	 * @param ex The exception to format
+	 * @return An array of the lines, with the first index being the error message and the rest being the stack trace
+	 */
+	static String[] toExceptionMessage(Exception ex)
+	{
+		List<String> message = new ArrayList<String>();
+		
+		message.add(getTimeStamp() + " [EXCEPTION] " + ex.getClass().getCanonicalName() + ": " + ex.getLocalizedMessage());
+		for(StackTraceElement element : ex.getStackTrace())
+		{
+			message.add(getTimeStamp() + " [EXCEPTION] \t" + element.toString());
+		}
+		
+		return message.toArray(new String[message.size()]);
+	}
+	
+	/**
+	 * Formats a message to be a debug message
+	 * @param message The message to format
+	 * @return The properly formatted message
+	 */
+	static String toDebugMessage(String message)
+	{
+		return getTimeStamp() + " [DEBUG]     " + message;
 	}
 	
 	/**
