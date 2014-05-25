@@ -1,9 +1,11 @@
-package apcs.katechon.engine.collisions;
+package apcs.katechon.test;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Set;
 
+import apcs.katechon.engine.collisions.CollisionType;
+import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
