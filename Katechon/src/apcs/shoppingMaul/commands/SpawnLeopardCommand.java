@@ -42,7 +42,9 @@ public class SpawnLeopardCommand implements Command
 	
 	private void showUsage()
 	{
-		Log.info("spawnleopard [x] [y]");
-		Log.info("USAGE:");
+		Log.chainLog()
+			.info("USAGE:")
+			.info("spawnleopard [x] [y]")
+		.log();
 	}
 }

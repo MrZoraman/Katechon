@@ -40,7 +40,9 @@ public class AddPillarCommand implements Command
 	
 	private void showUsage()
 	{
-		Log.info("addpillar [x] [y] [width] [height]");
-		Log.info("Usage: ");
+		Log.chainLog()
+			.info("USAGE:")
+			.info("addpillar [x] [y] [width] [height]")
+		.log();
 	}
 }

@@ -37,8 +37,10 @@ public class SpawnLeopardPackCommand implements Command
 	
 	private void showUsage()
 	{
-		Log.info("spawnpack");
-		Log.info("Usage:");
+		Log.chainLog()
+			.info("USAGE:")
+			.info("spawnpack")
+		.log();
 	}
 
 }
