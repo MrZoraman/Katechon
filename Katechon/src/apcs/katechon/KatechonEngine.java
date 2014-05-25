@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.swing.Timer;
 
+import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.scheduler.SchedulerEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
@@ -74,7 +75,7 @@ public class KatechonEngine
 		
 		initInputs(window);
 		
-		initLogger("Logs" + File.separator + "Log.log");
+		initLoggerAndConsole("Logs" + File.separator + "Log.log");
 		
 		initKWT(scheduler, window.getDisplay());
 		
@@ -111,7 +112,7 @@ public class KatechonEngine
 		return kBaseInstance;
 	}
 	
-	private void initLogger(String filePath)
+	private void initLoggerAndConsole(String filePath)
 	{
 		try {
 			Log.initLogger(new FileLogger(filePath));
@@ -123,6 +124,9 @@ public class KatechonEngine
 			twl.setTitle("Console");
 			
 			Log.initLogger(twl);
+			
+			CommandManager.getInstance().initConsole(twl);
+			scheduleTask(CommandManager.getInstance());
 			
 		} catch (Exception e) {
 			System.err.println("Failed to instantiate logger!");
