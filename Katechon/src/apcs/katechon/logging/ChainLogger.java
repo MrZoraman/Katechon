@@ -29,31 +29,37 @@ public class ChainLogger
 		}
 	}
 	
-	public void info(String message)
+	public ChainLogger info(String message)
 	{
 		messages.add(toInfoMessage(message));
+		return this;
 	}
 	
-	public void error(String message)
+	public ChainLogger error(String message)
 	{
 		messages.add(toErrorMessage(message));
+		return this;
 	}
 	
-	public void fatal(String message)
+	public ChainLogger fatal(String message)
 	{
 		messages.add(toFatalMessage(message));
+		return this;
 	}
 	
-	public void exception(Exception ex)
+	public ChainLogger exception(Exception ex)
 	{
 		messages.addAll(Arrays.asList(toExceptionMessage(ex)));
+		return this;
 	}
 	
-	public void debug(String message)
+	public ChainLogger debug(String message)
 	{
 		if(debug)
 		{
 			messages.add(toDebugMessage(message));
 		}
+		
+		return this;
 	}
 }
