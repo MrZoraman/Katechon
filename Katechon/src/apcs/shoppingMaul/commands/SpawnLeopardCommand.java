@@ -2,6 +2,8 @@ package apcs.shoppingMaul.commands;
 
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.commands.parser.Command;
+import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.SnowLeopard;
 
