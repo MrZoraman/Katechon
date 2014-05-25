@@ -67,4 +67,17 @@ public class FileLogger implements ILogger
 	{
 		return null;
 	}
+	
+	@Override
+	protected void finalize() throws Throwable
+	{
+		try
+		{
+			saveLog();
+		}
+		finally
+		{
+			super.finalize();
+		}
+	}
 }
