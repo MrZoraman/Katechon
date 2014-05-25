@@ -1,5 +1,6 @@
 package apcs.katechon.engine.scheduler;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import apcs.katechon.engine.EngineModuleBase;
@@ -22,7 +23,9 @@ public class SchedulerEngine extends EngineModuleBase<ISchedulerTask>
 	@Override
 	protected void process(Set<ISchedulerTask> items)
 	{
-		for(ISchedulerTask task : items)
+		Set<ISchedulerTask> tasks = new HashSet<ISchedulerTask>(items);
+		
+		for(ISchedulerTask task : tasks)
 		{
 			task.doTask();
 		}
