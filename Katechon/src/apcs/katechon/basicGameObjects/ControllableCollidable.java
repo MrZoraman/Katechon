@@ -6,10 +6,15 @@ import java.util.Set;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 
+/**
+ * This is a class that a person controls and will collide with things
+ * @author Matt
+ *
+ */
 public class ControllableCollidable extends Controllable implements ICollidable
 {
-	private final int width;
-	private final int height;
+	protected final int width;
+	protected final int height;
 	
 	private final int speed;
 	
@@ -18,6 +23,15 @@ public class ControllableCollidable extends Controllable implements ICollidable
 	protected int x;
 	protected int y;
 	
+	/**
+	 * Constructor
+	 * @param controlScheme The button mapping for controlling this object
+	 * @param x X coordinate for where the object will be drawn on the screen
+	 * @param y Y coordinate for where the object will be drawn on the screen
+	 * @param width The width of the object
+	 * @param height The height of the object
+	 * @param speed The speed at which the object will travel
+	 */
 	public ControllableCollidable(ControlScheme controlScheme, int x, int y, int width, int height, int speed)
 	{
 		super(controlScheme);
