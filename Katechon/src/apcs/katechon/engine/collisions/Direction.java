@@ -10,22 +10,22 @@ public enum Direction
 	/**
 	 * The top of the object is colliding with something
 	 */
-	TOP(Math.PI / 2),
+	TOP(0),
 	
 	/**
 	 * The bottom of the object is colliding with something
 	 */
-	BOTTOM((Math.PI * 3) / 2),
+	BOTTOM(Math.PI),
 	
 	/**
 	 * The left of the object is colliding with something
 	 */
-	LEFT(Math.PI),
+	LEFT((Math.PI * 3) / 2),
 	
 	/**
 	 * The right of the object is colliding with something
 	 */
-	RIGHT(0),
+	RIGHT(Math.PI / 2),
 	
 	/**
 	 * The object is not colliding with anything

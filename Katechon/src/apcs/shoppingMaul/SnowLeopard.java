@@ -3,18 +3,23 @@ package apcs.shoppingMaul;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.rendering.IDrawable;
+import apcs.katechon.rendering.ImageUtils;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.SpritesheetLoader;
 
 public class SnowLeopard implements IDrawable, ISchedulerTask
 {
+	
 	private final AnimatedSequence<BufferedImage> frames;
 	
 	private final int speed;
 	
 	private boolean finished;
+	
+	private Direction direction;
 	
 	private int x;
 	private int y;
@@ -27,6 +32,8 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		this.speed = speed;
 		
 		this.finished = false;
+		
+		this.direction = Direction.TOP;
 		
 		this.x = x;
 		this.y = y;
@@ -43,7 +50,10 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 	@Override
 	public void draw(Graphics g)
 	{
-		g.drawImage(frames.getCurrentFrame(), x, y, null);
+		BufferedImage copy = ImageUtils.deepCopy(frames.getCurrentFrame());
+		copy = ImageUtils.rotateImage(copy, direction.toRadians());
+		
+		g.drawImage(copy, x, y, null);
 	}
 
 	@Override
@@ -155,5 +165,10 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 	public void doTask()
 	{
 		moveTowardsDestination();
+	}
+	
+	public void setDirection(Direction direction)
+	{
+		this.direction = direction;
 	}
 }
