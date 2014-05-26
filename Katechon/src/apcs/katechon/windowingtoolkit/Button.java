@@ -19,7 +19,6 @@ public abstract class Button implements MouseClickedListener, ISchedulerTask, ID
 	{
 		this.x = x;
 		this.y = y;
-		System.out.println("x: " + x + ", y: " + y);
 		this.width = width;
 		this.height = height;
 		
