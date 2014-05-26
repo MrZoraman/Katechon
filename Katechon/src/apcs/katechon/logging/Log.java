@@ -1,8 +1,6 @@
 package apcs.katechon.logging;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -150,7 +148,7 @@ public class Log
 	 */
 	static String toInfoMessage(String message)
 	{
-		return getTimeStamp() + " [INFO]      " + message;
+		return getTimeStamp() + "[INFO] " + message;
 	}
 	
 	/**
@@ -160,7 +158,7 @@ public class Log
 	 */
 	static String toErrorMessage(String message)
 	{
-		return getTimeStamp() + " [ERROR]     " + message;
+		return getTimeStamp() + "[ERROR] " + message;
 	}
 	
 	/**
@@ -170,7 +168,7 @@ public class Log
 	 */
 	static String toFatalMessage(String message)
 	{
-		return getTimeStamp() + " [FATAL]     " + message;
+		return getTimeStamp() + "[FATAL] " + message;
 	}
 	
 	/**
@@ -182,10 +180,10 @@ public class Log
 	{
 		List<String> message = new ArrayList<String>();
 		
-		message.add(getTimeStamp() + " [EXCEPTION] " + ex.getClass().getCanonicalName() + ": " + ex.getLocalizedMessage());
+		message.add(getTimeStamp() + "[EXCEPTION] " + ex.getClass().getCanonicalName() + ": " + ex.getLocalizedMessage());
 		for(StackTraceElement element : ex.getStackTrace())
 		{
-			message.add(getTimeStamp() + " [EXCEPTION] \t" + element.toString());
+			message.add(getTimeStamp() + "[EXCEPTION] " + element.toString());
 		}
 		
 		return message.toArray(new String[message.size()]);
@@ -198,7 +196,7 @@ public class Log
 	 */
 	static String toDebugMessage(String message)
 	{
-		return getTimeStamp() + " [DEBUG]     " + message;
+		return getTimeStamp() + "[DEBUG] " + message;
 	}
 	
 	/**
@@ -207,8 +205,9 @@ public class Log
 	 */
 	private static String getTimeStamp()
 	{
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
-		return sdf.format(date);
+//		Date date = new Date();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
+//		return sdf.format(date);
+		return "";
 	}
 }
