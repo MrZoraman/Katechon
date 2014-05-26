@@ -8,6 +8,11 @@ import apcs.katechon.engine.collisions.CollisionType;
 import apcs.katechon.resources.JarImageLoader;
 import apcs.katechon.test.SimpleCollidable;
 
+/**
+ * This is an object that is placed on the map that cannot be passed through
+ * @author Sean
+ *
+ */
 public class Pillar extends SimpleCollidable
 {
 	private BufferedImage image;

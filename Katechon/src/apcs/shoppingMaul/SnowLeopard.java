@@ -18,9 +18,13 @@ public class SnowLeopard extends SimpleCollidable
 	
 	private boolean hasPack;
 	
-	public SnowLeopard(int x, int y, int width, int height, int speed, boolean control)
+	private final ShoppingMaul shoppingMaul;
+	
+	public SnowLeopard(ShoppingMaul shoppingMaul, int x, int y, int width, int height, int speed, boolean control)
 	{
 		super(x, y, width, height, speed, control);
+		
+		this.shoppingMaul = shoppingMaul;
 		
 		this.control = control;
 		
@@ -42,9 +46,9 @@ public class SnowLeopard extends SimpleCollidable
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 	}
 	
-	public SnowLeopard(int x, int y, int width, int height, int speed, boolean control, boolean hasPack)
+	public SnowLeopard(ShoppingMaul shoppingMaul, int x, int y, int width, int height, int speed, boolean control, boolean hasPack)
 	{
-		this(x, y, width, height, speed, control);
+		this(shoppingMaul, x, y, width, height, speed, control);
 
 		this.hasPack = hasPack;
 	}
@@ -62,7 +66,7 @@ public class SnowLeopard extends SimpleCollidable
 	{
 		if (!control && !hasPack)
 		{
-			for(LeopardPack pack : ShoppingMaul.getPacks())
+			for(LeopardPack pack : shoppingMaul.getPacks())
 			{
 				if ((Math.abs(this.x - pack.getLeader().x) < 50) && (Math.abs(this.y - pack.getLeader().y) < 50))
 				{

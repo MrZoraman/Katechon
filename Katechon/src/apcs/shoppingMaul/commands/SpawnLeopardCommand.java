@@ -3,10 +3,18 @@ package apcs.shoppingMaul.commands;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.commands.parser.Command;
 import apcs.katechon.logging.Log;
+import apcs.shoppingMaul.ShoppingMaul;
 import apcs.shoppingMaul.SnowLeopard;
 
 public class SpawnLeopardCommand implements Command
 {
+	private final ShoppingMaul sm;
+	
+	public SpawnLeopardCommand(ShoppingMaul sm)
+	{
+		this.sm = sm;
+	}
+	
 	@Override
 	public void onCommand(String[] preArgs, String[] args)
 	{
@@ -27,7 +35,7 @@ public class SpawnLeopardCommand implements Command
 				x = Integer.parseInt(xArg);
 				y = Integer.parseInt(yArg);
 				
-				SnowLeopard leopard = new SnowLeopard(x, y, 10, 28, 1, false, false);
+				SnowLeopard leopard = new SnowLeopard(sm, x, y, 10, 28, 1, false, false);
 				KatechonEngine.getInstance().addDrawable(leopard, 1);
 				KatechonEngine.getInstance().scheduleTask(leopard);
 				
