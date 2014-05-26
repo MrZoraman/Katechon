@@ -47,7 +47,7 @@ public class ShoppingMaul extends KatechonGameBase
 		Log.info("finding us some files");
 //		Object obj = ShoppingMaul.class.getResource("/assets/Pillar.png");
 		ClassLoader cl = this.getClass().getClassLoader();
-		Object obj = cl.getResourceAsStream("Pillar.png");
+		Object obj = cl.getResourceAsStream("test.txt");
 		Log.info("null: " + (obj == null));
 		
 		mainEngine = KatechonEngine.getInstance();
