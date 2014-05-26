@@ -94,10 +94,8 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 			//find the hypotnuse (distance)
 			double hypotnuse = Math.sqrt((preX * preX) + (preY * preY));
 			
-//			if (hypotnuse > 50)
-//			{
-				speed += hypotnuse * hypotnuse / SNAP_TO_CONSTANT;
-//			}
+			//the farther away the leopard is to it's destination, the faster it goes
+			speed += hypotnuse * hypotnuse / SNAP_TO_CONSTANT;
 			
 			if(Math.abs(hypotnuse) < speed)
 			{
