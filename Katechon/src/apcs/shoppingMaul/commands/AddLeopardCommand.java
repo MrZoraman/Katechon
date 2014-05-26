@@ -34,6 +34,12 @@ public class AddLeopardCommand extends LeopardPackCommand
 			}
 		}
 		
+		if(amountOfLeopards < 0)
+		{
+			Log.info("You can't add a negative amount of leopards!");
+			return;
+		}
+		
 		getPack().addLeopards(amountOfLeopards);
 		
 		Log.info(amountOfLeopards + " leopard" + (amountOfLeopards > 1 ? "s" : "") + " added to the pack.");

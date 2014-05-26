@@ -34,6 +34,12 @@ public class RemoveLeopardCommand extends LeopardPackCommand
 			}
 		}
 		
+		if(amountOfLeopards < 0)
+		{
+			Log.info("You can't remove a negative amount of leopards!");
+			return;
+		}
+		
 		int leopardsRemoved = getPack().removeLeopards(amountOfLeopards);
 		
 		Log.info(leopardsRemoved + " leopard" + (leopardsRemoved > 1 ? "s" : "") + " removed from the pack.");
