@@ -6,6 +6,11 @@ import java.util.Set;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 
+/**
+ * A person who will walk around the shopping mall.
+ * @author Sean
+ *
+ */
 public class Man implements ICollidable
 {
 	private final Color color;
