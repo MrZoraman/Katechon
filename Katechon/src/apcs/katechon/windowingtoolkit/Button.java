@@ -54,6 +54,7 @@ public abstract class Button implements MouseClickedListener, ISchedulerTask, ID
 	private boolean finished;
 	
 	public abstract void onClick();
+	public abstract void paint(Graphics g, int x, int y, int width, int height);
 	
 	@Override
 	public void draw(Graphics g)
@@ -64,7 +65,8 @@ public abstract class Button implements MouseClickedListener, ISchedulerTask, ID
 			int yRelativeToScreen = y + window.getY();
 			
 			g.setColor(currentColor);
-			g.fillRect(xRelativeToScreen, yRelativeToScreen, width, height);
+//			g.fillRect(xRelativeToScreen, yRelativeToScreen, width, height);
+			paint(g, xRelativeToScreen, yRelativeToScreen, width, height);
 		}
 	}
 	
