@@ -9,7 +9,6 @@ import apcs.katechon.basicGameObjects.ControllableCollidable;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
-import apcs.katechon.logging.Log;
 
 public class LeopardPack extends ControllableCollidable
 {
@@ -51,7 +50,6 @@ public class LeopardPack extends ControllableCollidable
 			Direction direction = directions.iterator().next();
 			for(SnowLeopard leopard : leopards)
 			{
-				Log.debug("Setting direction to " + direction);
 				leopard.setDirection(direction);
 			}
 		}
