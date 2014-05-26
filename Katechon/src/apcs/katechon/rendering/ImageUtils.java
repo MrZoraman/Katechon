@@ -14,8 +14,18 @@ import java.awt.image.WritableRaster;
  */
 public class ImageUtils
 {
+	/**
+	 * Private ctor
+	 */
 	private ImageUtils() {}
 	
+	/**
+	 * Changes all of the colors of a buffered image from one color to antoher
+	 * @param image The image to have it's colors altered
+	 * @param from The color that will be changed
+	 * @param to The color that the color specified in 'from' will be changed to
+	 * @return The newly colored buffered image
+	 */
 	public static BufferedImage changeColor(BufferedImage image, Color from, Color to)
 	{
 		int width = image.getWidth();
@@ -44,6 +54,12 @@ public class ImageUtils
 		return image;
 	}
 	
+	/**
+	 * Copies an image. This is a deep copy so you won't just be copying an image,
+	 * 		but rather creating an entirely new image instance that can be modified without affecting the origional.
+	 * @param source
+	 * @return
+	 */
 	public static BufferedImage deepCopy(BufferedImage source)
 	{
 		BufferedImage b = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
@@ -53,6 +69,12 @@ public class ImageUtils
 	    return b;
 	}
 	
+	/**
+	 * Rotates an image. Doesn't work well for degrees other than 0, 90, 180 and 270
+	 * @param bi The image to rotate
+	 * @param radians The amount of radians the image should be rotated
+	 * @return The rotated image
+	 */
 	public static BufferedImage rotateImage(BufferedImage bi, double radians)
 	{
 		AffineTransform transform = new AffineTransform();
