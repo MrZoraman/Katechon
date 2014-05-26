@@ -1,9 +1,6 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
-import java.util.HashSet;
-import java.util.Set;
-
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.commands.CommandManager;
