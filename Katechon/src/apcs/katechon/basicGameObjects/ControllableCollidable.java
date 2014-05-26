@@ -1,20 +1,101 @@
 package apcs.katechon.basicGameObjects;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import apcs.katechon.engine.collisions.Direction;
+import apcs.katechon.engine.collisions.ICollidable;
 
-public class ControllableCollidable extends Controllable
+public class ControllableCollidable extends Controllable implements ICollidable
 {
-
-	public ControllableCollidable(ControlScheme controlScheme) {
+	private final int width;
+	private final int height;
+	
+	private final int speed;
+	
+	private Set<Direction> collisions;
+	
+	protected int x;
+	protected int y;
+	
+	public ControllableCollidable(ControlScheme controlScheme, int x, int y, int width, int height, int speed)
+	{
 		super(controlScheme);
+		
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		
+		this.speed = speed;
+		
+		collisions = new HashSet<Direction>();
 	}
 
 	@Override
-	public void move(Set<Direction> directions) {
-		// TODO Auto-generated method stub
-		
+	public void move(Set<Direction> directions)
+	{
+		//for each direction the player wants to move in
+		for(Direction direction : directions)
+		{
+			//if that direction is not one that is in the direction of a collision
+			if(!collisions.contains(direction))
+			{
+				//move
+				switch(direction)
+				{
+				case BOTTOM:
+					y += speed;
+					break;
+				case TOP:
+					y -= speed;
+					break;
+				case LEFT:
+					x -= speed;
+					break;
+				case RIGHT:
+					x += speed;
+					break;
+				case NONE:
+					break;
+				}
+			}
+		}
 	}
 
+	@Override
+	public int getTopFace()
+	{
+		return this.y;
+	}
+
+	@Override
+	public int getBottomFace()
+	{
+		return this.y + this.height;
+	}
+
+	@Override
+	public int getLeftFace()
+	{
+		return this.x;
+	}
+
+	@Override
+	public int getRightFace()
+	{
+		return this.x + this.width;
+	}
+	
+	@Override
+	public int getSpeed()
+	{
+		return this.speed;
+	}
+	
+	@Override
+	public void onCollision(Set<Direction> collisions)
+	{
+		this.collisions = collisions;
+	}
 }
