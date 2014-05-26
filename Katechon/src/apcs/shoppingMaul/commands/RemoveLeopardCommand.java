@@ -1,18 +1,15 @@
 package apcs.shoppingMaul.commands;
 
-import apcs.katechon.commands.parser.Command;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.LeopardPack;
 
-public class RemoveLeopardCommand implements Command
+public class RemoveLeopardCommand extends LeopardPackCommand
 {
-	private final LeopardPack pack;
-	
 	public RemoveLeopardCommand(LeopardPack pack)
 	{
-		this.pack = pack;
+		super(pack);
 	}
-	
+
 	@Override
 	public void onCommand(String[] preArgs, String[] args)
 	{
@@ -37,7 +34,7 @@ public class RemoveLeopardCommand implements Command
 			}
 		}
 		
-		int leopardsRemoved = pack.removeLeopards(amountOfLeopards);
+		int leopardsRemoved = getPack().removeLeopards(amountOfLeopards);
 		
 		Log.info(leopardsRemoved + " leopard" + (leopardsRemoved > 1 ? "s" : "") + " removed from the pack.");
 	}

@@ -1,18 +1,15 @@
 package apcs.shoppingMaul.commands;
 
-import apcs.katechon.commands.parser.Command;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.LeopardPack;
 
-public class SpawnLeopardCommand implements Command
+public class SpawnLeopardCommand extends LeopardPackCommand
 {
-	private final LeopardPack pack;
-	
 	public SpawnLeopardCommand(LeopardPack pack)
 	{
-		this.pack = pack;
+		super(pack);
 	}
-	
+
 	@Override
 	public void onCommand(String[] preArgs, String[] args)
 	{
@@ -37,7 +34,7 @@ public class SpawnLeopardCommand implements Command
 			}
 		}
 		
-		pack.addLeopards(amountOfLeopards);
+		getPack().addLeopards(amountOfLeopards);
 		
 		Log.info(amountOfLeopards + " leopard" + (amountOfLeopards > 1 ? "s" : "") + " added to the pack.");
 	}
