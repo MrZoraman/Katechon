@@ -7,6 +7,7 @@ import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.Pillar;
 
+//TODO: documentation
 public class AddPillarCommand implements Command
 {
 

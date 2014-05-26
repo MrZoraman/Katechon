@@ -3,6 +3,11 @@ package apcs.shoppingMaul.commands;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.LeopardPack;
 
+/**
+ * Removes a specified amount of leopards from the pack (or 1 if the amount is not specified)
+ * @author Matt
+ *
+ */
 public class RemoveLeopardCommand extends LeopardPackCommand
 {
 	public RemoveLeopardCommand(LeopardPack pack)

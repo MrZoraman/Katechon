@@ -4,6 +4,11 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.commands.parser.Command;
 import apcs.katechon.logging.Log;
 
+/**
+ * A command that causes the game to close. Also has the ability to try to force the game to close.
+ * @author Matt
+ *
+ */
 public class ExitGameCommand implements Command
 {
 	@Override

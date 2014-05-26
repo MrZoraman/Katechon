@@ -3,6 +3,11 @@ package apcs.shoppingMaul.commands;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.LeopardPack;
 
+/**
+ * Counts the amount of leopards that are in the pack and prints it to the console
+ * @author Matt
+ *
+ */
 public class CountLeopardsCommand extends LeopardPackCommand
 {
 	public CountLeopardsCommand(LeopardPack pack)

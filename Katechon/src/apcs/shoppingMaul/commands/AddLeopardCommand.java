@@ -3,6 +3,11 @@ package apcs.shoppingMaul.commands;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.LeopardPack;
 
+/**
+ * This command adds a specified amount of leopards to the pack
+ * @author Matt
+ *
+ */
 public class AddLeopardCommand extends LeopardPackCommand
 {
 	public AddLeopardCommand(LeopardPack pack)

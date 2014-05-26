@@ -12,9 +12,13 @@ import apcs.katechon.rendering.ImageUtils;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.SpritesheetLoader;
 
+/**
+ * This is a snow leopard. It doesn't collide with anything. It is able to steadily move towards a given destination.
+ * @author Matt
+ *
+ */
 public class SnowLeopard implements IDrawable, ISchedulerTask
 {
-	
 	private final AnimatedSequence<BufferedImage> frames;
 	
 	private final int speed;
@@ -29,6 +33,12 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 	private int destinationX;
 	private int destinationY;
 	
+	/**
+	 * Constructor
+	 * @param x The x coordinate
+	 * @param y The y coordinate
+	 * @param speed The speed for the leopard
+	 */
 	public SnowLeopard(int x, int y, int speed)
 	{
 		this.speed = speed;
@@ -175,6 +185,10 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		moveTowardsDestination();
 	}
 	
+	/**
+	 * Sets the direction for the leopard to face
+	 * @param direction The direction to face
+	 */
 	public void setDirection(Direction direction)
 	{
 		this.direction = direction;
