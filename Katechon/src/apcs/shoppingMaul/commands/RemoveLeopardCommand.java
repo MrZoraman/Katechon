@@ -25,7 +25,7 @@ public class RemoveLeopardCommand extends LeopardPackCommand
 		}
 		
 		int amountOfLeopards = 1;
-		if(preArgs.length > 0)
+		if(preArgs.length > 0 && !(preArgs[0].equals("leopard") || preArgs[0].equals("leopards")))
 		{
 			try
 			{
