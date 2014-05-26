@@ -1,5 +1,6 @@
 package apcs.shoppingMaul;
 
+import java.awt.Color;
 import java.util.Set;
 
 import apcs.katechon.engine.collisions.Direction;
@@ -7,43 +8,50 @@ import apcs.katechon.engine.collisions.ICollidable;
 
 public class Man implements ICollidable
 {
+	private final Color color;
 	
+	private int x, y, width, height, speed;
+	
+	public Man(int x, int y, int width, int height, int speed, Color color)
+	{
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.color = color;
+	}
 
 	@Override
 	public int getTopFace() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.y;
 	}
 
 	@Override
 	public int getBottomFace() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.y + this.height;
 	}
 
 	@Override
 	public int getLeftFace() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.x;
 	}
 
 	@Override
 	public int getRightFace() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.x + this.width;
 	}
 
 	@Override
 	public int getSpeed() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.speed;
 	}
 
 	@Override
 	public void onCollision(Set<Direction> types)
 	{
-		// TODO Auto-generated method stub
-		
+		/*
+		 * This could be problematic as you cannot tell what has collided with this.
+		 */
 	}
 	
 	@Override
