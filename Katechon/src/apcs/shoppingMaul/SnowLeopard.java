@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import apcs.katechon.engine.scheduler.ISchedulerTask;
+import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.SpritesheetLoader;
@@ -77,6 +78,9 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		//find the difference in Cartesian coordinates
 		int preX = destinationX - x;
 		int preY = destinationY - y;
+		
+		Log.debug("I am " + preX + " units off in the x direction.");
+		Log.debug("I am " + preY + " units off in the y directin.");
 		
 		//check if at destination or not
 		if(preX != 0 && preY != 0)

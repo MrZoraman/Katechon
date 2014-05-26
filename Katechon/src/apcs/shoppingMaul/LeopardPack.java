@@ -1,7 +1,6 @@
 package apcs.shoppingMaul;
 
 import java.awt.Graphics;
-import java.util.HashSet;
 import java.util.Set;
 
 import apcs.katechon.basicGameObjects.ControlScheme;
@@ -11,13 +10,18 @@ import apcs.katechon.rendering.IDrawable;
 
 public class LeopardPack extends ControllableCollidable implements IDrawable
 {
-	private final Set<SnowLeopard> leopards;
+	private final SnowLeopard[] leopards;
 	
-	public LeopardPack(ControlScheme controlScheme, int x, int y, int speed)
+	public LeopardPack(ControlScheme controlScheme, int x, int y, int speed, int size)
 	{
 		super(controlScheme, x, y, 0, 0, speed);
 		
-		leopards = new HashSet<SnowLeopard>();
+		leopards = new SnowLeopard[size];
+		
+		for(int ii = 0; ii < leopards.length; ii++)
+		{
+			leopards[ii] = new SnowLeopard(10, 10, speed);
+		}
 	}
 
 	@Override

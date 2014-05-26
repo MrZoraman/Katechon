@@ -1,12 +1,15 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
+
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
+import apcs.katechon.engine.scheduler.ISchedulerTask;
+import apcs.katechon.logging.Log;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -29,7 +32,15 @@ public class ShoppingMaul extends KatechonGameBase
 	@Override
 	public void init(final KatechonEngine engine)
 	{
+		Log.setDebugging(true);
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
+		
+		SnowLeopard leopard = new SnowLeopard(300, 300, 10);
+		engine.addDrawable(leopard, 1);
+		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
+		
+		//move to 500, 500
+		leopard.setDestination(500, 500);
 		
 //		snowLeopard = new SnowLeopard(100, 100, 10, 28, 8, true);
 		
