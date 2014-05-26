@@ -1,5 +1,2 @@
 This is a list of the major todo items
 
-why won't the assets load from /assets/shoppingMaul?
-fix the .gitignore
-Better solution for the Jarguar object (it's a bit hackish at the moment)
