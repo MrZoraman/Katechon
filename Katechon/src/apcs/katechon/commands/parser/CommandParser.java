@@ -63,10 +63,10 @@ public class CommandParser
 					return -1;
 				}
 			}
-			else
-			{
-				System.out.println("length breached!");
-			}
+//			else
+//			{
+//				System.out.println("length breached!");
+//			}
 		}
 		
 		return matchingArgs;
