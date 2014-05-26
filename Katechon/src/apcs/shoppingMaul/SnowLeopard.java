@@ -73,6 +73,11 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		this.destinationY = y;
 	}
 	
+	private double toDegrees(double radians)
+	{
+		return radians * 180 / Math.PI;
+	}
+	
 	private void moveTowardsDestination()
 	{
 		//find the difference in Cartesian coordinates
@@ -85,36 +90,54 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		//check if at destination or not
 		if(preX != 0 && preY != 0)
 		{
-			//to polar coordinates
-			double radius = Math.sqrt((preX * preX) + (preY * preY));
-			double angle = Math.atan(preY / preX);
+			//find the hypotnuse (distance)
+			double hypotnuse = Math.sqrt((preX * preX) + (preY * preY));
 			
-			if(preX < 0 && preY > 0)
+			if(Math.abs(hypotnuse) < speed)
 			{
-				//quadrant II
-				radius += Math.PI;//180 degrees
+				//we are going to overshoot so we just go to our destination
+				this.x = destinationX;
+				this.y = destinationY;
 			}
-			else if (preX < 0 && preY < 0)
+			else
 			{
-				//quadrant III
-				radius += Math.PI;//180 degrees
+				//Cartesian coordinates
+				double radius = speed;
+				double angle = Math.atan(preY / preX);
+				
+				Log.debug("radius: " + radius);
+				Log.debug("angle: " + toDegrees(angle) + " degrees");
+				
+				if(preX < 0 && preY > 0)
+				{
+					Log.debug("quadrant II");
+					//quadrant II
+					radius += Math.PI;//180 degrees
+				}
+				else if (preX < 0 && preY < 0)
+				{
+					Log.debug("quadrant III");
+					//quadrant III
+					radius += Math.PI;//180 degrees
+				}
+				else if (preX > 0 && preY < 0)
+				{
+					Log.debug("quadrant IV");
+					//quadrant IV
+					radius += Math.PI * 2;//360 degrees
+				}
+				
+				//back to Cartesian coordinates
+				int cX = (int) (radius * Math.cos(angle));
+				int cY = (int) (radius * Math.sin(angle));
+				
+				Log.debug("x difference: " + cX);
+				Log.debug("y difference: " + cY);
+				
+				//add the difference to the coordinates
+				this.x += cX;
+				this.y += cY;
 			}
-			else if (preX > 0 && preY < 0)
-			{
-				//quadrant IV
-				radius += Math.PI * 2;//360 degrees
-			}
-			
-			//add our distance traveled
-			radius += speed;
-			
-			//back to Cartesian coordinates
-			int cX = (int) (radius * Math.cos(angle));
-			int cY = (int) (radius * Math.sin(angle));
-			
-			//add the difference to the coordinates
-			this.x += cX;
-			this.y += cY;
 		}
 	}
 
