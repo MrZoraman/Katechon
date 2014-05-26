@@ -1,9 +1,11 @@
 package apcs.shoppingMaul;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import apcs.katechon.rendering.ImageUtils;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.SpritesheetLoader;
 import apcs.katechon.test.SimpleCollidable;
@@ -30,6 +32,11 @@ public class SnowLeopard extends SimpleCollidable
 		
 		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "spritesheet_bigger.png", 8, 1);
 		BufferedImage[] imageFrames = loader.loadWide(0, 0, 7);
+		
+		for(BufferedImage image : imageFrames)
+		{
+			image = ImageUtils.changeColor(image, new Color(183, 183, 183), Color.RED);
+		}
 		
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 	}
