@@ -1,5 +1,7 @@
 package apcs.shoppingMaul;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -14,8 +16,9 @@ public class LeopardPack extends ControllableCollidable
 {
 	private static final int TICKS_BETWEEN_UPDATE = 40;
 	
-	private final SnowLeopard[] leopards;
+	private final List<SnowLeopard> leopards;
 	private final Random rand;
+	private final int speed;
 	
 	private final int OFFSET_TOLERANCE = 300;
 	
@@ -26,16 +29,24 @@ public class LeopardPack extends ControllableCollidable
 		super(controlScheme, x, y, 10, 10, speed);
 		
 		this.rand = new Random();
+		this.speed = speed;
+		
 		this.ticksSinceTaskUpdate = 0;
 		
-		leopards = new SnowLeopard[size];
+		leopards = new ArrayList<SnowLeopard>(size);
 		
-		for(int ii = 0; ii < leopards.length; ii++)
+		for(int ii = 0; ii < size; ii++)
 		{
-			leopards[ii] = new SnowLeopard(x, y, speed / 4);
-			KatechonEngine.getInstance().addDrawable(leopards[ii], 1);
-			EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopards[ii]);
+			addLeopard();
 		}
+	}
+	
+	public void addLeopard()
+	{
+		SnowLeopard leopard = new SnowLeopard(x, y, speed / 4);
+		leopards.add(leopard);
+		KatechonEngine.getInstance().addDrawable(leopard, 1);
+		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
 	}
 	
 	@Override
