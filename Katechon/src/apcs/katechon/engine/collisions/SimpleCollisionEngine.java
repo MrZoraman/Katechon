@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static apcs.katechon.engine.collisions.CollisionType.*;
+import static apcs.katechon.engine.collisions.Direction.*;
 
 /**
  * A simple implementation of the collision engine. Should serve our needs nicely.
@@ -17,15 +17,15 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	/*Not sure about this as the map will limit each collidable to having only one collision type at a time
 	* allowing the chance of a collision to fail.
 	*/
-	private Map<ICollidable, Set<CollisionType>> collisions;
+	private Map<ICollidable, Set<Direction>> collisions;
 	
 	public SimpleCollisionEngine()
 	{
-		this.collisions = new HashMap<ICollidable, Set<CollisionType>>();
+		this.collisions = new HashMap<ICollidable, Set<Direction>>();
 	}
 	
 	@Override
-	public Map<ICollidable, Set<CollisionType>> getCollisions(ICollidable collidable)
+	public Map<ICollidable, Set<Direction>> getCollisions(ICollidable collidable)
 	{
 		return collisions;
 	}
@@ -41,20 +41,20 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 				{
 					//For testing purposes.
 					//TODO: The above method should replace this.
-					CollisionType type = getCollisionType(item, item2);
+					Direction type = getCollisionType(item, item2);
 					//item.onCollision(type);
-					Set<CollisionType> types = collisions.get(item);
+					Set<Direction> types = collisions.get(item);
 					if (types == null)
 					{
-						types = new HashSet<CollisionType>();
+						types = new HashSet<Direction>();
 					}
 
 					types.add(type);
 					
-					Set<CollisionType> types2 = collisions.get(item2);
+					Set<Direction> types2 = collisions.get(item2);
 					if (types2 == null)
 					{
-						types2 = new HashSet<CollisionType>();
+						types2 = new HashSet<Direction>();
 					}
 					if (type == BOTTOM)
 					{
@@ -93,7 +93,7 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 		}
 	}
 	
-	private CollisionType getCollisionType(ICollidable item1, ICollidable item2)
+	private Direction getCollisionType(ICollidable item1, ICollidable item2)
 	{
 		if ((item1.getRightFace() == item2.getLeftFace() ||
 				(item1.getRightFace() < (item2.getLeftFace() + item1.getSpeed()) && 

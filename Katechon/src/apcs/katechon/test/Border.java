@@ -3,7 +3,7 @@ package apcs.katechon.test;
 import java.util.Set;
 
 import apcs.katechon.KatechonEngine;
-import apcs.katechon.engine.collisions.CollisionType;
+import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 
 public class Border implements ICollidable
@@ -40,7 +40,7 @@ public class Border implements ICollidable
 	}
 
 	@Override
-	public void onCollision(Set<CollisionType> types)
+	public void onCollision(Set<Direction> types)
 	{
 		// TODO Auto-generated method stub
 		

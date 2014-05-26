@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
-import apcs.katechon.engine.collisions.CollisionType;
+import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
@@ -16,7 +16,7 @@ public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 {
 	protected int x, y, width, height, speed;
 	private boolean control;
-	private Set<CollisionType> collisions;
+	private Set<Direction> collisions;
 	
 	public SimpleCollidable(int x, int y, int width, int height, int speed, boolean control)
 	{
@@ -27,7 +27,7 @@ public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 		this.y = y;
 		this.control = control;
 		
-		collisions = new HashSet<CollisionType>();
+		collisions = new HashSet<Direction>();
 	}
 
 	@Override
@@ -67,22 +67,22 @@ public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 	{
 		if (this.control)
 		{
-			if (Keyboard.getInstance().isKeyPressed(Keys.W) && !collisions.contains(CollisionType.TOP))
+			if (Keyboard.getInstance().isKeyPressed(Keys.W) && !collisions.contains(Direction.TOP))
 			{
 				y -= speed;
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.S) && !collisions.contains(CollisionType.BOTTOM))
+			if (Keyboard.getInstance().isKeyPressed(Keys.S) && !collisions.contains(Direction.BOTTOM))
 			{
 				y += speed;
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.A) && !collisions.contains(CollisionType.LEFT))
+			if (Keyboard.getInstance().isKeyPressed(Keys.A) && !collisions.contains(Direction.LEFT))
 			{
 				x -= speed;
 			}
 			
-			if (Keyboard.getInstance().isKeyPressed(Keys.D) && !collisions.contains(CollisionType.RIGHT))
+			if (Keyboard.getInstance().isKeyPressed(Keys.D) && !collisions.contains(Direction.RIGHT))
 			{
 				x += speed;
 			}
@@ -99,7 +99,7 @@ public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 	}
 
 	@Override
-	public void onCollision(Set<CollisionType> types)
+	public void onCollision(Set<Direction> types)
 	{
 		this.collisions = types;
 	}

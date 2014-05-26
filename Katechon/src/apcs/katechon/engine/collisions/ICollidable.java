@@ -40,5 +40,5 @@ public interface ICollidable extends IEngineItem
 	 * What the collidable should do when a collision occurs.
 	 * @param The type of collision that has occurred.
 	 */
-	public void onCollision(Set<CollisionType> types);
+	public void onCollision(Set<Direction> types);
 }

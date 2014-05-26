@@ -28,10 +28,9 @@ public class SnowLeopard extends SimpleCollidable
 			yOffset = (r.nextInt(20) * (r.nextBoolean() ? 1 : -1));
 		}
 		
+		//load the frames
 		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "/apcs/shoppingMaul/assets/snowleopard.png", 8, 1);
-		
 		BufferedImage[] imageFrames = loader.loadWide(0, 0, 7);
-	
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 	}
 	

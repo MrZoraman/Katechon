@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Set;
 
-import apcs.katechon.engine.collisions.CollisionType;
+import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.resources.JarImageLoader;
 import apcs.katechon.test.SimpleCollidable;
 
@@ -68,7 +68,7 @@ public class Pillar extends SimpleCollidable
 	}
 
 	@Override
-	public void onCollision(Set<CollisionType> types)
+	public void onCollision(Set<Direction> types)
 	{
 		//This object will do nothing on collision.
 	}

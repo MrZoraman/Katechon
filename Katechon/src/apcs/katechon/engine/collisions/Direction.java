@@ -5,7 +5,7 @@ package apcs.katechon.engine.collisions;
  * @author Matt
  *
  */
-public enum CollisionType
+public enum Direction
 {
 	/**
 	 * The top of the object is colliding with something
