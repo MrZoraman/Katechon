@@ -139,7 +139,7 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener,
 		if(key.equals(Keys.ENTER))
 		{
 			outputString = inputString.toString();
-			Log.info("> " + outputString);
+//			Log.info("> " + outputString);
 			inputString.setLength(0);
 		}
 		else if (key.equals(Keys.BACKSPACE))
