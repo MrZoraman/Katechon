@@ -73,25 +73,15 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		this.destinationY = y;
 	}
 	
-	private double toDegrees(double radians)
-	{
-		return radians * 180 / Math.PI;
-	}
-	
 	private void moveTowardsDestination()
 	{
 		//find the difference in Cartesian coordinates
 		int preX = destinationX - x;
 		int preY = destinationY - y;
 		
-		Log.debug("I am " + preX + " units off in the x direction.");
-		Log.debug("I am " + preY + " units off in the y directin.");
-		
 		//check if at destination or not
 		if(preX != 0 || preY != 0)
 		{
-			Log.debug("calculating...");
-			
 			//find the hypotnuse (distance)
 			double hypotnuse = Math.sqrt((preX * preX) + (preY * preY));
 			
@@ -122,24 +112,18 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 				double radius = speed;
 				double angle = Math.atan(preY / preX);
 				
-				Log.debug("radius: " + radius);
-				Log.debug("angle: " + toDegrees(angle) + " degrees");
-				
 				if(preX < 0 && preY >= 0)
 				{
-					Log.debug("quadrant II");
 					//quadrant II
 					angle += Math.PI;//180 degrees
 				}
 				else if (preX < 0 && preY < 0)
 				{
-					Log.debug("quadrant III");
 					//quadrant III
 					angle += Math.PI;//180 degrees
 				}
 				else if (preX > 0 && preY < 0)
 				{
-					Log.debug("quadrant IV");
 					//quadrant IV
 					angle += Math.PI * 2;//360 degrees
 				}
@@ -147,9 +131,6 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 				//back to Cartesian coordinates
 				int cX = (int) (radius * Math.cos(angle));
 				int cY = (int) (radius * Math.sin(angle));
-				
-				Log.debug("x difference: " + cX);
-				Log.debug("y difference: " + cY);
 				
 				//add the difference to the coordinates
 				this.x += cX;
