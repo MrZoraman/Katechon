@@ -15,7 +15,6 @@ import static apcs.katechon.engine.collisions.Direction.*;
  * @author Matt
  *
  */
-//TODO: UNTESTED!
 public abstract class Controllable implements ISchedulerTask
 {
 	private final Keys leftKey, rightKey, upKey, downKey;
