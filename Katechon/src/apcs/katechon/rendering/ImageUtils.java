@@ -13,7 +13,7 @@ public class ImageUtils
 {
 	private ImageUtils() {}
 	
-	public BufferedImage changeColor(BufferedImage image, Color from, Color to)
+	public static BufferedImage changeColor(BufferedImage image, Color from, Color to)
 	{
 		int width = image.getWidth();
 		int height = image.getHeight();
