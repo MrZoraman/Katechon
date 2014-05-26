@@ -70,11 +70,12 @@ public class ImageUtils
 	}
 	
 	/**
-	 * Rotates an image. Doesn't work well for degrees other than 0, 90, 180 and 270
+	 * Rotates an image. Doesn't work well for degrees other than 90 and 270
 	 * @param bi The image to rotate
 	 * @param radians The amount of radians the image should be rotated
 	 * @return The rotated image
 	 */
+	//TODO: get a better rotateImage method
 	public static BufferedImage rotateImage(BufferedImage bi, double radians)
 	{
 		AffineTransform transform = new AffineTransform();
