@@ -15,7 +15,6 @@ import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 import apcs.shoppingMaul.commands.CountLeopardsCommand;
-import apcs.shoppingMaul.commands.LeopardPackCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
 import apcs.shoppingMaul.commands.AddLeopardCommand;
 
@@ -41,14 +40,8 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pack);
 		
-		LeopardPackCommand addLeopardCommand = new AddLeopardCommand(pack);
-		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", addLeopardCommand);
-		CommandManager.getInstance().registerCommand("add {leopard|leopards}", addLeopardCommand);
-		
-		LeopardPackCommand removeLeopardCommand = new RemoveLeopardCommand(pack);
-		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", removeLeopardCommand);
-		CommandManager.getInstance().registerCommand("remove {leopard|leopards}", removeLeopardCommand);
-		
+		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
+		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(pack));
 		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(pack));
 	}
 
