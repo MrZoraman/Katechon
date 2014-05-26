@@ -100,6 +100,21 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 				//we are going to overshoot so we just go to our destination
 				this.x = destinationX;
 				this.y = destinationY;
+				return;
+			}
+			else if (preX == 0)
+			{
+				//moving only in the y direction
+				if (preY < 0)
+				{
+					//negative, need to go up
+					this.y -= speed;
+				}
+				else
+				{
+					//positive, need to go down
+					this.y += speed;
+				}
 			}
 			else
 			{
@@ -110,7 +125,7 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 				Log.debug("radius: " + radius);
 				Log.debug("angle: " + toDegrees(angle) + " degrees");
 				
-				if(preX < 0 && preY > 0)
+				if(preX < 0 && preY >= 0)
 				{
 					Log.debug("quadrant II");
 					//quadrant II
