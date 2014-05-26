@@ -21,12 +21,12 @@ public abstract class Controllable implements ISchedulerTask
 	
 	private final Keyboard keyboard;
 	
-	public Controllable(final Keys leftKey, final Keys rightKey, final Keys upKey, final Keys downKey)
+	public Controllable(ControlScheme controlScheme)
 	{
-		this.leftKey = leftKey;
-		this.rightKey = rightKey;
-		this.upKey = upKey;
-		this.downKey = downKey;
+		this.leftKey = controlScheme.getLeftKey();
+		this.rightKey = controlScheme.getRightKey();
+		this.upKey = controlScheme.getUpKey();
+		this.downKey = controlScheme.getDownKey();
 		
 		this.keyboard = Keyboard.getInstance();
 	}
