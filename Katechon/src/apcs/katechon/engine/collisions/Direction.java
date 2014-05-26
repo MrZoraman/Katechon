@@ -57,7 +57,7 @@ public enum Direction
 	}
 	
 	/**
-	 * @return The rotation for imgscalr uses
+	 * @return The rotation for imgscalr uses. Be sure to check if it's null or not! It will return null of no rotation is needed.
 	 */
 	public Rotation getRotation()
 	{
