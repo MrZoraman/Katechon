@@ -13,7 +13,7 @@ public class LeopardPack extends SimpleCollidable
 
 	public LeopardPack(int x, int y, boolean control, SnowLeopard leader)
 	{
-		super(x, y, 1, 1, leader.getSpeed(), control);
+//		super(x, y, 1, 1, leader.getSpeed(), control);
 		this.leader = leader;
 		leopards.add(leader);
 	}

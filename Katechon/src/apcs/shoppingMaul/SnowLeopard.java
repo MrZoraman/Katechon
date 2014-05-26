@@ -2,31 +2,25 @@ package apcs.shoppingMaul;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.util.Random;
-
+import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.SpritesheetLoader;
-import apcs.katechon.test.SimpleCollidable;
 
-public class SnowLeopard extends SimpleCollidable
+public class SnowLeopard implements IDrawable
 {
-	private final boolean control;
+	private final AnimatedSequence<BufferedImage> frames;
 	
-	private int xOffset;
-	private int yOffset;
+	private boolean finished;
 	
-	public SnowLeopard(int x, int y, int width, int height, int speed, boolean control)
+	private int x;
+	private int y;
+	
+	public SnowLeopard(int x, int y)
 	{
-		super(x, y, width, height, speed, control);
+		this.finished = false;
 		
-		this.control = control;
-		
-		if (!control)
-		{
-			Random r = new Random();
-			xOffset = (r.nextInt(20) * (r.nextBoolean() ? 1 : -1));
-			yOffset = (r.nextInt(20) * (r.nextBoolean() ? 1 : -1));
-		}
+		this.x = x;
+		this.y = y;
 		
 		//load the frames
 		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "/apcs/shoppingMaul/assets/snowleopard.png", 8, 1);
@@ -34,23 +28,24 @@ public class SnowLeopard extends SimpleCollidable
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 	}
 	
-	private final AnimatedSequence<BufferedImage> frames;
-	
 	@Override
 	public void draw(Graphics g)
 	{
 		g.drawImage(frames.getCurrentFrame(), x, y, null);
 	}
-	
-	public void relocate(SnowLeopard leader)
+
+	@Override
+	public boolean isFinished()
 	{
-		if (!control)
-		{
-			if ((Math.abs(this.x - leader.x) < 50) && (Math.abs(this.y - leader.y) < 50))
-			{
-				this.x = leader.x + xOffset;
-				this.y = leader.y + yOffset;
-			}
-		}
+		return finished;
+	}
+	
+	/**
+	 * Sets the state of this snow leopard.
+	 * @param finished True if the leopard is done and can be removed from the game engine. False if not done yet.
+	 */
+	public void setFinished(boolean finished)
+	{
+		this.finished = finished;
 	}
 }
