@@ -16,6 +16,12 @@ public class SpawnLeopardCommand implements Command
 	@Override
 	public void onCommand(String[] preArgs, String[] args)
 	{
+		if(args.length > 0)
+		{
+			showUsage();
+			return;
+		}
+		
 		int amountOfLeopards = 1;
 		if(preArgs.length > 0)
 		{
