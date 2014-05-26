@@ -15,19 +15,11 @@ public class SnowLeopard extends SimpleCollidable
 	private int xOffset;
 	private int yOffset;
 	
-	private boolean hasPack;
-	
-	private final ShoppingMaul shoppingMaul;
-	
-	public SnowLeopard(ShoppingMaul shoppingMaul, int x, int y, int width, int height, int speed, boolean control)
+	public SnowLeopard(int x, int y, int width, int height, int speed, boolean control)
 	{
 		super(x, y, width, height, speed, control);
 		
-		this.shoppingMaul = shoppingMaul;
-		
 		this.control = control;
-		
-		this.hasPack = true;
 		
 		if (!control)
 		{
@@ -45,37 +37,12 @@ public class SnowLeopard extends SimpleCollidable
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 	}
 	
-	public SnowLeopard(ShoppingMaul shoppingMaul, int x, int y, int width, int height, int speed, boolean control, boolean hasPack)
-	{
-		this(shoppingMaul, x, y, width, height, speed, control);
-
-		this.hasPack = hasPack;
-	}
-	
 	private final AnimatedSequence<BufferedImage> frames;
 	
 	@Override
 	public void draw(Graphics g)
 	{
 		g.drawImage(frames.getCurrentFrame(), x, y, null);
-	}
-	
-	@Override
-	public void doTask()
-	{
-		if (!control && !hasPack)
-		{
-			for(LeopardPack pack : shoppingMaul.getPacks())
-			{
-				if ((Math.abs(this.x - pack.getLeader().x) < 50) && (Math.abs(this.y - pack.getLeader().y) < 50))
-				{
-					this.x = pack.getLeader().x + xOffset;
-					this.y = pack.getLeader().y + yOffset;
-					hasPack = true;
-				}
-			}
-		}
-		super.doTask();
 	}
 	
 	public void relocate(SnowLeopard leader)
