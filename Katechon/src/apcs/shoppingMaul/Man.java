@@ -13,6 +13,7 @@ import apcs.katechon.engine.collisions.ICollidable;
  */
 public class Man implements ICollidable
 {
+	@SuppressWarnings("unused")
 	private final Color color;
 	
 	private int x, y, width, height, speed;
