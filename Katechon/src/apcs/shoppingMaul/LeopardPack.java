@@ -1,6 +1,5 @@
 package apcs.shoppingMaul;
 
-import java.awt.Graphics;
 import java.util.Random;
 import java.util.Set;
 
@@ -10,14 +9,15 @@ import apcs.katechon.basicGameObjects.ControllableCollidable;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
-import apcs.katechon.rendering.IDrawable;
 
-public class LeopardPack extends ControllableCollidable implements IDrawable
+public class LeopardPack extends ControllableCollidable
 {
+	private static final int TICKS_BETWEEN_UPDATE = 40;
+	
 	private final SnowLeopard[] leopards;
 	private final Random rand;
 	
-	private final int OFFSET_TOLERANCE = 200;
+	private final int OFFSET_TOLERANCE = 300;
 	
 	private int ticksSinceTaskUpdate;
 	
@@ -32,24 +32,23 @@ public class LeopardPack extends ControllableCollidable implements IDrawable
 		
 		for(int ii = 0; ii < leopards.length; ii++)
 		{
-			leopards[ii] = new SnowLeopard(x, y, speed);
+			leopards[ii] = new SnowLeopard(x, y, speed / 4);
 			KatechonEngine.getInstance().addDrawable(leopards[ii], 1);
 			EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopards[ii]);
 		}
 	}
-
-	@Override
-	public void draw(Graphics g)
-	{
-		g.drawRect(x, y, width, height);
-	}
 	
 	@Override
-	public void doTask()
+	public void move(Set<Direction> directions)
 	{
-		super.doTask();
+		super.move(directions);
 		
-		if(ticksSinceTaskUpdate > 10)
+		setDestinationForLeopards();
+	}
+	
+	private void setDestinationForLeopards()
+	{
+		if(ticksSinceTaskUpdate > TICKS_BETWEEN_UPDATE)
 		{
 			for(SnowLeopard leopard : leopards)
 			{
@@ -65,6 +64,14 @@ public class LeopardPack extends ControllableCollidable implements IDrawable
 		{
 			ticksSinceTaskUpdate++;
 		}
+	}
+	
+	@Override
+	public void doTask()
+	{
+		super.doTask();
+		
+		setDestinationForLeopards();
 	}
 	
 	@Override

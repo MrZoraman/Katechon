@@ -5,7 +5,6 @@ import java.awt.Color;
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.basicGameObjects.ControlScheme;
-import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
@@ -14,8 +13,6 @@ import apcs.katechon.logging.Log;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
-import apcs.shoppingMaul.commands.AddPillarCommand;
-import apcs.shoppingMaul.commands.SpawnLeopardCommand;
 
 public class ShoppingMaul extends KatechonGameBase
 {
@@ -38,12 +35,13 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
-		SnowLeopard leopard = new SnowLeopard(300, 300, 10);
+		SnowLeopard leopard = new SnowLeopard(50, 50, 10);
 		engine.addDrawable(leopard, 1);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
 		
+//		leopard.setDestination(700, 700);
+		
 		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, 500, 500, 10, 5);
-		engine.addDrawable(pack, 2);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pack);
 		

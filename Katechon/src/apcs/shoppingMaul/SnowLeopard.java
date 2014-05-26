@@ -72,8 +72,18 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		this.destinationY = y;
 	}
 	
+	/**
+	 * This is a constant that affects how fast the leopard will go to it's destination relative to how far away it is
+	 */
+	private static final int SNAP_TO_CONSTANT = 15000;
+	
+	/**
+	 * Causes the leopard to 'step' towards the direction that it's destination is at
+	 */
 	private void moveTowardsDestination()
 	{
+		int speed = this.speed;
+		
 		//find the difference in Cartesian coordinates
 		int preX = destinationX - x;
 		int preY = destinationY - y;
@@ -83,6 +93,11 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		{
 			//find the hypotnuse (distance)
 			double hypotnuse = Math.sqrt((preX * preX) + (preY * preY));
+			
+//			if (hypotnuse > 50)
+//			{
+				speed += hypotnuse * hypotnuse / SNAP_TO_CONSTANT;
+//			}
 			
 			if(Math.abs(hypotnuse) < speed)
 			{
