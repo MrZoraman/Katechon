@@ -88,8 +88,10 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		Log.debug("I am " + preY + " units off in the y directin.");
 		
 		//check if at destination or not
-		if(preX != 0 && preY != 0)
+		if(preX != 0 || preY != 0)
 		{
+			Log.debug("calculating...");
+			
 			//find the hypotnuse (distance)
 			double hypotnuse = Math.sqrt((preX * preX) + (preY * preY));
 			
