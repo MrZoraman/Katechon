@@ -5,6 +5,7 @@ import java.io.File;
 import javax.swing.Timer;
 
 import apcs.katechon.commands.CommandManager;
+import apcs.katechon.commands.baseCommands.ExitGameCommand;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.scheduler.SchedulerEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
@@ -79,6 +80,7 @@ public class KatechonEngine
 		
 		initKWT(scheduler, window.getDisplay());
 		
+		CommandManager.getInstance().registerCommand("exit", new ExitGameCommand());
 	}
 	
 
