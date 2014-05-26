@@ -63,10 +63,16 @@ public class CommandParser
 					return -1;
 				}
 			}
-//			else
-//			{
-//				System.out.println("length breached!");
-//			}
+			else
+			{
+				/*
+				 * DO NOT REMOVE THIS LINE.
+				 * Remove this line and parts of the command system will break.
+				 * If you tried removing this line and parts of the command system broke,
+				 * increment this counter: 1
+				 */
+				System.out.println("length breached!");
+			}
 		}
 		
 		return matchingArgs;
