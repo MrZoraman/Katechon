@@ -37,7 +37,7 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
-		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, 500, 500, 10, 1);
+		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, 500, 500, 10, 5);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pack);
 		
