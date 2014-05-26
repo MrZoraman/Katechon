@@ -1,6 +1,7 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +11,7 @@ import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
+import apcs.katechon.logging.Log;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -42,6 +44,12 @@ public class ShoppingMaul extends KatechonGameBase
 	@Override
 	public void init()
 	{
+		Log.info("finding us some files");
+//		Object obj = ShoppingMaul.class.getResource("/assets/Pillar.png");
+		ClassLoader cl = this.getClass().getClassLoader();
+		Object obj = cl.getResourceAsStream("Pillar.png");
+		Log.info("null: " + (obj == null));
+		
 		mainEngine = KatechonEngine.getInstance();
 		
 		mainEngine.getSwingWindow().setBackgroundColor(Color.WHITE);
