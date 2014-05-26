@@ -37,10 +37,7 @@ public class SpawnLeopardCommand implements Command
 			}
 		}
 		
-		for(int ii = 0; ii < amountOfLeopards; ii++)
-		{
-			pack.addLeopard();
-		}
+		pack.addLeopards(amountOfLeopards);
 		
 		Log.info(amountOfLeopards + " leopard" + (amountOfLeopards > 1 ? "s" : "") + " added to the pack.");
 	}

@@ -19,26 +19,34 @@ public class RemoveLeopardCommand implements Command
 		if(args.length > 0)
 		{
 			showUsage();
+			return;
 		}
-		else
+		
+		int amountOfLeopards = 1;
+		if(preArgs.length > 0)
 		{
-			if(pack.size() > 0)
+			try
 			{
-				pack.removeLeopard();
-				Log.info("1 Leopard removed from pack.");
+				amountOfLeopards = Integer.parseInt(preArgs[0]);
 			}
-			else
+			catch (Exception e)
 			{
-				Log.info("This pack is empty. :(");
+				Log.error("'" + preArgs[0] + "' is not a number!");
+				showUsage();
+				return;
 			}
 		}
+		
+		int leopardsRemoved = pack.removeLeopards(amountOfLeopards);
+		
+		Log.info(leopardsRemoved + " leopard" + (leopardsRemoved > 1 ? "s" : "") + " removed from the pack.");
 	}
 	
 	private void showUsage()
 	{
 		Log.chainLog()
 			.info("USAGE:")
-			.info("removeleopard - Removes a leopard from the pack.")
+			.info("remove [amount] leopard(s) - Removes some leopards from the pack.")
 		.log();
 	}
 }

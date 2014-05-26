@@ -36,29 +36,39 @@ public class LeopardPack extends ControllableCollidable
 		
 		leopards = new ArrayList<SnowLeopard>(size);
 		
-		for(int ii = 0; ii < size; ii++)
+		addLeopards(size);
+	}
+	
+	public void addLeopards(int amount)
+	{
+		for(int ii = 0; ii < amount; ii++)
 		{
-			addLeopard();
+			SnowLeopard leopard = new SnowLeopard(x, y, speed / 4);
+			leopards.add(leopard);
+			KatechonEngine.getInstance().addDrawable(leopard, 1);
+			EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
 		}
 	}
 	
-	public void addLeopard()
+	public int removeLeopards(int amount)
 	{
-		SnowLeopard leopard = new SnowLeopard(x, y, speed / 4);
-		leopards.add(leopard);
-		KatechonEngine.getInstance().addDrawable(leopard, 1);
-		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
-	}
-	
-	public void removeLeopard()
-	{
-		if(size() > 0)
+		int amountRemoved = 0;
+		
+		for(int ii = 0; ii < amount; ii++)
 		{
+			if(size() <= 0)
+			{
+				return amountRemoved;
+			}
+			
 			Iterator<SnowLeopard> it = leopards.iterator();
 			SnowLeopard leopard = it.next();
 			it.remove();
 			leopard.setFinished(true);
+			amountRemoved++;
 		}
+		
+		return amountRemoved;
 	}
 	
 	public int size()

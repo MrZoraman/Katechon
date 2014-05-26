@@ -43,7 +43,7 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pack);
 		
 		CommandManager.getInstance().registerCommand("add * {leopard|leopards}", new SpawnLeopardCommand(pack));
-		CommandManager.getInstance().registerCommand("removeleopard", new RemoveLeopardCommand(pack));
+		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(pack));
 	}
 
 	@Override
