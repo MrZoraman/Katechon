@@ -90,10 +90,6 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener,
 	{
 		super.draw(g);
 		
-//		//The console overaly
-//		g.setColor(CONSOLE_OVERLAY_COLOR);
-//		g.fillRect(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT);
-		
 		//The input bocks
 		g.setColor(INPUT_OVERLAY_COLOR);
 		g.fillRect(x + Window.getBorderWidth(), y + Window.getWindowBarHeight(), CONSOLE_OVERLAY_WIDTH - (Window.getBorderWidth() * 2), INPUT_OVERLAY_HEIGHT);
