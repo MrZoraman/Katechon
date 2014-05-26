@@ -112,19 +112,19 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 				{
 					Log.debug("quadrant II");
 					//quadrant II
-					radius += Math.PI;//180 degrees
+					angle += Math.PI;//180 degrees
 				}
 				else if (preX < 0 && preY < 0)
 				{
 					Log.debug("quadrant III");
 					//quadrant III
-					radius += Math.PI;//180 degrees
+					angle += Math.PI;//180 degrees
 				}
 				else if (preX > 0 && preY < 0)
 				{
 					Log.debug("quadrant IV");
 					//quadrant IV
-					radius += Math.PI * 2;//360 degrees
+					angle += Math.PI * 2;//360 degrees
 				}
 				
 				//back to Cartesian coordinates

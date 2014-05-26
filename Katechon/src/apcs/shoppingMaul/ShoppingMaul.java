@@ -40,7 +40,7 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
 		
 		//move to 500, 500
-		leopard.setDestination(500, 500);
+		leopard.setDestination(100, 500);
 		
 //		snowLeopard = new SnowLeopard(100, 100, 10, 28, 8, true);
 		
