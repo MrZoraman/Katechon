@@ -6,13 +6,14 @@ import java.util.Set;
 
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.basicGameObjects.ControllableCollidable;
+import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.rendering.IDrawable;
 
-public class Player extends ControllableCollidable implements IDrawable
+public class LeopardPack extends ControllableCollidable implements IDrawable
 {
 	private final Set<SnowLeopard> leopards;
 	
-	public Player(ControlScheme controlScheme, int x, int y, int speed)
+	public LeopardPack(ControlScheme controlScheme, int x, int y, int speed)
 	{
 		super(controlScheme, x, y, 0, 0, speed);
 		
@@ -22,5 +23,13 @@ public class Player extends ControllableCollidable implements IDrawable
 	@Override
 	public void draw(Graphics g)
 	{
+	}
+	
+	@Override
+	public void onCollision(Set<Direction> collisions)
+	{
+		super.onCollision(collisions);
+		
+		//this is where we kill the target
 	}
 }
