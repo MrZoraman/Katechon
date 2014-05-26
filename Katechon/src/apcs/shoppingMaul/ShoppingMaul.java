@@ -35,12 +35,12 @@ public class ShoppingMaul extends KatechonGameBase
 		Log.setDebugging(true);
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
-		SnowLeopard leopard = new SnowLeopard(500, 500, 5);
+		SnowLeopard leopard = new SnowLeopard(300, 300, 10);
 		engine.addDrawable(leopard, 1);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
 		
 		//move to 500, 500
-		leopard.setDestination(100, 500);
+		leopard.setDestination(100, 100);
 		
 //		snowLeopard = new SnowLeopard(100, 100, 10, 28, 8, true);
 		
