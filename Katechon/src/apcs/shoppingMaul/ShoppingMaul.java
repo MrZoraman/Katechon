@@ -20,9 +20,6 @@ import apcs.shoppingMaul.commands.AddLeopardCommand;
 
 public class ShoppingMaul extends KatechonGameBase
 {
-	private SnowLeopard snowLeopard;
-//	private LeopardPack mainPack;
-	
 	public static void main(String[] args)
 	{
 		IConfig config = new MappedConfig();
@@ -52,10 +49,5 @@ public class ShoppingMaul extends KatechonGameBase
 	public void onGameEnd()
 	{
 		
-	}
-	
-	public SnowLeopard getMainLeopard()
-	{
-		return snowLeopard; 
 	}
 }
