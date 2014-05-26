@@ -51,9 +51,9 @@ public class Test extends KatechonGameBase
 	}
 
 	@Override
-	public void init() 
+	public void init(final KatechonEngine engine) 
 	{
-		KatechonEngine.getInstance().getSwingWindow().setBackgroundColor(Color.WHITE);
+		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
 		SimpleCollisionEngine sce = new SimpleCollisionEngine();
 		EngineManager.getInstance().addEngine(sce);
@@ -64,13 +64,13 @@ public class Test extends KatechonGameBase
 		SimpleCollidable sc2 = new SimpleCollidable(r.nextInt(500), r.nextInt(500), 50, 50, 10, false);
 		SimpleCollidable sc3 = new SimpleCollidable(r.nextInt(500), r.nextInt(500), 50, 50, 10, false);
 		
-		KatechonEngine.getInstance().addDrawable(sc1, 0);
-		KatechonEngine.getInstance().addDrawable(sc2, 0);
-		KatechonEngine.getInstance().addDrawable(sc3, 0);
+		engine.addDrawable(sc1, 0);
+		engine.addDrawable(sc2, 0);
+		engine.addDrawable(sc3, 0);
 
-		KatechonEngine.getInstance().scheduleTask(sc1);
-		KatechonEngine.getInstance().scheduleTask(sc2);
-		KatechonEngine.getInstance().scheduleTask(sc3);
+		engine.scheduleTask(sc1);
+		engine.scheduleTask(sc2);
+		engine.scheduleTask(sc3);
 		
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc1);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(sc2);

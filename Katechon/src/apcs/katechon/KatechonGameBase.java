@@ -17,8 +17,9 @@ public abstract class KatechonGameBase
 	
 	/**
 	 * Initialization code goes here! This method is called by the engine once everything has been constructed and the engine itself has been started.
+	 * @param engine The katechon engine. This is passed through for convenience purposes.
 	 */
-	public abstract void init();
+	public abstract void init(final KatechonEngine engine);
 	
 	/**
 	 * Runs when the game has been closed through the window.

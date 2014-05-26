@@ -179,7 +179,7 @@ public class KatechonEngine
 	 */
 	public void start()
 	{
-		kBase.init();
+		kBase.init(this);
 		
 		//Starts the background processes.
 		periodicTimer.start();

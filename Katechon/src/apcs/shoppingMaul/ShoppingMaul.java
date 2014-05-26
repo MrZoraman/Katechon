@@ -33,10 +33,8 @@ public class ShoppingMaul extends KatechonGameBase
 	}
 
 	@Override
-	public void init()
+	public void init(final KatechonEngine engine)
 	{
-		KatechonEngine engine = KatechonEngine.getInstance();
-		
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
 		packs = new HashSet<LeopardPack>();
