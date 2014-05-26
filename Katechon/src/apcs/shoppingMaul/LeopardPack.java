@@ -79,6 +79,6 @@ public class LeopardPack extends ControllableCollidable
 	{
 		super.onCollision(collisions);
 		
-		//this is where we kill the target
+		//TODO: this is where we kill the target
 	}
 }
