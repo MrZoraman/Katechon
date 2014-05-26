@@ -45,14 +45,18 @@ public class SnowLeopard extends SimpleCollidable
 	@Override
 	public void doTask()
 	{
+		super.doTask();
+	}
+	
+	public void relocate(SnowLeopard leader)
+	{
 		if (!control)
 		{
-			if ((Math.abs(this.x - ShoppingMaul.getMainLeopard().x) < 50) && (Math.abs(this.y - ShoppingMaul.getMainLeopard().y) < 50))
+			if ((Math.abs(this.x - leader.x) < 50) && (Math.abs(this.y - leader.y) < 50))
 			{
-				this.x = ShoppingMaul.getMainLeopard().x + xOffset;
-				this.y = ShoppingMaul.getMainLeopard().y + yOffset;
+				this.x = leader.x + xOffset;
+				this.y = leader.y + yOffset;
 			}
 		}
-		super.doTask();
 	}
 }

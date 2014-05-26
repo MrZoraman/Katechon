@@ -49,16 +49,6 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(snowLeopard);
 		
-		Pillar pillar1 = new Pillar(300, 350, 50, 50);
-		
-		mainEngine.addDrawable(pillar1, 1);
-		mainEngine.scheduleTask(pillar1);
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar1);
-	
-		
-//		mainEngine.addDrawable(snowLeopard, 0);
-//		mainEngine.scheduleTask(snowLeopard);
-		
 		CommandManager.getInstance().registerCommand("spawnleopard", new SpawnLeopardCommand());
 		CommandManager.getInstance().registerCommand("spawnpack", new SpawnLeopardPackCommand());
 		

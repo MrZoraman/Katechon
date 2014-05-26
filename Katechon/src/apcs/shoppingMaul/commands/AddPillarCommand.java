@@ -2,6 +2,8 @@ package apcs.shoppingMaul.commands;
 
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.commands.parser.Command;
+import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.Pillar;
 
@@ -28,6 +30,8 @@ public class AddPillarCommand implements Command
 				
 				KatechonEngine.getInstance().addDrawable(pillar, 1);
 				KatechonEngine.getInstance().scheduleTask(pillar);
+				
+				EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
 				
 				Log.info("Pillar added at: " + x + ", " + y + " with dimensions: " + width + ", " + height);
 			}
