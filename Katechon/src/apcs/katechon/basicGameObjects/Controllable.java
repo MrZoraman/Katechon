@@ -1,4 +1,4 @@
-package apcs.katechon;
+package apcs.katechon.basicGameObjects;
 
 import java.util.HashSet;
 import java.util.Set;
