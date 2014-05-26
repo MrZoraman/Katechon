@@ -2,10 +2,11 @@ package apcs.katechon.rendering;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
+
+import org.imgscalr.Scalr;
+import org.imgscalr.Scalr.Rotation;
 
 /**
  * Contains various utility methods for buffered image manipulation
@@ -76,11 +77,12 @@ public class ImageUtils
 	 * @return The rotated image
 	 */
 	//TODO: get a better rotateImage method
-	public static BufferedImage rotateImage(BufferedImage bi, double radians)
+	public static BufferedImage rotateImage(BufferedImage bi, Rotation rotation)
 	{
-		AffineTransform transform = new AffineTransform();
-		transform.rotate(radians, bi.getWidth() / 2, bi.getHeight() / 2);
-		AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
-		return op.filter(bi, null);
+//		AffineTransform transform = new AffineTransform();
+//		transform.rotate(radians, bi.getWidth() / 2, bi.getHeight() / 2);
+//		AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
+//		return op.filter(bi, null);
+		return Scalr.rotate(bi, rotation);
 	}
 }
