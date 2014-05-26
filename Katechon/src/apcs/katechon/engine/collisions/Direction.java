@@ -22,12 +22,12 @@ public enum Direction
 	/**
 	 * The left of the object is colliding with something
 	 */
-	LEFT((Math.PI * 3) / 2, Rotation.CW_90),
+	LEFT((Math.PI * 3) / 2, Rotation.CW_270),
 	
 	/**
 	 * The right of the object is colliding with something
 	 */
-	RIGHT(Math.PI / 2, Rotation.CW_270),
+	RIGHT(Math.PI / 2, Rotation.CW_90),
 	
 	/**
 	 * The object is not colliding with anything

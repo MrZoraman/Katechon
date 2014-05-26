@@ -3,6 +3,8 @@ package apcs.shoppingMaul;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import org.imgscalr.Scalr.Rotation;
+
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.rendering.IDrawable;
@@ -51,7 +53,13 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 	public void draw(Graphics g)
 	{
 		BufferedImage copy = ImageUtils.deepCopy(frames.getCurrentFrame());
-		copy = ImageUtils.rotateImage(copy, direction.toRadians());
+		
+		Rotation rotation = direction.getRotation();
+		
+		if(rotation != null)
+		{
+			copy = ImageUtils.rotateImage(copy, direction.getRotation());
+		}
 		
 		g.drawImage(copy, x, y, null);
 	}
