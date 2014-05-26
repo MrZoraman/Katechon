@@ -16,7 +16,7 @@ import apcs.shoppingMaul.commands.SpawnLeopardCommand;
 public class ShoppingMaul extends KatechonGameBase
 {
 	private SnowLeopard snowLeopard;
-	private LeopardPack mainPack;
+//	private LeopardPack mainPack;
 	
 	public static void main(String[] args)
 	{
@@ -33,17 +33,17 @@ public class ShoppingMaul extends KatechonGameBase
 		
 //		snowLeopard = new SnowLeopard(100, 100, 10, 28, 8, true);
 		
-		mainPack = new LeopardPack(100, 100, true, snowLeopard);
-		
-		engine.addDrawable(mainPack, 1);
-		engine.scheduleTask(mainPack);
-		EngineManager.getInstance().addEngine(new SimpleCollisionEngine());
-		
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(mainPack);
-		
-		CommandManager.getInstance().registerCommand("spawnleopard", new SpawnLeopardCommand());
-		
-		CommandManager.getInstance().registerCommand("addpillar", new AddPillarCommand());
+//		mainPack = new LeopardPack(100, 100, true, snowLeopard);
+//		
+//		engine.addDrawable(mainPack, 1);
+//		engine.scheduleTask(mainPack);
+//		EngineManager.getInstance().addEngine(new SimpleCollisionEngine());
+//		
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(mainPack);
+//		
+//		CommandManager.getInstance().registerCommand("spawnleopard", new SpawnLeopardCommand());
+//		
+//		CommandManager.getInstance().registerCommand("addpillar", new AddPillarCommand());
 	}
 
 	@Override

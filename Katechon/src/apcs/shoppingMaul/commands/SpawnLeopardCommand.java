@@ -27,10 +27,11 @@ public class SpawnLeopardCommand implements Command
 				x = Integer.parseInt(xArg);
 				y = Integer.parseInt(yArg);
 				
-				SnowLeopard leopard = new SnowLeopard(x, y, 10, 28, 1, false);
-				KatechonEngine.getInstance().addDrawable(leopard, 1);
-				KatechonEngine.getInstance().scheduleTask(leopard);
-				
+				//TODO: this command is now broken.
+//				SnowLeopard leopard = new SnowLeopard(x, y, 10, 28, 1, false);
+//				KatechonEngine.getInstance().addDrawable(leopard, 1);
+//				KatechonEngine.getInstance().scheduleTask(leopard);
+//				
 				Log.info("Leopard spawned at " + x + ", " + y);
 			}
 			catch (NumberFormatException e)
