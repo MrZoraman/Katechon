@@ -11,6 +11,7 @@ import apcs.katechon.engine.collisions.ICollidable;
  * @author Matt
  *
  */
+//TODO: UNTESTED!
 public class ControllableCollidable extends Controllable implements ICollidable
 {
 	protected final int width;
