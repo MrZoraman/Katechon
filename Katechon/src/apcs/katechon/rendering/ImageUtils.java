@@ -76,13 +76,8 @@ public class ImageUtils
 	 * @param radians The amount of radians the image should be rotated
 	 * @return The rotated image
 	 */
-	//TODO: get a better rotateImage method
 	public static BufferedImage rotateImage(BufferedImage bi, Rotation rotation)
 	{
-//		AffineTransform transform = new AffineTransform();
-//		transform.rotate(radians, bi.getWidth() / 2, bi.getHeight() / 2);
-//		AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
-//		return op.filter(bi, null);
 		return Scalr.rotate(bi, rotation);
 	}
 }
