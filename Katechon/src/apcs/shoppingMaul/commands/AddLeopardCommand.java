@@ -3,9 +3,9 @@ package apcs.shoppingMaul.commands;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.LeopardPack;
 
-public class SpawnLeopardCommand extends LeopardPackCommand
+public class AddLeopardCommand extends LeopardPackCommand
 {
-	public SpawnLeopardCommand(LeopardPack pack)
+	public AddLeopardCommand(LeopardPack pack)
 	{
 		super(pack);
 	}
