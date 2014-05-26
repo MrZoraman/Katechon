@@ -1,6 +1,7 @@
 package apcs.shoppingMaul;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -47,6 +48,22 @@ public class LeopardPack extends ControllableCollidable
 		leopards.add(leopard);
 		KatechonEngine.getInstance().addDrawable(leopard, 1);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
+	}
+	
+	public void removeLeopard()
+	{
+		if(size() > 0)
+		{
+			Iterator<SnowLeopard> it = leopards.iterator();
+			SnowLeopard leopard = it.next();
+			it.remove();
+			leopard.setFinished(true);
+		}
+	}
+	
+	public int size()
+	{
+		return leopards.size();
 	}
 	
 	@Override

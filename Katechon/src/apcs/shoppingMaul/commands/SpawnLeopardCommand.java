@@ -16,22 +16,34 @@ public class SpawnLeopardCommand implements Command
 	@Override
 	public void onCommand(String[] preArgs, String[] args)
 	{
-		if(args.length > 0)
+		int amountOfLeopards = 1;
+		if(preArgs.length > 0)
 		{
-			showUsage();
+			try
+			{
+				amountOfLeopards = Integer.parseInt(preArgs[0]);
+			}
+			catch (Exception e)
+			{
+				Log.error("'" + preArgs[0] + "' is not a number!");
+				showUsage();
+				return;
+			}
 		}
-		else
+		
+		for(int ii = 0; ii < amountOfLeopards; ii++)
 		{
 			pack.addLeopard();
-			Log.info("1 Leopard added to pack.");
 		}
+		
+		Log.info(amountOfLeopards + " leopard" + (amountOfLeopards > 1 ? "s" : "") + " added to the pack.");
 	}
 	
 	private void showUsage()
 	{
 		Log.chainLog()
 			.info("USAGE:")
-			.info("spawnleopard - Adds a leopard to the pack.")
+			.info("add [amount] leopard(s) - Adds some leopards to the pack.")
 		.log();
 	}
 }
