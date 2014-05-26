@@ -27,7 +27,7 @@ public class SpawnLeopardCommand implements Command
 				x = Integer.parseInt(xArg);
 				y = Integer.parseInt(yArg);
 				
-				SnowLeopard leopard = new SnowLeopard(x, y, 10, 28, 1, false);
+				SnowLeopard leopard = new SnowLeopard(x, y, 10, 28, 1, false, false);
 				KatechonEngine.getInstance().addDrawable(leopard, 1);
 				KatechonEngine.getInstance().scheduleTask(leopard);
 				

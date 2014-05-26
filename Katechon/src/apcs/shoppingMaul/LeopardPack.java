@@ -11,10 +11,11 @@ public class LeopardPack extends SimpleCollidable
 	private Set<SnowLeopard> leopards = new HashSet<SnowLeopard>();
 	private SnowLeopard leader;
 
-	public LeopardPack(int x, int y, int speed, boolean control, SnowLeopard leader)
+	public LeopardPack(int x, int y, boolean control, SnowLeopard leader)
 	{
-		super(x, y, 1, 1, speed, control);
+		super(x, y, 1, 1, leader.getSpeed(), control);
 		this.leader = leader;
+		leopards.add(leader);
 	}
 	
 	public int getPackSize()
@@ -30,6 +31,7 @@ public class LeopardPack extends SimpleCollidable
 	@Override
 	public void draw(Graphics g)
 	{
+		leader.draw(g);
 		for(SnowLeopard sl : leopards)
 		{
 			sl.draw(g);
@@ -53,26 +55,29 @@ public class LeopardPack extends SimpleCollidable
 		for (SnowLeopard sl : leopards)
 		{
 			sl.relocate(leader);
+			sl.doTask();
 			
-			if (sl.getRightFace() > this.x + this.width)
+			if (sl.getRightFace() > super.x + this.width)
 			{
-				this.width = (sl.getRightFace() - this.x);
+				super.width = (sl.getRightFace() - super.x);
 			}
 			
-			if (sl.getBottomFace() > this.y + this.height)
+			if (sl.getBottomFace() > super.y + this.height)
 			{
-				this.height = (sl.getBottomFace() - this.y);
+				super.height = (sl.getBottomFace() - super.y);
 			}
 			
-			if (sl.getLeftFace() < this.x)
+			if (sl.getLeftFace() < super.x)
 			{
-				this.x = sl.getLeftFace();
+				super.x = sl.getLeftFace();
 			}
 			
-			if (sl.getTopFace() < this.y)
+			if (sl.getTopFace() < super.y)
 			{
-				this.y = sl.getTopFace();
+				super.y = sl.getTopFace();
 			}
 		}
+		
+		super.doTask();
 	}
 }

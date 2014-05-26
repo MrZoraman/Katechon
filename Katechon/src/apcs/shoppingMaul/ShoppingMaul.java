@@ -1,6 +1,8 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
+import java.util.HashSet;
+import java.util.Set;
 
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
@@ -22,6 +24,9 @@ public class ShoppingMaul extends KatechonGameBase
 	private static KatechonEngine mainEngine;
 	
 	private static SnowLeopard snowLeopard;
+	private static LeopardPack mainPack;
+	
+	private static Set<LeopardPack> packs;
 	
 	public static void main(String[] args)
 	{
@@ -41,13 +46,19 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		mainEngine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
-		snowLeopard = new SnowLeopard(100, 100, 10, 28, 8, true);
+		packs = new HashSet<LeopardPack>();
 		
-		mainEngine.addDrawable(snowLeopard, 2);
-		mainEngine.scheduleTask(snowLeopard);
+		snowLeopard = new SnowLeopard(100, 100, 10, 28, 8, true, true);
+		
+		mainPack = new LeopardPack(100, 100, true, snowLeopard);
+		
+		packs.add(mainPack);
+		
+		mainEngine.addDrawable(mainPack, 1);
+		mainEngine.scheduleTask(mainPack);
 		EngineManager.getInstance().addEngine(new SimpleCollisionEngine());
 		
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(snowLeopard);
+		EngineManager.getInstance().getEngine(ICollidable.class).addItem(mainPack);
 		
 		CommandManager.getInstance().registerCommand("spawnleopard", new SpawnLeopardCommand());
 		CommandManager.getInstance().registerCommand("spawnpack", new SpawnLeopardPackCommand());
@@ -64,5 +75,15 @@ public class ShoppingMaul extends KatechonGameBase
 	public static SnowLeopard getMainLeopard()
 	{
 		return snowLeopard; 
+	}
+	
+	public static void addPack(LeopardPack pack)
+	{
+		packs.add(pack);
+	}
+	
+	public static Set<LeopardPack> getPacks()
+	{
+		return packs;
 	}
 }

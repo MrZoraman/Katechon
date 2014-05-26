@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.SpritesheetLoader;
 import apcs.katechon.test.SimpleCollidable;
@@ -15,11 +16,15 @@ public class SnowLeopard extends SimpleCollidable
 	private int xOffset;
 	private int yOffset;
 	
+	private boolean hasPack;
+	
 	public SnowLeopard(int x, int y, int width, int height, int speed, boolean control)
 	{
 		super(x, y, width, height, speed, control);
 		
 		this.control = control;
+		
+		this.hasPack = true;
 		
 		if (!control)
 		{
@@ -29,10 +34,19 @@ public class SnowLeopard extends SimpleCollidable
 		}
 		
 //		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "spritesheet_bigger.png", 8, 1);
-		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "man.png", 8, 1);
+//		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "man.png", 8, 1);
+		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "snowleopard.png", 8, 1);
+		
 		BufferedImage[] imageFrames = loader.loadWide(0, 0, 7);
 	
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
+	}
+	
+	public SnowLeopard(int x, int y, int width, int height, int speed, boolean control, boolean hasPack)
+	{
+		this(x, y, width, height, speed, control);
+
+		this.hasPack = hasPack;
 	}
 	
 	private final AnimatedSequence<BufferedImage> frames;
@@ -46,6 +60,18 @@ public class SnowLeopard extends SimpleCollidable
 	@Override
 	public void doTask()
 	{
+		if (!control && !hasPack)
+		{
+			for(LeopardPack pack : ShoppingMaul.getPacks())
+			{
+				if ((Math.abs(this.x - pack.getLeader().x) < 50) && (Math.abs(this.y - pack.getLeader().y) < 50))
+				{
+					this.x = pack.getLeader().x + xOffset;
+					this.y = pack.getLeader().y + yOffset;
+					hasPack = true;
+				}
+			}
+		}
 		super.doTask();
 	}
 	
