@@ -122,4 +122,24 @@ public class ControllableCollidable extends Controllable implements ICollidable
 	{
 		return y;
 	}
+	
+	public final int getCollisionBoxX()
+	{
+		return x;
+	}
+	
+	public final int getCollisionBoxY()
+	{
+		return y;
+	}
+	
+	public final int getCollisionBoxWidth()
+	{
+		return width;
+	}
+	
+	public final int getCollisionBoxHeight()
+	{
+		return height;
+	}
 }
