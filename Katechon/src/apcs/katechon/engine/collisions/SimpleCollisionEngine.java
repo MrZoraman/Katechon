@@ -140,4 +140,11 @@ public class SimpleCollisionEngine extends CollisionEngineBase
             return NONE;
         }
 	}
+
+	@Override
+	public Set<ICollidable> getCollidingObjects(ICollidable collidable)
+	{
+		// TODO IMPLEMENT
+		return null;
+	}
 }
