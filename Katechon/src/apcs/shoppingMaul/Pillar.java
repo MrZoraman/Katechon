@@ -26,8 +26,8 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 		super(x, y, width, height, 0, false);
 		this.image = JarImageLoader.getInstance(ShoppingMaul.class).getImage("/apcs/shoppingMaul/assets/Pillar.png");
 		
-		this.realX = realX;
-		this.realY = realY;
+		this.realX = x;
+		this.realY = y;
 	}
 
 	@Override
