@@ -11,9 +11,9 @@ import apcs.katechon.engine.collisions.ICollidable;
  * @author Sean
  *
  */
+@SuppressWarnings("unused")
 public class Man implements ICollidable
 {
-	@SuppressWarnings("unused")
 	private final Color hairColor;
 	private final Color shirtColor;
 	private final Color handColor;
