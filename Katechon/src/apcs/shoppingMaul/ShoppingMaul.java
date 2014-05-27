@@ -55,6 +55,7 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
 		board.addDrawable(pillar);
 		
+		
 
 //		board.addDrawable(new Pillar(-500, -500, 25, 25));
 		
