@@ -13,6 +13,7 @@ import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 
+//TODO: documentation
 public class LeopardPack extends ControllableCollidable
 {
 	private static final int TICKS_BETWEEN_UPDATE = 40;

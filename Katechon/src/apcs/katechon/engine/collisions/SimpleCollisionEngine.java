@@ -9,7 +9,7 @@ import static apcs.katechon.engine.collisions.Direction.*;
 
 /**
  * A simple implementation of the collision engine. Should serve our needs nicely.
- * @author Matt
+ * @author Sean
  *
  */
 public class SimpleCollisionEngine extends CollisionEngineBase
