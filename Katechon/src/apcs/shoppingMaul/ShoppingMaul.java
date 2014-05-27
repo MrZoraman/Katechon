@@ -54,22 +54,22 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 
-		FloorTile tile = new FloorTile(600, 600);
-		board.addDrawable(tile);
-
-		Pillar pillar = new Pillar(500, 500, 25, 25, "Pillar 1");
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
-		board.addDrawable(pillar);
+//		FloorTile tile = new FloorTile(600, 600);
+//		board.addDrawable(tile);
+//
+//		Pillar pillar = new Pillar(500, 500, 25, 25, "Pillar 1");
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
+//		board.addDrawable(pillar);
+//		
+//		Pillar pillar2 = new Pillar(100, 700, 25, 25, "Pillar 2");
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar2);
+//		board.addDrawable(pillar2);
+//		
+//		Pillar pillar3 = new Pillar(50, 100, 25, 25, "Pillar 3");
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar3);
+//		board.addDrawable(pillar3);
 		
-		Pillar pillar2 = new Pillar(100, 700, 25, 25, "Pillar 2");
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar2);
-		board.addDrawable(pillar2);
-		
-		Pillar pillar3 = new Pillar(50, 100, 25, 25, "Pillar 3");
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar3);
-		board.addDrawable(pillar3);
-		
-		board.setTarget(pillar3);
+//		board.setTarget(pillar3);
 		
 		Wall wall = new Wall(-100, -100);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(wall);
