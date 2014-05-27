@@ -1,13 +1,31 @@
 package apcs.katechon.engine.collisions;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 import apcs.katechon.logging.Log;
+import static apcs.katechon.engine.collisions.Direction.*;
 
 public class MattsCollisionEngine extends CollisionEngineBase
 {
+	private final Map<ICollidable, Set<Direction>> collidableCollisions;
+	
+	public MattsCollisionEngine()
+	{
+		this.collidableCollisions = new HashMap<ICollidable, Set<Direction>>();
+	}
+	
+	@Override
+	public void addItem(ICollidable item)
+	{
+		super.addItem(item);
+		
+		collidableCollisions.put(item, new HashSet<Direction>());
+	}
+	
 	@Override
 	public Map<ICollidable, Set<Direction>> getCollisions(ICollidable collidable)
 	{
@@ -21,15 +39,50 @@ public class MattsCollisionEngine extends CollisionEngineBase
 	}
 
 	@Override
-	protected void process(Set<ICollidable> items)
+	protected void process(Set<ICollidable> collidables)
 	{
-		Iterator<ICollidable> it_a = items.iterator();
-		Iterator<ICollidable> it_b = items.iterator();
+		//Remove finished objects
+		Iterator<ICollidable> it_remover = collidables.iterator();
 		
-		Log.debug("" + (it_a == it_b));
+		while(it_remover.hasNext())
+		{
+			if(it_remover.next().isFinished())
+			{
+				it_remover.remove();
+			}
+		}
+		
+		for(ICollidable collidable : collidables)
+		{
+			//The collisions for the collidable
+			Set<Direction> collisions = new HashSet<Direction>();
+			
+			for(ICollidable otherCollidable : collidables)
+			{
+				//Don't compare if it's the same collidable. It does not collide with itself.
+				if(collidable == otherCollidable)
+				{
+					continue;
+				}
+				
+				Direction collision = getCollision(collidable, otherCollidable);
+				if(collision != NONE)
+				{
+					collisions.add(collision);
+				}
+			}
+			
+			if(!collisions.isEmpty())
+			{
+				collidable.onCollision(collisions);
+			}
+			
+			//overwrite old set of collisions with latest data
+			collidableCollisions.put(collidable, collisions);
+		}
 	}
 	
-	private Direction isColliding(ICollidable collidableA, ICollidable collidableB)
+	private Direction getCollision(ICollidable collidableA, ICollidable collidableB)
 	{
 		int a_speed	 = collidableA.getSpeed();     //speed is added to account for the fact that the objects may overshoot next tick.
 		int a_top    = collidableA.getTopFace()    + a_speed;
