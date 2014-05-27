@@ -44,7 +44,7 @@ public class LeopardPack extends ControllableCollidable
 	{
 		for(int ii = 0; ii < amount; ii++)
 		{
-			SnowLeopard leopard = new SnowLeopard(x, y, speed / 4);
+			SnowLeopard leopard = new SnowLeopard(getX(), getY(), speed / 4);
 			leopards.add(leopard);
 			KatechonEngine.getInstance().addDrawable(leopard, 1);
 			EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
@@ -103,7 +103,7 @@ public class LeopardPack extends ControllableCollidable
 				int xOffset = (-OFFSET_TOLERANCE / 2) + rand.nextInt(OFFSET_TOLERANCE);
 				int yOffset = (-OFFSET_TOLERANCE / 2) + rand.nextInt(OFFSET_TOLERANCE);
 				
-				leopard.setDestination(x + xOffset, y + yOffset);
+				leopard.setDestination(getX() + xOffset, getY() + yOffset);
 			}
 			
 			ticksSinceTaskUpdate = 0;

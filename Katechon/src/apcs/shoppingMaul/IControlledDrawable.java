@@ -1,21 +1,14 @@
 package apcs.shoppingMaul;
 
-import java.awt.Graphics;
-
-import apcs.katechon.engine.IEngineItem;
+import apcs.katechon.rendering.IDrawable;
 
 /**
- * Similar to the IDrawable interface, but the implementation is told where to draw it's stuff.
+ * Similar to the IDrawable interface, but the implementation is told where to draw it's stuff. It is expected to supplied coordinates so whatever it is plugged into can
  * @author Matt
  *
  */
-public interface IControlledDrawable extends IEngineItem
+public interface IControlledDrawable extends IDrawable
 {
-	/**
-	 * Draw stuff to the graphics
-	 * @param g The graphics object
-	 * @param x The x coordinate
-	 * @param y The y coordinate
-	 */
-	public void draw(Graphics g, int x, int y);
+	public int setX(int x);
+	public int setY(int y);
 }

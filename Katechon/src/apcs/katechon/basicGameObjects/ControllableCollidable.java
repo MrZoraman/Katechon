@@ -20,8 +20,8 @@ public class ControllableCollidable extends Controllable implements ICollidable
 	
 	private Set<Direction> collisions;
 	
-	protected int x;
-	protected int y;
+	private int x;
+	private int y;
 	
 	/**
 	 * Constructor
@@ -111,5 +111,15 @@ public class ControllableCollidable extends Controllable implements ICollidable
 	public void onCollision(Set<Direction> collisions)
 	{
 		this.collisions = collisions;
+	}
+	
+	protected int getX()
+	{
+		return x;
+	}
+	
+	protected int getY()
+	{
+		return y;
 	}
 }

@@ -17,31 +17,36 @@ import apcs.katechon.rendering.IDrawable;
  */
 public class Board extends LeopardPack implements IDrawable
 {
-	private static final int X_OFFSET = -75;
-	private static final int Y_OFFSET = -75;
+	private static final int X_CENTER_OFFSET = -75;
+	private static final int Y_CENTER_OFFSET = -75;
 	
-	private final List<IDrawable> drawables;
+	private final List<IControlledDrawable> drawables;
+//	private final int width;
+//	private final int height;
+	private final int xOffset;
+	private final int yOffset;
 	
 	public Board(ControlScheme controlScheme, int speed, int amountOfLeopards, int width, int height)
 	{
-		super(controlScheme, (width / 2) + X_OFFSET, (height / 2) + Y_OFFSET, speed, amountOfLeopards);
+		super(controlScheme, (width / 2) + X_CENTER_OFFSET, (height / 2) + Y_CENTER_OFFSET, speed, amountOfLeopards);
 		
-		drawables = new ArrayList<IDrawable>();
-		
-		
+		this.drawables = new ArrayList<IControlledDrawable>();
+//		this.width = width;
+//		this.height = height;
+		xOffset = 0;
+		yOffset = 0;
 	}
+	
+	
 	
 	@Override
 	public void move(Set<Direction> directions)
 	{
-		//for each direction the player wants to move in
-		for(Direction direction : directions)
-		{
-			Log.info("Trying to move " + direction + "!");
-		}
+		super.move(directions);
+		
 	}
 	
-	public void addDrawable(IDrawable drawable)
+	public void addDrawable(IControlledDrawable drawable)
 	{
 		if(drawable == this)
 		{
