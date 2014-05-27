@@ -57,7 +57,7 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 	@Override
 	public void draw(Graphics g)
 	{
-		g.drawImage(image, super.x, super.y, super.width, super.height, null);
+		g.drawImage(image, super.x, super.y, null);
 	}
 
 	@Override
@@ -74,11 +74,6 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 	}
 
 	@Override
-	public void draw(Graphics g, int x, int y) {
-		g.drawImage(image, x, y, null);
-	}
-
-	@Override
 	public int getX() {
 		return super.x;
 	}
@@ -86,6 +81,18 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 	@Override
 	public int getY() {
 		return super.y;
+	}
+
+	@Override
+	public void setX(int x)
+	{
+		this.x = x;
+	}
+
+	@Override
+	public void setY(int y)
+	{
+		this.y = y;
 	}
 
 }

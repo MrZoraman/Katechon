@@ -53,7 +53,7 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 	}
 	
 	@Override
-	public void draw(Graphics g, int x, int y)
+	public void draw(Graphics g)
 	{
 		g.drawRect(x, y, width, height);
 	}
@@ -122,5 +122,17 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 	@Override
 	public int getY() {
 		return y;
+	}
+
+	@Override
+	public void setX(int x)
+	{
+		this.x = x;
+	}
+
+	@Override
+	public void setY(int y)
+	{
+		this.y = y;
 	}
 }

@@ -70,7 +70,11 @@ public class Board extends Controllable implements ICollidable, IDrawable
 				
 				int newX = xCoord + xOffset;
 				int newY = yCoord + yOffset;
-				icd.draw(g, newX, newY);
+				
+				icd.setX(newX);
+				icd.setY(newY);
+				
+				icd.draw(g);
 			}
 		}
 	}
