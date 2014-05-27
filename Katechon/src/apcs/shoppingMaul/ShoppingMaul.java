@@ -52,6 +52,12 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 
+		/*
+		 * TODO: This is showing up above the leopards.
+		 */
+		FloorTile tile = new FloorTile(600, 600);
+		board.addDrawable(tile);
+
 		Pillar pillar = new Pillar(500, 500, 25, 25, "Pillar 1");
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
 		board.addDrawable(pillar);
@@ -63,9 +69,6 @@ public class ShoppingMaul extends KatechonGameBase
 		Pillar pillar3 = new Pillar(50, 100, 25, 25, "Pillar 3");
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar3);
 		board.addDrawable(pillar3);
-		
-		FloorTile tile = new FloorTile(600, 600);
-		board.addDrawable(tile);
 		
 		board.setTarget(pillar3);
 		
