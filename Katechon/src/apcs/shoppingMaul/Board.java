@@ -51,6 +51,12 @@ public class Board extends Controllable implements ICollidable, IDrawable
 		this.yOffset = 0;
 	}
 	
+	public void goTo(int x, int y)
+	{
+		this.xOffset = x;
+		this.yOffset = y;
+	}
+	
 	@Override
 	public void draw(Graphics g)
 	{
