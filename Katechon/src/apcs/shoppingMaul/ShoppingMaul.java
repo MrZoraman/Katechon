@@ -64,6 +64,9 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar3);
 		board.addDrawable(pillar3);
 		
+		FloorTile tile = new FloorTile(600, 600);
+		board.addDrawable(tile);
+		
 		board.setTarget(pillar3);
 		
 		
