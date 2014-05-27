@@ -92,16 +92,16 @@ public class MattsCollisionEngine extends CollisionEngineBase
 	private Direction getCollision(ICollidable collidable, ICollidable other)
 	{
 		int speed  = collidable.getSpeed();     //speed is added to account for the fact that the objects may overshoot next tick.
-		int top    = collidable.getTopFace()    + speed;
+		int top    = collidable.getTopFace()    - speed;
 		int bottom = collidable.getBottomFace() + speed;
 		int right  = collidable.getRightFace()  + speed;
-		int left   = collidable.getLeftFace()   + speed;
+		int left   = collidable.getLeftFace()   - speed;
 
 		int o_speed  = other.getSpeed();
-		int o_top    = other.getTopFace()    + o_speed;
+		int o_top    = other.getTopFace()    - o_speed;
 		int o_bottom = other.getBottomFace() + o_speed;
 		int o_right  = other.getRightFace()  + o_speed;
-		int o_left   = other.getLeftFace()   + o_speed;
+		int o_left   = other.getLeftFace()   - o_speed;
 		
 		
 		//The top of collidable is colliding
