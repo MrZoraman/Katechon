@@ -3,7 +3,6 @@ package apcs.shoppingMaul;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.resources.JarImageLoader;
 
 public class FloorTile implements IControlledDrawable
