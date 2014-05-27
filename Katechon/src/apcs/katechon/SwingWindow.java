@@ -176,7 +176,7 @@ public class SwingWindow
 	}
 	
 	/**
-	 * @return The width of the panel
+	 * @return The width of the frame
 	 */
 	public int getWidth()
 	{
@@ -184,7 +184,7 @@ public class SwingWindow
 	}
 	
 	/**
-	 * @return The height of the panel
+	 * @return The height of the frame
 	 */
 	public int getHeight()
 	{
