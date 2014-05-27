@@ -20,6 +20,9 @@ public class Board extends LeopardPack implements IDrawable
 	private static final int X_CENTER_OFFSET = -75;
 	private static final int Y_CENTER_OFFSET = -75;
 	
+	private static final int BOUNDING_BOX_WIDTH = 25;
+	private static final int BOUNDING_BOX_HEIGHT = 25;
+	
 	private final List<IControlledDrawable> drawables;
 	private final int width;
 	private final int height;
@@ -64,6 +67,8 @@ public class Board extends LeopardPack implements IDrawable
 	@Override
 	public void draw(Graphics g)
 	{
+//		g.drawRect(getX(), getY(), BOUNDING_BOX_WIDTH, BOUNDING_BOX_HEIGHT);
+		
 		for(int ii = drawables.size() - 1; ii >= 0; ii--)
 		{
 			if(drawables.get(ii).isFinished())
@@ -94,5 +99,29 @@ public class Board extends LeopardPack implements IDrawable
 	protected int getY()
 	{
 		return height / 2;
+	}
+	
+	@Override
+	public int getTopFace()
+	{
+		return getY();
+	}
+
+	@Override
+	public int getBottomFace()
+	{
+		return getY() + BOUNDING_BOX_HEIGHT;
+	}
+
+	@Override
+	public int getLeftFace()
+	{
+		return getX();
+	}
+
+	@Override
+	public int getRightFace()
+	{
+		return getX() + BOUNDING_BOX_WIDTH;
 	}
 }
