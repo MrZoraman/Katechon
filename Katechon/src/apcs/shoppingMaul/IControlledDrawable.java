@@ -2,12 +2,14 @@ package apcs.shoppingMaul;
 
 import java.awt.Graphics;
 
+import apcs.katechon.engine.IEngineItem;
+
 /**
  * Similar to the IDrawable interface, but the implementation is told where to draw it's stuff.
  * @author Matt
  *
  */
-public interface IControlledDrawable
+public interface IControlledDrawable extends IEngineItem
 {
 	/**
 	 * Draw stuff to the graphics
