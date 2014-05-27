@@ -23,4 +23,6 @@ public abstract class CollisionEngineBase extends EngineModuleBase<ICollidable>
 	 * @return A map of the objects that are colliding, and their {@link apcs.katechon.engine.collisions.Direction collision state}
 	 */
 	public abstract Map<ICollidable, Set<Direction>> getCollisions(final ICollidable collidable);
+	
+	public abstract Set<ICollidable> getCollidingObjects(ICollidable collidable);
 }
