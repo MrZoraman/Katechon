@@ -31,7 +31,7 @@ public abstract class EngineModuleBase<I extends IEngineItem>
 	 * Adds an item to the engine for it to keep track of and process
 	 * @param item The item to add
 	 */
-	public final void addItem(final I item)
+	public void addItem(final I item)
 	{
 		items.add(item);
 	}
