@@ -180,7 +180,7 @@ public class SwingWindow
 	 */
 	public int getWidth()
 	{
-		return this.panel.getWidth();
+		return this.frame.getWidth();
 	}
 	
 	/**
@@ -188,6 +188,6 @@ public class SwingWindow
 	 */
 	public int getHeight()
 	{
-		return this.panel.getHeight();
+		return this.frame.getHeight();
 	}
 }

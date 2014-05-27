@@ -7,7 +7,6 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
-import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
