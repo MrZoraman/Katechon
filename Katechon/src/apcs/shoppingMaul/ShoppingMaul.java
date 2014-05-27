@@ -52,6 +52,9 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 
 		board.addDrawable(new Pillar(500, 500, 25, 25));
+		
+
+		board.addDrawable(new Pillar(-500, -500, 25, 25));
 //		
 //		int amountOfLeopards = 5;
 //		Board board = new Board(ControlScheme.WSAD, speed, amountOfLeopards, width, height);
