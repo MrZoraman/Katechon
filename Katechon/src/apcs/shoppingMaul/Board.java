@@ -30,14 +30,16 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	private final int speed;
 
 	private final List<IControlledDrawable> drawables;
+	private final LeopardPack pack;
 	
 	private int xOffset;
 	private int yOffset;
 	
-	public Board(ControlScheme controlScheme, SwingWindow window, int speed)
+	public Board(ControlScheme controlScheme, LeopardPack pack, SwingWindow window, int speed)
 	{
 		super(controlScheme);
 		
+		this.pack = pack;
 		this.speed = speed;
 		this.drawables = new ArrayList<IControlledDrawable>();
 		
@@ -95,20 +97,25 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			switch(direction)
 			{
 			case TOP:
-				yOffset -= speed;
-				break;
-			case BOTTOM:
 				yOffset += speed;
 				break;
+			case BOTTOM:
+				yOffset -= speed;
+				break;
 			case LEFT:
-				xOffset -= speed;
+				xOffset += speed;
 				break;
 			case RIGHT:
-				xOffset += speed;
+				xOffset -= speed;
 				break;
 			case NONE:
 				break;
 			}
+		}
+		
+		if(!directions.isEmpty())
+		{
+			pack.setDirection(directions.iterator().next());
 		}
 	}
 	

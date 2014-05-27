@@ -7,6 +7,7 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
@@ -35,25 +36,33 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
-//		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, 500, 500, 10, 5);
-//		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
-//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pack);
+		int speed = 10;
+
+		int width = engine.getSwingWindow().getWidth();
+		int height = engine.getSwingWindow().getHeight();
+		int xCenterOffset = -75;
+		int yCenterOffset = -75;
 		
-//		int width = engine.getSwingWindow().getWidth();
-//		int height = engine.getSwingWindow().getHeight();
+		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, (width / 2) + xCenterOffset, (height / 2) + yCenterOffset, speed, 5);
+		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
+		
+		Board board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
+		engine.addDrawable(board, 2);
+		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
+		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
+
+		board.addDrawable(new Pillar(500, 500, 25, 25));
 //		
 //		int amountOfLeopards = 5;
-//		int speed = 10;
 //		Board board = new Board(ControlScheme.WSAD, speed, amountOfLeopards, width, height);
 //		
 //		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 //		engine.addDrawable(board, 2);
 //		
-//		board.addDrawable(new Pillar(500, 500, 25, 25));
 //		
-//		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(board));
-//		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(board));
-//		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(board));
+		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
+		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(pack));
+		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(pack));
 	}
 
 	@Override
