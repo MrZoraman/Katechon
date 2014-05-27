@@ -31,6 +31,14 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	{
 		return collisions;
 	}
+	
+	@Override
+	public void addItem(ICollidable item)
+	{
+		super.addItem(item);
+		
+		collidingObjects.put(item, new HashSet<ICollidable>());
+	}
 
 	@Override
 	protected void process(Set<ICollidable> items)

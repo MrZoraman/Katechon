@@ -62,14 +62,14 @@ public class Board extends Controllable implements ICollidable, IDrawable
 		
 		Set<ICollidable> collidingObjects = ce.getCollidingObjects(this);
 		
-//		Log.debug("colliding objects is null: " + (collidingObjects == null));
+		Log.debug("colliding objects is null: " + (collidingObjects == null));
 //		
 //		Log.debug("I have myself a " + ce.toString());
 		
-		for(ICollidable ic : collidingObjects)
-		{
-			System.out.println(ic);
-		}
+//		for(ICollidable ic : collidingObjects)
+//		{
+//			System.out.println(ic);
+//		}
 	}
 	
 	public void goTo(int x, int y)
