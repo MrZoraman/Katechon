@@ -158,7 +158,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void onCollision(Set<Direction> types)
 	{
-//		System.out.println(types);
+		System.out.println(types);
 	}
 
 	@Override

@@ -118,6 +118,7 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 					collisions.put(item2, types2);
 					collisions.put(item, types);
 					
+					//TODO: onColision often puts a Direction.NONE
 					item.onCollision(collisions.get(item));
 					item2.onCollision(collisions.get(item2));
 				}
