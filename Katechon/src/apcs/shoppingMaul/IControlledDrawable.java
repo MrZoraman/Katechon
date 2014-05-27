@@ -9,4 +9,7 @@ public interface IControlledDrawable extends IDrawable
 	
 	public int getX();
 	public int getY();
+	
+	public int getRealX();
+	public int getRealY();
 }

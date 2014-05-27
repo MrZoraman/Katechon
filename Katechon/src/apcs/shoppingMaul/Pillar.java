@@ -17,11 +17,17 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 {
 	private BufferedImage image;
 	
+	private int realX;
+	private int realY;
+	
 	public Pillar(int x, int y, int width, int height)
 	{
 		//No speed or control as these will not move
 		super(x, y, width, height, 0, false);
 		this.image = JarImageLoader.getInstance(ShoppingMaul.class).getImage("/apcs/shoppingMaul/assets/Pillar.png");
+		
+		this.realX = realX;
+		this.realY = realY;
 	}
 
 	@Override
@@ -93,6 +99,18 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 	public void setY(int y)
 	{
 		this.y = y;
+	}
+
+	@Override
+	public int getRealX()
+	{
+		return realX;
+	}
+
+	@Override
+	public int getRealY()
+	{
+		return realY;
 	}
 
 }

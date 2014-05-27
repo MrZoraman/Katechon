@@ -65,8 +65,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			else
 			{
 				IControlledDrawable icd = drawables.get(ii);
-				int xCoord = icd.getX();
-				int yCoord = icd.getY();
+				int xCoord = icd.getRealX();
+				int yCoord = icd.getRealY();
 				
 				int newX = xCoord + xOffset;
 				int newY = yCoord + yOffset;

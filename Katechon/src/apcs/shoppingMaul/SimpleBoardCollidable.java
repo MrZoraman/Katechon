@@ -16,6 +16,8 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 	private boolean control;
 	private Set<Direction> collisions;
 	
+	private int realX, realY;
+	
 	public SimpleBoardCollidable(int x, int y, int width, int height, int speed, boolean control)
 	{
 		this.width = width;
@@ -24,6 +26,9 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 		this.x = x;
 		this.y = y;
 		this.control = control;
+		
+		this.realX = x;
+		this.realY = y;
 		
 		collisions = new HashSet<Direction>();
 	}
@@ -134,5 +139,17 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 	public void setY(int y)
 	{
 		this.y = y;
+	}
+
+	@Override
+	public int getRealX()
+	{
+		return realX;
+	}
+
+	@Override
+	public int getRealY()
+	{
+		return realY;
 	}
 }
