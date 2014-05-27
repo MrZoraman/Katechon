@@ -23,6 +23,7 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	public SimpleCollisionEngine()
 	{
 		this.collisions = new HashMap<ICollidable, Set<Direction>>();
+		this.collidingObjects = new HashMap<ICollidable, Set<ICollidable>>();
 	}
 	
 	@Override
