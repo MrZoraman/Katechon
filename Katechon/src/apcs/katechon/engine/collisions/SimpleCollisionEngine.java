@@ -157,4 +157,10 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	{
 		return this.collidingObjects.get(collidable);
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "Simple collision engine";
+	}
 }
