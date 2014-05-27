@@ -21,8 +21,8 @@ public class Board extends LeopardPack implements IDrawable
 	private static final int Y_CENTER_OFFSET = -75;
 	
 	private final List<IControlledDrawable> drawables;
-//	private final int width;
-//	private final int height;
+	private final int width;
+	private final int height;
 	private final int xOffset;
 	private final int yOffset;
 	
@@ -31,8 +31,8 @@ public class Board extends LeopardPack implements IDrawable
 		super(controlScheme, (width / 2) + X_CENTER_OFFSET, (height / 2) + Y_CENTER_OFFSET, speed, amountOfLeopards);
 		
 		this.drawables = new ArrayList<IControlledDrawable>();
-//		this.width = width;
-//		this.height = height;
+		this.width = width;
+		this.height = height;
 		xOffset = 0;
 		yOffset = 0;
 	}
@@ -43,7 +43,7 @@ public class Board extends LeopardPack implements IDrawable
 	public void move(Set<Direction> directions)
 	{
 		super.move(directions);
-		
+		Log.info("moved");
 	}
 	
 	public void addDrawable(IControlledDrawable drawable)
@@ -72,5 +72,18 @@ public class Board extends LeopardPack implements IDrawable
 				drawables.get(ii).draw(g);
 			}
 		}
+	}
+	
+	@Override
+	protected int getX()
+	{
+		Log.info("width: " + width);
+		return width / 2;
+	}
+	
+	@Override
+	protected int getY()
+	{
+		return height / 2;
 	}
 }
