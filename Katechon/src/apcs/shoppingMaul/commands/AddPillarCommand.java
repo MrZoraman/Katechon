@@ -27,7 +27,7 @@ public class AddPillarCommand implements Command
 				int width = Integer.parseInt(args[2]);
 				int height = Integer.parseInt(args[3]);
 				
-				Pillar pillar = new Pillar(x, y, width, height);
+				Pillar pillar = new Pillar(x, y, width, height, "That one pillar");
 				
 				KatechonEngine.getInstance().addDrawable(pillar, 1);
 				KatechonEngine.getInstance().scheduleTask(pillar);

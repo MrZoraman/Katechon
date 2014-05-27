@@ -20,7 +20,9 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 	private int realX;
 	private int realY;
 	
-	public Pillar(int x, int y, int width, int height)
+	private final String id;
+	
+	public Pillar(int x, int y, int width, int height, String id)
 	{
 		//No speed or control as these will not move
 		super(x, y, width, height, 0, false);
@@ -28,6 +30,8 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 		
 		this.realX = x;
 		this.realY = y;
+		
+		this.id = id;
 	}
 
 	@Override
@@ -113,4 +117,9 @@ public class Pillar extends SimpleCollidable implements IControlledDrawable
 		return realY;
 	}
 
+	@Override
+	public String toString()
+	{
+		return id;
+	}
 }
