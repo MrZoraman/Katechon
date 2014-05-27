@@ -10,7 +10,7 @@ public class Wall extends SimpleBoardCollidable
 	private static final int WIDTH = 600;
 	private static final int HEIGHT = 600;
 	
-	private static final int SPEED = 10;
+	private static final int SPEED = 0;
 	
 	public Wall(int x, int y) {
 		super(x, y, WIDTH, HEIGHT, SPEED, false);
