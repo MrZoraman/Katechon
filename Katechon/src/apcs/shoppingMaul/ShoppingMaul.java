@@ -11,6 +11,7 @@ import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.SimpleCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
+import apcs.katechon.rendering.Layer;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -36,13 +37,27 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
-		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, 500, 500, 10, 5);
-		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pack);
+//		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, 500, 500, 10, 5);
+//		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pack);
 		
-		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
-		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(pack));
-		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(pack));
+		int width = engine.getSwingWindow().getWidth();
+		int height = engine.getSwingWindow().getHeight();
+		
+		Log.debug("Width: " + width);
+		Log.debug("Height: " + height);
+		
+		int amountOfLeopards = 5;
+		int speed = 10;
+		int layerNumber = 2;
+		Layer layer = engine.getSwingWindow().getDisplay().getLayer(layerNumber);
+		Board board = new Board(ControlScheme.WSAD, speed, amountOfLeopards, layer, width, height);
+		
+		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
+		
+		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(board));
+		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(board));
+		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(board));
 	}
 
 	@Override
