@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import apcs.katechon.logging.Log;
 import static apcs.katechon.engine.collisions.Direction.*;
 
 public class MattsCollisionEngine extends CollisionEngineBase
@@ -71,6 +72,7 @@ public class MattsCollisionEngine extends CollisionEngineBase
 				}
 				
 				Direction collision = getCollision(collidable, otherCollidable);
+//				Log.debug("Collision retrieved: " + collision);
 				if(collision != NONE)
 				{
 					collisions.add(collision);
@@ -79,10 +81,8 @@ public class MattsCollisionEngine extends CollisionEngineBase
 				}
 			}
 			
-			if(!collisions.isEmpty())
-			{
-				collidable.onCollision(collisions);
-			}
+			
+			collidable.onCollision(collisions);
 			
 			//overwrite old set of collisions with latest data
 			collidableCollisions.put(collidable, collisions);
