@@ -6,16 +6,17 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import apcs.katechon.logging.Log;
 import static apcs.katechon.engine.collisions.Direction.*;
 
 public class MattsCollisionEngine extends CollisionEngineBase
 {
 	private final Map<ICollidable, Set<Direction>> collidableCollisions;
+	private final Map<ICollidable, Set<ICollidable>> collidingCollidables;
 	
 	public MattsCollisionEngine()
 	{
 		this.collidableCollisions = new HashMap<ICollidable, Set<Direction>>();
+		this.collidingCollidables = new HashMap<ICollidable, Set<ICollidable>>();
 	}
 	
 	@Override
@@ -35,7 +36,7 @@ public class MattsCollisionEngine extends CollisionEngineBase
 	@Override
 	public Set<ICollidable> getCollidingObjects(ICollidable collidable)
 	{
-		return null;
+		return collidingCollidables.get(collidable);
 	}
 
 	@Override
@@ -57,6 +58,9 @@ public class MattsCollisionEngine extends CollisionEngineBase
 			//The collisions for the collidable
 			Set<Direction> collisions = new HashSet<Direction>();
 			
+			//Clear old data for collidables colliding with the collidable
+			collidingCollidables.get(collidable).clear();
+			
 			for(ICollidable otherCollidable : collidables)
 			{
 				//Don't compare if it's the same collidable. It does not collide with itself.
@@ -69,6 +73,8 @@ public class MattsCollisionEngine extends CollisionEngineBase
 				if(collision != NONE)
 				{
 					collisions.add(collision);
+					//Add this collidable to the set of collidables colliding with the target collidable
+					collidingCollidables.get(collidable).add(otherCollidable);
 				}
 			}
 			
