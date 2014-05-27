@@ -23,8 +23,9 @@ public class Board extends LeopardPack implements IDrawable
 	private final List<IControlledDrawable> drawables;
 	private final int width;
 	private final int height;
-	private final int xOffset;
-	private final int yOffset;
+	
+	private int xOffset;
+	private int yOffset;
 	
 	public Board(ControlScheme controlScheme, int speed, int amountOfLeopards, int width, int height)
 	{
@@ -34,8 +35,6 @@ public class Board extends LeopardPack implements IDrawable
 		this.height = height;
 		xOffset = 0;
 		yOffset = 0;
-		
-		Log.info("Width: " + this.width);
 	}
 	
 	
@@ -44,6 +43,10 @@ public class Board extends LeopardPack implements IDrawable
 	public void move(Set<Direction> directions)
 	{
 		super.move(directions);
+		
+		this.xOffset = super.getX();
+		this.yOffset = super.getY();
+		
 	}
 	
 	public void addDrawable(IControlledDrawable drawable)
@@ -69,7 +72,14 @@ public class Board extends LeopardPack implements IDrawable
 			}
 			else
 			{
-				drawables.get(ii).draw(g);
+				IControlledDrawable icd = drawables.get(ii);
+				int xCoord = icd.getX();
+				int yCoord = icd.getY();
+				
+				int newX = xCoord + xOffset;
+				int newY = yCoord + yOffset;
+				
+				icd.draw(g, newX, newY);
 			}
 		}
 	}

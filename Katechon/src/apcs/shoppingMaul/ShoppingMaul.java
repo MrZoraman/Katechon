@@ -49,6 +49,8 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 		engine.addDrawable(board, 2);
 		
+		board.addDrawable(new Pillar(500, 500, 25, 25));
+		
 		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(board));
 		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(board));
 		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(board));

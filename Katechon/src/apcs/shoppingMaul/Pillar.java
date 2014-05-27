@@ -13,7 +13,7 @@ import apcs.katechon.test.SimpleCollidable;
  * @author Sean
  *
  */
-public class Pillar extends SimpleCollidable
+public class Pillar extends SimpleCollidable implements IControlledDrawable
 {
 	private BufferedImage image;
 	
@@ -21,7 +21,7 @@ public class Pillar extends SimpleCollidable
 	{
 		//No speed or control as these will not move
 		super(x, y, width, height, 0, false);
-		this.image = JarImageLoader.getInstance(ShoppingMaul.class).getImage("Pillar.png");
+		this.image = JarImageLoader.getInstance(ShoppingMaul.class).getImage("/apcs/shoppingMaul/assets/Pillar.png");
 	}
 
 	@Override
@@ -71,6 +71,21 @@ public class Pillar extends SimpleCollidable
 	public void onCollision(Set<Direction> types)
 	{
 		//This object will do nothing on collision.
+	}
+
+	@Override
+	public void draw(Graphics g, int x, int y) {
+		g.drawImage(image, x, y, null);
+	}
+
+	@Override
+	public int getX() {
+		return super.x;
+	}
+
+	@Override
+	public int getY() {
+		return super.y;
 	}
 
 }
