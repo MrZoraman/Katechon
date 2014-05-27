@@ -120,8 +120,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void onCollision(Set<Direction> types)
 	{
-		Log.info("Hello there!");
-		//TODO: this is where the kill logic goes
+		System.out.println(types);
 	}
 
 	@Override
