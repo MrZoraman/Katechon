@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import apcs.katechon.logging.Log;
 import static apcs.katechon.engine.collisions.Direction.*;
 
 /**
@@ -62,22 +63,12 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 						}
 						temp.add(item2);
 						this.collidingObjects.put(item, temp);
-						
-
-						Set<ICollidable> temp2 = new HashSet<ICollidable>();
-						if (this.collidingObjects.get(item2) != null)
-						{
-							temp2 = this.collidingObjects.get(item2);
-						}
-						temp.add(item);
-						this.collidingObjects.put(item2, temp2);
 					}
 					else
 					{
 						this.collidingObjects.get(item).remove(item2);
 					}
 					
-					this.collidingObjects.get(item2).clear();
 					
 					Set<Direction> types = collisions.get(item);
 					if (types == null)
@@ -85,7 +76,10 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 						types = new HashSet<Direction>();
 					}
 
-					types.add(type);
+					if (type != NONE)
+					{
+						types.add(type);
+					}
 					
 					Set<Direction> types2 = collisions.get(item2);
 					if (types2 == null)

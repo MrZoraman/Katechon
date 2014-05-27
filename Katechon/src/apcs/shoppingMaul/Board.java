@@ -216,5 +216,9 @@ public class Board extends Controllable implements ICollidable, IDrawable
 		this.target = target;
 	}
 	
-	
+	@Override
+	public String toString()
+	{
+		return "Board";
+	}
 }
