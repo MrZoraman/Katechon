@@ -22,10 +22,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 {
 	private static final int COLLISION_BOX_SIZE = 50;
 	
-	private final int topFace;
-	private final int bottomFace;
-	private final int leftFace;
-	private final int rightFace;
+	private final int collisionBoxX;
+	private final int collisionBoxY;
 	
 	private final int speed;
 
@@ -46,10 +44,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 		int windowWidth = window.getWidth();
 		int windowHeight = window.getHeight();
 		
-		this.topFace = (windowHeight / 2) - (COLLISION_BOX_SIZE / 2);
-		this.bottomFace = (windowHeight / 2) + (COLLISION_BOX_SIZE / 2);
-		this.leftFace = (windowWidth / 2) - (COLLISION_BOX_SIZE / 2);
-		this.rightFace = (windowWidth / 2) + (COLLISION_BOX_SIZE / 2);
+		this.collisionBoxX = (windowWidth / 2) - (COLLISION_BOX_SIZE / 2);
+		this.collisionBoxY = (windowHeight / 2) - (COLLISION_BOX_SIZE / 2);
 		
 		this.xOffset = 0;
 		this.yOffset = 0;
@@ -58,6 +54,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void draw(Graphics g)
 	{
+		g.drawRect(collisionBoxX, collisionBoxY, COLLISION_BOX_SIZE, COLLISION_BOX_SIZE);
+		
 		for(int ii = drawables.size() - 1; ii >= 0; ii--)
 		{
 			if(drawables.get(ii).isFinished())
@@ -122,31 +120,32 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void onCollision(Set<Direction> types)
 	{
+		Log.info("Hello there!");
 		//TODO: this is where the kill logic goes
 	}
 
 	@Override
 	public int getTopFace()
 	{
-		return bottomFace;
+		return collisionBoxY;
 	}
 
 	@Override
 	public int getBottomFace()
 	{
-		return topFace;
+		return collisionBoxY + COLLISION_BOX_SIZE;
 	}
 
 	@Override
 	public int getLeftFace()
 	{
-		return leftFace;
+		return collisionBoxX;
 	}
 
 	@Override
 	public int getRightFace()
 	{
-		return rightFace;
+		return collisionBoxX + COLLISION_BOX_SIZE;
 	}
 
 	@Override
