@@ -52,7 +52,7 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 
 		Pillar pillar = new Pillar(500, 500, 25, 25);
-		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pillar);
+		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
 		board.addDrawable(pillar);
 		
 
