@@ -13,8 +13,8 @@ import apcs.katechon.engine.collisions.ICollidable;
  */
 public class ControllableCollidable extends Controllable implements ICollidable
 {
-	protected final int width;
-	protected final int height;
+	private final int width;
+	private final int height;
 	
 	private final int speed;
 	
