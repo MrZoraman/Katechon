@@ -29,7 +29,7 @@ public class MattsCollisionEngine extends CollisionEngineBase
 	@Override
 	public Map<ICollidable, Set<Direction>> getCollisions(ICollidable collidable)
 	{
-		return null;
+		return collidableCollisions;
 	}
 
 	@Override
