@@ -8,7 +8,7 @@ import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
-import apcs.katechon.engine.collisions.SimpleCollisionEngine;
+import apcs.katechon.engine.collisions.MattsCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
 import apcs.katechon.utils.ConfigKey;
@@ -35,7 +35,7 @@ public class ShoppingMaul extends KatechonGameBase
 	public void init(final KatechonEngine engine)
 	{
 		Log.setDebugging(true);
-		EngineManager.getInstance().addEngine(new SimpleCollisionEngine());
+		EngineManager.getInstance().addEngine(new MattsCollisionEngine());
 		
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
