@@ -29,12 +29,13 @@ public class Board extends LeopardPack implements IDrawable
 	public Board(ControlScheme controlScheme, int speed, int amountOfLeopards, int width, int height)
 	{
 		super(controlScheme, (width / 2) + X_CENTER_OFFSET, (height / 2) + Y_CENTER_OFFSET, speed, amountOfLeopards);
-		
 		this.drawables = new ArrayList<IControlledDrawable>();
 		this.width = width;
 		this.height = height;
 		xOffset = 0;
 		yOffset = 0;
+		
+		Log.info("Width: " + this.width);
 	}
 	
 	
@@ -43,7 +44,6 @@ public class Board extends LeopardPack implements IDrawable
 	public void move(Set<Direction> directions)
 	{
 		super.move(directions);
-		Log.info("moved");
 	}
 	
 	public void addDrawable(IControlledDrawable drawable)
@@ -77,7 +77,6 @@ public class Board extends LeopardPack implements IDrawable
 	@Override
 	protected int getX()
 	{
-		Log.info("width: " + width);
 		return width / 2;
 	}
 	
