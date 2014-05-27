@@ -1,4 +1,4 @@
-package apcs.shoppingMaul;
+package apcs.shoppingMaul.map;
 
 public class Wall
 {

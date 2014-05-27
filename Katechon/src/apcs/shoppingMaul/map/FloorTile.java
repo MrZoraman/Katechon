@@ -1,9 +1,11 @@
-package apcs.shoppingMaul;
+package apcs.shoppingMaul.map;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import apcs.katechon.resources.JarImageLoader;
+import apcs.shoppingMaul.IControlledDrawable;
+import apcs.shoppingMaul.ShoppingMaul;
 
 public class FloorTile implements IControlledDrawable
 {

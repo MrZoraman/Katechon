@@ -18,6 +18,7 @@ import apcs.shoppingMaul.commands.CountLeopardsCommand;
 import apcs.shoppingMaul.commands.GotoCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
 import apcs.shoppingMaul.commands.AddLeopardCommand;
+import apcs.shoppingMaul.map.FloorTile;
 
 public class ShoppingMaul extends KatechonGameBase
 {
