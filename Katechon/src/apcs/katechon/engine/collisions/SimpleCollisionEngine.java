@@ -18,6 +18,7 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	* allowing the chance of a collision to fail.
 	*/
 	private Map<ICollidable, Set<Direction>> collisions;
+	private Map<ICollidable, Set<ICollidable>> collidingObjects;
 	
 	public SimpleCollisionEngine()
 	{
@@ -42,6 +43,15 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 					//For testing purposes.
 					//TODO: The above method should replace this.
 					Direction type = getCollisionType(item, item2);
+					
+					if (!type.equals(Direction.NONE))
+					{
+						Set<ICollidable> temp = this.collidingObjects.get(item);
+						this.collidingObjects.put(item, temp);
+						
+						Set<ICollidable> temp2 = this.collidingObjects.get(item2);
+						this.collidingObjects.put(item2, temp2);
+					}
 					//item.onCollision(type);
 					Set<Direction> types = collisions.get(item);
 					if (types == null)
@@ -144,7 +154,6 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 	@Override
 	public Set<ICollidable> getCollidingObjects(ICollidable collidable)
 	{
-		// TODO IMPLEMENT
-		return null;
+		return this.collidingObjects.get(collidable);
 	}
 }
