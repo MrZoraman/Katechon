@@ -88,19 +88,19 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		}
 	}
 	
-	private Direction getCollision(ICollidable collidableA, ICollidable collidableB)
+	private Direction getCollision(ICollidable collidable, ICollidable other)
 	{
-		int a_speed	 = collidableA.getSpeed();     //speed is added to account for the fact that the objects may overshoot next tick.
-		int a_top    = collidableA.getTopFace()    + a_speed;
-		int a_bottom = collidableA.getBottomFace() + a_speed;
-		int a_right  = collidableA.getRightFace()  + a_speed;
-		int a_left   = collidableA.getLeftFace()   + a_speed;
+		int speed  = collidable.getSpeed();     //speed is added to account for the fact that the objects may overshoot next tick.
+		int top    = collidable.getTopFace()    + speed;
+		int bottom = collidable.getBottomFace() + speed;
+		int right  = collidable.getRightFace()  + speed;
+		int left   = collidable.getLeftFace()   + speed;
 
-		int b_speed  = collidableB.getSpeed();
-		int b_top    = collidableB.getTopFace()    + b_speed;
-		int b_bottom = collidableB.getBottomFace() + b_speed;
-		int b_right  = collidableB.getRightFace()  + b_speed;
-		int b_left   = collidableB.getLeftFace()   + b_speed;
+		int o_speed  = other.getSpeed();
+		int o_top    = other.getTopFace()    + o_speed;
+		int o_bottom = other.getBottomFace() + o_speed;
+		int o_right  = other.getRightFace()  + o_speed;
+		int o_left   = other.getLeftFace()   + o_speed;
 		
 		
 		
