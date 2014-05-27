@@ -14,17 +14,23 @@ import apcs.katechon.engine.collisions.ICollidable;
 public class Man implements ICollidable
 {
 	@SuppressWarnings("unused")
-	private final Color color;
+	private final Color hairColor;
+	private final Color shirtColor;
+	private final Color handColor;
+	private final Color shoeColor;
 	
 	private int x, y, width, height, speed;
 	
-	public Man(int x, int y, int width, int height, int speed, Color color)
+	public Man(int x, int y, int width, int height, int speed, Color hairColor, Color shirtColor, Color handColor, Color shoeColor)
 	{
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.color = color;
+		this.hairColor = hairColor;
+		this.shirtColor = shirtColor;
+		this.handColor = handColor;
+		this.shoeColor = shoeColor;
 	}
 
 	@Override
