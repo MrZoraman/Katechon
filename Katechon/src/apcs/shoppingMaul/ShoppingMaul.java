@@ -19,6 +19,7 @@ import apcs.shoppingMaul.commands.GotoCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
 import apcs.shoppingMaul.commands.AddLeopardCommand;
 import apcs.shoppingMaul.map.FloorTile;
+import apcs.shoppingMaul.map.Wall;
 
 public class ShoppingMaul extends KatechonGameBase
 {
@@ -53,9 +54,6 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 
-		/*
-		 * TODO: This is showing up above the leopards.
-		 */
 		FloorTile tile = new FloorTile(600, 600);
 		board.addDrawable(tile);
 
@@ -72,6 +70,10 @@ public class ShoppingMaul extends KatechonGameBase
 		board.addDrawable(pillar3);
 		
 		board.setTarget(pillar3);
+		
+		Wall wall = new Wall(-100, -100);
+		EngineManager.getInstance().getEngine(ICollidable.class).addItem(wall);
+		board.addDrawable(wall);
 		
 		
 
