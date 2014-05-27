@@ -35,6 +35,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	private int xOffset;
 	private int yOffset;
 	
+	private ICollidable target;
+	
 	public Board(ControlScheme controlScheme, LeopardPack pack, SwingWindow window, int speed)
 	{
 		super(controlScheme);
@@ -65,10 +67,15 @@ public class Board extends Controllable implements ICollidable, IDrawable
 //		Log.debug("colliding objects is null: " + (collidingObjects == null));
 //		
 //		Log.debug("I have myself a " + ce.toString());
-		
+//		Log.info("target: " + target.toString());
 		for(ICollidable ic : collidingObjects)
 		{
-			System.out.println(ic);
+			Log.info("ic: " + ic.toString());
+			
+//			if(ic == target)
+//			{
+//				Log.info("You found him!");
+//			}
 		}
 	}
 	
@@ -183,4 +190,14 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	{
 		return speed;
 	}
+
+	public ICollidable getTarget() {
+		return target;
+	}
+
+	public void setTarget(ICollidable target) {
+		this.target = target;
+	}
+	
+	
 }
