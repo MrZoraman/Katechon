@@ -47,11 +47,20 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 					
 					if (!type.equals(Direction.NONE))
 					{
-						Set<ICollidable> temp = this.collidingObjects.get(item);
+						Set<ICollidable> temp = new HashSet<ICollidable>();
+						if (this.collidingObjects.get(item) != null)
+						{
+							temp = this.collidingObjects.get(item);
+						}
 						temp.add(item2);
 						this.collidingObjects.put(item, temp);
 						
-						Set<ICollidable> temp2 = this.collidingObjects.get(item2);
+
+						Set<ICollidable> temp2 = new HashSet<ICollidable>();
+						if (this.collidingObjects.get(item2) != null)
+						{
+							temp2 = this.collidingObjects.get(item2);
+						}
 						temp.add(item);
 						this.collidingObjects.put(item2, temp2);
 					}
