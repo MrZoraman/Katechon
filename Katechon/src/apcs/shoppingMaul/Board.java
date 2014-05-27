@@ -2,6 +2,7 @@ package apcs.shoppingMaul;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -37,6 +38,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	
 	private ICollidable target;
 	
+	private Set<Direction> collisions;
+	
 	public Board(ControlScheme controlScheme, LeopardPack pack, SwingWindow window, int speed)
 	{
 		super(controlScheme);
@@ -53,6 +56,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 		
 		this.xOffset = 0;
 		this.yOffset = 0;
+		
+		this.collisions = new HashSet<Direction>();
 	}
 	
 	@Override
@@ -133,16 +138,28 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			switch(direction)
 			{
 			case TOP:
-				yOffset += speed;
+				if (!collisions.contains(Direction.TOP))
+				{
+					yOffset += speed;
+				}
 				break;
 			case BOTTOM:
-				yOffset -= speed;
+				if (!collisions.contains(Direction.BOTTOM))
+				{
+					yOffset -= speed;
+				}
 				break;
 			case LEFT:
-				xOffset += speed;
+				if (!collisions.contains(Direction.LEFT))
+				{
+					xOffset += speed;
+				}
 				break;
 			case RIGHT:
-				xOffset -= speed;
+				if (!collisions.contains(Direction.RIGHT))
+				{
+					xOffset -= speed;
+				}
 				break;
 			case NONE:
 				break;
@@ -158,7 +175,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void onCollision(Set<Direction> types)
 	{
-//		System.out.println(types);
+		this.collisions = types;
 	}
 
 	@Override

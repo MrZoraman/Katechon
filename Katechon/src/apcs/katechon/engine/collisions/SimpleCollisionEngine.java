@@ -53,8 +53,6 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 					//TODO: The above method should replace this.
 					Direction type = getCollisionType(item, item2);
 					
-					this.collidingObjects.get(item2).clear();
-					
 					if (!type.equals(Direction.NONE))
 					{
 						Set<ICollidable> temp = new HashSet<ICollidable>();
@@ -74,7 +72,13 @@ public class SimpleCollisionEngine extends CollisionEngineBase
 						temp.add(item);
 						this.collidingObjects.put(item2, temp2);
 					}
-					//item.onCollision(type);
+					else
+					{
+						this.collidingObjects.get(item).remove(item2);
+					}
+					
+					this.collidingObjects.get(item2).clear();
+					
 					Set<Direction> types = collisions.get(item);
 					if (types == null)
 					{
