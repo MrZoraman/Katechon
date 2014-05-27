@@ -25,6 +25,7 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		super.addItem(item);
 		
 		collidableCollisions.put(item, new HashSet<Direction>());
+		collidingCollidables.put(item, new HashSet<ICollidable>());
 	}
 	
 	@Override
@@ -103,8 +104,36 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		int o_left   = other.getLeftFace()   + o_speed;
 		
 		
+		//The top of collidable is colliding
+		if(isHigherOrEqual(top, o_bottom) && isLowerOrEqual(top, o_top))
+		{
+			//check left and right
+			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(left, o_left))
+			{
+				return TOP;
+			}
+		}
 		
-		
-		return Direction.NONE;
+		return NONE;
+	}
+	
+	private boolean isHigherOrEqual(int side, int other)
+	{
+		return side <= other;
+	}
+	
+	private boolean isLowerOrEqual(int side, int other)
+	{
+		return side >= other;
+	}
+	
+	private boolean isRighterOrEqual(int side, int other)
+	{
+		return side >= other;
+	}
+	
+	private boolean isLefterOrEqual(int side, int other)
+	{
+		return side <= other;
 	}
 }
