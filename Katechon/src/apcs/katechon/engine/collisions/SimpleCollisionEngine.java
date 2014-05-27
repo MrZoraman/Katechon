@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import apcs.katechon.logging.Log;
 import static apcs.katechon.engine.collisions.Direction.*;
 
 /**

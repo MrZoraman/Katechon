@@ -73,15 +73,15 @@ public class Board extends Controllable implements ICollidable, IDrawable
 //		
 //		Log.debug("I have myself a " + ce.toString());
 //		Log.info("target: " + target.toString());
-		for(ICollidable ic : collidingObjects)
-		{
-			Log.info("ic: " + ic.toString());
+//		for(ICollidable ic : collidingObjects)
+//		{
+//			Log.info("ic: " + ic.toString());
 			
 //			if(ic == target)
 //			{
 //				Log.info("You found him!");
 //			}
-		}
+//		}
 	}
 	
 	public void goTo(int x, int y)
@@ -133,6 +133,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void move(Set<Direction> directions)
 	{
+		System.out.println("collisions: " + collisions);
 		for(Direction direction : directions)
 		{
 			switch(direction)

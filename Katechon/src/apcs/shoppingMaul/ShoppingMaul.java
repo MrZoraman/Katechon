@@ -46,7 +46,7 @@ public class ShoppingMaul extends KatechonGameBase
 		int xCenterOffset = -75;
 		int yCenterOffset = -75;
 		
-		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, (width / 2) + xCenterOffset, (height / 2) + yCenterOffset, speed, 5, 3);
+		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, (width / 2) + xCenterOffset, (height / 2) + yCenterOffset, speed, 0, 3);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		
 		Board board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
