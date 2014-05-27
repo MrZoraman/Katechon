@@ -18,6 +18,7 @@ public class LeopardPack implements ISchedulerTask
 	private final List<SnowLeopard> leopards;
 	private final Random rand;
 	private final int speed;
+	private final int layer;
 	
 	private final int OFFSET_TOLERANCE = 300;
 	
@@ -25,10 +26,11 @@ public class LeopardPack implements ISchedulerTask
 	private int x;
 	private int y;
 	
-	public LeopardPack(ControlScheme controlScheme, int x, int y, int speed, int size)
+	public LeopardPack(ControlScheme controlScheme, int x, int y, int speed, int size, int layer)
 	{
 		this.rand = new Random();
 		this.speed = speed;
+		this.layer = layer;
 		
 		this.x = x;
 		this.y = y;
@@ -45,7 +47,7 @@ public class LeopardPack implements ISchedulerTask
 		{
 			SnowLeopard leopard = new SnowLeopard(x, y, speed / 4);
 			leopards.add(leopard);
-			KatechonEngine.getInstance().addDrawable(leopard, 1);
+			KatechonEngine.getInstance().addDrawable(leopard, layer);
 			EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(leopard);
 		}
 	}
