@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import apcs.katechon.logging.Log;
 import static apcs.katechon.engine.collisions.Direction.*;
 
 public class MattsCollisionEngine extends CollisionEngineBase
@@ -109,14 +110,14 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		
 		//is the top side higher than o's bottom
 		// and is top side lower than o's top?
-		if(isHigherOrEqual(top, o_bottom) && isLowerOrEqual(top, o_top))
+		if(isHigherOrEqual(top + speed, o_bottom - speed) && isLowerOrEqual(top + speed, o_top + speed))
 		{
 			//is the left side further right than o's left side
 			// and is left side further left than o's right side?
-			if(isRighterOrEqual(left, o_left) && isLefterOrEqual(left, o_right))
-			{
-				collisionsFound.add(TOP);
-			}
+//			if(isRighterOrEqual(left, o_left) && isLefterOrEqual(left, o_right))
+//			{
+//				collisionsFound.add(TOP);
+//			}
 			//is the right side further left than o's right side
 			// and is right side further right than o's left side?
 			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(right, o_left))
@@ -139,10 +140,10 @@ public class MattsCollisionEngine extends CollisionEngineBase
 			}
 			//is the right side further left than o's right side
 			// and is right side further right than o's left side?
-			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(right, o_left))
-			{
-				collisionsFound.add(BOTTOM);
-			}
+//			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(right, o_left))
+//			{
+//				collisionsFound.add(BOTTOM);
+//			}
 		}
 		
 		//The right of collidable is colliding
@@ -153,10 +154,10 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		{
 			//is the top side lower than o's top
 			// and is top side higher than o's bottom?
-			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
-			{
-				collisionsFound.add(RIGHT);
-			}
+//			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
+//			{
+//				collisionsFound.add(RIGHT);
+//			}
 			//is the bottom side higher than o's bottom
 			// and is bottom side lower than o's top?
 			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
@@ -179,10 +180,10 @@ public class MattsCollisionEngine extends CollisionEngineBase
 			}
 			//is the bottom side higher than o's bottom
 			// and is bottom side lower than o's top?
-			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
-			{
-				collisionsFound.add(LEFT);
-			}
+//			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
+//			{
+//				collisionsFound.add(LEFT);
+//			}
 		}
 		
 		return collisionsFound;
@@ -193,11 +194,9 @@ public class MattsCollisionEngine extends CollisionEngineBase
 //		Set<Direction> collisionsFound = new HashSet<Direction>();
 //		if ((item1.getRightFace() == item2.getLeftFace() ||
 //				(item1.getRightFace() < (item2.getLeftFace() + item1.getSpeed()) && 
-//				item1.getRightFace() > (item2.getLeftFace() - item1.getSpeed())))
-//				
-//            && item1.getBottomFace() > item2.getTopFace()
-//            && item1.getTopFace() < item2.getBottomFace())
+//				item1.getRightFace() > (item2.getLeftFace() - item1.getSpeed()))))
 //        {
+//			if (item1.getBottomFace() > item2.getTopFace() && item1.getTopFace() < item2.getBottomFace())
 //            collisionsFound.add(RIGHT);
 //        }
 //        if ((item1.getLeftFace() == item2.getRightFace() ||
@@ -211,20 +210,16 @@ public class MattsCollisionEngine extends CollisionEngineBase
 //        }
 //        if ((item1.getTopFace() == item2.getBottomFace() ||
 //        		(item1.getTopFace() < (item2.getBottomFace() + item1.getSpeed()) &&
-//        		item1.getTopFace() > (item2.getBottomFace() - item1.getSpeed())))
-//        				
-//            && item1.getRightFace() > item2.getLeftFace()
-//            && item1.getLeftFace() < item2.getRightFace())
+//        		item1.getTopFace() > (item2.getBottomFace() - item1.getSpeed()))))
 //        {
-//            collisionsFound.add(TOP);
+//        	if (item1.getRightFace() > item2.getLeftFace() && item1.getLeftFace() < item2.getRightFace())
+//        		collisionsFound.add(TOP);
 //        }
 //        if ((item1.getBottomFace() == item2.getTopFace() ||
 //        		(item1.getBottomFace() < (item2.getTopFace() + item1.getSpeed()) &&
-//        		item1.getBottomFace() > (item2.getTopFace() - item1.getSpeed())))
-//        		
-//            && item1.getRightFace() > item2.getLeftFace()
-//            && item1.getLeftFace() < item2.getRightFace())
+//        		item1.getBottomFace() > (item2.getTopFace() - item1.getSpeed()))))
 //        {
+//    		if (item1.getRightFace() > item2.getLeftFace() && item1.getLeftFace() < item2.getRightFace())
 //            collisionsFound.add(BOTTOM);
 //        }
 //		
