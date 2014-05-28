@@ -9,6 +9,10 @@ import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.input.mouse.MouseClickedListener;
 
+/**
+ * A visible button that can be shown on the screen and added to the scheduler.
+ * @author Matt
+ */
 public abstract class Button implements MouseClickedListener, ISchedulerTask, IDisplayable
 {
 	//TODO: explain these constants
@@ -159,16 +163,28 @@ public abstract class Button implements MouseClickedListener, ISchedulerTask, ID
 		return isMouseOnButton(mousePoint.x, mousePoint.y);
 	}
 	
+	/**
+	 * Sets the color of the button when nothing is affecting it.
+	 * @param color The color to set to.
+	 */
 	public void setPassiveColor(Color color)
 	{
 		this.passiveColor = color;
 	}
 	
+	/**
+	 * Sets the color of the button when a mouse is hovering over it.
+	 * @param color The color the button should be when a mouse is hovering.
+	 */
 	public void setMouseOverColor(Color color)
 	{
 		this.mouseOverColor = color;
 	}
 	
+	/**
+	 * Sets the color of the button when the mouse is held down on it.
+	 * @param color The color the button should be when the mouse is held.
+	 */
 	public void setMouseHeldColor(Color color)
 	{
 		this.mouseHeldColor = color;

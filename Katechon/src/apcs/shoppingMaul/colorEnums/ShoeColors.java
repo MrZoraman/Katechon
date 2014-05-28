@@ -2,6 +2,10 @@ package apcs.shoppingMaul.colorEnums;
 
 import java.awt.Color;
 
+/**
+ * Represents the different color options for a {@link apcs.shoppingMaul.Man Man's} shoes.
+ * @author Sean
+ */
 public enum ShoeColors
 {
 	WHITE			(Color.WHITE),
@@ -18,6 +22,9 @@ public enum ShoeColors
 		this.color = color;
 	}
 	
+	/**
+	 * @return The {@link java.awt.Color Color} object that this represents.
+	 */
 	public Color toColor()
 	{
 		return color;

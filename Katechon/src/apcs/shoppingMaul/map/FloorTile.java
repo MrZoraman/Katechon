@@ -7,6 +7,10 @@ import apcs.katechon.resources.JarImageLoader;
 import apcs.shoppingMaul.IControlledDrawable;
 import apcs.shoppingMaul.ShoppingMaul;
 
+/**
+ * A tile that can be drawn to the screen.
+ * @author Matt
+ */
 public class FloorTile implements IControlledDrawable
 {
 	private final int realX;

@@ -18,6 +18,7 @@ import apcs.shoppingMaul.commands.CountLeopardsCommand;
 import apcs.shoppingMaul.commands.GotoCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
 import apcs.shoppingMaul.commands.AddLeopardCommand;
+import apcs.shoppingMaul.commands.WhereAmICommand;
 import apcs.shoppingMaul.map.FloorTile;
 import apcs.shoppingMaul.map.Wall;
 
@@ -93,6 +94,7 @@ public class ShoppingMaul extends KatechonGameBase
 		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(pack));
 
 		CommandManager.getInstance().registerCommand("goto", new GotoCommand(board));
+		CommandManager.getInstance().registerCommand("whereami", new WhereAmICommand(board));
 	}
 
 	@Override

@@ -7,6 +7,10 @@ import org.imgscalr.Scalr;
 
 import apcs.katechon.resources.JarImageLoader;
 
+/**
+ * A fancier version of the {@link apcs.katechon.windowingtoolkit.CloseButton CloseButton}
+ * @author Matt
+ */
 //TODO: needs embellishment.
 public class FancyCloseButton extends CloseButton
 {

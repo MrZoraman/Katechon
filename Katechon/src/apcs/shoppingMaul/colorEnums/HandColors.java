@@ -2,6 +2,10 @@ package apcs.shoppingMaul.colorEnums;
 
 import java.awt.Color;
 
+/**
+ * Represents the different color options for a {@link apcs.shoppingMaul.Man Man's} hand.
+ * @author Sean
+ */
 public enum HandColors
 {
 	TAN				(new Color(224, 169, 133)),
@@ -14,6 +18,9 @@ public enum HandColors
 		this.color = color;
 	}
 	
+	/**
+	 * @return The {@link java.awt.Color Color} object that this represents.
+	 */
 	public Color toColor()
 	{
 		return this.color;

@@ -1,5 +1,9 @@
 package apcs.katechon.windowingtoolkit;
 
+/**
+ * A button that is used to close a window.
+ * @author Matt
+ */
 public class CloseButton extends Button
 {
 	public CloseButton(Window window, int x, int y, int width, int height)

@@ -5,6 +5,10 @@ import java.awt.Graphics;
 
 import apcs.shoppingMaul.SimpleBoardCollidable;
 
+/**
+ * A simple non-moving collidable.
+ * @author Matt
+ */
 public class Wall extends SimpleBoardCollidable
 {
 	private static final int WIDTH = 600;

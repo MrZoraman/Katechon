@@ -7,7 +7,10 @@ import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.Pillar;
 
-//TODO: documentation
+/**
+ * Adds a {@link apcs.shoppingMaul.Pillar Pillar} to the screen at specified coordinates.
+ * @author Sean
+ */
 public class AddPillarCommand implements Command
 {
 

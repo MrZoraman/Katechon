@@ -4,7 +4,11 @@ import apcs.katechon.commands.parser.Command;
 import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.Board;
 
-//TODO: document, fix
+//TODO: fix
+/**
+ * Sends the {@link apcs.shoppingMaul.Board Board} to the specified coordinates.
+ * @author Matt
+ */
 public class GotoCommand implements Command
 {
 	private final Board board;
