@@ -2,7 +2,6 @@ package apcs.shoppingMaul.map;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -63,17 +62,20 @@ public class GameMap
 	}
 	
 
-//	private GameMap(char[][] tiles)
-//	{
-//		Log.info("Game map constructed!");
-//		for(int r = 0; r < tiles.length; r++)
-//		{
-//			for(int c = 0; c < tiles[r].length; c++)
-//			{
-//				System.out.print(tiles[r][c] + " ");
-//			}
-//			
-//			System.out.print("\n\n");
-//		}
-//	}
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		for(int r = 0; r < tiles.length; r++)
+		{
+			for(int c = 0; c < tiles[r].length; c++)
+			{
+				builder.append(tiles[r][c]).append(" ");
+			}
+			
+			builder.append("\n\n");
+		}
+		
+		return builder.toString();
+	}
 }
