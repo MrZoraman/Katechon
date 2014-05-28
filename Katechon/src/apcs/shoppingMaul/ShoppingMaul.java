@@ -57,6 +57,7 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		
 		Board board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
+		board.goTo(200, 300);
 		engine.addDrawable(board, 2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
@@ -66,7 +67,7 @@ public class ShoppingMaul extends KatechonGameBase
 		GameMap map = null;;
 		try
 		{
-			File file = new File(getClass().getResource("map.txt").toURI());
+			File file = new File(getClass().getResource("/apcs/shoppingMaul/map.txt").toURI());
 			map = new GameMap(new FileInputStream(file), -1000, -1000);
 			
 		} catch (Exception e)
