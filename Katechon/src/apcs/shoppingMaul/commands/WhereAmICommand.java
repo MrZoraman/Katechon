@@ -20,9 +20,11 @@ public class WhereAmICommand implements Command
 	@Override
 	public void onCommand(String[] preArgs, String[] args)
 	{
-		Log.info("\tY: " + board.getYPosition());
-		Log.info("\tX: " + board.getXPosition());
-		Log.info("You are at: ");
+		Log.chainLog()
+			.info("You are at: ")
+			.info("\tX: " + board.getXPosition())
+			.info("\tY: " + board.getYPosition())
+			.log();
 	}
 
 }
