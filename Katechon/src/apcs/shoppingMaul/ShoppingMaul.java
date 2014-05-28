@@ -1,6 +1,11 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
@@ -20,6 +25,7 @@ import apcs.shoppingMaul.commands.RemoveLeopardCommand;
 import apcs.shoppingMaul.commands.AddLeopardCommand;
 import apcs.shoppingMaul.commands.WhereAmICommand;
 import apcs.shoppingMaul.map.FloorTile;
+import apcs.shoppingMaul.map.GameMap;
 import apcs.shoppingMaul.map.Wall;
 
 public class ShoppingMaul extends KatechonGameBase
@@ -54,7 +60,25 @@ public class ShoppingMaul extends KatechonGameBase
 		engine.addDrawable(board, 2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
+		
+//		FileInputStream mapStream = getClass().getResourceAsStream("map.txt");
 
+		GameMap map = null;;
+		try
+		{
+			File file = new File(getClass().getResource("map.txt").toURI());
+			map = new GameMap(new FileInputStream(file));
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			System.exit(200);
+		}
+		
+		System.out.println(map);
+		
+		
+		
 //		FloorTile tile = new FloorTile(600, 600);
 //		board.addDrawable(tile);
 //

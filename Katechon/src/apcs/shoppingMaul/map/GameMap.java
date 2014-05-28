@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import apcs.katechon.logging.Log;
@@ -36,29 +37,22 @@ public class GameMap
 				width = line.length();
 			}
 		}
+		System.out.println("widest line: " + width);
 		
-		char[][] tiles = new char[lines.size()][width];
+		tiles = new char[lines.size()][width];
 		
 		//populate tiles
 		//rows
-		for(int r = 0; r < 0; r++)
+		for(int r = 0; r < lines.size(); r++)
 		{
 			char[] chars = lines.get(r).toCharArray();
 			//columns
-			for(int c = 0; c < tiles[r].length; c++)
+			for(int c = 0; c < chars.length; c++)
 			{
-				if(chars.length < c)
-				{
-					tiles[r][c] = chars[c];
-				}
-				else
-				{
-					tiles[r][c] = ' ';
-				}
+				tiles[r][c] = chars[c];
+				System.out.println("added " + chars[c]);
 			}
 		}
-		
-		this.tiles = tiles;
 	}
 	
 
