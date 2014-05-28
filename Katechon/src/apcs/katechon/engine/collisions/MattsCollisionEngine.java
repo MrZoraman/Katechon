@@ -107,15 +107,18 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		//The top of collidable is colliding
 		if(isHigherOrEqual(top, o_bottom) && isLowerOrEqual(top, o_top))
 		{
-			//is left side inbetween other's right and left sides?
-			if(left > o_left && left < o_right)
+			//is the left side further right than o's left side
+			// and is left side further left than o's right side?
+			if(isRighterOrEqual(left, o_left) && isLefterOrEqual(left, o_right))
 			{
 				return TOP;
 			}
-//			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(left, o_left))
-//			{
-//				return TOP;
-//			}
+			//is the right side further left than o's right side
+			// and is right side further right than o's left side?
+			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(right, o_left))
+			{
+				return TOP;
+			}
 		}
 		
 		return NONE;
