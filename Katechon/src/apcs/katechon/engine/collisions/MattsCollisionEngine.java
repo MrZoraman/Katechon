@@ -150,10 +150,40 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		
 		//is the right side righter than o's left
 		// and is right side lefter than o's right?
-		if (isRighterOrEqual(right, o_left) && isLefterOrEqual(right, o_right))
+		if(isRighterOrEqual(right, o_left) && isLefterOrEqual(right, o_right))
 		{
 			//is the top side lower than o's top
 			// and is top side higher than o's bottom?
+			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
+			{
+				collisionsFound.add(RIGHT);
+			}
+			//is the bottom side higher than o's bottom
+			// and is bottom side lower than o's top?
+			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
+			{
+				collisionsFound.add(RIGHT);
+			}
+		}
+		
+		//The left of collidable is colliding
+		
+		//is the left side lefter than o's right
+		// and is left side righter than o's left?
+		if(isLefterOrEqual(left, o_right) && isRighterOrEqual(left, o_left))
+		{
+			//is the top side lower than o's top
+			// and is top side higher than o's bottom?
+			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
+			{
+				collisionsFound.add(LEFT);
+			}
+			//is the bottom side higher than o's bottom
+			// and is bottom side lower than o's top?
+			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
+			{
+				collisionsFound.add(LEFT);
+			}
 		}
 		
 		return collisionsFound;
