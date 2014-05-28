@@ -22,7 +22,6 @@ public class GameMap
 	private int y;
 	
 	private final int orig_x;
-	private final int orig_y;
 	
 	public GameMap(FileInputStream inputStream, int x, int y) throws IOException
 	{
@@ -67,7 +66,6 @@ public class GameMap
 		this.y = y;
 		
 		this.orig_x = x;
-		this.orig_y = y;
 	}
 	
 	public void insertMap(Board board)
