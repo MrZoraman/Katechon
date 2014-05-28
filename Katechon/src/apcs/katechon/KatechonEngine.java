@@ -153,10 +153,10 @@ public class KatechonEngine
 	
 	private SwingWindow initWindow(IConfig config)
 	{
-		int width = config.getInt			(ConfigKey.WIDTH, 				DEFAULT_WIDTH);
-		int height = config.getInt			(ConfigKey.HEIGHT, 				DEFAULT_HEIGHT);
-		String title = config.getString		(ConfigKey.TITLE, 				DEFAULT_TITLE);
-		int amountOfLayers = config.getInt	(ConfigKey.AMOUNT_OF_LAYERS, 	DEFAULT_AMOUNT_OF_LAYERS);
+		int width = config.getInt           (ConfigKey.WIDTH,            DEFAULT_WIDTH);
+		int height = config.getInt          (ConfigKey.HEIGHT,           DEFAULT_HEIGHT);
+		String title = config.getString     (ConfigKey.TITLE,            DEFAULT_TITLE);
+		int amountOfLayers = config.getInt  (ConfigKey.AMOUNT_OF_LAYERS, DEFAULT_AMOUNT_OF_LAYERS);
 		
 		return new SwingWindow(width, height, title, amountOfLayers);
 	}
