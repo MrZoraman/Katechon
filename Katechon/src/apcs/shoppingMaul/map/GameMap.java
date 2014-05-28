@@ -1,9 +1,8 @@
 package apcs.shoppingMaul.map;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,15 +22,16 @@ public class GameMap
 	
 	private final int orig_x;
 	
-	public GameMap(FileInputStream inputStream, int x, int y) throws IOException
+	public GameMap(Class<?> clazz, String path, int x, int y) throws IOException
 	{
-		DataInputStream in = new DataInputStream(inputStream);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		InputStream is = clazz.getResourceAsStream(path);
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
 		
 		String strLine;
 		List<String> lines = new ArrayList<String>();
 		
-		while((strLine = reader.readLine()) != null)
+		while((strLine = br.readLine()) != null)
 		{
 			lines.add(strLine);
 		}

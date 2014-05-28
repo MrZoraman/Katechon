@@ -1,8 +1,6 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
-import java.io.File;
-import java.io.FileInputStream;
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.basicGameObjects.ControlScheme;
@@ -58,11 +56,10 @@ public class ShoppingMaul extends KatechonGameBase
 		
 //		FileInputStream mapStream = getClass().getResourceAsStream("map.txt");
 
-		GameMap map = null;;
+		GameMap map = null;
 		try
 		{
-			File file = new File(getClass().getResource("/apcs/shoppingMaul/map.txt").toURI());
-			map = new GameMap(new FileInputStream(file), -1000, -1000);
+			map = new GameMap(ShoppingMaul.class, "map.txt", -1000, -1000);
 			
 		} catch (Exception e)
 		{
