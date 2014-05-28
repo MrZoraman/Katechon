@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import apcs.katechon.logging.Log;
 import static apcs.katechon.engine.collisions.Direction.*;
 
 public class MattsCollisionEngine extends CollisionEngineBase
