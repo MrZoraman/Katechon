@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
 
+import apcs.katechon.logging.Log;
+
 /**
  * <p>If you touch this class I will give you a small, really cute puppy. 
  * I will then proceed to let you grow an emotional attachment to said puppy before I kill it while you're cradling it in your arms.</p>
@@ -74,9 +76,12 @@ public class EngineManager implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent args)
 	{
+		Log.info("doing work.");
 		for(EngineModuleBase<?> engine : engines)
 		{
 			engine.doWork();
+			Log.info("    work done for engine " + engine.toString());
 		}
+		Log.info("work done.");
 	}
 }
