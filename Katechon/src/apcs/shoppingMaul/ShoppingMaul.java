@@ -44,7 +44,7 @@ public class ShoppingMaul extends KatechonGameBase
 		Log.setDebugging(true);
 		EngineManager.getInstance().addEngine(new MattsCollisionEngine());
 		
-		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
+		engine.getSwingWindow().setBackgroundColor(Color.BLACK);
 		
 		int speed = 10;
 
