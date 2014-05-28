@@ -3,10 +3,6 @@ package apcs.shoppingMaul;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.basicGameObjects.ControlScheme;
@@ -24,9 +20,7 @@ import apcs.shoppingMaul.commands.GotoCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
 import apcs.shoppingMaul.commands.AddLeopardCommand;
 import apcs.shoppingMaul.commands.WhereAmICommand;
-import apcs.shoppingMaul.map.FloorTile;
 import apcs.shoppingMaul.map.GameMap;
-import apcs.shoppingMaul.map.Wall;
 
 public class ShoppingMaul extends KatechonGameBase
 {

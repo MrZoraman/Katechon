@@ -9,8 +9,6 @@ import java.util.Set;
 import apcs.katechon.SwingWindow;
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.basicGameObjects.Controllable;
-import apcs.katechon.engine.EngineManager;
-import apcs.katechon.engine.collisions.CollisionEngineBase;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.logging.Log;
@@ -65,9 +63,9 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	{
 		super.doTask();
 		
-		CollisionEngineBase ce = (CollisionEngineBase) EngineManager.getInstance().getEngine(ICollidable.class);
-		
-		Set<ICollidable> collidingObjects = ce.getCollidingObjects(this);
+//		CollisionEngineBase ce = (CollisionEngineBase) EngineManager.getInstance().getEngine(ICollidable.class);
+//		
+//		Set<ICollidable> collidingObjects = ce.getCollidingObjects(this);
 		
 //		Log.debug("colliding objects is null: " + (collidingObjects == null));
 //		
