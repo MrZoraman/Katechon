@@ -67,13 +67,15 @@ public class ShoppingMaul extends KatechonGameBase
 		try
 		{
 			File file = new File(getClass().getResource("map.txt").toURI());
-			map = new GameMap(new FileInputStream(file));
+			map = new GameMap(new FileInputStream(file), -500, -500);
 			
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 			System.exit(200);
 		}
+		
+		map.insertMap(board);
 		
 		System.out.println(map);
 		

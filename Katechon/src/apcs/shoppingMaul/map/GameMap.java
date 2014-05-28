@@ -6,16 +6,22 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import apcs.katechon.logging.Log;
+import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.collisions.ICollidable;
+import apcs.shoppingMaul.Board;
+import apcs.shoppingMaul.IControlledDrawable;
 
 public class GameMap
 {	
-	private final char[][] tiles;
+	private static final int SIZE = 600;
 	
-	public GameMap(FileInputStream inputStream) throws IOException
+	private final char[][] tiles;
+	private int x;
+	private int y;
+	
+	public GameMap(FileInputStream inputStream, int x, int y) throws IOException
 	{
 		DataInputStream in = new DataInputStream(inputStream);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -53,8 +59,43 @@ public class GameMap
 				System.out.println("added " + chars[c]);
 			}
 		}
+		
+		this.x = x;
+		this.y = y;
 	}
 	
+	public void insertMap(Board board)
+	{
+		for(int r = 0; r < tiles.length; r++)
+		{
+			
+			for(int c = 0; c < tiles[r].length; c++)
+			{
+				IControlledDrawable icd = null;
+				
+				switch (tiles[r][c])
+				{
+				case 'F':
+					icd = new FloorTile(x, y);
+					break;
+				default:
+					Wall wall = new Wall(x, y);
+					icd = wall;
+					EngineManager.getInstance().getEngine(ICollidable.class).addItem(wall);
+					break;
+				}
+				
+				board.addDrawable(icd);
+				
+				x += SIZE;
+			}
+			
+			x = 0;
+			
+			
+			y += SIZE;
+		}
+	}
 
 	@Override
 	public String toString()
