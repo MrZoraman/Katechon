@@ -139,16 +139,28 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			switch(direction)
 			{
 			case TOP:
-				yOffset += speed;
+				if (!collisions.contains(Direction.TOP))
+				{
+					yOffset += speed;
+				}
 				break;
 			case BOTTOM:
-				yOffset -= speed;
+				if (!collisions.contains(Direction.BOTTOM))
+				{
+					yOffset -= speed;
+				}
 				break;
 			case LEFT:
-				xOffset += speed;
+				if (!collisions.contains(Direction.LEFT))
+				{
+					xOffset += speed;
+				}
 				break;
 			case RIGHT:
-				xOffset -= speed;
+				if (!collisions.contains(Direction.RIGHT))
+				{
+					xOffset -= speed;
+				}
 				break;
 			case NONE:
 				break;
