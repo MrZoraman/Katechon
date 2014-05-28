@@ -21,6 +21,9 @@ public class GameMap
 	private int x;
 	private int y;
 	
+	private final int orig_x;
+	private final int orig_y;
+	
 	public GameMap(FileInputStream inputStream, int x, int y) throws IOException
 	{
 		DataInputStream in = new DataInputStream(inputStream);
@@ -62,6 +65,9 @@ public class GameMap
 		
 		this.x = x;
 		this.y = y;
+		
+		this.orig_x = x;
+		this.orig_y = y;
 	}
 	
 	public void insertMap(Board board)
@@ -90,7 +96,7 @@ public class GameMap
 				x += SIZE;
 			}
 			
-			x = 0;
+			x = orig_x;
 			
 			
 			y += SIZE;
