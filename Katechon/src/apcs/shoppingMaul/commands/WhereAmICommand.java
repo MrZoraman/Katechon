@@ -20,22 +20,9 @@ public class WhereAmICommand implements Command
 	@Override
 	public void onCommand(String[] preArgs, String[] args)
 	{
-		if (args.length > 0)
-		{
-			showUsage();
-		}
-		else
-		{
-			Log.chainLog()
-				.info("You are at: ")
-				.info("\tX: " + board.getLeftFace())
-				.info("\tY: " + board.getTopFace());
-		}
-	}
-	
-	public void showUsage()
-	{
-		Log.info("whereami");
+		Log.info("\tY: " + board.getYPosition());
+		Log.info("\tX: " + board.getXPosition());
+		Log.info("You are at: ");
 	}
 
 }

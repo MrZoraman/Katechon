@@ -210,4 +210,14 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	{
 		return "Board";
 	}
+	
+	public int getXPosition()
+	{
+		return this.xOffset;
+	}
+	
+	public int getYPosition()
+	{
+		return this.yOffset;
+	}
 }
