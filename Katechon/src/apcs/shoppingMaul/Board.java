@@ -138,28 +138,16 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			switch(direction)
 			{
 			case TOP:
-				if (!collisions.contains(Direction.TOP))
-				{
-					yOffset += speed;
-				}
+				yOffset += speed;
 				break;
 			case BOTTOM:
-				if (!collisions.contains(Direction.BOTTOM))
-				{
-					yOffset -= speed;
-				}
+				yOffset -= speed;
 				break;
 			case LEFT:
-				if (!collisions.contains(Direction.LEFT))
-				{
-					xOffset += speed;
-				}
+				xOffset += speed;
 				break;
 			case RIGHT:
-				if (!collisions.contains(Direction.RIGHT))
-				{
-					xOffset -= speed;
-				}
+				xOffset -= speed;
 				break;
 			case NONE:
 				break;
@@ -175,10 +163,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void onCollision(Set<Direction> types)
 	{
-//		Log.debug("Types: " + types);
-//		Log.debug("Collisions (before): " + collisions);
 		this.collisions = types;
-//		Log.debug("Collisions (after): " + collisions);
 	}
 
 	@Override
