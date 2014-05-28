@@ -8,7 +8,7 @@ import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
-import apcs.katechon.engine.collisions.SimpleCollisionEngine;
+import apcs.katechon.engine.collisions.MattsCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
 import apcs.katechon.utils.ConfigKey;
@@ -36,7 +36,7 @@ public class ShoppingMaul extends KatechonGameBase
 	public void init(final KatechonEngine engine)
 	{
 		Log.setDebugging(true);
-		EngineManager.getInstance().addEngine(new SimpleCollisionEngine());
+		EngineManager.getInstance().addEngine(new MattsCollisionEngine());
 		
 		engine.getSwingWindow().setBackgroundColor(Color.WHITE);
 		
@@ -55,22 +55,22 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 
-		FloorTile tile = new FloorTile(600, 600);
-		board.addDrawable(tile);
-
-		Pillar pillar = new Pillar(500, 500, 25, 25, "Pillar 1");
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
-		board.addDrawable(pillar);
+//		FloorTile tile = new FloorTile(600, 600);
+//		board.addDrawable(tile);
+//
+//		Pillar pillar = new Pillar(500, 500, 25, 25, "Pillar 1");
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
+//		board.addDrawable(pillar);
+//		
+//		Pillar pillar2 = new Pillar(100, 700, 25, 25, "Pillar 2");
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar2);
+//		board.addDrawable(pillar2);
+//		
+//		Pillar pillar3 = new Pillar(50, 100, 25, 25, "Pillar 3");
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar3);
+//		board.addDrawable(pillar3);
 		
-		Pillar pillar2 = new Pillar(100, 700, 25, 25, "Pillar 2");
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar2);
-		board.addDrawable(pillar2);
-		
-		Pillar pillar3 = new Pillar(50, 100, 25, 25, "Pillar 3");
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar3);
-		board.addDrawable(pillar3);
-		
-		board.setTarget(pillar3);
+//		board.setTarget(pillar3);
 		
 		Wall wall = new Wall(-100, -100);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(wall);
