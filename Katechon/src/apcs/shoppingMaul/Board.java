@@ -175,7 +175,10 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void onCollision(Set<Direction> types)
 	{
+		Log.debug("Types: " + types);
+		Log.debug("Collisions (before): " + collisions);
 		this.collisions = types;
+		Log.debug("Collisions (after): " + collisions);
 	}
 
 	@Override
