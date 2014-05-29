@@ -56,7 +56,6 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		
 		Board board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
-		board.addDrawable(man);
 		board.goTo(200, 300);
 		engine.addDrawable(board, 2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
@@ -78,7 +77,10 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		map.insertMap(board);
 		
-		System.out.println(map);
+//		System.out.println(map);
+		
+
+		board.addDrawable(man);
 		
 //		FloorTile tile = new FloorTile(600, 600);
 //		board.addDrawable(tile);

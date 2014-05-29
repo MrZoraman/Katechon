@@ -88,7 +88,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	{
 		g.drawRect(collisionBoxX, collisionBoxY, COLLISION_BOX_SIZE, COLLISION_BOX_SIZE);
 		
-		for(int ii = drawables.size() - 1; ii >= 0; ii--)
+//		for(int ii = drawables.size() - 1; ii >= 0; ii--)
+		for(int ii = 0; ii < drawables.size(); ii++)
 		{
 			if(drawables.get(ii).isFinished())
 			{
