@@ -33,8 +33,13 @@ public class ImageUtils
 	 */
 	public static BufferedImage changeColor(BufferedImage image, Color from, Color to)
 	{
-		int colorToChange = (from.getRed() << 16) | (from.getGreen() << 8) | from.getBlue();
-		int newColor = (to.getRed() << 16) | (from.getGreen()) | from.getBlue();
+		Log.info("going from " + from + " to " + to);
+		int colorToChange = (from.getAlpha() << 24) | (from.getRed() << 16) | (from.getGreen() << 8) | from.getBlue();
+		System.out.println("alpha: " + to.getAlpha());
+		System.out.println("red: " + to.getRed());
+		System.out.println("green: " + to.getGreen());
+		System.out.println("blue: " + to.getBlue());
+		int newColor = (to.getAlpha() << 24) | (to.getRed() << 16) | (to.getGreen() << 8) | to.getBlue();
 		
 		for(int x = 0; x < image.getWidth(); x++)
 		{
@@ -43,11 +48,17 @@ public class ImageUtils
 				int currentColor = image.getRGB(x, y);
 				if(currentColor == colorToChange)
 				{
+					System.out.println("changing color from " + currentColor);
+					System.out.println("(should be going to " + newColor);
 					image.setRGB(x, y, newColor);
-					System.out.println("color changed.");
+					System.out.println("change!");
+//					System.out.println("color changed.");
+					System.out.println("... to " + image.getRGB(x, y));
 				}
 			}
 		}
+		
+		System.out.println(Color.RED.getRGB());
 		
 		return image;
 		

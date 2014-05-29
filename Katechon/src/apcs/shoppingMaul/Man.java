@@ -34,7 +34,7 @@ public class Man extends SimpleBoardCollidable
 	
 	private final AnimatedSequence<BufferedImage> frames;
 	
-	private final Color hairColor;
+	private Color hairColor;
 	private final Color shirtColor;
 	private final Color handColor;
 	private final Color shoeColor;
@@ -58,7 +58,8 @@ public class Man extends SimpleBoardCollidable
 		
 		this.collisions = new HashSet<Direction>();
 		
-		System.out.println("hair color: " + hairColor);
+		this.hairColor = Color.PINK;
+		System.out.println("hair color: " + this.hairColor);
 		
 		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "/apcs/shoppingMaul/assets/man.png", 8, 1);
 		
@@ -67,11 +68,8 @@ public class Man extends SimpleBoardCollidable
 //		for(BufferedImage image : imageFrames)
 		for(int ii = 0; ii < imageFrames.length; ii++)
 		{
-			final BufferedImage a = imageFrames[ii];
 //			image = ImageUtils.changeColor(image, ORIG_SHOE_COLOR, shoeColor);
-			BufferedImage b = ImageUtils.changeColor(imageFrames[ii], ORIG_HAIR_COLOR, Color.CYAN);
-			imageFrames[ii] = b;
-			System.out.println("a == b: " + (a == b));
+			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_HAIR_COLOR, this.hairColor);
 //			image = ImageUtils.changeColor(image, ORIG_SKIN_COLOR, handColor);
 //			image = ImageUtils.changeColor(image, ORIG_SHIRT_COLOR, shirtColor);
 			System.out.println("done---");
