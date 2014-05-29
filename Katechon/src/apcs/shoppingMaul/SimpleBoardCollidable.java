@@ -152,4 +152,14 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 	{
 		return realY;
 	}
+	
+	protected void setRealX(int x)
+	{
+		this.realX = x;
+	}
+	
+	protected void setRealY(int realY)
+	{
+		this.realY = realY;
+	}
 }

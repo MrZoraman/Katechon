@@ -107,7 +107,7 @@ public class Man extends SimpleBoardCollidable
 		{
 			if (!collisions.contains(Direction.TOP))
 			{
-				super.setY(super.y - super.speed);
+				super.setRealY(super.getRealY() - super.speed);
 			}
 		}
 		
@@ -115,7 +115,7 @@ public class Man extends SimpleBoardCollidable
 		{
 			if (!collisions.contains(Direction.BOTTOM))
 			{
-				super.setY(super.y + super.speed);
+				super.setRealY(super.getRealY() + super.speed);
 			}
 		}
 		
@@ -123,7 +123,7 @@ public class Man extends SimpleBoardCollidable
 		{
 			if (!collisions.contains(Direction.LEFT))
 			{
-				super.setX(super.x - super.speed);
+				super.setRealX(super.getRealX() - super.speed);
 			}
 		}
 		
@@ -131,7 +131,7 @@ public class Man extends SimpleBoardCollidable
 		{
 			if (!collisions.contains(Direction.RIGHT))
 			{
-				super.setX(super.x + super.speed);
+				super.setRealX(super.getRealX() + super.speed);
 			}
 		}
 	}
