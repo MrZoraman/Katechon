@@ -45,7 +45,6 @@ public class GameMap
 				width = line.length();
 			}
 		}
-		System.out.println("widest line: " + width);
 		
 		tiles = new char[lines.size()][width];
 		
@@ -58,7 +57,6 @@ public class GameMap
 			for(int c = 0; c < chars.length; c++)
 			{
 				tiles[r][c] = chars[c];
-				System.out.println("added " + chars[c]);
 			}
 		}
 		
