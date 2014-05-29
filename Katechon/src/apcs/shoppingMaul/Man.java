@@ -13,6 +13,7 @@ import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
+import apcs.katechon.rendering.ColorChanger;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.ImageUtils;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
@@ -26,6 +27,11 @@ import apcs.katechon.resources.SpritesheetLoader;
 @SuppressWarnings("unused")
 public class Man extends SimpleBoardCollidable
 {
+	private static final Color ORIG_SHOE_COLOR = Color.RED;
+	private static final Color ORIG_HAIR_COLOR = Color.BLACK;
+	private static final Color ORIG_SKIN_COLOR = Color.GREEN;
+	private static final Color ORIG_SHIRT_COLOR = Color.BLUE;
+	
 	private final AnimatedSequence<BufferedImage> frames;
 	
 	private final Color hairColor;
@@ -52,8 +58,24 @@ public class Man extends SimpleBoardCollidable
 		
 		this.collisions = new HashSet<Direction>();
 		
+		System.out.println("hair color: " + hairColor);
+		
 		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "/apcs/shoppingMaul/assets/man.png", 8, 1);
+		
 		BufferedImage[] imageFrames = loader.loadWide(0, 0, 7);
+		
+//		for(BufferedImage image : imageFrames)
+		for(int ii = 0; ii < imageFrames.length; ii++)
+		{
+			final BufferedImage a = imageFrames[ii];
+//			image = ImageUtils.changeColor(image, ORIG_SHOE_COLOR, shoeColor);
+			BufferedImage b = ImageUtils.changeColor(imageFrames[ii], ORIG_HAIR_COLOR, Color.CYAN);
+			imageFrames[ii] = b;
+			System.out.println("a == b: " + (a == b));
+//			image = ImageUtils.changeColor(image, ORIG_SKIN_COLOR, handColor);
+//			image = ImageUtils.changeColor(image, ORIG_SHIRT_COLOR, shirtColor);
+			System.out.println("done---");
+		}
 		
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 	}
@@ -141,12 +163,12 @@ public class Man extends SimpleBoardCollidable
 	{
 		BufferedImage copy = ImageUtils.deepCopy(frames.getCurrentFrame());
 		
-//		Rotation rotation = direction.getRotation();
-//		
-//		if(rotation != null)
-//		{
-//			copy = ImageUtils.rotateImage(copy, rotation);
-//		}
+		Rotation rotation = direction.getRotation();
+		
+		if(rotation != null)
+		{
+			copy = ImageUtils.rotateImage(copy, rotation);
+		}
 		
 		g.drawImage(copy, x, y, null);
 	}

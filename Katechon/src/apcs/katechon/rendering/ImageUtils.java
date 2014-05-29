@@ -1,12 +1,16 @@
 package apcs.katechon.rendering;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
 import org.imgscalr.Scalr;
 import org.imgscalr.Scalr.Rotation;
+
+import apcs.katechon.logging.Log;
 
 /**
  * Contains various utility methods for buffered image manipulation
@@ -29,30 +33,59 @@ public class ImageUtils
 	 */
 	public static BufferedImage changeColor(BufferedImage image, Color from, Color to)
 	{
-		int width = image.getWidth();
-		int height = image.getHeight();
+		int colorToChange = (from.getRed() << 16) | (from.getGreen() << 8) | from.getBlue();
+		int newColor = (to.getRed() << 16) | (from.getGreen()) | from.getBlue();
 		
-		WritableRaster raster = image.getRaster();
-		
-		for(int x = 0; x < width; x++)
+		for(int x = 0; x < image.getWidth(); x++)
 		{
-			for(int y = 0; y < height; y++)
+			for(int y = 0; y < image.getHeight(); y++)
 			{
-				int[] pixels = raster.getPixel(x, y, (int[]) null);
-				int r = pixels[0];
-				int g = pixels[1];
-				int b = pixels[2];
-				if(r == from.getRed() && g == from.getGreen() && b == from.getBlue())
+				int currentColor = image.getRGB(x, y);
+				if(currentColor == colorToChange)
 				{
-					pixels[0] = to.getRed();
-					pixels[1] = to.getGreen();
-					pixels[2] = to.getBlue();
-					raster.setPixel(x, y, pixels);
+					image.setRGB(x, y, newColor);
+					System.out.println("color changed.");
 				}
 			}
 		}
 		
 		return image;
+		
+//		Log.info("chanign colfaso");
+//		BufferedImage newVersion = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+//		Graphics2D g = (Graphics2D) newVersion.getGraphics();
+//		g.setColor(to);
+//		g.fillRect(0, 0, image.getWidth(), image.getHeight());
+//		
+//		g.setComposite(AlphaComposite.DstIn);
+//		g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
+//		g.dispose();
+//		return newVersion;
+		
+//		int width = image.getWidth();
+//		int height = image.getHeight();
+//		
+//		WritableRaster raster = image.getRaster();
+//		
+//		for(int x = 0; x < width; x++)
+//		{
+//			for(int y = 0; y < height; y++)
+//			{
+//				int[] pixels = raster.getPixel(x, y, (int[]) null);
+//				int r = pixels[0];
+//				int g = pixels[1];
+//				int b = pixels[2];
+//				if(r == from.getRed() && g == from.getGreen() && b == from.getBlue())
+//				{
+//					pixels[0] = to.getRed();
+//					pixels[1] = to.getGreen();
+//					pixels[2] = to.getBlue();
+//					raster.setPixel(x, y, pixels);
+//				}
+//			}
+//		}
+//		
+//		return image;
 	}
 	
 	/**
