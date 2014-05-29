@@ -8,13 +8,13 @@ import java.awt.Color;
  */
 public enum HairColors
 {
-	WHITE 			(Color.WHITE),
+	WHITE 			(new Color(254, 254, 254)),
 	BLONDE 			(new Color(224, 211, 163)),
-	ORANGE 			(Color.ORANGE),
-	RED 			(Color.RED),
+	ORANGE 			(new Color(254, 127, 39)),
+	RED 			(new Color(254, 1, 1)),
 	BROWN 			(new Color(135, 84, 56)),
 	DARK_BROWN 		(new Color(37, 23, 16)),
-	BLACK			(Color.BLACK);
+	BLACK			(new Color(1, 1, 1));
 	
 	
 	private Color color;
