@@ -9,7 +9,7 @@ import apcs.shoppingMaul.colorEnums.ShoeColors;
 
 public class ManFactory
 {
-	public static Man makeMan(int x, int y, int width, int height, int speed)
+	public static Man makeMan(int x, int y, int speed)
 	{
 		Random r = new Random();
 		
@@ -18,6 +18,6 @@ public class ManFactory
 		Color handColor = HandColors.values()[r.nextInt(HandColors.values().length - 1)].toColor();
 		Color shoeColor = ShoeColors.values()[r.nextInt(ShoeColors.values().length - 1)].toColor();
 		
-		return new Man(x, y, width, height, speed, hairColor, shirtColor, handColor, shoeColor);
+		return new Man(x, y, speed, hairColor, shirtColor, handColor, shoeColor);
 	}
 }

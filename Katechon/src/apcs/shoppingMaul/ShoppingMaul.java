@@ -45,14 +45,23 @@ public class ShoppingMaul extends KatechonGameBase
 		int xCenterOffset = -75;
 		int yCenterOffset = -75;
 		
+
+		
+		Man man = ManFactory.makeMan(-100, -100, 5);
+		
+		EngineManager.getInstance().getEngine(ICollidable.class).addItem(man);
+		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(man);
+		
 		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, (width / 2) + xCenterOffset, (height / 2) + yCenterOffset, speed, 5, 3);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		
 		Board board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
+		board.addDrawable(man);
 		board.goTo(200, 300);
 		engine.addDrawable(board, 2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
+	
 		
 //		FileInputStream mapStream = getClass().getResourceAsStream("map.txt");
 
@@ -70,8 +79,6 @@ public class ShoppingMaul extends KatechonGameBase
 		map.insertMap(board);
 		
 		System.out.println(map);
-		
-		
 		
 //		FloorTile tile = new FloorTile(600, 600);
 //		board.addDrawable(tile);

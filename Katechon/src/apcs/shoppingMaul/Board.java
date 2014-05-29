@@ -9,6 +9,8 @@ import java.util.Set;
 import apcs.katechon.SwingWindow;
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.basicGameObjects.Controllable;
+import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.collisions.CollisionEngineBase;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.logging.Log;
@@ -63,23 +65,16 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	{
 		super.doTask();
 		
-//		CollisionEngineBase ce = (CollisionEngineBase) EngineManager.getInstance().getEngine(ICollidable.class);
-//		
-//		Set<ICollidable> collidingObjects = ce.getCollidingObjects(this);
+		CollisionEngineBase ce = (CollisionEngineBase) EngineManager.getInstance().getEngine(ICollidable.class);
 		
-//		Log.debug("colliding objects is null: " + (collidingObjects == null));
-//		
-//		Log.debug("I have myself a " + ce.toString());
-//		Log.info("target: " + target.toString());
-//		for(ICollidable ic : collidingObjects)
-//		{
-//			Log.info("ic: " + ic.toString());
-			
-//			if(ic == target)
-//			{
-//				Log.info("You found him!");
-//			}
-//		}
+		Set<ICollidable> collidingObjects = ce.getCollidingObjects(this);
+		for(ICollidable ic : collidingObjects)
+		{		
+			if(ic == target)
+			{
+				Log.info("You found him!");
+			}
+		}
 	}
 	
 	public void goTo(int x, int y)

@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import apcs.katechon.logging.Log;
 import static apcs.katechon.engine.collisions.Direction.*;
 
 public class MattsCollisionEngine extends CollisionEngineBase
@@ -110,7 +109,7 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		
 		//is the top side higher than o's bottom
 		// and is top side lower than o's top?
-		if(isHigherOrEqual(top + speed, o_bottom - speed) && isLowerOrEqual(top + speed, o_top + speed))
+		if(isHigherOrEqual(top, o_bottom) && isLowerOrEqual(top, o_top))
 		{
 			//is the left side further right than o's left side
 			// and is left side further left than o's right side?
@@ -154,16 +153,16 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		{
 			//is the top side lower than o's top
 			// and is top side higher than o's bottom?
-//			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
-//			{
-//				collisionsFound.add(RIGHT);
-//			}
-			//is the bottom side higher than o's bottom
-			// and is bottom side lower than o's top?
-			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
+			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
 			{
 				collisionsFound.add(RIGHT);
 			}
+			//is the bottom side higher than o's bottom
+			// and is bottom side lower than o's top?
+//			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
+//			{
+//				collisionsFound.add(RIGHT);
+//			}
 		}
 		
 		//The left of collidable is colliding
@@ -174,16 +173,16 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		{
 			//is the top side lower than o's top
 			// and is top side higher than o's bottom?
-			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
-			{
-				collisionsFound.add(LEFT);
-			}
-			//is the bottom side higher than o's bottom
-			// and is bottom side lower than o's top?
-//			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
+//			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
 //			{
 //				collisionsFound.add(LEFT);
 //			}
+			//is the bottom side higher than o's bottom
+			// and is bottom side lower than o's top?
+			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
+			{
+				collisionsFound.add(LEFT);
+			}
 		}
 		
 		return collisionsFound;
