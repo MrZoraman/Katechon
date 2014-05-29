@@ -99,41 +99,41 @@ public class Man extends SimpleBoardCollidable
 	@Override
 	public void doTask()
 	{
-		Log.debug("Moving Man");
-		Random r = new Random();
-		Direction dir = Direction.values()[r.nextInt(Direction.values().length - 1)];
-		
-		if (dir.equals(Direction.TOP))
-		{
-			if (!collisions.contains(Direction.TOP))
-			{
-				super.setRealY(super.getRealY() - super.speed);
-			}
-		}
-		
-		if (dir.equals(Direction.BOTTOM))
-		{
-			if (!collisions.contains(Direction.BOTTOM))
-			{
-				super.setRealY(super.getRealY() + super.speed);
-			}
-		}
-		
-		if (dir.equals(Direction.LEFT))
-		{
-			if (!collisions.contains(Direction.LEFT))
-			{
-				super.setRealX(super.getRealX() - super.speed);
-			}
-		}
-		
-		if (dir.equals(Direction.RIGHT))
-		{
-			if (!collisions.contains(Direction.RIGHT))
-			{
-				super.setRealX(super.getRealX() + super.speed);
-			}
-		}
+//		Log.debug("Moving Man");
+//		Random r = new Random();
+//		Direction dir = Direction.values()[r.nextInt(Direction.values().length - 1)];
+//		
+//		if (dir.equals(Direction.TOP))
+//		{
+//			if (!collisions.contains(Direction.TOP))
+//			{
+//				super.setRealY(super.getRealY() - super.speed);
+//			}
+//		}
+//		
+//		if (dir.equals(Direction.BOTTOM))
+//		{
+//			if (!collisions.contains(Direction.BOTTOM))
+//			{
+//				super.setRealY(super.getRealY() + super.speed);
+//			}
+//		}
+//		
+//		if (dir.equals(Direction.LEFT))
+//		{
+//			if (!collisions.contains(Direction.LEFT))
+//			{
+//				super.setRealX(super.getRealX() - super.speed);
+//			}
+//		}
+//		
+//		if (dir.equals(Direction.RIGHT))
+//		{
+//			if (!collisions.contains(Direction.RIGHT))
+//			{
+//				super.setRealX(super.getRealX() + super.speed);
+//			}
+//		}
 	}
 
 	@Override
@@ -141,15 +141,13 @@ public class Man extends SimpleBoardCollidable
 	{
 		BufferedImage copy = ImageUtils.deepCopy(frames.getCurrentFrame());
 		
-		Rotation rotation = direction.getRotation();
+//		Rotation rotation = direction.getRotation();
+//		
+//		if(rotation != null)
+//		{
+//			copy = ImageUtils.rotateImage(copy, rotation);
+//		}
 		
-		if(rotation != null)
-		{
-			copy = ImageUtils.rotateImage(copy, rotation);
-		}
-		
-//		Log.debug("Drawing Man");
-		
-		g.drawImage(copy, super.x, super.y, null);
+		g.drawImage(copy, x, y, null);
 	}
 }
