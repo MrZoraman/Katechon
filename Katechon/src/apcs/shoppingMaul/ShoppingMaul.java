@@ -85,6 +85,8 @@ public class ShoppingMaul extends KatechonGameBase
 
 		board.addDrawable(man);
 		
+		board.setTarget(man);
+		
 //		FloorTile tile = new FloorTile(600, 600);
 //		board.addDrawable(tile);
 //
