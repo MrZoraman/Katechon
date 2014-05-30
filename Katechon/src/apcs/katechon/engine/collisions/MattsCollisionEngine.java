@@ -109,14 +109,14 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		
 		//is the top side higher than o's bottom
 		// and is top side lower than o's top?
-		if(isHigherOrEqual(top, o_bottom) && isLowerOrEqual(top, o_top))
+		if(isHigherOrEqual(top, o_bottom) && isLowerOrEqual(top, o_bottom - (speed * 5)))
 		{
 			//is the left side further right than o's left side
 			// and is left side further left than o's right side?
-//			if(isRighterOrEqual(left, o_left) && isLefterOrEqual(left, o_right))
-//			{
-//				collisionsFound.add(TOP);
-//			}
+			if(isRighterOrEqual(left, o_left) && isLefterOrEqual(left, o_right))
+			{
+				collisionsFound.add(TOP);
+			}
 			//is the right side further left than o's right side
 			// and is right side further right than o's left side?
 			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(right, o_left))
@@ -129,7 +129,7 @@ public class MattsCollisionEngine extends CollisionEngineBase
 		
 		//is the bottom side lower than o's top
 		// and is bottom side higher than o's bottom?
-		if(isLowerOrEqual(bottom, o_top) && isHigherOrEqual(bottom, o_bottom))
+		if(isLowerOrEqual(bottom, o_top) && isHigherOrEqual(bottom, o_top + (speed * 5)))
 		{
 			//is the left side further right than o's left side
 			// and is left side further left than o's right side?
@@ -139,17 +139,17 @@ public class MattsCollisionEngine extends CollisionEngineBase
 			}
 			//is the right side further left than o's right side
 			// and is right side further right than o's left side?
-//			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(right, o_left))
-//			{
-//				collisionsFound.add(BOTTOM);
-//			}
+			if(isLefterOrEqual(right, o_right) && isRighterOrEqual(right, o_left))
+			{
+				collisionsFound.add(BOTTOM);
+			}
 		}
 		
 		//The right of collidable is colliding
 		
 		//is the right side righter than o's left
 		// and is right side lefter than o's right?
-		if(isRighterOrEqual(right, o_left) && isLefterOrEqual(right, o_right))
+		if(isRighterOrEqual(right, o_left) && isLefterOrEqual(right, o_left + (speed * 5)))
 		{
 			//is the top side lower than o's top
 			// and is top side higher than o's bottom?
@@ -159,24 +159,24 @@ public class MattsCollisionEngine extends CollisionEngineBase
 			}
 			//is the bottom side higher than o's bottom
 			// and is bottom side lower than o's top?
-//			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
-//			{
-//				collisionsFound.add(RIGHT);
-//			}
+			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
+			{
+				collisionsFound.add(RIGHT);
+			}
 		}
 		
 		//The left of collidable is colliding
 		
 		//is the left side lefter than o's right
 		// and is left side righter than o's left?
-		if(isLefterOrEqual(left, o_right) && isRighterOrEqual(left, o_left))
+		if(isLefterOrEqual(left, o_right) && isRighterOrEqual(left, o_right - (speed * 5)))
 		{
 			//is the top side lower than o's top
 			// and is top side higher than o's bottom?
-//			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
-//			{
-//				collisionsFound.add(LEFT);
-//			}
+			if(isLowerOrEqual(top, o_top) && isHigherOrEqual(top, o_bottom))
+			{
+				collisionsFound.add(LEFT);
+			}
 			//is the bottom side higher than o's bottom
 			// and is bottom side lower than o's top?
 			if(isHigherOrEqual(bottom, o_bottom) && isLowerOrEqual(bottom, o_top))
