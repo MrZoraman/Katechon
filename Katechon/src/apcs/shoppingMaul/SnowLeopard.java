@@ -1,6 +1,7 @@
 package apcs.shoppingMaul;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 import org.imgscalr.Scalr.Rotation;
@@ -19,6 +20,11 @@ import apcs.katechon.resources.SpritesheetLoader;
  */
 public class SnowLeopard implements IDrawable, ISchedulerTask
 {
+	/**
+	 * This is a constant that affects how fast the leopard will go to it's destination relative to how far away it is
+	 */
+	private static final int SNAP_TO_CONSTANT = 15000;
+	
 	private final AnimatedSequence<BufferedImage> frames;
 	
 	private final int speed;
@@ -33,6 +39,8 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 	private int destinationX;
 	private int destinationY;
 	
+	private final AI ai;
+	
 	/**
 	 * Constructor
 	 * @param x The x coordinate
@@ -41,6 +49,7 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 	 */
 	public SnowLeopard(int x, int y, int speed)
 	{
+		this.ai = new AI(SNAP_TO_CONSTANT);
 		this.speed = speed;
 		
 		this.finished = false;
@@ -100,89 +109,86 @@ public class SnowLeopard implements IDrawable, ISchedulerTask
 		this.destinationY = y;
 	}
 	
-	/**
-	 * This is a constant that affects how fast the leopard will go to it's destination relative to how far away it is
-	 */
-	private static final int SNAP_TO_CONSTANT = 15000;
-	
-	/**
-	 * Causes the leopard to 'step' towards the direction that it's destination is at
-	 */
-	private void moveTowardsDestination()
-	{
-		int speed = this.speed;
-		
-		//find the difference in Cartesian coordinates
-		int preX = destinationX - x;
-		int preY = destinationY - y;
-		
-		//check if at destination or not
-		if(preX != 0 || preY != 0)
-		{
-			//find the hypotnuse (distance)
-			double hypotnuse = Math.sqrt((preX * preX) + (preY * preY));
-			
-			//the farther away the leopard is to it's destination, the faster it goes
-			speed += hypotnuse * hypotnuse / SNAP_TO_CONSTANT;
-			
-			if(Math.abs(hypotnuse) < speed)
-			{
-				//we are going to overshoot so we just go to our destination
-				this.x = destinationX;
-				this.y = destinationY;
-				return;
-			}
-			else if (preX == 0)
-			{
-				//moving only in the y direction
-				if (preY < 0)
-				{
-					//negative, need to go up
-					this.y -= speed;
-				}
-				else
-				{
-					//positive, need to go down
-					this.y += speed;
-				}
-			}
-			else
-			{
-				//Cartesian coordinates
-				double radius = speed;
-				double angle = Math.atan(preY / preX);
-				
-				if(preX < 0 && preY >= 0)
-				{
-					//quadrant II
-					angle += Math.PI;//180 degrees
-				}
-				else if (preX < 0 && preY < 0)
-				{
-					//quadrant III
-					angle += Math.PI;//180 degrees
-				}
-				else if (preX > 0 && preY < 0)
-				{
-					//quadrant IV
-					angle += Math.PI * 2;//360 degrees
-				}
-				
-				//back to Cartesian coordinates
-				int cX = (int) (radius * Math.cos(angle));
-				int cY = (int) (radius * Math.sin(angle));
-				
-				//add the difference to the coordinates
-				this.x += cX;
-				this.y += cY;
-			}
-		}
-	}
+//	/**
+//	 * Causes the leopard to 'step' towards the direction that it's destination is at
+//	 */
+//	private void moveTowardsDestination()
+//	{
+//		int speed = this.speed;
+//		
+//		//find the difference in Cartesian coordinates
+//		int preX = destinationX - x;
+//		int preY = destinationY - y;
+//		
+//		//check if at destination or not
+//		if(preX != 0 || preY != 0)
+//		{
+//			//find the hypotnuse (distance)
+//			double hypotnuse = Math.sqrt((preX * preX) + (preY * preY));
+//			
+//			//the farther away the leopard is to it's destination, the faster it goes
+//			speed += hypotnuse * hypotnuse / SNAP_TO_CONSTANT;
+//			
+//			if(Math.abs(hypotnuse) < speed)
+//			{
+//				//we are going to overshoot so we just go to our destination
+//				this.x = destinationX;
+//				this.y = destinationY;
+//				return;
+//			}
+//			else if (preX == 0)
+//			{
+//				//moving only in the y direction
+//				if (preY < 0)
+//				{
+//					//negative, need to go up
+//					this.y -= speed;
+//				}
+//				else
+//				{
+//					//positive, need to go down
+//					this.y += speed;
+//				}
+//			}
+//			else
+//			{
+//				//Cartesian coordinates
+//				double radius = speed;
+//				double angle = Math.atan(preY / preX);
+//				
+//				if(preX < 0 && preY >= 0)
+//				{
+//					//quadrant II
+//					angle += Math.PI;//180 degrees
+//				}
+//				else if (preX < 0 && preY < 0)
+//				{
+//					//quadrant III
+//					angle += Math.PI;//180 degrees
+//				}
+//				else if (preX > 0 && preY < 0)
+//				{
+//					//quadrant IV
+//					angle += Math.PI * 2;//360 degrees
+//				}
+//				
+//				//back to Cartesian coordinates
+//				int cX = (int) (radius * Math.cos(angle));
+//				int cY = (int) (radius * Math.sin(angle));
+//				
+//				//add the difference to the coordinates
+//				this.x += cX;
+//				this.y += cY;
+//			}
+//		}
+//	}
 
 	@Override
 	public void doTask()
 	{
-		moveTowardsDestination();
+		Point p = ai.moveTowardsDestination(speed, x, y, destinationX, destinationY);
+		this.x = (int) p.getX();
+		this.y = (int) p.getY();
 	}
 	
 	/**
