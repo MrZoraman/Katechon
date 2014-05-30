@@ -15,6 +15,7 @@ import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
+import apcs.shoppingMaul.man.Man;
 
 /**
  * This is it. The game board. It keeps the player in the middle and when you move up and down it scrolls the view around to keep your character in the middle.
@@ -36,7 +37,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	private int xOffset;
 	private int yOffset;
 	
-	private ICollidable target;
+	private Man target;
 	
 	private Set<Direction> collisions;
 	
@@ -206,7 +207,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 		return target;
 	}
 
-	public void setTarget(ICollidable target) {
+	public void setTarget(Man target) {
 		this.target = target;
 	}
 	
