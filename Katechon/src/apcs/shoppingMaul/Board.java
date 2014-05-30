@@ -127,7 +127,6 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	@Override
 	public void move(Set<Direction> directions)
 	{
-		System.out.println("collisions: " + collisions);
 		for(Direction direction : directions)
 		{
 			switch(direction)
