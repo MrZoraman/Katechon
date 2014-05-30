@@ -1,8 +1,6 @@
 package apcs.shoppingMaul.man;
 
-import java.awt.Point;
 import java.util.Random;
-
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.shoppingMaul.AI;
@@ -40,9 +38,22 @@ public class ManAI extends AI
 		return sequence.getCurrentFrame();
 	}
 	
-//	public Point getNextLocation(int speed, int destinationDistance, int x, int y)
+	//THIS IS BROKEN :(
+//	private static final int GET_DIRECTION_TRIES = 100;
+//	
+//	public Point getNextLocation(Set<Direction> collisions, int speed, int destinationDistance, int x, int y)
 //	{
-//		Direction dir = sequence.getCurrentFrame();
+//		Direction dir = Direction.NONE;
+//		
+//		for(int ii = 0; ii < GET_DIRECTION_TRIES; ii++)
+//		{
+//			dir = sequence.getCurrentFrame();
+//			
+//			if(!collisions.contains(dir))
+//			{
+//				break;
+//			}
+//		}
 //		
 //		int destinationX = x;
 //		int destinationY = y;
