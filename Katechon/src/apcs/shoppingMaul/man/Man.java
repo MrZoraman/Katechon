@@ -1,4 +1,4 @@
-package apcs.shoppingMaul;
+package apcs.shoppingMaul.man;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -18,6 +18,8 @@ import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.ImageUtils;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.SpritesheetLoader;
+import apcs.shoppingMaul.ShoppingMaul;
+import apcs.shoppingMaul.SimpleBoardCollidable;
 
 /**
  * A person who will walk around the shopping mall.
@@ -120,40 +122,40 @@ public class Man extends SimpleBoardCollidable
 	public void doTask()
 	{
 //		Log.debug("Moving Man");
-//		Random r = new Random();
-//		Direction dir = Direction.values()[r.nextInt(Direction.values().length - 1)];
-//		
-//		if (dir.equals(Direction.TOP))
-//		{
-//			if (!collisions.contains(Direction.TOP))
-//			{
-//				super.setRealY(super.getRealY() - super.speed);
-//			}
-//		}
-//		
-//		if (dir.equals(Direction.BOTTOM))
-//		{
-//			if (!collisions.contains(Direction.BOTTOM))
-//			{
-//				super.setRealY(super.getRealY() + super.speed);
-//			}
-//		}
-//		
-//		if (dir.equals(Direction.LEFT))
-//		{
-//			if (!collisions.contains(Direction.LEFT))
-//			{
-//				super.setRealX(super.getRealX() - super.speed);
-//			}
-//		}
-//		
-//		if (dir.equals(Direction.RIGHT))
-//		{
-//			if (!collisions.contains(Direction.RIGHT))
-//			{
-//				super.setRealX(super.getRealX() + super.speed);
-//			}
-//		}
+		Random r = new Random();
+		Direction dir = Direction.values()[r.nextInt(Direction.values().length - 1)];
+		
+		if (dir.equals(Direction.TOP))
+		{
+			if (!collisions.contains(Direction.TOP))
+			{
+				super.setRealY(super.getRealY() - super.speed);
+			}
+		}
+		
+		if (dir.equals(Direction.BOTTOM))
+		{
+			if (!collisions.contains(Direction.BOTTOM))
+			{
+				super.setRealY(super.getRealY() + super.speed);
+			}
+		}
+		
+		if (dir.equals(Direction.LEFT))
+		{
+			if (!collisions.contains(Direction.LEFT))
+			{
+				super.setRealX(super.getRealX() - super.speed);
+			}
+		}
+		
+		if (dir.equals(Direction.RIGHT))
+		{
+			if (!collisions.contains(Direction.RIGHT))
+			{
+				super.setRealX(super.getRealX() + super.speed);
+			}
+		}
 	}
 
 	@Override

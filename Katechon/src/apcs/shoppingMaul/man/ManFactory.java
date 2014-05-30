@@ -1,4 +1,4 @@
-package apcs.shoppingMaul;
+package apcs.shoppingMaul.man;
 
 import java.awt.Color;
 import java.util.Random;

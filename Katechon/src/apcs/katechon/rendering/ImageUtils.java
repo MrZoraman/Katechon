@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
+import marvin.image.MarvinImage;
+
 import org.imgscalr.Scalr;
 import org.imgscalr.Scalr.Rotation;
 
@@ -33,34 +35,22 @@ public class ImageUtils
 	 */
 	public static BufferedImage changeColor(BufferedImage image, Color from, Color to)
 	{
-		Log.info("going from " + from + " to " + to);
-		int colorToChange = (from.getAlpha() << 24) | (from.getRed() << 16) | (from.getGreen() << 8) | from.getBlue();
-		System.out.println("alpha: " + to.getAlpha());
-		System.out.println("red: " + to.getRed());
-		System.out.println("green: " + to.getGreen());
-		System.out.println("blue: " + to.getBlue());
-		int newColor = (to.getAlpha() << 24) | (to.getRed() << 16) | (to.getGreen() << 8) | to.getBlue();
+		MarvinImage mi = new MarvinImage(image);
 		
-		for(int x = 0; x < image.getWidth(); x++)
+		for(int x = 0; x < mi.getWidth(); x++)
 		{
-			for(int y = 0; y < image.getHeight(); y++)
+			for(int y = 0; y < mi.getHeight(); y++)
 			{
-				int currentColor = image.getRGB(x, y);
-				if(currentColor == colorToChange)
+				if(mi.getIntColor(x, y) == from.getRGB())
 				{
-					System.out.println("changing color from " + currentColor);
-					System.out.println("(should be going to " + newColor);
-					image.setRGB(x, y, newColor);
-					System.out.println("change!");
-//					System.out.println("color changed.");
-					System.out.println("... to " + image.getRGB(x, y));
+					mi.setIntColor(x, y, 100, 100, 100);
 				}
 			}
 		}
 		
-		System.out.println(Color.RED.getRGB());
 		
-		return image;
+		
+		return mi.getBufferedImage();
 		
 //		Log.info("chanign colfaso");
 //		BufferedImage newVersion = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);

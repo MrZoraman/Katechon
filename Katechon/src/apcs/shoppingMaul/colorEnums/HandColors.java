@@ -3,7 +3,7 @@ package apcs.shoppingMaul.colorEnums;
 import java.awt.Color;
 
 /**
- * Represents the different color options for a {@link apcs.shoppingMaul.Man Man's} hand.
+ * Represents the different color options for a {@link apcs.shoppingMaul.man.Man Man's} hand.
  * @author Sean
  */
 public enum HandColors

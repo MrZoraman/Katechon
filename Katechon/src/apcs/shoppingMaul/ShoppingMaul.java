@@ -1,6 +1,7 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
+
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.basicGameObjects.ControlScheme;
@@ -18,6 +19,8 @@ import apcs.shoppingMaul.commands.GotoCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
 import apcs.shoppingMaul.commands.AddLeopardCommand;
 import apcs.shoppingMaul.commands.WhereAmICommand;
+import apcs.shoppingMaul.man.Man;
+import apcs.shoppingMaul.man.ManFactory;
 import apcs.shoppingMaul.map.GameMap;
 
 public class ShoppingMaul extends KatechonGameBase

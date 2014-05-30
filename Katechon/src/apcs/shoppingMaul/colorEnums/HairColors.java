@@ -3,7 +3,7 @@ package apcs.shoppingMaul.colorEnums;
 import java.awt.Color;
 
 /**
- * Represents the different color options for a {@link apcs.shoppingMaul.Man Man's} hair.
+ * Represents the different color options for a {@link apcs.shoppingMaul.man.Man Man's} hair.
  * @author Sean
  */
 public enum HairColors

@@ -3,7 +3,7 @@ package apcs.shoppingMaul.colorEnums;
 import java.awt.Color;
 
 /**
- * Represents the different color options for a {@link apcs.shoppingMaul.Man Man's} shoes.
+ * Represents the different color options for a {@link apcs.shoppingMaul.man.Man Man's} shoes.
  * @author Sean
  */
 public enum ShoeColors
