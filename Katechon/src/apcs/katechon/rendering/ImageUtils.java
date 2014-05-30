@@ -7,8 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
-import marvin.image.MarvinImage;
-
 import org.imgscalr.Scalr;
 import org.imgscalr.Scalr.Rotation;
 
@@ -35,33 +33,33 @@ public class ImageUtils
 	 */
 	public static BufferedImage changeColor(BufferedImage image, Color from, Color to)
 	{
-		MarvinImage mi = new MarvinImage(image);
-		
-		for(int x = 0; x < mi.getWidth(); x++)
-		{
-			for(int y = 0; y < mi.getHeight(); y++)
-			{
-				if(mi.getIntColor(x, y) == from.getRGB())
-				{
-					mi.setIntColor(x, y, 100, 100, 100);
-				}
-			}
-		}
-		
-		
-		
-		return mi.getBufferedImage();
+//		MarvinImage mi = new MarvinImage(image);
+//		
+//		for(int x = 0; x < mi.getWidth(); x++)
+//		{
+//			for(int y = 0; y < mi.getHeight(); y++)
+//			{
+//				if(mi.getIntColor(x, y) == from.getRGB())
+//				{
+//					mi.setIntColor(x, y, 100, 100, 100);
+//				}
+//			}
+//		}
+//		
+//		
+//		
+//		return mi.getBufferedImage();
 		
 //		Log.info("chanign colfaso");
-//		BufferedImage newVersion = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
-//		Graphics2D g = (Graphics2D) newVersion.getGraphics();
-//		g.setColor(to);
-//		g.fillRect(0, 0, image.getWidth(), image.getHeight());
-//		
-//		g.setComposite(AlphaComposite.DstIn);
-//		g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
-//		g.dispose();
-//		return newVersion;
+		BufferedImage newVersion = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g = (Graphics2D) newVersion.getGraphics();
+		g.setColor(to);
+		g.fillRect(0, 0, image.getWidth(), image.getHeight());
+		
+		g.setComposite(AlphaComposite.DstIn);
+		g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
+		g.dispose();
+		return newVersion;
 		
 //		int width = image.getWidth();
 //		int height = image.getHeight();
