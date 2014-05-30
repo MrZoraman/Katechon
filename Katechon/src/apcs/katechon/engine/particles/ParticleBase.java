@@ -32,7 +32,7 @@ public abstract class ParticleBase implements IDrawable, ISchedulerTask
 		this.destinationY = y;
 	}
 	
-	void setDestination(int destinationX, int destinationY)
+	public void setDestination(int destinationX, int destinationY)
 	{
 		this.destinationX = destinationX;
 		this.destinationY = destinationY;
@@ -42,8 +42,18 @@ public abstract class ParticleBase implements IDrawable, ISchedulerTask
 	public void doTask()
 	{
 		Point p = ai.moveTowardsDestination(speed, x, y, destinationX, destinationY);
-		this.x = (int) p.getX();
-		this.y = (int) p.getY(); 
+		setX((int) p.getX());
+		setY((int) p.getY());
+	}
+	
+	public void setX(int x)
+	{
+		this.x = x;
+	}
+	
+	public void setY(int y)
+	{
+		this.y = y;
 	}
 	
 	public int getX()
