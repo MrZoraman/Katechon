@@ -5,12 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.awt.image.WritableRaster;
-
 import org.imgscalr.Scalr;
 import org.imgscalr.Scalr.Rotation;
-
-import apcs.katechon.logging.Log;
 
 /**
  * Contains various utility methods for buffered image manipulation
