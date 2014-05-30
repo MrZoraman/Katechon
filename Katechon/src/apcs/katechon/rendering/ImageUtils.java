@@ -54,9 +54,20 @@ public class ImageUtils
 		BufferedImage newVersion = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g = (Graphics2D) newVersion.getGraphics();
 		g.setColor(to);
-		g.fillRect(0, 0, image.getWidth(), image.getHeight());
 		
-		g.setComposite(AlphaComposite.DstIn);
+		for(int i = 0; i < image.getWidth(); i++)
+		{
+			for (int j = 0; j < image.getHeight(); j++)
+			{
+				if (image.getRGB(i, j) == from.getRGB())
+				{
+					g.fillRect(i, j, 1, 1);
+				}
+			}
+		}
+		
+		g.setComposite(AlphaComposite.DstAtop);
+		
 		g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
 		g.dispose();
 		return newVersion;

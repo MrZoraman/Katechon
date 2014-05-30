@@ -64,7 +64,7 @@ public class Man extends SimpleBoardCollidable
 		
 		this.ai = new ManAI();
 		
-		this.hairColor = Color.PINK;
+//		this.hairColor = Color.PINK;
 		System.out.println("hair color: " + this.hairColor);
 		
 		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "/apcs/shoppingMaul/assets/man.png", 8, 1);
@@ -74,10 +74,10 @@ public class Man extends SimpleBoardCollidable
 //		for(BufferedImage image : imageFrames)
 		for(int ii = 0; ii < imageFrames.length; ii++)
 		{
-//			image = ImageUtils.changeColor(image, ORIG_SHOE_COLOR, shoeColor);
+			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_SHOE_COLOR, shoeColor);
 			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_HAIR_COLOR, this.hairColor);
-//			image = ImageUtils.changeColor(image, ORIG_SKIN_COLOR, handColor);
-//			image = ImageUtils.changeColor(image, ORIG_SHIRT_COLOR, shirtColor);
+			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_SKIN_COLOR, handColor);
+			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_SHIRT_COLOR, shirtColor);
 			System.out.println("done---");
 		}
 		
