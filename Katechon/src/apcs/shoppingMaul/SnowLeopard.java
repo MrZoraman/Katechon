@@ -12,6 +12,7 @@ import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.ImageUtils;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.SpritesheetLoader;
+import apcs.katechon.utils.AI;
 
 /**
  * This is a snow leopard. It doesn't collide with anything. It is able to steadily move towards a given destination.

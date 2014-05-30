@@ -1,9 +1,10 @@
 package apcs.shoppingMaul.man;
 
 import java.util.Random;
+
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
-import apcs.shoppingMaul.AI;
+import apcs.katechon.utils.AI;
 
 public class ManAI extends AI
 {
