@@ -1,6 +1,7 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
+import java.util.Set;
 
 import apcs.katechon.KatechonGameBase;
 import apcs.katechon.KatechonEngine;
@@ -79,6 +80,17 @@ public class ShoppingMaul extends KatechonGameBase
 		}
 		
 		map.insertMap(board);
+		
+		Set<Man> men = map.spawnMen(100, 5);
+		
+		Log.debug("amount of men: " + men.size());
+		
+		for(Man someGuy : men)
+		{
+			EngineManager.getInstance().getEngine(ICollidable.class).addItem(someGuy);
+			EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(someGuy);
+			board.addDrawable(someGuy);
+		}
 		
 //		System.out.println(map);
 		

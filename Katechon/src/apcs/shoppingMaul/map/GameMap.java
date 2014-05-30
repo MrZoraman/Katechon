@@ -5,12 +5,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.shoppingMaul.Board;
 import apcs.shoppingMaul.IControlledDrawable;
+import apcs.shoppingMaul.man.Man;
+import apcs.shoppingMaul.man.ManFactory;
 
 public class GameMap
 {	
@@ -22,8 +27,12 @@ public class GameMap
 	
 	private final int orig_x;
 	
+	private int amountOfFloorTiles;
+	
 	public GameMap(Class<?> clazz, String path, int x, int y) throws IOException
 	{
+		this.amountOfFloorTiles = 0;
+		
 		InputStream is = clazz.getResourceAsStream(path);
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(isr);
@@ -79,6 +88,7 @@ public class GameMap
 				{
 				case 'F':
 					icd = new FloorTile(x, y);
+					amountOfFloorTiles++;
 					break;
 				default:
 					Wall wall = new Wall(x, y);
@@ -97,6 +107,33 @@ public class GameMap
 			
 			y += SIZE;
 		}
+	}
+	
+	public Set<Man> spawnMen(int amount, int speed)
+	{
+		int amountPerSquare = amount / amountOfFloorTiles;
+		Set<Man> men = new HashSet<Man>();
+		
+		for(int r = 0; r < tiles.length; r++)
+		{
+			for(int c = 0; c < tiles[r].length; c++)
+			{
+				if(tiles[r][c] == 'F')
+				{
+					for(int ii = 0; ii < amountPerSquare; ii++)
+					{
+						int startX = (r * SIZE);
+						int startY = (c * SIZE);
+						
+						Random rand = new Random();
+						Man man = ManFactory.makeMan(startX + rand.nextInt(SIZE), startY + rand.nextInt(SIZE), speed);
+						men.add(man);
+					}
+				}
+			}
+		}
+		
+		return men;
 	}
 
 	@Override
