@@ -127,9 +127,9 @@ public class Man extends SimpleBoardCollidable
 	public void doTask()
 	{
 //		Log.debug("Moving Man");
-		Direction dir = ai.getNextDirection();
+		this.direction = ai.getNextDirection();
 		
-		if (dir.equals(Direction.TOP))
+		if (direction.equals(Direction.TOP))
 		{
 			if (!collisions.contains(Direction.TOP))
 			{
@@ -137,7 +137,7 @@ public class Man extends SimpleBoardCollidable
 			}
 		}
 		
-		if (dir.equals(Direction.BOTTOM))
+		if (direction.equals(Direction.BOTTOM))
 		{
 			if (!collisions.contains(Direction.BOTTOM))
 			{
@@ -145,7 +145,7 @@ public class Man extends SimpleBoardCollidable
 			}
 		}
 		
-		if (dir.equals(Direction.LEFT))
+		if (direction.equals(Direction.LEFT))
 		{
 			if (!collisions.contains(Direction.LEFT))
 			{
@@ -153,7 +153,7 @@ public class Man extends SimpleBoardCollidable
 			}
 		}
 		
-		if (dir.equals(Direction.RIGHT))
+		if (direction.equals(Direction.RIGHT))
 		{
 			if (!collisions.contains(Direction.RIGHT))
 			{
