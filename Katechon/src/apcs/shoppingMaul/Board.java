@@ -23,7 +23,7 @@ import apcs.katechon.rendering.IDrawable;
  */
 public class Board extends Controllable implements ICollidable, IDrawable
 {
-	private static final int COLLISION_BOX_SIZE = 50;
+	private static final int COLLISION_BOX_SIZE = 100;
 	
 	private final int collisionBoxX;
 	private final int collisionBoxY;
