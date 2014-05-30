@@ -44,6 +44,8 @@ public class Man extends SimpleBoardCollidable
 	private static final int WIDTH = 50;
 	private static final int HEIGHT = 50;
 	
+	private final ManAI ai;
+	
 	private Direction direction;
 	
 	private Set<Direction> collisions;
@@ -59,6 +61,8 @@ public class Man extends SimpleBoardCollidable
 		this.direction = Direction.TOP;
 		
 		this.collisions = new HashSet<Direction>();
+		
+		this.ai = new ManAI();
 		
 		this.hairColor = Color.PINK;
 		System.out.println("hair color: " + this.hairColor);
@@ -122,8 +126,7 @@ public class Man extends SimpleBoardCollidable
 	public void doTask()
 	{
 //		Log.debug("Moving Man");
-		Random r = new Random();
-		Direction dir = Direction.values()[r.nextInt(Direction.values().length - 1)];
+		Direction dir = ai.getNextDirection();
 		
 		if (dir.equals(Direction.TOP))
 		{
