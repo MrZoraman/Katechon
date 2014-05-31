@@ -13,19 +13,27 @@ public class SimplePlayer implements IPlayer
 		this.clip = AudioSystem.getClip();
 		AudioInputStream inputStream = AudioSystem.getAudioInputStream(stream);
 		clip.open(inputStream);
+		
+		this.started = false;
+		this.finished = false;
 	}
 	
 	private final Clip clip;
 	
+	private boolean started;
+	private boolean finished;
+	
 	@Override
 	public synchronized void start()
 	{
+		started = true;
 		clip.start();
 	}
 
 	@Override
 	public synchronized void stop()
 	{
+		started = false;
 		clip.setFramePosition(0);
 		clip.stop();
 	}
@@ -33,6 +41,7 @@ public class SimplePlayer implements IPlayer
 	@Override
 	public synchronized void loop()
 	{
+		started = true;
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
@@ -45,6 +54,41 @@ public class SimplePlayer implements IPlayer
 	@Override
 	public synchronized void close()
 	{
+		this.finished = true;
 		clip.close();
+	}
+
+	@Override
+	public void doTask()
+	{
+		if(!clip.isRunning() && !started)
+		{
+			close();
+		}
+	}
+
+	@Override
+	public boolean isFinished()
+	{
+		if(finished)
+		{
+			return true;
+		}
+		
+		if(!started)
+		{
+			return false;
+		}
+		else
+		{
+			if(!clip.isRunning())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 }

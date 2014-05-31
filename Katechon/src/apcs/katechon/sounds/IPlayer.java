@@ -2,12 +2,14 @@ package apcs.katechon.sounds;
 
 import java.io.Closeable;
 
+import apcs.katechon.engine.scheduler.ISchedulerTask;
+
 /**
  * It's a music/sound player!
  * @author Matt
  *
  */
-public interface IPlayer extends Closeable
+public interface IPlayer extends Closeable, ISchedulerTask
 {
 	/**
 	 * Start the song playing
