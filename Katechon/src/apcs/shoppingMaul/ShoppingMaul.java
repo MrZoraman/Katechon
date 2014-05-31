@@ -97,6 +97,8 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		Man thatGuy = Utils.getRandomItem(men);
 		
+		thatGuy.setIsTarget(true);
+		
 		board.setTarget(thatGuy);
 		
 		final BufferedImage topDownImage = thatGuy.getTopDownImage();

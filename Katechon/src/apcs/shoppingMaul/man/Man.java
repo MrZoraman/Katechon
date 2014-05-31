@@ -58,6 +58,8 @@ public class Man extends SimpleBoardCollidable
 	
 	private boolean dead;
 	
+	private boolean isTarget;
+	
 	public Man(int x, int y, int speed, Color hairColor, Color shirtColor, Color handColor, Color shoeColor)
 	{
 		super(x, y, WIDTH, HEIGHT, speed, false);
@@ -215,7 +217,15 @@ public class Man extends SimpleBoardCollidable
 			
 			try
 			{
-				SimplePlayer player = new SimplePlayer(ShoppingMaul.class.getResourceAsStream("/apcs/shoppingMaul/assets/ded.wav"));
+				SimplePlayer player;
+				if (this.isTarget)
+				{
+					player = new SimplePlayer(ShoppingMaul.class.getResourceAsStream("/apcs/shoppingMaul/assets/WilhelmScream.wav"));
+				}
+				else
+				{
+					player = new SimplePlayer(ShoppingMaul.class.getResourceAsStream("/apcs/shoppingMaul/assets/ded.wav"));
+				}
 				EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(player);
 				player.start();
 			}
@@ -234,5 +244,10 @@ public class Man extends SimpleBoardCollidable
 	public BufferedImage getDeadImage()
 	{
 		return deadImage;
+	}
+	
+	public void setIsTarget(boolean isTarget)
+	{
+		this.isTarget = isTarget;
 	}
 }
