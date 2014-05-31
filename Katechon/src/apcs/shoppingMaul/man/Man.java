@@ -53,6 +53,8 @@ public class Man extends SimpleBoardCollidable
 	
 	private Set<Direction> collisions;
 	
+	private boolean dead;
+	
 	public Man(int x, int y, int speed, Color hairColor, Color shirtColor, Color handColor, Color shoeColor)
 	{
 		super(x, y, WIDTH, HEIGHT, speed, false);
@@ -67,11 +69,12 @@ public class Man extends SimpleBoardCollidable
 		
 		this.ai = new ManAI();
 		
+		this.dead = false;
+		
 		SpritesheetLoader loader = new SpritesheetLoader(ShoppingMaul.class, "/apcs/shoppingMaul/assets/man.png", 8, 1);
 		
 		BufferedImage[] imageFrames = loader.loadWide(0, 0, 7);
 		
-//		for(BufferedImage image : imageFrames)
 		for(int ii = 0; ii < imageFrames.length; ii++)
 		{
 			imageFrames[ii] = color(imageFrames[ii]);
@@ -80,7 +83,6 @@ public class Man extends SimpleBoardCollidable
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 		
 		this.deadImage = JarImageLoader.getInstance(ShoppingMaul.class).getImage("/apcs/shoppingMaul/assets/deadman.png");
-		
 	}
 	
 	private BufferedImage color(BufferedImage image)
@@ -134,38 +136,41 @@ public class Man extends SimpleBoardCollidable
 	@Override
 	public void doTask()
 	{
-//		Log.debug("Moving Man");
-		this.direction = ai.getNextDirection();
-		
-		if (direction.equals(Direction.TOP))
+		if(!dead)
 		{
-			if (!collisions.contains(Direction.TOP))
+	//		Log.debug("Moving Man");
+			this.direction = ai.getNextDirection();
+			
+			if (direction.equals(Direction.TOP))
 			{
-				super.setRealY(super.getRealY() - super.speed);
+				if (!collisions.contains(Direction.TOP))
+				{
+					super.setRealY(super.getRealY() - super.speed);
+				}
 			}
-		}
-		
-		if (direction.equals(Direction.BOTTOM))
-		{
-			if (!collisions.contains(Direction.BOTTOM))
+			
+			if (direction.equals(Direction.BOTTOM))
 			{
-				super.setRealY(super.getRealY() + super.speed);
+				if (!collisions.contains(Direction.BOTTOM))
+				{
+					super.setRealY(super.getRealY() + super.speed);
+				}
 			}
-		}
-		
-		if (direction.equals(Direction.LEFT))
-		{
-			if (!collisions.contains(Direction.LEFT))
+			
+			if (direction.equals(Direction.LEFT))
 			{
-				super.setRealX(super.getRealX() - super.speed);
+				if (!collisions.contains(Direction.LEFT))
+				{
+					super.setRealX(super.getRealX() - super.speed);
+				}
 			}
-		}
-		
-		if (direction.equals(Direction.RIGHT))
-		{
-			if (!collisions.contains(Direction.RIGHT))
+			
+			if (direction.equals(Direction.RIGHT))
 			{
-				super.setRealX(super.getRealX() + super.speed);
+				if (!collisions.contains(Direction.RIGHT))
+				{
+					super.setRealX(super.getRealX() + super.speed);
+				}
 			}
 		}
 	}
@@ -173,9 +178,18 @@ public class Man extends SimpleBoardCollidable
 	@Override
 	public void draw(Graphics g)
 	{
-		BufferedImage copy = ImageUtils.deepCopy(frames.getCurrentFrame());
-		
 		Rotation rotation = direction.getRotation();
+		
+		BufferedImage copy;
+		
+		if(dead)
+		{
+			copy = ImageUtils.deepCopy(deadImage);
+		}
+		else
+		{
+			copy = ImageUtils.deepCopy(frames.getCurrentFrame());
+		}
 		
 		if(rotation != null)
 		{
@@ -183,5 +197,10 @@ public class Man extends SimpleBoardCollidable
 		}
 		
 		g.drawImage(copy, x, y, null);
+	}
+	
+	public void setDead(boolean dead)
+	{
+		this.dead = dead;
 	}
 }
