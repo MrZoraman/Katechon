@@ -20,6 +20,7 @@ import apcs.katechon.utils.Utils;
 import apcs.katechon.windowingtoolkit.KWT;
 import apcs.katechon.windowingtoolkit.Message;
 import apcs.katechon.windowingtoolkit.Window;
+import apcs.katechon.windowingtoolkit.WindowImage;
 import apcs.shoppingMaul.commands.CountLeopardsCommand;
 import apcs.shoppingMaul.commands.GotoCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
@@ -94,10 +95,15 @@ public class ShoppingMaul extends KatechonGameBase
 		Message messageLine1 =  new Message("Your task is to find the man shown below.", 10, 55, font, Color.GREEN);
 		Message messageLine2 =  new Message("Find him and destroy him!", 10, 390, font, Color.GREEN);
 		
+		WindowImage topDownImage = new WindowImage(thatGuy.getTopDownImage(), 75, 175);
+		WindowImage deadImage = new WindowImage(thatGuy.getDeadImage(), 225, 125);
+		
 		Window window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
 		window.setTitle("Your task");
 		window.addDisplayable(messageLine1);
 		window.addDisplayable(messageLine2);
+		window.addDisplayable(topDownImage);
+		window.addDisplayable(deadImage);
 		
 		KWT.getInstance().addWindow(window);
 		window.setVisible(true);
