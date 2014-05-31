@@ -16,6 +16,8 @@ import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 import apcs.katechon.utils.Utils;
+import apcs.katechon.windowingtoolkit.KWT;
+import apcs.katechon.windowingtoolkit.Window;
 import apcs.shoppingMaul.commands.CountLeopardsCommand;
 import apcs.shoppingMaul.commands.GotoCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
@@ -85,6 +87,11 @@ public class ShoppingMaul extends KatechonGameBase
 		Man thatGuy = Utils.getRandomItem(men);
 		
 		board.setTarget(thatGuy);
+		
+		Window window = new Window((width / 2) + xCenterOffset, (height / 2) + yCenterOffset, 200, 200);
+		window.setTitle("Your task");
+		KWT.getInstance().addWindow(window);
+		window.setVisible(true);
 		
 		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
 		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(pack));

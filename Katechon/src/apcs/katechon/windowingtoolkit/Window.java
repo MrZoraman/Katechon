@@ -99,7 +99,7 @@ public class Window implements IDisplayable
 			{
 				g.setColor(TITLE_FONT_COLOR);
 				g.setFont(TITLE_FONT);
-				g.drawString(title, TITLE_OFFSET_X, TITLE_OFFSET_Y);
+				g.drawString(title, x + TITLE_OFFSET_X, y + TITLE_OFFSET_Y);
 			}
 		}
 	}
@@ -123,6 +123,11 @@ public class Window implements IDisplayable
 		{
 			displayable.setVisible(visible);
 		}
+	}
+	
+	public void addDisplayable(IDisplayable displayable)
+	{
+		displayables.add(displayable);
 	}
 	
 	/**
