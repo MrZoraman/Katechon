@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Set;
 
 import apcs.katechon.KatechonGameBase;
@@ -16,6 +17,8 @@ import apcs.katechon.engine.collisions.MattsCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
+import apcs.katechon.sounds.IPlayer;
+import apcs.katechon.sounds.SimplePlayer;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -41,6 +44,8 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		new KatechonEngine(ShoppingMaul.class, config).start();
 	}
+	
+	private IPlayer player;
 
 	@Override
 	public void init(final KatechonEngine engine)
@@ -138,6 +143,17 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		engine.addDrawable(target, 3);
 		
+		try
+		{
+			player = new SimplePlayer(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/main.wav"));
+			player.loop();
+		}
+		catch (Exception e)
+		{
+			Log.exception(e);
+		}
+		
+		
 		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
 		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(pack));
 		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(pack));
@@ -149,6 +165,16 @@ public class ShoppingMaul extends KatechonGameBase
 	@Override
 	public void onGameEnd()
 	{
-		
+		if(player != null)
+		{
+			try
+			{
+				player.close();
+			}
+			catch (IOException e)
+			{
+				Log.exception(e);
+			}
+		}
 	}
 }

@@ -21,6 +21,7 @@ import apcs.katechon.rendering.ImageUtils;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
 import apcs.katechon.resources.JarImageLoader;
 import apcs.katechon.resources.SpritesheetLoader;
+import apcs.katechon.sounds.SimplePlayer;
 import apcs.shoppingMaul.ShoppingMaul;
 import apcs.shoppingMaul.SimpleBoardCollidable;
 
@@ -211,6 +212,17 @@ public class Man extends SimpleBoardCollidable
 		if(dead == true)
 		{
 			EngineManager.getInstance().getEngine(ICollidable.class).removeItem(this);
+			
+			try
+			{
+				SimplePlayer player = new SimplePlayer(ShoppingMaul.class.getResourceAsStream("/apcs/shoppingMaul/assets/ded.wav"));
+				EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(player);
+				player.start();
+			}
+			catch (Exception e)
+			{
+				Log.exception(e);
+			}
 		}
 	}
 	
