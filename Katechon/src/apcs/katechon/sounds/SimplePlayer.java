@@ -1,5 +1,6 @@
 package apcs.katechon.sounds;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
 
 import javax.sound.sampled.AudioInputStream;
@@ -10,8 +11,10 @@ public class SimplePlayer implements IPlayer
 {
 	public SimplePlayer(InputStream stream) throws Exception
 	{
+		InputStream bufferedIn = new BufferedInputStream(stream);
+		
 		this.clip = AudioSystem.getClip();
-		AudioInputStream inputStream = AudioSystem.getAudioInputStream(stream);
+		AudioInputStream inputStream = AudioSystem.getAudioInputStream(bufferedIn);
 		clip.open(inputStream);
 		
 		this.started = false;
