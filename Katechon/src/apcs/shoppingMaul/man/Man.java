@@ -39,6 +39,7 @@ public class Man extends SimpleBoardCollidable
 	
 	private final AnimatedSequence<BufferedImage> frames;
 	private final BufferedImage deadImage;
+	private final BufferedImage topDownImage;
 	
 	private final Color hairColor;
 	private final Color shirtColor;
@@ -80,6 +81,8 @@ public class Man extends SimpleBoardCollidable
 		{
 			imageFrames[ii] = color(imageFrames[ii]);
 		}
+		
+		this.topDownImage = imageFrames[2];
 		
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 		
@@ -209,5 +212,15 @@ public class Man extends SimpleBoardCollidable
 		{
 			EngineManager.getInstance().getEngine(ICollidable.class).removeItem(this);
 		}
+	}
+	
+	public BufferedImage getTopDownImage()
+	{
+		return topDownImage;
+	}
+	
+	public BufferedImage getDeadImage()
+	{
+		return deadImage;
 	}
 }
