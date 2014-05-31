@@ -9,6 +9,7 @@ public class ParticleEngine extends EngineModuleBase<ParticleBase>
 {
 	private static final int SPEED = 15;
 	
+	@SuppressWarnings("unused")
 	private final AI ai;
 	
 	public ParticleEngine()
