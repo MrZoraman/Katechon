@@ -17,6 +17,8 @@ public class Message extends DisplayableBase
 	
 	public Message(String message, int x, int y, Font font, Color color)
 	{
+		super();
+		
 		this.isVisible = false;
 		
 		this.message = message;

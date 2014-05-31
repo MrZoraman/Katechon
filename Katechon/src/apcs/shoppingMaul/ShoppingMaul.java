@@ -1,6 +1,7 @@
 package apcs.shoppingMaul;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.Set;
 
 import apcs.katechon.KatechonGameBase;
@@ -17,6 +18,7 @@ import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 import apcs.katechon.utils.Utils;
 import apcs.katechon.windowingtoolkit.KWT;
+import apcs.katechon.windowingtoolkit.Message;
 import apcs.katechon.windowingtoolkit.Window;
 import apcs.shoppingMaul.commands.CountLeopardsCommand;
 import apcs.shoppingMaul.commands.GotoCommand;
@@ -88,8 +90,15 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		board.setTarget(thatGuy);
 		
-		Window window = new Window((width / 2) + xCenterOffset, (height / 2) + yCenterOffset, 200, 200);
+		Font font = new Font("Arial", Font.PLAIN, 20);
+		Message messageLine1 =  new Message("Your task is to find the man shown below.", 10, 55, font, Color.GREEN);
+		Message messageLine2 =  new Message("Find him and destroy him!", 10, 390, font, Color.GREEN);
+		
+		Window window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
 		window.setTitle("Your task");
+		window.addDisplayable(messageLine1);
+		window.addDisplayable(messageLine2);
+		
 		KWT.getInstance().addWindow(window);
 		window.setVisible(true);
 		
