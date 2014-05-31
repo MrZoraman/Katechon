@@ -13,7 +13,7 @@ import apcs.katechon.input.mouse.MouseClickedListener;
  * A visible button that can be shown on the screen and added to the scheduler.
  * @author Matt
  */
-public abstract class Button implements MouseClickedListener, ISchedulerTask, IDisplayable
+public abstract class Button extends DisplayableBase implements MouseClickedListener, ISchedulerTask
 {
 	//TODO: explain these constants
 	private static final int X_OFFSET = -3;

@@ -11,7 +11,7 @@ import java.util.Set;
  * @author Matt
  *
  */
-public class Window implements IDisplayable
+public class Window extends DisplayableBase
 {
 	private static final int BORDER_WIDTH = 6;
 	private static final int WINDOW_BAR_HEIGHT = 30;
@@ -49,7 +49,7 @@ public class Window implements IDisplayable
 		this.x = x;
 		this.y = y;
 		
-		this.displayables = new HashSet<IDisplayable>();
+		this.displayables = new HashSet<DisplayableBase>();
 		
 		this.width = width;
 		this.height = height;
@@ -66,7 +66,7 @@ public class Window implements IDisplayable
 	private final int width;
 	private final int height;
 	
-	private final Set<IDisplayable> displayables;
+	private final Set<DisplayableBase> displayables;
 	
 	private int x;
 	private int y;
@@ -90,7 +90,7 @@ public class Window implements IDisplayable
 			g.setColor(backgroundColor);
 			g.fillRect(x + BORDER_WIDTH, y + WINDOW_BAR_HEIGHT, width - (BORDER_WIDTH * 2), height - (BORDER_WIDTH + WINDOW_BAR_HEIGHT));
 			
-			for(IDisplayable displayable : displayables)
+			for(DisplayableBase displayable : displayables)
 			{
 				displayable.draw(g);
 			}
@@ -119,13 +119,13 @@ public class Window implements IDisplayable
 	{
 		this.visible = visible;
 		
-		for(IDisplayable displayable : displayables)
+		for(DisplayableBase displayable : displayables)
 		{
 			displayable.setVisible(visible);
 		}
 	}
 	
-	public void addDisplayable(IDisplayable displayable)
+	public void addDisplayable(DisplayableBase displayable)
 	{
 		displayables.add(displayable);
 	}
@@ -200,7 +200,7 @@ public class Window implements IDisplayable
 	{
 		this.finished = finished;
 		
-		for(IDisplayable displayable : displayables)
+		for(DisplayableBase displayable : displayables)
 		{
 			displayable.setFinished(finished);
 		}
