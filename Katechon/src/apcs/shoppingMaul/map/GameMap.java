@@ -12,7 +12,6 @@ import java.util.Set;
 
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
-import apcs.katechon.logging.Log;
 import apcs.shoppingMaul.Board;
 import apcs.shoppingMaul.IControlledDrawable;
 import apcs.shoppingMaul.man.Man;
@@ -125,8 +124,6 @@ public class GameMap
 					{
 						int startX = (r * SIZE);
 						int startY = (c * SIZE);
-						
-						Log.info("Startx: " + startX + ", Starty: " + startY);
 						
 						Random rand = new Random();
 						Man man = ManFactory.makeMan(startX + rand.nextInt(SIZE), startY + rand.nextInt(SIZE), speed);
