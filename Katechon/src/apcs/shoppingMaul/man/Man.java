@@ -18,6 +18,7 @@ import apcs.katechon.rendering.ColorChanger;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.rendering.ImageUtils;
 import apcs.katechon.rendering.sprites.AnimatedSequence;
+import apcs.katechon.resources.JarImageLoader;
 import apcs.katechon.resources.SpritesheetLoader;
 import apcs.shoppingMaul.ShoppingMaul;
 import apcs.shoppingMaul.SimpleBoardCollidable;
@@ -36,8 +37,9 @@ public class Man extends SimpleBoardCollidable
 	private static final Color ORIG_SHIRT_COLOR = Color.BLUE;
 	
 	private final AnimatedSequence<BufferedImage> frames;
+	private final BufferedImage deadImage;
 	
-	private Color hairColor;
+	private final Color hairColor;
 	private final Color shirtColor;
 	private final Color handColor;
 	private final Color shoeColor;
@@ -72,13 +74,23 @@ public class Man extends SimpleBoardCollidable
 //		for(BufferedImage image : imageFrames)
 		for(int ii = 0; ii < imageFrames.length; ii++)
 		{
-			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_SHOE_COLOR, shoeColor);
-			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_HAIR_COLOR, this.hairColor);
-			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_SKIN_COLOR, handColor);
-			imageFrames[ii] = ImageUtils.changeColor(imageFrames[ii], ORIG_SHIRT_COLOR, shirtColor);
+			imageFrames[ii] = color(imageFrames[ii]);
 		}
 		
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
+		
+		this.deadImage = JarImageLoader.getInstance(ShoppingMaul.class).getImage("/apcs/shoppingMaul/assets/deadman.png");
+		
+	}
+	
+	private BufferedImage color(BufferedImage image)
+	{
+		image = ImageUtils.changeColor(image, ORIG_SHOE_COLOR, shoeColor);
+		image = ImageUtils.changeColor(image, ORIG_HAIR_COLOR, this.hairColor);
+		image = ImageUtils.changeColor(image, ORIG_SKIN_COLOR, handColor);
+		image = ImageUtils.changeColor(image, ORIG_SHIRT_COLOR, shirtColor);
+		
+		return image;
 	}
 
 	@Override
