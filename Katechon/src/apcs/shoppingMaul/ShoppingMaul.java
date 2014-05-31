@@ -15,6 +15,7 @@ import apcs.katechon.logging.Log;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
+import apcs.katechon.utils.Utils;
 import apcs.shoppingMaul.commands.CountLeopardsCommand;
 import apcs.shoppingMaul.commands.GotoCommand;
 import apcs.shoppingMaul.commands.RemoveLeopardCommand;
@@ -48,13 +49,6 @@ public class ShoppingMaul extends KatechonGameBase
 		int xCenterOffset = -75;
 		int yCenterOffset = -75;
 		
-
-		
-//		Man man = ManFactory.makeMan(-100, -100, 5);
-//		
-//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(man);
-//		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(man);
-		
 		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, (width / 2) + xCenterOffset, (height / 2) + yCenterOffset, speed, 5, 3);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		
@@ -63,9 +57,6 @@ public class ShoppingMaul extends KatechonGameBase
 		engine.addDrawable(board, 2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
-	
-		
-//		FileInputStream mapStream = getClass().getResourceAsStream("map.txt");
 
 		GameMap map = null;
 		try
@@ -91,47 +82,10 @@ public class ShoppingMaul extends KatechonGameBase
 			board.addDrawable(someGuy);
 		}
 		
-//		System.out.println(map);
+		Man thatGuy = Utils.getRandomItem(men);
 		
-
-//		board.addDrawable(man);
-//		
-//		board.setTarget(man);
+		board.setTarget(thatGuy);
 		
-//		FloorTile tile = new FloorTile(600, 600);
-//		board.addDrawable(tile);
-//
-//		Pillar pillar = new Pillar(500, 500, 25, 25, "Pillar 1");
-//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar);
-//		board.addDrawable(pillar);
-//		
-//		Pillar pillar2 = new Pillar(100, 700, 25, 25, "Pillar 2");
-//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar2);
-//		board.addDrawable(pillar2);
-//		
-//		Pillar pillar3 = new Pillar(50, 100, 25, 25, "Pillar 3");
-//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(pillar3);
-//		board.addDrawable(pillar3);
-		
-//		board.setTarget(pillar3);
-		
-//		Wall wall = new Wall(-100, -100);
-//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(wall);
-//		board.addDrawable(wall);
-		
-		
-
-//		board.addDrawable(new Pillar(-500, -500, 25, 25));
-		
-//		board.addDrawable(new SimpleBoardCollidable(200, 400, 30, 30, 10, false));
-//		
-//		int amountOfLeopards = 5;
-//		Board board = new Board(ControlScheme.WSAD, speed, amountOfLeopards, width, height);
-//		
-//		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
-//		engine.addDrawable(board, 2);
-//		
-//		
 		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
 		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(pack));
 		CommandManager.getInstance().registerCommand("count leopards", new CountLeopardsCommand(pack));
