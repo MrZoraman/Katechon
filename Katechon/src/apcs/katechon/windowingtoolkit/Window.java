@@ -57,7 +57,7 @@ public class Window extends DisplayableBase
 		this.backgroundColor = new Color(53, 53, 53);
 		this.borderColor = new Color(51, 102, 153);
 		
-		this.addButton(new CloseButton(this, width - CLOSE_BUTTON_SIZE - BORDER_WIDTH, BORDER_WIDTH, CLOSE_BUTTON_SIZE, CLOSE_BUTTON_SIZE));
+		this.addDisplayable(new CloseButton(this, width - CLOSE_BUTTON_SIZE - BORDER_WIDTH, BORDER_WIDTH, CLOSE_BUTTON_SIZE, CLOSE_BUTTON_SIZE));
 		
 		this.visible = false;
 		this.finished = false;
@@ -103,16 +103,6 @@ public class Window extends DisplayableBase
 			}
 		}
 	}
-	
-	/**
-	 * Adds a button to the window
-	 * @param button The button to add
-	 */
-	public void addButton(Button button)
-	{
-		button.setWindow(this);
-		displayables.add(button);
-	}
 
 	@Override
 	public void setVisible(boolean visible)
@@ -128,6 +118,7 @@ public class Window extends DisplayableBase
 	public void addDisplayable(DisplayableBase displayable)
 	{
 		displayables.add(displayable);
+		displayable.setWindow(this);
 	}
 	
 	/**
