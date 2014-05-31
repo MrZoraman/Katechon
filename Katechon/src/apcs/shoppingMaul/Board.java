@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import apcs.katechon.KatechonEngine;
 import apcs.katechon.SwingWindow;
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.basicGameObjects.Controllable;
@@ -73,7 +74,9 @@ public class Board extends Controllable implements ICollidable, IDrawable
 		{		
 			if(ic == target)
 			{
-				Log.info("You found him!");
+				Log.info("you found him!");
+				final FinishedMessage message = new FinishedMessage();
+				KatechonEngine.getInstance().addDrawable(message, 4);
 			}
 			
 			if(ic instanceof Man)
