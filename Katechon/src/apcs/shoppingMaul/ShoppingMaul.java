@@ -21,7 +21,6 @@ import apcs.shoppingMaul.commands.RemoveLeopardCommand;
 import apcs.shoppingMaul.commands.AddLeopardCommand;
 import apcs.shoppingMaul.commands.WhereAmICommand;
 import apcs.shoppingMaul.man.Man;
-import apcs.shoppingMaul.man.ManFactory;
 import apcs.shoppingMaul.map.GameMap;
 
 public class ShoppingMaul extends KatechonGameBase
@@ -51,10 +50,10 @@ public class ShoppingMaul extends KatechonGameBase
 		
 
 		
-		Man man = ManFactory.makeMan(-100, -100, 5);
-		
-		EngineManager.getInstance().getEngine(ICollidable.class).addItem(man);
-		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(man);
+//		Man man = ManFactory.makeMan(-100, -100, 5);
+//		
+//		EngineManager.getInstance().getEngine(ICollidable.class).addItem(man);
+//		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(man);
 		
 		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, (width / 2) + xCenterOffset, (height / 2) + yCenterOffset, speed, 5, 3);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
@@ -83,7 +82,7 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		Set<Man> men = map.spawnMen(100, 5);
 		
-		Log.debug("amount of men: " + men.size());
+		Log.info("amount of men spawned: " + men.size());
 		
 		for(Man someGuy : men)
 		{
@@ -95,9 +94,9 @@ public class ShoppingMaul extends KatechonGameBase
 //		System.out.println(map);
 		
 
-		board.addDrawable(man);
-		
-		board.setTarget(man);
+//		board.addDrawable(man);
+//		
+//		board.setTarget(man);
 		
 //		FloorTile tile = new FloorTile(600, 600);
 //		board.addDrawable(tile);
