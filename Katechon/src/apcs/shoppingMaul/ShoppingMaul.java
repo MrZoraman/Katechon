@@ -2,6 +2,8 @@ package apcs.shoppingMaul;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.Set;
 
 import apcs.katechon.KatechonGameBase;
@@ -13,6 +15,7 @@ import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.MattsCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
+import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -91,22 +94,49 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		board.setTarget(thatGuy);
 		
-		Font font = new Font("Arial", Font.PLAIN, 20);
+		final BufferedImage topDownImage = thatGuy.getTopDownImage();
+		final BufferedImage deadImage = thatGuy.getDeadImage();
+		
+		final Font font = new Font("Arial", Font.PLAIN, 20);
 		Message messageLine1 =  new Message("Your task is to find the man shown below.", 10, 55, font, Color.GREEN);
 		Message messageLine2 =  new Message("Find him and destroy him!", 10, 390, font, Color.GREEN);
 		
-		WindowImage topDownImage = new WindowImage(thatGuy.getTopDownImage(), 75, 175);
-		WindowImage deadImage = new WindowImage(thatGuy.getDeadImage(), 225, 125);
+		WindowImage w_topDownImage = new WindowImage(topDownImage, 75, 175);
+		WindowImage w_deadImage = new WindowImage(deadImage, 225, 125);
 		
 		Window window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
 		window.setTitle("Your task");
 		window.addDisplayable(messageLine1);
 		window.addDisplayable(messageLine2);
-		window.addDisplayable(topDownImage);
-		window.addDisplayable(deadImage);
+		window.addDisplayable(w_topDownImage);
+		window.addDisplayable(w_deadImage);
 		
 		KWT.getInstance().addWindow(window);
 		window.setVisible(true);
+		
+		IDrawable target = new IDrawable()
+		{
+			@Override
+			public boolean isFinished()
+			{
+				return false;
+			}
+
+			@Override
+			public void draw(Graphics g)
+			{
+				Color c = new Color(0, 0, 0, 150);
+				g.setColor(c);
+				g.fillRect(5, 3, 100, 100);
+				
+				g.setFont(font);
+				g.setColor(Color.GREEN);
+				g.drawString("Target:", 10, 20);
+				g.drawImage(topDownImage, 10, 30, null);
+			}
+		};
+		
+		engine.addDrawable(target, 3);
 		
 		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
 		CommandManager.getInstance().registerCommand("remove * {leopard|leopards}", new RemoveLeopardCommand(pack));
