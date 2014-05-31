@@ -75,6 +75,12 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			{
 				Log.info("You found him!");
 			}
+			
+			if(ic instanceof Man)
+			{
+				Man man = (Man) ic;
+				man.setDead(true);
+			}
 		}
 	}
 	

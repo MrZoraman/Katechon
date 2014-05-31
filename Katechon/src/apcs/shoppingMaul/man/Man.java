@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.imgscalr.Scalr.Rotation;
 
+import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
@@ -82,7 +83,8 @@ public class Man extends SimpleBoardCollidable
 		
 		this.frames = new AnimatedSequence<BufferedImage>(imageFrames, 1);
 		
-		this.deadImage = JarImageLoader.getInstance(ShoppingMaul.class).getImage("/apcs/shoppingMaul/assets/deadman.png");
+		this.deadImage = color(JarImageLoader.getInstance(ShoppingMaul.class).getImage("/apcs/shoppingMaul/assets/deadman.png"));
+		
 	}
 	
 	private BufferedImage color(BufferedImage image)
@@ -202,5 +204,10 @@ public class Man extends SimpleBoardCollidable
 	public void setDead(boolean dead)
 	{
 		this.dead = dead;
+		
+		if(dead == true)
+		{
+			EngineManager.getInstance().getEngine(ICollidable.class).removeItem(this);
+		}
 	}
 }
