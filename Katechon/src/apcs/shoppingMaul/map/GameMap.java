@@ -26,6 +26,7 @@ public class GameMap
 	private int y;
 	
 	private final int orig_x;
+	private final int orig_y;
 	
 	private int amountOfFloorTiles;
 	
@@ -73,6 +74,7 @@ public class GameMap
 		this.y = y;
 		
 		this.orig_x = x;
+		this.orig_y = y;
 	}
 	
 	public void insertMap(Board board)
@@ -107,12 +109,17 @@ public class GameMap
 			
 			y += SIZE;
 		}
+		
+		y = orig_y;
 	}
 	
 	public Set<Man> spawnMen(int amount, int speed)
 	{
 		int amountPerSquare = amount / amountOfFloorTiles;
 		Set<Man> men = new HashSet<Man>();
+		
+		int x = orig_x;
+		int y = orig_y;
 		
 		for(int r = 0; r < tiles.length; r++)
 		{
@@ -122,15 +129,19 @@ public class GameMap
 				{
 					for(int ii = 0; ii < amountPerSquare; ii++)
 					{
-						int startX = (r * SIZE);
-						int startY = (c * SIZE);
 						
 						Random rand = new Random();
-						Man man = ManFactory.makeMan(startX + rand.nextInt(SIZE), startY + rand.nextInt(SIZE), speed);
+						Man man = ManFactory.makeMan(x + rand.nextInt(SIZE), y + rand.nextInt(SIZE), speed);
 						men.add(man);
 					}
 				}
+				
+				x += SIZE;
 			}
+			
+			x = orig_x;
+			
+			y += SIZE;
 		}
 		
 		return men;
