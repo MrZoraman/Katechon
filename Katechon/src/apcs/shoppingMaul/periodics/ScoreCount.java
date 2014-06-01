@@ -7,14 +7,30 @@ public class ScoreCount implements ISchedulerTask
 	public ScoreCount()
 	{
 		this.score = 9000;
+		this.running = false;
 	}
 	
 	private int score;
+	
+	private boolean running;
 
 	@Override
 	public void doTask()
 	{
-		this.score--;
+		if (this.running)
+		{
+			this.score--;
+		}
+	}
+	
+	public void start()
+	{
+		this.running = true;
+	}
+	
+	public void stop()
+	{
+		this.running = false;
 	}
 	
 	public int getScore()
@@ -24,7 +40,12 @@ public class ScoreCount implements ISchedulerTask
 
 	@Override
 	public boolean isFinished() {
-		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return String.valueOf(score);
 	}
 }

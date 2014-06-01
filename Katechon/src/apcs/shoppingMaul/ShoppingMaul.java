@@ -18,7 +18,7 @@ import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.sounds.IPlayer;
-import apcs.katechon.sounds.SimplePlayer;
+import apcs.katechon.sounds.RandomPlayer;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -121,6 +121,8 @@ public class ShoppingMaul extends KatechonGameBase
 		KWT.getInstance().addWindow(window);
 		window.setVisible(true);
 		
+		
+		
 		IDrawable target = new IDrawable()
 		{
 			@Override
@@ -147,13 +149,17 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		try
 		{
-			player = new SimplePlayer(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/main.wav"));
+			player = new RandomPlayer(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/main.wav"));
+			((RandomPlayer)player).addClip(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/Airport Lounge.wav"));
+			((RandomPlayer)player).addClip(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/Groove Grove.wav"));
 			player.loop();
 		}
 		catch (Exception e)
 		{
 			Log.exception(e);
 		}
+		
+		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(player);
 		
 		
 		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
