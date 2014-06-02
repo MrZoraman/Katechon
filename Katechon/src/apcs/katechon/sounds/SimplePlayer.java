@@ -7,6 +7,10 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+/**
+ * Plays a single clip. Can be looped infinitely.
+ * @author Matt
+ */
 public class SimplePlayer implements IPlayer
 {
 	public SimplePlayer(InputStream stream) throws Exception

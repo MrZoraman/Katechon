@@ -11,6 +11,17 @@ import javax.sound.sampled.Clip;
 
 import apcs.katechon.utils.Utils;
 
+
+/**
+ * <p>
+ * Plays a {@link javax.sound.sampled.Clip Clip} from a {@link java.util.Set Set} of {@link javax.sound.sampled.Clip Clips} at random.
+ * </p>
+ * 
+ * <p>
+ * The {@link java.io.InputStream InputStream} passed in the constructor is guaranteed to play first.
+ * </p>
+ * @author Sean
+ */
 public class RandomPlayer implements IPlayer
 {
 	private Set<Clip> clips;
@@ -21,6 +32,10 @@ public class RandomPlayer implements IPlayer
 	private boolean finished;
 	private boolean isLooping;
 	
+	/**
+	 * @param defaultClip The clip, in the form of an {@link java.io.InputStream InputStream}, to play first.
+	 * @throws Exception Thrown if something goes wrong with getting the defaultClip
+	 */
 	public RandomPlayer(InputStream defaultClip) throws Exception
 	{
 		this.clips = new HashSet<Clip>();
@@ -37,6 +52,11 @@ public class RandomPlayer implements IPlayer
 		this.finished = false;
 	}
 	
+	/**
+	 * Adds all clips in the passed {@link java.util.Set Set} of {@link java.io.InputStream InputStreams} to the player's {@link java.util.Set Set}
+	 * @param clips A {@link java.util.Set Set} of {@link java.io.InputStream InputStreams} to add.
+	 * @throws Exception Thrown if something goes wrong with adding any of the clips.
+	 */
 	public void addAllClips(Set<InputStream> clips) throws Exception
 	{
 		for(InputStream c : clips)
@@ -45,6 +65,11 @@ public class RandomPlayer implements IPlayer
 		}
 	}
 	
+	/**
+	 * Adds a clip in the form of an {@link java.io.InputStream InputStream} to the player's {@link java.util.Set Set}
+	 * @param clip An {@link java.io.InputStream InputStream} to add.
+	 * @throws Exception Thrown if something goes wrong with adding the clip.
+	 */
 	public void addClip(InputStream clip) throws Exception
 	{
 		InputStream bufferedIn = new BufferedInputStream(clip);
