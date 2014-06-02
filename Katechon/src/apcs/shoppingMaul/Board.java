@@ -14,6 +14,9 @@ import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.CollisionEngineBase;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
+import apcs.katechon.input.keyboard.KeyPressedListener;
+import apcs.katechon.input.keyboard.Keyboard;
+import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 import apcs.shoppingMaul.man.Man;
@@ -76,6 +79,21 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			{
 				Log.info("you found him!");
 				final FinishedMessage message = new FinishedMessage();
+				Keyboard.getInstance().setExclusiveKeyListener(new KeyPressedListener(){
+
+					@Override
+					public boolean isFinished()
+					{
+						return false;
+					}
+
+					@Override
+					public void onKeyPressed(Keys key, char keyChar)
+					{
+						//do nothing
+					}
+					
+				});
 				KatechonEngine.getInstance().addDrawable(message, 4);
 			}
 			
@@ -111,6 +129,19 @@ public class Board extends Controllable implements ICollidable, IDrawable
 				int xCoord = icd.getRealX();
 				int yCoord = icd.getRealY();
 				
+				
+//				if (xCoord + icd.getWidth() < 0 || xCoord > KatechonEngine.getInstance().getSwingWindow().getWidth())
+//				{
+//					continue;
+//				}
+//				
+//				if (yCoord + icd.getHeight() < 0 || yCoord > KatechonEngine.getInstance().getSwingWindow().getHeight())
+//				{
+//					continue;
+//				}
+				
+				System.out.println("Drawing: " + icd);
+				
 				int newX = xCoord + xOffset;
 				int newY = yCoord + yOffset;
 				
@@ -120,6 +151,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 				icd.draw(g);
 			}
 		}
+		
 	}
 	
 	public void addDrawable(IControlledDrawable drawable)

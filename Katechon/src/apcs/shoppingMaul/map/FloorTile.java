@@ -68,4 +68,16 @@ public class FloorTile implements IControlledDrawable
 	public int getRealY() {
 		return realY;
 	}
+
+	@Override
+	public int getWidth()
+	{
+		return 600;
+	}
+
+	@Override
+	public int getHeight()
+	{
+		return 600;
+	}
 }

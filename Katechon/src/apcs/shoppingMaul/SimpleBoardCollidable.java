@@ -162,4 +162,16 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 	{
 		this.realY = realY;
 	}
+
+	@Override
+	public int getWidth()
+	{
+		return width;
+	}
+
+	@Override
+	public int getHeight()
+	{
+		return height;
+	}
 }
