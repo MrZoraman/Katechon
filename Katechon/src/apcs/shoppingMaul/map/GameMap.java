@@ -12,6 +12,7 @@ import java.util.Set;
 
 import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.ICollidable;
+import apcs.katechon.utils.Utils;
 import apcs.shoppingMaul.Board;
 import apcs.shoppingMaul.IControlledDrawable;
 import apcs.shoppingMaul.man.Man;
@@ -115,7 +116,7 @@ public class GameMap
 	
 	public Set<Man> spawnMen(int amount, int speed)
 	{
-		int amountPerSquare = amount / amountOfFloorTiles;
+		int amountPerSquare = (amount / amountOfFloorTiles) < 1 ? 1 : amount / amountOfFloorTiles;
 		Set<Man> men = new HashSet<Man>();
 		
 		int x = orig_x;
@@ -142,6 +143,12 @@ public class GameMap
 			x = orig_x;
 			
 			y += SIZE;
+		}
+		
+		//Max number of men should be 150 to improve performance.
+		while (men.size() > 150)
+		{
+			men.remove(Utils.getRandomItem(men));
 		}
 		
 		return men;
