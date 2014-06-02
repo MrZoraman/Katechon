@@ -12,6 +12,7 @@ import apcs.katechon.KatechonEngine;
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.commands.CommandManager;
 import apcs.katechon.engine.EngineManager;
+import apcs.katechon.engine.EngineModuleBase;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.engine.collisions.MattsCollisionEngine;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
@@ -88,12 +89,17 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		Log.info("amount of men spawned: " + men.size());
 		
+		
+		long before = System.nanoTime();
+		EngineModuleBase<ICollidable> collidableEngine = EngineManager.getInstance().getEngine(ICollidable.class);
+		EngineModuleBase<ISchedulerTask> schedulerEngine = EngineManager.getInstance().getEngine(ISchedulerTask.class);
 		for(Man someGuy : men)
 		{
-			EngineManager.getInstance().getEngine(ICollidable.class).addItem(someGuy);
-			EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(someGuy);
+			collidableEngine.addItem(someGuy);
+			schedulerEngine.addItem(someGuy);
 			board.addDrawable(someGuy);
 		}
+		System.out.println("spawned men in " + (System.nanoTime() - before) + " nanoseconds.");
 		
 		Man thatGuy = Utils.getRandomItem(men);
 		
