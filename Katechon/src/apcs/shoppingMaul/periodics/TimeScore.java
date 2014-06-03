@@ -1,16 +1,20 @@
 package apcs.shoppingMaul.periodics;
 
+import java.text.DecimalFormat;
+
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 
-public class ScoreCount implements ISchedulerTask
+public class TimeScore implements ISchedulerTask
 {
-	public ScoreCount()
+	public TimeScore()
 	{
-		this.score = 9000;
+		this.time = 0;
+		this.first = System.nanoTime();
 		this.running = false;
 	}
 	
-	private int score;
+	private long time;
+	private long first;
 	
 	private boolean running;
 
@@ -19,7 +23,7 @@ public class ScoreCount implements ISchedulerTask
 	{
 		if (this.running)
 		{
-			this.score--;
+			this.time = System.nanoTime() - first;
 		}
 	}
 	
@@ -32,11 +36,6 @@ public class ScoreCount implements ISchedulerTask
 	{
 		this.running = false;
 	}
-	
-	public int getScore()
-	{
-		return score;
-	}
 
 	@Override
 	public boolean isFinished() {
@@ -46,6 +45,12 @@ public class ScoreCount implements ISchedulerTask
 	@Override
 	public String toString()
 	{
-		return String.valueOf(score);
+		double temp = time / 1000000000.0;
+		return (new DecimalFormat("#.##")).format(temp);
+	}
+	
+	public void reset()
+	{
+		this.first = System.nanoTime();
 	}
 }
