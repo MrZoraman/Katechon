@@ -6,6 +6,8 @@ import apcs.katechon.engine.scheduler.ISchedulerTask;
 
 public class TimeScore implements ISchedulerTask
 {
+	private final double conversionRate = 1000000000.0;
+	
 	public TimeScore()
 	{
 		this.time = 0;
@@ -53,12 +55,17 @@ public class TimeScore implements ISchedulerTask
 	@Override
 	public String toString()
 	{
-		double temp = time / 1000000000.0;
+		double temp = time / conversionRate;
 		return (new DecimalFormat("#.##")).format(temp);
 	}
 	
 	public void reset()
 	{
 		this.first = System.nanoTime();
+	}
+	
+	public void timePenalty(double seconds)
+	{
+		first -= (seconds * conversionRate);
 	}
 }

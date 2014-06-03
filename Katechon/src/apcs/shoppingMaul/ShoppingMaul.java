@@ -332,4 +332,9 @@ public class ShoppingMaul extends KatechonGameBase
 		message.hide();
 		instance.replay();
 	}
+	
+	public static void timePenalty(double seconds)
+	{
+		timeScore.timePenalty(seconds);
+	}
 }
