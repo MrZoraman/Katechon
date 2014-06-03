@@ -43,7 +43,6 @@ public class MattsCollisionEngine extends CollisionEngineBase
 	@Override
 	protected void process(Set<ICollidable> collidables)
 	{
-		long before = System.nanoTime();
 		//Remove finished objects
 		Iterator<ICollidable> it_remover = collidables.iterator();
 		
@@ -87,8 +86,6 @@ public class MattsCollisionEngine extends CollisionEngineBase
 			
 			//overwrite old set of collisions with latest data
 			collidableCollisions.put(collidable, collisions);
-			
-			System.out.println("Took: " + (System.nanoTime() - before) + " nanoseconds to process.");
 		}
 	}
 	

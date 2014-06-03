@@ -72,6 +72,14 @@ public abstract class Controllable implements ISchedulerTask
 	@Override
 	public boolean isFinished()
 	{
-		return false;
+		return isFinished;
+	}
+	
+	private boolean isFinished = false;
+	
+	@Override
+	public void setFinished(boolean finished)
+	{
+		this.isFinished = finished;
 	}
 }

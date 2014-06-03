@@ -4,11 +4,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import apcs.katechon.KatechonEngine;
 import apcs.katechon.rendering.IDrawable;
 
 public class FinishedMessage implements IDrawable
 {
 	private boolean finished;
+	
+	private String message;
+	
+	private boolean visible;
 	
 	private final Font font;
 	
@@ -16,6 +21,7 @@ public class FinishedMessage implements IDrawable
 	{
 		this.finished = false;
 		this.font = new Font("Arial", Font.PLAIN, 40);
+		this.message = "YOU FOUND HIM!";
 	}
 	
 	@Override
@@ -32,8 +38,26 @@ public class FinishedMessage implements IDrawable
 	@Override
 	public void draw(Graphics g)
 	{
-		g.setFont(font);
-		g.setColor(Color.YELLOW);
-		g.drawString("YOU FOUND HIM!", 450, 300);
+		if (this.visible)
+		{
+			g.setFont(font);
+			g.setColor(Color.YELLOW);
+			g.drawString(message, (KatechonEngine.getInstance().getSwingWindow().getWidth() / 2) - (g.getFontMetrics().stringWidth(message) / 2), (KatechonEngine.getInstance().getSwingWindow().getHeight() / 2) - g.getFontMetrics().getHeight());
+		}
+	}
+	
+	public void show()
+	{
+		this.visible = true;
+	}
+	
+	public void hide()
+	{
+		this.visible = false;
+	}
+	
+	public void setMessage(String message)
+	{
+		this.message = message;
 	}
 }

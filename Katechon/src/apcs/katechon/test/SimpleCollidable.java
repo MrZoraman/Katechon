@@ -109,4 +109,10 @@ public class SimpleCollidable implements ICollidable, IDrawable, ISchedulerTask
 		//lifetime is infinite
 		return false;
 	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		//lifetime is infinite		
+	}
 }

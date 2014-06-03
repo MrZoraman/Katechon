@@ -38,8 +38,16 @@ public class TimeScore implements ISchedulerTask
 	}
 
 	@Override
+	public void setFinished(boolean finished)
+	{
+		this.isFinished = finished;
+	}
+	
+	private boolean isFinished = false;
+	
+	@Override
 	public boolean isFinished() {
-		return false;
+		return isFinished;
 	}
 	
 	@Override

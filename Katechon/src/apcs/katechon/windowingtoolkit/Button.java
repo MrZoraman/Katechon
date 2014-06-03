@@ -19,7 +19,7 @@ public abstract class Button extends DisplayableBase implements MouseClickedList
 	private static final int X_OFFSET = -3;
 	private static final int Y_OFFSET = -26;
 	
-	public Button(int x, int y, int width, int height)
+	public Button(int x, int y, int width, int height, int layer)
 	{
 		this.x = x;
 		this.y = y;
@@ -38,13 +38,13 @@ public abstract class Button extends DisplayableBase implements MouseClickedList
 		Mouse.getInstance().addListener(this);
 		KatechonEngine.getInstance().scheduleTask(this);
 		//TODO: layer!
-		KatechonEngine.getInstance().addDrawable(this, 1);
+		KatechonEngine.getInstance().addDrawable(this, layer);
 	}
 	
 	private final int x;
 	private final int y;
-	private final int width;
-	private final int height;
+	private int width;
+	private int height;
 	
 	private Window window;
 	
@@ -132,7 +132,7 @@ public abstract class Button extends DisplayableBase implements MouseClickedList
 		this.finished = finished;
 	}
 	
-	void setWindow(Window window)
+	protected void setWindow(Window window)
 	{
 		this.window = window;
 	}
@@ -208,5 +208,20 @@ public abstract class Button extends DisplayableBase implements MouseClickedList
 	protected int getHeight()
 	{
 		return height;
+	}
+	
+	protected boolean isVisible()
+	{
+		return visible;
+	}
+	
+	protected void setWidth(int width)
+	{
+		this.width = width;
+	}
+	
+	protected void setHeight(int height)
+	{
+		this.height = height;
 	}
 }

@@ -8,7 +8,7 @@ public class CloseButton extends Button
 {
 	public CloseButton(Window window, int x, int y, int width, int height)
 	{
-		super(x, y, width, height);
+		super(x, y, width, height, 1);
 		
 		this.window = window;
 	}

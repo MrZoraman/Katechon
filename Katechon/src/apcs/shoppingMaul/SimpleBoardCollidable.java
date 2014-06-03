@@ -174,4 +174,10 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 	{
 		return height;
 	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		//lifetime is infinite!!!!!!		
+	}
 }

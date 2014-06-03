@@ -24,6 +24,7 @@ import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
 import apcs.katechon.utils.Utils;
+import apcs.katechon.windowingtoolkit.Button;
 import apcs.katechon.windowingtoolkit.KWT;
 import apcs.katechon.windowingtoolkit.Message;
 import apcs.katechon.windowingtoolkit.Window;
@@ -35,6 +36,7 @@ import apcs.shoppingMaul.commands.AddLeopardCommand;
 import apcs.shoppingMaul.commands.WhereAmICommand;
 import apcs.shoppingMaul.man.Man;
 import apcs.shoppingMaul.map.GameMap;
+import apcs.shoppingMaul.periodics.TimeScore;
 
 public class ShoppingMaul extends KatechonGameBase
 {
@@ -46,11 +48,31 @@ public class ShoppingMaul extends KatechonGameBase
 		new KatechonEngine(ShoppingMaul.class, config).start();
 	}
 	
+	public ShoppingMaul()
+	{
+		instance = this;
+	}
+	
+	private static ShoppingMaul instance;
+	
 	private IPlayer player;
+	
+	private GameMap map;
+	
+	private Board board;
+	
+	private Set<Man> men;
+	
+	private KatechonEngine engine;
+	
+	private IDrawable target;
+	
+	private Window window;
 
 	@Override
 	public void init(final KatechonEngine engine)
 	{
+		this.engine = engine;
 		Log.setDebugging(true);
 		EngineManager.getInstance().addEngine(new MattsCollisionEngine());
 		
@@ -66,16 +88,16 @@ public class ShoppingMaul extends KatechonGameBase
 		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, (width / 2) + xCenterOffset, (height / 2) + yCenterOffset, speed, 5, 3);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		
-		Board board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
+		board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
 		board.goTo(200, 300);
 		engine.addDrawable(board, 2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
 
-		GameMap map = null;
+		map = null;
 		try
 		{
-			map = new GameMap(ShoppingMaul.class, "map.txt", -1000, -1000);
+			map = new GameMap(ShoppingMaul.class, "smallMap.txt", -1000, -1000);
 			
 		} catch (Exception e)
 		{
@@ -85,12 +107,11 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		map.insertMap(board);
 		
-		Set<Man> men = map.spawnMen(100, 5);
+		men = map.spawnMen(100, 5);
 		
 		Log.info("amount of men spawned: " + men.size());
 		
 		
-		long before = System.nanoTime();
 		EngineModuleBase<ICollidable> collidableEngine = EngineManager.getInstance().getEngine(ICollidable.class);
 		EngineModuleBase<ISchedulerTask> schedulerEngine = EngineManager.getInstance().getEngine(ISchedulerTask.class);
 		for(Man someGuy : men)
@@ -99,7 +120,6 @@ public class ShoppingMaul extends KatechonGameBase
 			schedulerEngine.addItem(someGuy);
 			board.addDrawable(someGuy);
 		}
-		System.out.println("spawned men in " + (System.nanoTime() - before) + " nanoseconds.");
 		
 		Man thatGuy = Utils.getRandomItem(men);
 		
@@ -117,7 +137,7 @@ public class ShoppingMaul extends KatechonGameBase
 		WindowImage w_topDownImage = new WindowImage(topDownImage, 75, 175);
 		WindowImage w_deadImage = new WindowImage(deadImage, 225, 125);
 		
-		Window window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
+		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
 		window.setTitle("Your task");
 		window.addDisplayable(messageLine1);
 		window.addDisplayable(messageLine2);
@@ -129,12 +149,13 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		
 		
-		IDrawable target = new IDrawable()
+		target = new IDrawable()
 		{
+			private boolean isFinished = false;
 			@Override
 			public boolean isFinished()
 			{
-				return false;
+				return isFinished;
 			}
 
 			@Override
@@ -148,6 +169,12 @@ public class ShoppingMaul extends KatechonGameBase
 				g.setColor(Color.GREEN);
 				g.drawString("Target:", 10, 20);
 				g.drawImage(topDownImage, 10, 30, null);
+			}
+
+			@Override
+			public void setFinished(boolean finished)
+			{
+				this.isFinished = finished;
 			}
 		};
 		
@@ -174,6 +201,9 @@ public class ShoppingMaul extends KatechonGameBase
 
 		CommandManager.getInstance().registerCommand("goto", new GotoCommand(board));
 		CommandManager.getInstance().registerCommand("whereami", new WhereAmICommand(board));
+		
+		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(timeScore);
+		ShoppingMaul.timeScore.start();
 	}
 
 	@Override
@@ -190,5 +220,116 @@ public class ShoppingMaul extends KatechonGameBase
 				Log.exception(e);
 			}
 		}
+	}
+	
+	private void replay()
+	{
+		int width = engine.getSwingWindow().getWidth();
+		int height = engine.getSwingWindow().getHeight();
+		
+		this.board.goTo(200, 300);
+		
+		for(Man m : men)
+		{
+			m.dispose();
+		}
+		
+		men = map.spawnMen(100, 5);
+		
+		Log.info("amount of men spawned: " + men.size());
+		
+		
+		EngineModuleBase<ICollidable> collidableEngine = EngineManager.getInstance().getEngine(ICollidable.class);
+		EngineModuleBase<ISchedulerTask> schedulerEngine = EngineManager.getInstance().getEngine(ISchedulerTask.class);
+		for(Man someGuy : men)
+		{
+			collidableEngine.addItem(someGuy);
+			schedulerEngine.addItem(someGuy);
+			board.addDrawable(someGuy);
+		}
+		
+		Man thatGuy = Utils.getRandomItem(men);
+		
+		thatGuy.setIsTarget(true);
+		
+		board.setTarget(thatGuy);
+		
+		final BufferedImage topImage = thatGuy.getTopDownImage();
+		final BufferedImage dedImage = thatGuy.getDeadImage();
+		
+		final Font font = new Font("Arial", Font.PLAIN, 20);
+		Message messageLine1 =  new Message("Your task is to find the man shown below.", 10, 55, font, Color.GREEN);
+		Message messageLine2 =  new Message("Find him and destroy him!", 10, 390, font, Color.GREEN);
+		
+		WindowImage w_topDownImage = new WindowImage(topImage, 75, 175);
+		WindowImage w_deadImage = new WindowImage(dedImage, 225, 125);
+		
+		window.setFinished(false);
+//		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
+		window.addDisplayable(messageLine1);
+		window.addDisplayable(messageLine2);
+		window.addDisplayable(w_topDownImage);
+		window.addDisplayable(w_deadImage);
+
+		window.setVisible(true);
+		KWT.getInstance().addWindow(window);
+		
+		target.setFinished(true);
+		
+		target = new IDrawable()
+		{
+			private boolean isFinished = false;
+			@Override
+			public boolean isFinished()
+			{
+				return isFinished;
+			}
+
+			@Override
+			public void draw(Graphics g)
+			{
+				Color c = new Color(0, 0, 0, 150);
+				g.setColor(c);
+				g.fillRect(5, 3, 100, 100);
+				
+				g.setFont(font);
+				g.setColor(Color.GREEN);
+				g.drawString("Target:", 10, 20);
+				g.drawImage(topImage, 10, 30, null);
+			}
+
+			@Override
+			public void setFinished(boolean finished)
+			{
+				isFinished = finished;
+			}
+		};
+		
+		engine.addDrawable(target, 3);
+		
+		timeScore.reset();
+		timeScore.start();
+	}
+	
+	private static FinishedMessage message = new FinishedMessage();
+	private static TimeScore timeScore = new TimeScore();
+	
+	public static void showFinishedMessage()
+	{
+		timeScore.stop();
+		message.setMessage("Your time: " + timeScore + " seconds.");
+		KatechonEngine.getInstance().addDrawable(message, 4);
+		message.show();
+		final Button playAgain = new PlayAgainButton(530, 350, 50, 50);
+		
+		playAgain.setMouseOverColor(Color.CYAN);
+		playAgain.setPassiveColor(Color.YELLOW);
+		playAgain.setMouseHeldColor(new Color(18, 75, 90));
+	}
+	
+	public static void hideFinishedMessage()
+	{
+		message.hide();
+		instance.replay();
 	}
 }

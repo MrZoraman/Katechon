@@ -51,4 +51,10 @@ public class KWT extends Layer implements ISchedulerTask
 		//Never finished!
 		return false;
 	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		//NEVER FINISHED!!!
+	}
 }

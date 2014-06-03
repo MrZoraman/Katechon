@@ -134,11 +134,12 @@ public class Man extends SimpleBoardCollidable
 		this.collisions = types;
 	}
 	
+	private boolean finished = false;
+	
 	@Override
 	public boolean isFinished()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return finished;
 	}
 
 	@Override
@@ -249,5 +250,10 @@ public class Man extends SimpleBoardCollidable
 	public void setIsTarget(boolean isTarget)
 	{
 		this.isTarget = isTarget;
+	}
+	
+	public void dispose()
+	{
+		this.finished = true;
 	}
 }

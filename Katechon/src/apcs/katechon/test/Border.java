@@ -48,7 +48,13 @@ public class Border implements ICollidable
 
 	@Override
 	public boolean isFinished() {
-		//lifetime is inifinite
+		//lifetime is infinite
 		return false;
+	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		//lifetime is infinite
 	}
 }

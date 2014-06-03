@@ -98,4 +98,10 @@ public class SimplePlayer implements IPlayer
 			}
 		}
 	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		//Do not need this
+	}
 }

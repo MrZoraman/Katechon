@@ -80,4 +80,10 @@ public class FloorTile implements IControlledDrawable
 	{
 		return 600;
 	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		this.finished = finished;
+	}
 }

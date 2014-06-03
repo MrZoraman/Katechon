@@ -1,5 +1,6 @@
 package apcs.shoppingMaul;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,6 +20,7 @@ import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
+import apcs.katechon.windowingtoolkit.Button;
 import apcs.shoppingMaul.man.Man;
 
 /**
@@ -78,23 +80,8 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			if(ic == target)
 			{
 				Log.info("you found him!");
-				final FinishedMessage message = new FinishedMessage();
-				Keyboard.getInstance().setExclusiveKeyListener(new KeyPressedListener(){
-
-					@Override
-					public boolean isFinished()
-					{
-						return false;
-					}
-
-					@Override
-					public void onKeyPressed(Keys key, char keyChar)
-					{
-						//do nothing
-					}
-					
-				});
-				KatechonEngine.getInstance().addDrawable(message, 4);
+				
+				ShoppingMaul.showFinishedMessage();
 			}
 			
 			if(ic instanceof Man)
@@ -139,8 +126,6 @@ public class Board extends Controllable implements ICollidable, IDrawable
 //				{
 //					continue;
 //				}
-				
-				System.out.println("Drawing: " + icd);
 				
 				int newX = xCoord + xOffset;
 				int newY = yCoord + yOffset;

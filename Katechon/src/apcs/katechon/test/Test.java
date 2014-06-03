@@ -88,6 +88,12 @@ public class Test extends KatechonGameBase
 			public boolean isFinished() {
 				return false;
 			}
+
+			@Override
+			public void setFinished(boolean finished)
+			{
+				
+			}
 		});
 		
 		Window window = new Window(40, 40, 500, 500);

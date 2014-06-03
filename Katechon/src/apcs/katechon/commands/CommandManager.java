@@ -52,10 +52,17 @@ public class CommandManager implements ISchedulerTask
 		}
 	}
 	
+	private boolean isFinished = false;	
 	@Override
 	public boolean isFinished()
 	{
 		//console is never done
-		return false;
+		return isFinished;
+	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		//Console is never done.
 	}
 }
