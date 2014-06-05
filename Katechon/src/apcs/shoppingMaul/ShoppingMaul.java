@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -70,6 +71,9 @@ public class ShoppingMaul extends KatechonGameBase
 	private IDrawable target;
 	
 	private Window window;
+	
+	private int width;
+	private int height;
 
 	@Override
 	public void init(final KatechonEngine engine)
@@ -82,8 +86,8 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		int speed = 10;
 
-		int width = engine.getSwingWindow().getWidth();
-		int height = engine.getSwingWindow().getHeight();
+		width = engine.getSwingWindow().getWidth();
+		height = engine.getSwingWindow().getHeight();
 		int xCenterOffset = -75;
 		int yCenterOffset = -75;
 		
@@ -197,9 +201,8 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		WindowImage w_topDownImage = new WindowImage(topImage, 75, 175);
 		WindowImage w_deadImage = new WindowImage(deadImage, 225, 125);
-		
-		window.setFinished(false);
-//		window = new Window((KatechonEngine.getInstance().getSwingWindow().getWidth() / 2) - 225, (KatechonEngine.getInstance().getSwingWindow().getWidth() / 2) - 225, 400, 400);
+						
+		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
 		window.addDisplayable(messageLine1);
 		window.addDisplayable(messageLine2);
 		window.addDisplayable(w_topDownImage);

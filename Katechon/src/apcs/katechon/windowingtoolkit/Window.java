@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
+import apcs.katechon.input.mouse.Mouse;
+
 /**
  * Represents a simple window with a close button.
  * @author Matt
@@ -193,10 +195,8 @@ public class Window extends DisplayableBase
 		
 		for(DisplayableBase displayable : displayables)
 		{
-			if (!(displayable instanceof Button))
-			{
-				displayable.setFinished(finished);
-			}
+			System.out.println("This is now removing: " + displayable);
+			displayable.setFinished(finished);
 		}
 	}
 	
