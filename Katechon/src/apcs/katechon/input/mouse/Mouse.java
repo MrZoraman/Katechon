@@ -61,11 +61,9 @@ public class Mouse implements MouseListener, MouseMotionListener
 		{
 			MouseClickedListener listener = it.next();
 			
-			System.out.println("Next: " + listener.toString());
 			if(listener.isFinished())
 			{
 				//TODO: gets removed next time the mouse is clicked...
-				System.out.println("Removing button");
 				it.remove();
 			}
 			else

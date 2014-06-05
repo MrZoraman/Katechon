@@ -53,7 +53,7 @@ public class WindowLogger extends Window implements ILogger, KeyPressedListener,
 	 */
 	public WindowLogger(int linesShown, int x, int y)
 	{
-		super(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT);
+		super(x, y, CONSOLE_OVERLAY_WIDTH, CONSOLE_OVERLAY_HEIGHT, true);
 		
 		this.setBackgroundColor(CONSOLE_BACKGROUND_COLOR);
 		this.setBorderColor(CONSOLE_BORDER_COLOR);

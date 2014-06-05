@@ -58,7 +58,7 @@ public class PlayAgainButton extends Button
 		
 		this.setVisible(true);
 		
-		this.setWindow(new Window(0, 0, width, height));
+		this.setWindow(new Window(0, 0, width, height, false));
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public class PlayAgainButton extends Button
 		
 		FontMetrics metrics = g.getFontMetrics();
 		
-		this.setWindow(new Window(0, 0, metrics.stringWidth(message), metrics.getHeight()));
+		this.setWindow(new Window(0, 0, metrics.stringWidth(message), metrics.getHeight(), false));
 		
 		this.setWidth(metrics.stringWidth(message));;
 		this.setHeight(metrics.getHeight());
@@ -86,9 +86,7 @@ public class PlayAgainButton extends Button
 
 	@Override
 	public void onClick()
-	{
-		//Logic here pls.
-		
+	{		
 		this.setVisible(false);
 		shoppingMaul.hideFinishedMessage();
 		

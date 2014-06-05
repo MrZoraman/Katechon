@@ -96,7 +96,7 @@ public class Test extends KatechonGameBase
 			}
 		});
 		
-		Window window = new Window(40, 40, 500, 500);
+		Window window = new Window(40, 40, 500, 500, true);
 		KWT.getInstance().addWindow(window);
 		window.setVisible(true);
 		

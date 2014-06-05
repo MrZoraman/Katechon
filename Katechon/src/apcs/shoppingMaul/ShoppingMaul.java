@@ -114,7 +114,7 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		men = new HashSet<Man>();
 		
-		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
+		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400, true);
 		replay();
 		
 		try
@@ -202,7 +202,7 @@ public class ShoppingMaul extends KatechonGameBase
 		WindowImage w_topDownImage = new WindowImage(topImage, 75, 175);
 		WindowImage w_deadImage = new WindowImage(deadImage, 225, 125);
 						
-		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
+		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400, true);
 		window.addDisplayable(messageLine1);
 		window.addDisplayable(messageLine2);
 		window.addDisplayable(w_topDownImage);

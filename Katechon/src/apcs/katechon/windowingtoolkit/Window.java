@@ -46,7 +46,7 @@ public class Window extends DisplayableBase
 	 * @param width Width of window
 	 * @param height height of window
 	 */
-	public Window(int x, int y, int width, int height)
+	public Window(int x, int y, int width, int height, boolean hasCloseButton)
 	{
 		this.x = x;
 		this.y = y;
@@ -59,7 +59,10 @@ public class Window extends DisplayableBase
 		this.backgroundColor = new Color(53, 53, 53);
 		this.borderColor = new Color(51, 102, 153);
 		
-		this.addDisplayable(new CloseButton(this, width - CLOSE_BUTTON_SIZE - BORDER_WIDTH, BORDER_WIDTH, CLOSE_BUTTON_SIZE, CLOSE_BUTTON_SIZE));
+		if (hasCloseButton)
+		{
+			this.addDisplayable(new CloseButton(this, width - CLOSE_BUTTON_SIZE - BORDER_WIDTH, BORDER_WIDTH, CLOSE_BUTTON_SIZE, CLOSE_BUTTON_SIZE));
+		}
 		
 		this.visible = false;
 		this.finished = false;
