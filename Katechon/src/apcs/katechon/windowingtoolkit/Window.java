@@ -193,7 +193,10 @@ public class Window extends DisplayableBase
 		
 		for(DisplayableBase displayable : displayables)
 		{
-			displayable.setFinished(finished);
+			if (!(displayable instanceof Button))
+			{
+				displayable.setFinished(finished);
+			}
 		}
 	}
 	
