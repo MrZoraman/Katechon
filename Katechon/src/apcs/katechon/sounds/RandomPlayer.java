@@ -128,12 +128,10 @@ public class RandomPlayer implements IPlayer
 					temp = Utils.getRandomItem(clips);
 				}
 				this.playing = temp;
-				System.out.println("Moving to the next clip");
 				playing.start();
 			}
 			else if(!started)
 			{
-				System.out.println("Closing for some reason...");
 				close();
 			}
 		}

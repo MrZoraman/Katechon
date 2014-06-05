@@ -1,13 +1,11 @@
 package apcs.shoppingMaul;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import apcs.katechon.KatechonEngine;
 import apcs.katechon.SwingWindow;
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.basicGameObjects.Controllable;
@@ -15,12 +13,8 @@ import apcs.katechon.engine.EngineManager;
 import apcs.katechon.engine.collisions.CollisionEngineBase;
 import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
-import apcs.katechon.input.keyboard.KeyPressedListener;
-import apcs.katechon.input.keyboard.Keyboard;
-import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
-import apcs.katechon.windowingtoolkit.Button;
 import apcs.shoppingMaul.man.Man;
 
 /**

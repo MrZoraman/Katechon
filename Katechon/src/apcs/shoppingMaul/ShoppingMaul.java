@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 import apcs.katechon.KatechonGameBase;
@@ -44,6 +45,7 @@ public class ShoppingMaul extends KatechonGameBase
 	{
 		IConfig config = new MappedConfig();
 		config.setString(ConfigKey.TITLE, "Shopping Maul");
+		config.setInt(ConfigKey.AMOUNT_OF_LAYERS, 6);
 		
 		new KatechonEngine(ShoppingMaul.class, config).start();
 	}
@@ -89,7 +91,6 @@ public class ShoppingMaul extends KatechonGameBase
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		
 		board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
-		board.goTo(200, 300);
 		engine.addDrawable(board, 2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
@@ -107,78 +108,10 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		map.insertMap(board);
 		
-		men = map.spawnMen(100, 5);
-		
-		Log.info("amount of men spawned: " + men.size());
-		
-		
-		EngineModuleBase<ICollidable> collidableEngine = EngineManager.getInstance().getEngine(ICollidable.class);
-		EngineModuleBase<ISchedulerTask> schedulerEngine = EngineManager.getInstance().getEngine(ISchedulerTask.class);
-		for(Man someGuy : men)
-		{
-			collidableEngine.addItem(someGuy);
-			schedulerEngine.addItem(someGuy);
-			board.addDrawable(someGuy);
-		}
-		
-		Man thatGuy = Utils.getRandomItem(men);
-		
-		thatGuy.setIsTarget(true);
-		
-		board.setTarget(thatGuy);
-		
-		final BufferedImage topDownImage = thatGuy.getTopDownImage();
-		final BufferedImage deadImage = thatGuy.getDeadImage();
-		
-		final Font font = new Font("Arial", Font.PLAIN, 20);
-		Message messageLine1 =  new Message("Your task is to find the man shown below.", 10, 55, font, Color.GREEN);
-		Message messageLine2 =  new Message("Find him and destroy him!", 10, 390, font, Color.GREEN);
-		
-		WindowImage w_topDownImage = new WindowImage(topDownImage, 75, 175);
-		WindowImage w_deadImage = new WindowImage(deadImage, 225, 125);
+		men = new HashSet<Man>();
 		
 		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
-		window.setTitle("Your task");
-		window.addDisplayable(messageLine1);
-		window.addDisplayable(messageLine2);
-		window.addDisplayable(w_topDownImage);
-		window.addDisplayable(w_deadImage);
-		
-		KWT.getInstance().addWindow(window);
-		window.setVisible(true);
-		
-		
-		
-		target = new IDrawable()
-		{
-			private boolean isFinished = false;
-			@Override
-			public boolean isFinished()
-			{
-				return isFinished;
-			}
-
-			@Override
-			public void draw(Graphics g)
-			{
-				Color c = new Color(0, 0, 0, 150);
-				g.setColor(c);
-				g.fillRect(5, 3, 100, 100);
-				
-				g.setFont(font);
-				g.setColor(Color.GREEN);
-				g.drawString("Target:", 10, 20);
-				g.drawImage(topDownImage, 10, 30, null);
-			}
-
-			@Override
-			public void setFinished(boolean finished)
-			{
-				this.isFinished = finished;
-			}
-		};
-		
-		engine.addDrawable(target, 3);
+		replay();
 		
 		try
 		{
@@ -223,9 +156,10 @@ public class ShoppingMaul extends KatechonGameBase
 	}
 	
 	private void replay()
-	{
-		int width = engine.getSwingWindow().getWidth();
-		int height = engine.getSwingWindow().getHeight();
+	{	
+		//Set things to finished so they dispose before being recreated.
+		window.setFinished(true);
+//		target.setFinished(true);
 		
 		this.board.goTo(200, 300);
 		
@@ -255,17 +189,17 @@ public class ShoppingMaul extends KatechonGameBase
 		board.setTarget(thatGuy);
 		
 		final BufferedImage topImage = thatGuy.getTopDownImage();
-		final BufferedImage dedImage = thatGuy.getDeadImage();
+		final BufferedImage deadImage = thatGuy.getDeadImage();
 		
 		final Font font = new Font("Arial", Font.PLAIN, 20);
 		Message messageLine1 =  new Message("Your task is to find the man shown below.", 10, 55, font, Color.GREEN);
 		Message messageLine2 =  new Message("Find him and destroy him!", 10, 390, font, Color.GREEN);
 		
 		WindowImage w_topDownImage = new WindowImage(topImage, 75, 175);
-		WindowImage w_deadImage = new WindowImage(dedImage, 225, 125);
+		WindowImage w_deadImage = new WindowImage(deadImage, 225, 125);
 		
 		window.setFinished(false);
-//		window = new Window((width / 2) - 225, (height / 2) - 225, 400, 400);
+//		window = new Window((KatechonEngine.getInstance().getSwingWindow().getWidth() / 2) - 225, (KatechonEngine.getInstance().getSwingWindow().getWidth() / 2) - 225, 400, 400);
 		window.addDisplayable(messageLine1);
 		window.addDisplayable(messageLine2);
 		window.addDisplayable(w_topDownImage);
@@ -274,7 +208,10 @@ public class ShoppingMaul extends KatechonGameBase
 		window.setVisible(true);
 		KWT.getInstance().addWindow(window);
 		
-		target.setFinished(true);
+		if (target != null)
+		{
+			target.setFinished(true);
+		}
 		
 		target = new IDrawable()
 		{
@@ -313,12 +250,15 @@ public class ShoppingMaul extends KatechonGameBase
 	
 	private static FinishedMessage message = new FinishedMessage();
 	private static TimeScore timeScore = new TimeScore();
+	private static GreyOut greyOut = new GreyOut();
 	
 	public static void showFinishedMessage()
 	{
 		timeScore.stop();
+		greyOut.setFinished(false);
 		message.setMessage("Your time: " + timeScore + " seconds.");
-		KatechonEngine.getInstance().addDrawable(message, 4);
+		KatechonEngine.getInstance().addDrawable(greyOut, 4);
+		KatechonEngine.getInstance().addDrawable(message, 5);
 		message.show();
 		final Button playAgain = new PlayAgainButton(530, 350, 50, 50);
 		
@@ -329,6 +269,7 @@ public class ShoppingMaul extends KatechonGameBase
 	
 	public static void hideFinishedMessage()
 	{
+		greyOut.setFinished(true);
 		message.hide();
 		instance.replay();
 	}

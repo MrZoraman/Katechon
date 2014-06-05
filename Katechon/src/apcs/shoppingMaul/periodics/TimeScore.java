@@ -4,6 +4,10 @@ import java.text.DecimalFormat;
 
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 
+/**
+ * Keeps score by way of time taken.
+ * @author Sean
+ */
 public class TimeScore implements ISchedulerTask
 {
 	private final double conversionRate = 1000000000.0;
@@ -29,11 +33,18 @@ public class TimeScore implements ISchedulerTask
 		}
 	}
 	
+	/**
+	 * Begins tracking time.
+	 */
 	public void start()
 	{
+		this.first = System.nanoTime();
 		this.running = true;
 	}
 	
+	/**
+	 * Stops tracking time.
+	 */
 	public void stop()
 	{
 		this.running = false;
@@ -59,11 +70,18 @@ public class TimeScore implements ISchedulerTask
 		return (new DecimalFormat("#.##")).format(temp);
 	}
 	
+	/**
+	 * Resets the time.
+	 */
 	public void reset()
 	{
 		this.first = System.nanoTime();
 	}
 	
+	/**
+	 * Imposes a penalty.
+	 * @param seconds The number of seconds to penalize the player.
+	 */
 	public void timePenalty(double seconds)
 	{
 		first -= (seconds * conversionRate);

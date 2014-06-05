@@ -57,27 +57,24 @@ public class Mouse implements MouseListener, MouseMotionListener
 	{
 		Iterator<MouseClickedListener> it = mouseListeners.iterator();
 		
-//		while(it.hasNext())
-//		{
-//			it.next();
-//			it.next().onClick(event.getX(), event.getY());
-//			
-//			MouseClickedListener listener = it.next();
-//			if(listener.isFinished())
-//			{
-//				//TODO: gets removed next time the mouse is clicked...
-//				it.remove();
-//			}
-//			else
-//			{
-//				listener.onClick(event.getX(), event.getY());
-//			}
-//		}
-		
-		for(MouseClickedListener listener : mouseListeners)
-		{
-			listener.onClick(event.getX(), event.getY());
+		while(it.hasNext())
+		{			
+			MouseClickedListener listener = it.next();
+			if(listener.isFinished())
+			{
+				//TODO: gets removed next time the mouse is clicked...
+				it.remove();
+			}
+			else
+			{
+				listener.onClick(event.getX(), event.getY());
+			}
 		}
+		
+//		for(MouseClickedListener listener : mouseListeners)
+//		{
+//			listener.onClick(event.getX(), event.getY());
+//		}
 	}
 	
 	/**

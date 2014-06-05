@@ -208,6 +208,10 @@ public class Man extends SimpleBoardCollidable
 		g.drawImage(copy, x, y, null);
 	}
 	
+	/**
+	 * Changes the dead state of this Man
+	 * @param dead The state of dead that this Man should be.
+	 */
 	public void setDead(boolean dead)
 	{
 		this.dead = dead;

@@ -11,15 +11,19 @@ import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.windowingtoolkit.Button;
 import apcs.katechon.windowingtoolkit.Window;
 
+/**
+ * A button used to play again.
+ * @author Sean
+ */
 public class PlayAgainButton extends Button
 {
 	private final String message = "Play Again?";
-	private final int x, y, width, height;
+	private final int x, y;
 	private KeyPressedListener listener;
 	
 	public PlayAgainButton(int x, int y, int width, int height)
 	{
-		super(x, y, width, height, 4);
+		super(x, y, width, height, 5);
 		
 		listener = new KeyPressedListener(){
 
@@ -48,8 +52,6 @@ public class PlayAgainButton extends Button
 		
 		this.x = x;
 		this.y = y;
-		this.width = width;
-		this.height = height;
 		
 		this.setVisible(true);
 		

@@ -21,7 +21,7 @@ public class FinishedMessage implements IDrawable
 	{
 		this.finished = false;
 		this.font = new Font("Arial", Font.PLAIN, 40);
-		this.message = "YOU FOUND HIM!";
+		this.message = "YOU FOUND HIM!";		
 	}
 	
 	@Override
@@ -30,6 +30,7 @@ public class FinishedMessage implements IDrawable
 		return finished;
 	}
 	
+	@Override
 	public void setFinished(boolean finished)
 	{
 		this.finished = finished;
@@ -46,11 +47,17 @@ public class FinishedMessage implements IDrawable
 		}
 	}
 	
+	/**
+	 * Shows the finished message.
+	 */
 	public void show()
 	{
 		this.visible = true;
 	}
 	
+	/**
+	 * Hides the finished message.
+	 */
 	public void hide()
 	{
 		this.visible = false;
