@@ -20,11 +20,14 @@ public class PlayAgainButton extends Button
 	private final String message = "Play Again?";
 	private final int x, y;
 	private KeyPressedListener listener;
+	private ShoppingMaul shoppingMaul;
 	
-	public PlayAgainButton(int x, int y, int width, int height)
+	public PlayAgainButton(int x, int y, int width, int height, ShoppingMaul shoppingMaul)
 	{
 		super(x, y, width, height, 5);
 		
+		
+		this.shoppingMaul = shoppingMaul;
 		listener = new KeyPressedListener(){
 
 			private boolean isFinished = false;
@@ -87,7 +90,7 @@ public class PlayAgainButton extends Button
 		//Logic here pls.
 		
 		this.setVisible(false);
-		ShoppingMaul.hideFinishedMessage();
+		shoppingMaul.hideFinishedMessage();
 		
 		Keyboard.getInstance().setExclusiveKeyListener(null);
 	}

@@ -6,6 +6,11 @@ import java.awt.Graphics;
 import apcs.katechon.KatechonEngine;
 import apcs.katechon.rendering.IDrawable;
 
+/**
+ * Greys out the screen with an alpha value of 125
+ * @author Sean
+ *
+ */
 public class GreyOut implements IDrawable
 {	
 	public GreyOut()

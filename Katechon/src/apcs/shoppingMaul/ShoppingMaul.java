@@ -90,7 +90,7 @@ public class ShoppingMaul extends KatechonGameBase
 		LeopardPack pack = new LeopardPack(ControlScheme.WSAD, (width / 2) + xCenterOffset, (height / 2) + yCenterOffset, speed, 5, 3);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(pack);
 		
-		board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed);
+		board = new Board(ControlScheme.WSAD, pack, engine.getSwingWindow(), speed, this);
 		engine.addDrawable(board, 2);
 		EngineManager.getInstance().getEngine(ICollidable.class).addItem(board);
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(board);
@@ -136,7 +136,7 @@ public class ShoppingMaul extends KatechonGameBase
 		CommandManager.getInstance().registerCommand("whereami", new WhereAmICommand(board));
 		
 		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(timeScore);
-		ShoppingMaul.timeScore.start();
+		timeScore.start();
 	}
 
 	@Override
@@ -248,11 +248,11 @@ public class ShoppingMaul extends KatechonGameBase
 		timeScore.start();
 	}
 	
-	private static FinishedMessage message = new FinishedMessage();
-	private static TimeScore timeScore = new TimeScore();
-	private static GreyOut greyOut = new GreyOut();
+	private FinishedMessage message = new FinishedMessage();
+	private TimeScore timeScore = new TimeScore();
+	private GreyOut greyOut = new GreyOut();
 	
-	public static void showFinishedMessage()
+	public void showFinishedMessage()
 	{
 		timeScore.stop();
 		greyOut.setFinished(false);
@@ -260,21 +260,21 @@ public class ShoppingMaul extends KatechonGameBase
 		KatechonEngine.getInstance().addDrawable(greyOut, 4);
 		KatechonEngine.getInstance().addDrawable(message, 5);
 		message.show();
-		final Button playAgain = new PlayAgainButton(530, 350, 50, 50);
+		final Button playAgain = new PlayAgainButton(530, 350, 50, 50, this);
 		
 		playAgain.setMouseOverColor(Color.CYAN);
 		playAgain.setPassiveColor(Color.YELLOW);
 		playAgain.setMouseHeldColor(new Color(18, 75, 90));
 	}
 	
-	public static void hideFinishedMessage()
+	public void hideFinishedMessage()
 	{
 		greyOut.setFinished(true);
 		message.hide();
 		instance.replay();
 	}
 	
-	public static void timePenalty(double seconds)
+	public void timePenalty(double seconds)
 	{
 		timeScore.timePenalty(seconds);
 	}

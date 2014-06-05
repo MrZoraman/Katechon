@@ -24,7 +24,7 @@ import apcs.shoppingMaul.man.Man;
  */
 public class Board extends Controllable implements ICollidable, IDrawable
 {
-	private static final double PENALTY = .01;
+	private static final double PENALTY = 1;
 	
 	private static final int COLLISION_BOX_SIZE = 100;
 	
@@ -43,10 +43,13 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	
 	private Set<Direction> collisions;
 	
-	public Board(ControlScheme controlScheme, LeopardPack pack, SwingWindow window, int speed)
+	private ShoppingMaul shoppingMaul;
+	
+	public Board(ControlScheme controlScheme, LeopardPack pack, SwingWindow window, int speed, ShoppingMaul shoppingMaul)
 	{
 		super(controlScheme);
 		
+		this.shoppingMaul = shoppingMaul;
 		this.pack = pack;
 		this.speed = speed;
 		this.drawables = new ArrayList<IControlledDrawable>();
@@ -77,13 +80,13 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			{
 				Log.info("you found him!");
 				target.setDead(true);
-				ShoppingMaul.showFinishedMessage();
+				shoppingMaul.showFinishedMessage();
 			}
 			else if(ic instanceof Man)
 			{
 				Man man = (Man) ic;
 				man.setDead(true);
-				ShoppingMaul.timePenalty(PENALTY);
+				shoppingMaul.timePenalty(PENALTY);
 			}
 		}
 	}
