@@ -21,13 +21,20 @@ public class FinishedWindow extends Window
 		Message msg = new Message("You found your target!", 10, 55, font, Color.GREEN);
 		this.addDisplayable(msg);
 		
-		Button button = new Button(10, 100, 50, 20) {
+		Message continueMsg = new Message("Click this button to play again ->", 10, 80, font, Color.GREEN);
+		this.addDisplayable(continueMsg);
+		
+		Button button = new Button(300, 62, 50, 20) {
 			@Override
 			public void onClick()
 			{
-				System.out.println("pop");
+				onClose();
 			}
 		};
+		
+		button.setPassiveColor(new Color(0, 204, 0));
+		button.setMouseOverColor(new Color(0, 153, 0));
+		button.setMouseHeldColor(Color.GREEN);
 		
 		this.addDisplayable(button);
 	}

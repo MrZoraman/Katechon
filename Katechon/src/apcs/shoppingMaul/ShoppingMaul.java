@@ -19,7 +19,6 @@ import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
 import apcs.katechon.sounds.IPlayer;
-import apcs.katechon.sounds.RandomPlayer;
 import apcs.katechon.utils.ConfigKey;
 import apcs.katechon.utils.IConfig;
 import apcs.katechon.utils.MappedConfig;
@@ -127,7 +126,7 @@ public class ShoppingMaul extends KatechonGameBase
 //		KWT.getInstance().addWindow(window);
 		window.setVisible(true);
 		
-		FinishedWindow fWindow = new FinishedWindow(500, 500);
+		FinishedWindow fWindow = new FinishedWindow(475, 275);
 		KWT.getInstance().addWindow(fWindow);
 		fWindow.setVisible(true);
 		
