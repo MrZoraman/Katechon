@@ -43,8 +43,8 @@ public abstract class Button extends DisplayableBase implements MouseClickedList
 	
 	private final int x;
 	private final int y;
-	private final int width;
-	private final int height;
+	private int width;
+	private int height;
 	
 	private Window window;
 	
@@ -208,5 +208,20 @@ public abstract class Button extends DisplayableBase implements MouseClickedList
 	protected int getHeight()
 	{
 		return height;
+	}
+	
+	protected boolean isVisible()
+	{
+		return this.visible;
+	}
+	
+	protected void setWidth(int width)
+	{
+		this.width = width;
+	}
+	
+	protected void setHeight(int height)
+	{
+		this.height = height;
 	}
 }

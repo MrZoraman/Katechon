@@ -7,7 +7,6 @@ import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.scheduler.ISchedulerTask;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
-
 import static apcs.katechon.engine.collisions.Direction.*;
 
 /**
@@ -73,5 +72,11 @@ public abstract class Controllable implements ISchedulerTask
 	public boolean isFinished()
 	{
 		return false;
+	}
+	
+	@Override
+	public void setFinished(boolean finished)
+	{
+		//Do nothing
 	}
 }

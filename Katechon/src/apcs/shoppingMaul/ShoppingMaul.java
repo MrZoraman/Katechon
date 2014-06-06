@@ -152,10 +152,11 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		IDrawable target = new IDrawable()
 		{
+			private boolean isFinished = false;
 			@Override
 			public boolean isFinished()
 			{
-				return false;
+				return isFinished;
 			}
 
 			@Override
@@ -169,6 +170,12 @@ public class ShoppingMaul extends KatechonGameBase
 				g.setColor(Color.GREEN);
 				g.drawString("Target:", 10, 20);
 				g.drawImage(topDownImage, 10, 30, null);
+			}
+
+			@Override
+			public void setFinished(boolean finished)
+			{
+				this.isFinished = finished;
 			}
 		};
 		

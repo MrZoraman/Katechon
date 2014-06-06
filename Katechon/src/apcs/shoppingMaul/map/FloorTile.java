@@ -68,4 +68,10 @@ public class FloorTile implements IControlledDrawable
 	public int getRealY() {
 		return realY;
 	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		this.finished = finished;
+	}
 }

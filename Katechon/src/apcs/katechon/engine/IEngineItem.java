@@ -14,4 +14,6 @@ public interface IEngineItem
 	 * @return True if the object is ready to be destroyed, false if otherwise.
 	 */
 	public boolean isFinished();
+
+	void setFinished(boolean finished);
 }

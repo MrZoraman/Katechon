@@ -10,6 +10,7 @@ import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.windowingtoolkit.Button;
 import apcs.katechon.windowingtoolkit.Message;
+import apcs.katechon.windowingtoolkit.PlayAgainButton;
 import apcs.katechon.windowingtoolkit.Window;
 
 public class FinishedWindow extends Window
@@ -20,7 +21,7 @@ public class FinishedWindow extends Window
 	private static final Font font = new Font("Arial", Font.PLAIN, 20);
 	
 	class KeyBlocker implements KeyPressedListener {
-		boolean finished = false;
+		private boolean finished = false;
 
 		@Override
 		public boolean isFinished()
@@ -32,6 +33,12 @@ public class FinishedWindow extends Window
 		public void onKeyPressed(Keys key, char keyChar)
 		{
 			//does nothin'
+		}
+
+		@Override
+		public void setFinished(boolean finished)
+		{
+			this.finished = finished;
 		}
 	}
 	
@@ -52,13 +59,7 @@ public class FinishedWindow extends Window
 		Message continueMsg = new Message("Click this button to play again ->", 10, 80, font, Color.GREEN);
 		this.addDisplayable(continueMsg);
 		
-		Button button = new Button(300, 62, 50, 20) {
-			@Override
-			public void onClick()
-			{
-				onClose();
-			}
-		};
+		PlayAgainButton button = new PlayAgainButton(300, 62, 50, 20, this);
 		
 		button.setPassiveColor(new Color(0, 204, 0));
 		button.setMouseOverColor(new Color(0, 153, 0));
@@ -75,7 +76,7 @@ public class FinishedWindow extends Window
 	{
 		super.onClose();
 		Keyboard.getInstance().setExclusiveKeyListener(null);
-		keyBlocker.finished = true;
+		keyBlocker.setFinished(true);
 		KatechonEngine.getInstance().nuke();
 		game.start(KatechonEngine.getInstance());
 	}

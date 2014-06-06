@@ -23,4 +23,11 @@ public class SimplePhysicsObject implements IPhysicsObject
 		return false;
 	}
 
+	@Override
+	public void setFinished(boolean finished)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

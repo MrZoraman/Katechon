@@ -164,4 +164,10 @@ public class RandomPlayer implements IPlayer
 		}
 	}
 
+	@Override
+	public void setFinished(boolean finished)
+	{
+		this.finished = finished;
+	}
+
 }

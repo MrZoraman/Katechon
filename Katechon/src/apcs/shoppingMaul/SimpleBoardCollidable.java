@@ -162,4 +162,10 @@ public class SimpleBoardCollidable implements ICollidable, ISchedulerTask, ICont
 	{
 		this.realY = realY;
 	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		//INFINITE!!!
+	}
 }

@@ -48,4 +48,11 @@ public class ScoreCount implements ISchedulerTask
 	{
 		return String.valueOf(score);
 	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

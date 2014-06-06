@@ -112,9 +112,16 @@ public class LeopardPack implements ISchedulerTask
 		setDestinationForLeopards();
 	}
 
+	private boolean isFinished = false;
 	@Override
 	public boolean isFinished()
 	{
-		return false;
+		return isFinished;
+	}
+
+	@Override
+	public void setFinished(boolean finished)
+	{
+		this.isFinished = finished;
 	}
 }
