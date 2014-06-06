@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -59,17 +60,25 @@ public class Mouse implements MouseListener, MouseMotionListener
 		
 		while(it.hasNext())
 		{
-			MouseClickedListener listener = it.next();
+			try
+			{
+				MouseClickedListener listener = it.next();
+				if(listener.isFinished())
+				{
+					//TODO: gets removed next time the mouse is clicked...
+					it.remove();
+				}
+				else
+				{
+					listener.onClick(event.getX(), event.getY());
+				}
+			}
+			catch (ConcurrentModificationException e)
+			{
+				System.out.println("CAUGHT IT!!");
+			}
 			
-			if(listener.isFinished())
-			{
-				//TODO: gets removed next time the mouse is clicked...
-				it.remove();
-			}
-			else
-			{
-				listener.onClick(event.getX(), event.getY());
-			}
+			
 		}
 		
 //		for(MouseClickedListener listener : mouseListeners)
