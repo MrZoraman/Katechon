@@ -90,6 +90,7 @@ public class PlayAgainButton extends Button
 		this.setVisible(false);
 		shoppingMaul.hideFinishedMessage();
 		
+		listener.setFinished(true);
 		Keyboard.getInstance().setExclusiveKeyListener(null);
 	}
 
