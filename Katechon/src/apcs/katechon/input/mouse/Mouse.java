@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import apcs.shoppingMaul.PlayAgainButton;
+
 /**
  * This class represents the computer mouse, ready to be plugged into the swing framework.
  * @author Sean
@@ -71,6 +73,10 @@ public class Mouse implements MouseListener, MouseMotionListener
 				else
 				{
 					listener.onClick(event.getX(), event.getY());
+					if (listener instanceof PlayAgainButton)
+					{
+						return;
+					}
 				}
 			}
 			catch (ConcurrentModificationException e)
