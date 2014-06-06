@@ -3,6 +3,9 @@ package apcs.shoppingMaul;
 import java.awt.Color;
 import java.awt.Font;
 
+import apcs.katechon.input.keyboard.KeyPressedListener;
+import apcs.katechon.input.keyboard.Keyboard;
+import apcs.katechon.input.keyboard.Keys;
 import apcs.katechon.windowingtoolkit.Button;
 import apcs.katechon.windowingtoolkit.Message;
 import apcs.katechon.windowingtoolkit.Window;
@@ -13,6 +16,24 @@ public class FinishedWindow extends Window
 	private static final int HEIGHT = 100;
 	
 	private static final Font font = new Font("Arial", Font.PLAIN, 20);
+	
+	class KeyBlocker implements KeyPressedListener {
+		boolean finished = false;
+
+		@Override
+		public boolean isFinished()
+		{
+			return finished;
+		}
+
+		@Override
+		public void onKeyPressed(Keys key, char keyChar)
+		{
+			//does nothin'
+		}
+	}
+	
+	KeyBlocker keyBlocker = new KeyBlocker();
 
 	public FinishedWindow(int x, int y)
 	{
@@ -37,13 +58,16 @@ public class FinishedWindow extends Window
 		button.setMouseHeldColor(Color.GREEN);
 		
 		this.addDisplayable(button);
+		
+		
+		Keyboard.getInstance().setExclusiveKeyListener(keyBlocker);
 	}
 
 	@Override
 	public void onClose()
 	{
 		super.onClose();
-		
-		
+		Keyboard.getInstance().setExclusiveKeyListener(null);
+		keyBlocker.finished = true;
 	}
 }
