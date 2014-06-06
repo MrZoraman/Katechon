@@ -126,4 +126,9 @@ public class Mouse implements MouseListener, MouseMotionListener
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 	}
+	
+	public void clearListeners()
+	{
+		this.mouseListeners.clear();
+	}
 }

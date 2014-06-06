@@ -190,4 +190,9 @@ public class SwingWindow
 	{
 		return this.frame.getHeight();
 	}
+	
+	public void clear()
+	{
+		this.display.clearAllLayers();
+	}
 }

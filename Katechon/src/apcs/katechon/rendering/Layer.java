@@ -72,4 +72,9 @@ public class Layer
 	{
 		return drawables;
 	}
+	
+	void clearAll()
+	{
+		this.drawables.clear();
+	}
 }

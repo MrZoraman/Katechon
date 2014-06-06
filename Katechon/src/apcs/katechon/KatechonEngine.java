@@ -221,8 +221,23 @@ public class KatechonEngine
 		return getInstance();
 	}
 	
+	/**
+	 * Adds a SchedulerTask to the engine's SchedulerTask list
+	 * @param task The task to add
+	 */
 	public void scheduleTask(ISchedulerTask task)
 	{
 		scheduler.addItem(task);
+	}
+	
+	/**
+	 * Clears all engines (including renderer and inputs) of items.
+	 */
+	public void nuke()
+	{
+		EngineManager.getInstance().clearAll();
+		this.window.clear();
+		Mouse.getInstance().clearListeners();
+		Keyboard.getInstance().clearListeners();
 	}
 }

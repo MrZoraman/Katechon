@@ -78,4 +78,12 @@ public class Display
 	{
 		this.kwtLayer = kwt;
 	}
+	
+	public void clearAllLayers()
+	{
+		for(Layer l : layers)
+		{
+			l.clearAll();
+		}
+	}
 }

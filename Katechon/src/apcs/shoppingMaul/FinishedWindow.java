@@ -76,7 +76,7 @@ public class FinishedWindow extends Window
 		super.onClose();
 		Keyboard.getInstance().setExclusiveKeyListener(null);
 		keyBlocker.finished = true;
-		EngineManager.getInstance().clearAll();
+		KatechonEngine.getInstance().nuke();
 		game.start(KatechonEngine.getInstance());
 	}
 }

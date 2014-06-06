@@ -178,4 +178,13 @@ public class Keyboard implements KeyListener
 			return false;
 		}
 	}
+	
+	/**
+	 * Clears all listeners from the keyboard
+	 */
+	public void clearListeners()
+	{
+		this.keyListeners.clear();
+		this.exclusiveKeyListener = null;
+	}
 }
