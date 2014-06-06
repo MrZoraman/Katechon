@@ -111,8 +111,8 @@ public class ShoppingMaul extends KatechonGameBase
 		final BufferedImage deadImage = thatGuy.getDeadImage();
 		
 		final Font font = new Font("Arial", Font.PLAIN, 20);
-		Message messageLine1 =  new Message("Your task is to find the man shown below.", 10, 55, font, Color.GREEN);
-		Message messageLine2 =  new Message("Find him and destroy him!", 10, 390, font, Color.GREEN);
+		Message messageLine1 = new Message("Your task is to find the man shown below.", 10, 55, font, Color.GREEN);
+		Message messageLine2 = new Message("Find him and destroy him!", 10, 390, font, Color.GREEN);
 		
 		WindowImage w_topDownImage = new WindowImage(topDownImage, 75, 175);
 		WindowImage w_deadImage = new WindowImage(deadImage, 225, 125);

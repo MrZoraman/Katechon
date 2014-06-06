@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import apcs.katechon.KatechonEngine;
 import apcs.katechon.SwingWindow;
 import apcs.katechon.basicGameObjects.ControlScheme;
 import apcs.katechon.basicGameObjects.Controllable;
@@ -16,6 +15,8 @@ import apcs.katechon.engine.collisions.Direction;
 import apcs.katechon.engine.collisions.ICollidable;
 import apcs.katechon.logging.Log;
 import apcs.katechon.rendering.IDrawable;
+import apcs.katechon.windowingtoolkit.KWT;
+import apcs.katechon.windowingtoolkit.Window;
 import apcs.shoppingMaul.man.Man;
 
 /**
@@ -75,8 +76,9 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			if(ic == target)
 			{
 				Log.info("you found him!");
-				final FinishedMessage message = new FinishedMessage();
-				KatechonEngine.getInstance().addDrawable(message, 4);
+				Window window = new FinishedWindow(500, 500);
+				KWT.getInstance().addWindow(window);
+				window.setVisible(true);
 			}
 			
 			if(ic instanceof Man)
