@@ -124,10 +124,12 @@ public class ShoppingMaul extends KatechonGameBase
 		window.addDisplayable(w_topDownImage);
 		window.addDisplayable(w_deadImage);
 		
-		KWT.getInstance().addWindow(window);
+//		KWT.getInstance().addWindow(window);
 		window.setVisible(true);
 		
-		
+		FinishedWindow fWindow = new FinishedWindow(500, 500);
+		KWT.getInstance().addWindow(fWindow);
+		fWindow.setVisible(true);
 		
 		IDrawable target = new IDrawable()
 		{
@@ -153,19 +155,19 @@ public class ShoppingMaul extends KatechonGameBase
 		
 		engine.addDrawable(target, 3);
 		
-		try
-		{
-			player = new RandomPlayer(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/main.wav"));
-			((RandomPlayer)player).addClip(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/Airport Lounge.wav"));
-			((RandomPlayer)player).addClip(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/Groove Grove.wav"));
-			player.loop();
-		}
-		catch (Exception e)
-		{
-			Log.exception(e);
-		}
-		
-		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(player);
+//		try
+//		{
+//			player = new RandomPlayer(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/main.wav"));
+//			((RandomPlayer)player).addClip(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/Airport Lounge.wav"));
+//			((RandomPlayer)player).addClip(getClass().getResourceAsStream("/apcs/shoppingMaul/assets/Groove Grove.wav"));
+//			player.loop();
+//		}
+//		catch (Exception e)
+//		{
+//			Log.exception(e);
+//		}
+//		
+//		EngineManager.getInstance().getEngine(ISchedulerTask.class).addItem(player);
 		
 		
 		CommandManager.getInstance().registerCommand("{add|spawn} * {leopard|leopards}", new AddLeopardCommand(pack));
