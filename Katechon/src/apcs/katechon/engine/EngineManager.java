@@ -79,4 +79,15 @@ public class EngineManager implements ActionListener
 			engine.doWork();
 		}
 	}
+	
+	/**
+	 * Clears everything from all of the engines
+	 */
+	public void clearAll()
+	{
+		for(EngineModuleBase<?> engine : engines)
+		{
+			engine.clearItems();
+		}
+	}
 }

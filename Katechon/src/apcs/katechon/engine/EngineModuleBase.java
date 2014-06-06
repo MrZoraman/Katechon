@@ -68,6 +68,14 @@ public abstract class EngineModuleBase<I extends IEngineItem>
 	}
 	
 	/**
+	 * Clears the items in the engine
+	 */
+	public void clearItems()
+	{
+		items.clear();
+	}
+	
+	/**
 	 * This is where the magic happens
 	 * @param items The items involved in the process
 	 */

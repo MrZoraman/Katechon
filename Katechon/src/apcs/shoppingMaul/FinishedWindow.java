@@ -3,6 +3,8 @@ package apcs.shoppingMaul;
 import java.awt.Color;
 import java.awt.Font;
 
+import apcs.katechon.KatechonEngine;
+import apcs.katechon.engine.EngineManager;
 import apcs.katechon.input.keyboard.KeyPressedListener;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
@@ -33,11 +35,16 @@ public class FinishedWindow extends Window
 		}
 	}
 	
-	KeyBlocker keyBlocker = new KeyBlocker();
+	private final KeyBlocker keyBlocker = new KeyBlocker();
+	
+	private final ShoppingMaul game;
 
-	public FinishedWindow(int x, int y)
+	public FinishedWindow(ShoppingMaul game, int x, int y)
 	{
 		super(x, y, WIDTH, HEIGHT);
+		
+		this.game = game;
+		
 		this.setTitle("Finished!");
 		Message msg = new Message("You found your target!", 10, 55, font, Color.GREEN);
 		this.addDisplayable(msg);
@@ -69,5 +76,7 @@ public class FinishedWindow extends Window
 		super.onClose();
 		Keyboard.getInstance().setExclusiveKeyListener(null);
 		keyBlocker.finished = true;
+		EngineManager.getInstance().clearAll();
+		game.start(KatechonEngine.getInstance());
 	}
 }

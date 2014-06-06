@@ -43,9 +43,13 @@ public class Board extends Controllable implements ICollidable, IDrawable
 	
 	private Set<Direction> collisions;
 	
-	public Board(ControlScheme controlScheme, LeopardPack pack, SwingWindow window, int speed)
+	private final ShoppingMaul game;
+	
+	public Board(ShoppingMaul game, ControlScheme controlScheme, LeopardPack pack, SwingWindow window, int speed)
 	{
 		super(controlScheme);
+		
+		this.game = game;
 		
 		this.pack = pack;
 		this.speed = speed;
@@ -76,7 +80,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			if(ic == target)
 			{
 				Log.info("you found him!");
-				Window window = new FinishedWindow(500, 500);
+				Window window = new FinishedWindow(game, 500, 500);
 				KWT.getInstance().addWindow(window);
 				window.setVisible(true);
 			}
