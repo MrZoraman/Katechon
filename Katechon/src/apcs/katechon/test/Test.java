@@ -41,14 +41,14 @@ public class Test extends KatechonGameBase
 	 * Entry point
 	 * @param args command line arguments (unused [probably])
 	 */
-	public static void main(String[] args)
-	{
-		IConfig config = new MappedConfig();
-		config.setString(ConfigKey.TITLE, "abba jeezles");
-		
-		//see this line of code looks pretty clean to me
-		new KatechonEngine(Test.class, config).start();
-	}
+//	public static void main(String[] args)
+//	{
+//		IConfig config = new MappedConfig();
+//		config.setString(ConfigKey.TITLE, "abba jeezles");
+//		
+//		//see this line of code looks pretty clean to me
+//		new KatechonEngine(Test.class, config).start();
+//	}
 
 	@Override
 	public void init(final KatechonEngine engine) 
