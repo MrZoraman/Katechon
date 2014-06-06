@@ -9,8 +9,8 @@ import apcs.katechon.windowingtoolkit.Window;
 
 public class FinishedWindow extends Window
 {
-	private static final int WIDTH = 400;
-	private static final int HEIGHT = 200;
+	private static final int WIDTH = 375;
+	private static final int HEIGHT = 100;
 	
 	private static final Font font = new Font("Arial", Font.PLAIN, 20);
 
