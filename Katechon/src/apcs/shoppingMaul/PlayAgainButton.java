@@ -44,8 +44,8 @@ public class PlayAgainButton extends Button
 		
 		FontMetrics metrics = g.getFontMetrics();
 		
-		this.setWidth(metrics.stringWidth(message));;
-		this.setHeight(metrics.getHeight());
+//		this.setWidth(metrics.stringWidth(message));;
+//		this.setHeight(metrics.getHeight());
 		
 		super.draw(g);	
 		
