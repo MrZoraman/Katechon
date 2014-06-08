@@ -122,7 +122,7 @@ public class ShoppingMaul extends KatechonGameBase
 			schedulerEngine.addItem(someGuy);
 			board.addDrawable(someGuy);
 		}
-		System.out.println("spawned men in " + (System.nanoTime() - before) + " nanoseconds.");
+		Log.info("spawned men in " + (System.nanoTime() - before) + " nanoseconds.");
 		
 		Man thatGuy = Utils.getRandomItem(men);
 		

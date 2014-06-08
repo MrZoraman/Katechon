@@ -200,7 +200,7 @@ public class Window extends DisplayableBase
 	/**
 	 * Called when the close button is clicked
 	 */
-	protected void onClose()
+	public void onClose()
 	{
 		setFinished(true);
 	}

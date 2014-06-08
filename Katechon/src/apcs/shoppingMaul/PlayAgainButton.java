@@ -1,17 +1,12 @@
-package apcs.katechon.windowingtoolkit;
+package apcs.shoppingMaul;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
-import apcs.katechon.input.keyboard.KeyPressedListener;
-import apcs.katechon.input.keyboard.Keyboard;
-import apcs.katechon.input.keyboard.Keys;
-import apcs.katechon.input.mouse.Mouse;
 import apcs.katechon.windowingtoolkit.Button;
 import apcs.katechon.windowingtoolkit.Window;
-import apcs.shoppingMaul.ShoppingMaul;
 
 /**
 * A button used to play again.

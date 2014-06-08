@@ -4,13 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 import apcs.katechon.KatechonEngine;
-import apcs.katechon.engine.EngineManager;
 import apcs.katechon.input.keyboard.KeyPressedListener;
 import apcs.katechon.input.keyboard.Keyboard;
 import apcs.katechon.input.keyboard.Keys;
-import apcs.katechon.windowingtoolkit.Button;
 import apcs.katechon.windowingtoolkit.Message;
-import apcs.katechon.windowingtoolkit.PlayAgainButton;
 import apcs.katechon.windowingtoolkit.Window;
 
 public class FinishedWindow extends Window

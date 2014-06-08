@@ -132,7 +132,7 @@ public abstract class Button extends DisplayableBase implements MouseClickedList
 		this.finished = finished;
 	}
 	
-	void setWindow(Window window)
+	protected void setWindow(Window window)
 	{
 		this.window = window;
 	}
