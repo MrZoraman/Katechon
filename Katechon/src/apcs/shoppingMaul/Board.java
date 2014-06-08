@@ -80,7 +80,7 @@ public class Board extends Controllable implements ICollidable, IDrawable
 			if(ic == target)
 			{
 				Log.info("you found him!");
-				Window window = new FinishedWindow(game, 500, 500);
+				Window window = new FinishedWindow(game, 500, 375);
 				KWT.getInstance().addWindow(window);
 				window.setVisible(true);
 			}

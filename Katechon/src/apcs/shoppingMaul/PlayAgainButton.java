@@ -2,7 +2,6 @@ package apcs.shoppingMaul;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 import apcs.katechon.windowingtoolkit.Button;
@@ -14,8 +13,8 @@ import apcs.katechon.windowingtoolkit.Window;
 */
 public class PlayAgainButton extends Button
 {
-	private final String message = "Play Again?";
-	private final int x, y;
+//	private final String message = "Play Again?";
+//	private final int x, y;
 	private Window window;
 	
 	public PlayAgainButton(int x, int y, int width, int height, Window window)
@@ -24,8 +23,8 @@ public class PlayAgainButton extends Button
 		
 		this.window = window;
 		
-		this.x = x;
-		this.y = y;
+//		this.x = x;
+//		this.y = y;
 		
 		this.setVisible(true);
 		
@@ -42,7 +41,7 @@ public class PlayAgainButton extends Button
 			return;
 		}
 		
-		FontMetrics metrics = g.getFontMetrics();
+//		FontMetrics metrics = g.getFontMetrics();
 		
 //		this.setWidth(metrics.stringWidth(message));;
 //		this.setHeight(metrics.getHeight());
@@ -50,7 +49,7 @@ public class PlayAgainButton extends Button
 		super.draw(g);	
 		
 		g.setColor(Color.BLACK);
-		g.drawString(message, x, y + metrics.getHeight() - 9);
+//		g.drawString(message, x, y + metrics.getHeight() - 9);
 	}
 	
 	@Override
